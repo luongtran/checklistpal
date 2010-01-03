@@ -11,17 +11,14 @@ class HomeController < ApplicationController
           :slug => random_string
       )
       if @list.save
+        session[:new_lists] ||= []
+        session[:new_lists] << @list.id
+
         redirect_to list_path(@list.slug)
       else
         flash[:error] = "Could not post list"
       end
-
-    else
-      puts "\n___User create new list __________________________"
-
-      if current_user.can_create_new_list?
-
-      end
+    else # logged in
       if current_user.can_create_new_list?
         list = current_user.lists.create(:name => "Name of List", :description => "To do list", :slug => random_string)
         if list.save
@@ -31,7 +28,7 @@ class HomeController < ApplicationController
           return false
         end
       else
-        flash[:notice] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists!].html_safe
+        flash[:error] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists].html_safe
         redirect_to my_list_url
       end
     end
@@ -208,14 +205,14 @@ class HomeController < ApplicationController
     end
   end
 
-  def pass_parametter
-    @list_ids = params[:list]
-    @list_id = JSON.parse(@list_ids)
-    session[:list_ids] = @list_id;
-    render :json => {
-        :location => url_for(:controller => 'home', :action => 'find_multi_invite')
-    }
-  end
+  #def pass_parametter
+  #  @list_ids = params[:list]
+  #  @list_id = JSON.parse(@list_ids)
+  #  session[:list_ids] = @list_id;
+  #  render :json => {
+  #      :location => url_for(:controller => 'home', :action => 'find_multi_invite')
+  #  }
+  #end
 
   #def find_multi_invite
   #  @list_ids = session[:list_ids]
@@ -402,32 +399,33 @@ class HomeController < ApplicationController
     end
   end
 
-  def invite_user_by_id_multi_list
-    @user = User.find(params[:user_id])
-    @list_ids = session[:list_ids]
-    @lists = List.where('id IN (?)', @list_ids)
-    @message = ""
-    if @user && @lists
-      @user.skip_stripe_update = true
-      @user.invite!(current_user)
-      @lists.each do |list|
-        if (!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
-          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
-            @success = true
-            @message = "Invitation sent to #{@user.email} !"
-          end
-        else
-          @message = "The list already sharing for #{@user.email}"
-        end
-      end
-    else
-      @message = "Invited failer"
-    end
-    @success = false
-    respond_to do |format|
-      format.js
-    end
-  end
+
+  #def invite_user_by_id_multi_list
+  #  @user = User.find(params[:user_id])
+  #  @list_ids = session[:list_ids]
+  #  @lists = List.where('id IN (?)', @list_ids)
+  #  @message = ""
+  #  if @user && @lists
+  #    @user.skip_stripe_update = true
+  #    @user.invite!(current_user)
+  #    @lists.each do |list|
+  #      if (!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
+  #        if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
+  #          @success = true
+  #          @message = "Invitation sent to #{@user.email}"
+  #        end
+  #      else
+  #        @message = "The list already sharing for #{@user.email}"
+  #      end
+  #    end
+  #  else
+  #    @message = "Invited failer"
+  #  end
+  #  @success = false
+  #  respond_to do |format|
+  #    format.js
+  #  end
+  #end
 
   def invite_user_by_id
     @message = ""
@@ -448,10 +446,10 @@ class HomeController < ApplicationController
             @user.invite!(current_user)
             if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
               @success = true
-              @message = "Invitation sent to #{@user.email} !"
+              @message = "Invitation sent to #{@user.email}"
             end
           else
-            @message = "The user #{@user.email} already existed in your connections"
+            @message = "This user already existed in your connections"
           end
         else
           @message = "User not found"

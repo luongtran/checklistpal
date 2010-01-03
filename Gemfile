@@ -15,8 +15,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-group :production do
+group :development do
   gem 'pg'
+end
+
+group :production do
+  gem 'mysql2'
 end
 #gem 'prawn'
 gem 'wicked_pdf'

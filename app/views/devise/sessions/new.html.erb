@@ -1,8 +1,20 @@
-<h2>Sign in</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.input :email, :autofocus => true %>
-  <%= f.input :password %>
-  <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
-<% end %>
-<%= render "devise/shared/links" %>
+<% title "Tudli | Sign In" %>
+<div class="section clearfix">
+  <div class="pull-right">
+  </div>
+  <div class="pull-left">
+    <div id="logo">
+      <%= link_to (image_tag "blue_logo.png"), root_path %>
+    </div>
+  </div>
+</div>
+<div class="section clearfix">
+  <h2>Sign in</h2>
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical'}) do |f| %>
+      <%= f.input :email, :autofocus => true %>
+      <%= f.input :password %>
+      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+      <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

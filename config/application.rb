@@ -16,6 +16,8 @@ end
 
 module Checklistpal
   class Application < Rails::Application
+
+   # config.force_ssl = true
   #  config.middleware.use "PDFKit::Middleware"
 
   #  config.middleware.use WickedPdf::Middleware

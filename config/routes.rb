@@ -16,8 +16,9 @@ Checklistpal::Application.routes.draw do
              :controllers => {:registrations => 'registrations',
                               :omniauth_callbacks => "authentications",
                               :invitations => 'users/invitations',
-                              :sessions => "sessions"}
- # devise_for :users, controllers: {sessions: "sessions"}
+                              :sessions => "sessions"
+             }
+  # devise_for :users, controllers: {sessions: "sessions"}
 
   ActiveAdmin.routes(self)
   root :to => 'home#index'

@@ -8,7 +8,7 @@ $("#list_invites").text("<%= @message %>").fadeIn(300).delay(3000).fadeOut(300);
 <% end %>
 <% end %>
 
-
+<!-- Tra ve ket qua tim kiem -->
 <% if @invite_yourself %>
 $("#list_invites").addClass("alert alert-success");
 $("#list_invites").text("Can't invite yourself!").fadeIn(300).delay(1000).fadeOut(300);
@@ -21,7 +21,7 @@ $("#list_invites").text("You have to upgrade account to invite more people.");
 $("#list_invites").addClass("alert alert-success");
 <% else %>
 <% if @success %>
-$("#list_invites").text("Invitation sent to <%= @user.email %> !");
+$("#list_invites").text("Invitation sent to <%= @user.email %>");
 $("#list_invites").addClass("alert alert-success");
 <% else %>
 $("#list_invites").text("No result match");

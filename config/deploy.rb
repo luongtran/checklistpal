@@ -7,7 +7,7 @@ set :password, ""
 server "50.112.165.229", :app, :primary => true
 set :deploy_to, "/var/www/checklistpal"
 set :use_sudo, false
-#ssh_options[:keys] = ["D://tudli.pem"]
+ssh_options[:keys] = ["C:\\Users\\Lht\\.ssh\\tudli.pem"]
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 #

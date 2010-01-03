@@ -1,7 +1,7 @@
 <% if @message != nil || @message != "" %>
-    $("#list_invites").text("<%= @message %>").fadeIn(300).delay(10000).fadeOut(300);
-    <%#*$("#list_invites").addClass("alert alert-success");%>
+$("#list_invites").text("<%= @message %>").fadeIn(300).delay(10000).fadeOut(300);
+$("#list_invites").addClass("alert alert-success");
 <% else %>
-    $("#list_invites").text("Error .Please try again !").fadeIn(300).delay(10000).fadeOut(300);;
-    <%#*$("#list_invites).addClass("alert alert-error");%>
+$("#list_invites").text("Error .Please try again !").fadeIn(300).delay(10000).fadeOut(300);
+$("#list_invites").addClass("alert alert-error");
 <% end %>
