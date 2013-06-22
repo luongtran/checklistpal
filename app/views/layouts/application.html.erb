@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check List Pal</title>
+    <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-responsive.min", :media => "all" %>
+    <%= stylesheet_link_tag    "combine", :media => "all" %>
+    <%= stylesheet_link_tag    "fontkit/proximanova/font", :media => "all" %>
+    <%= stylesheet_link_tag    "fontkit/OpenSan/font", :media => "all" %>
+    <%= stylesheet_link_tag    "fontkit/awesome/css/font-awesome.min", :media => "all" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>    
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js", "rails" %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="path_top clearfix">
+        <div class="pull-right">
+          <div id="accountpanel">
+            <form method="post" action="" class="clearfix">
+              <div class="pull-left"><span class="inline"><%= link_to "Sign up", signup_options_path %></span></div>
+              <div class="pull-left">
+                <input type="text" name="email" placeholder="email" class="input-small">
+              </div>
+              <div class="pull-left">
+                <input type="password" name="password" placeholder="password" class="input-small">
+              </div>
+              <div class="pull-left">
+                <input type="submit" value="" class="submitbt">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="webpage">
+        <div class="webpage-inner">
+          <%= yield %>
+          <%= yield :javascript %>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="clearfix">
+          <div class="pull-left">© Checklistpal.com</div>
+          <div class="pull-right">
+            <ul class="unstyled footermenu">
+              <li><a href="#">SUPPORT</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal save form -->
+    <div id="saveform" class="modal hide fade">
+      <div class ="text-center">
+        <span class="span6">
+          <p class="text-error">Please press Ctr + D button</p><p class="text-error"> to save your list to browser bookmark</p>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

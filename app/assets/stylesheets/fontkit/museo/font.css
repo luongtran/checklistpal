@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Museo';
+  src: url('exljbris - Museo-500.eot'); /* IE9 Compat Modes */
+  src: url('exljbris - Museo-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('exljbris%20-%20Museo-500.woff') format('woff'), /* Modern Browsers */
+       url('exljbris%20-%20Museo-500.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('exljbris%20-%20Museo-500.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  normal;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url('exljbris - Museo-700.eot'); /* IE9 Compat Modes */
+  src: url('exljbris - Museo-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('exljbris%20-%20Museo-700.woff') format('woff'), /* Modern Browsers */
+       url('exljbris%20-%20Museo-700.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('exljbris%20-%20Museo-700.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  bold;
+}
+
+@font-face {
+  font-family: 'Museo';
+  src: url('exljbris - Museo-300.eot'); /* IE9 Compat Modes */
+  src: url('exljbris - Museo-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('exljbris%20-%20Museo-300.woff') format('woff'), /* Modern Browsers */
+       url('exljbris%20-%20Museo-300.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('exljbris%20-%20Museo-300.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+

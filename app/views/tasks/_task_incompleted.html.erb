@@ -1,0 +1,12 @@
+<label class="checkbox">
+<%= form_tag(complete_task_path(@list, @task), :remote => true) do |f| %>
+  <%= check_box_tag 'mark_complete', 1, false, :class => 'checkbox mark_comp' %>
+  <% end %>
+  <span class="task-des" data-url="<%= edit_task_path(@list.id, @task.id) %>">
+  <%= @task.description  %>
+  </span>
+  <span class="action">
+    <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+    <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,@task.id),:class => 'btn-delete', :remote => true %>
+  </span>
+</label>

@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_LightItalic.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_LightItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_LightItalic.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_LightItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_LightItalic.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   italic;
+  font-weight:  200;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_light.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_light.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_light.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_Reg.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_Reg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_Reg.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_Reg.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_Reg.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_BoldItalic.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_BoldItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_BoldItalic.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_BoldItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_BoldItalic.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   italic;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_Bold.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_Bold.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_Bold.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'Adelle';
+  src: url('Adelle_Italic.eot'); /* IE9 Compat Modes */
+  src: url('Adelle_Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Adelle_Italic.woff') format('woff'), /* Modern Browsers */
+       url('Adelle_Italic.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Adelle_Italic.svg#svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   italic;
+  font-weight:  400;
+}
+

@@ -1,0 +1,43 @@
+    <div class="section clearfix">
+      <div class="pull-right">
+        <div id="quickmenu">
+          <div class="clearfix"><a href="#" class="pull-left">+ New</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><a href="#" class="pull-left">PRINT</a></div>
+        </div>
+      </div>
+      <div class="pull-left">
+        <div id="logo"><img alt="checklistpal" src="../assets/logo.png">
+          <span>&nbsp;<%= @list.name %></span>
+          <a href="<%= edit_list_path(@list) %>" class="logo-editbt" data-url="<%= edit_list_path(@list) %>">(Edit)</a>
+        </div>
+      </div>
+    </div>
+    <div class="section clearfix">
+      <div id="todolistsearch">
+        <div class="searchbox">
+          <%= simple_form_for [@list, @list.tasks.new] do |form| %>
+            <div class="row-fluid">
+              <%= form.text_field :description, :class => "input-block-level searchboxtodolist" %>
+              <%= form.submit :value => "add +",  :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="todolist">
+          <div class="row-fluid">
+            <span class="span12">
+              <ul class="unstyled" id="list-items" data-update-url="<%= sort_tasks_path %>">
+                <%= render :partial => "lists/items" %>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal save form -->
+    <div id="saveform" class="modal hide fade">
+      <div class ="text-center">
+        <span class="span7">
+          <p class="text-error">Please press Ctr + D button</p><p class="text-error"> to save your list to browser bookmark</p>
+        </span>
+      </div>
+    </div>
+

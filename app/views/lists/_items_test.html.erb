@@ -1,0 +1,78 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<% if @list.tasks.length %>
+  <% @list.tasks.items.each do |task| 
+    index = 0 %>
+  <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
+    <label class="checkbox">
+      <% if !task.completed %>
+      <%= form_tag(complete_task_path(@list.id, task.id), :remote => true) do |f| %>
+      <%= check_box_tag 'mark_complete', 1, false, :class => 'checkbox mark_comp' %>
+      <% end %> 
+      <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+        <%= task.description %>
+      </span>
+      <span class="action">
+        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
+      </span>
+      <div class="clear"></div>
+      <% else %>
+      <%= form_tag(incomplete_task_path(@list.id, task.id), :remote => true) do |f| %>
+      <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp' %>
+      <% end %>
+      <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+      <div class="item-title" id="item_title_<%= task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); font-weight: bold;"><%= task.description  %> </div>
+      </span>
+      <span class="action">
+        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id), :class => 'btn-delete' ,:remote => true %>
+      </span>          
+    <% end %>
+   </label>
+  </li>
+  <% 
+  index +=1
+  end %>
+  <% end %>
+
+  
+<% if @list.tasks.length %>
+  <% @list.tasks.items.each do |task| 
+    index = 0 %>
+  <div class="handle" id="task_<%= task.id %>">
+
+    <div class="item-box item-box-checked " id="itemBox_<%= task.id %>">
+      <input class="item-box" type="checkbox" id="checkbox_35247" onclick="strikeText('item_title_35247',this.checked);">
+      <span class="box"><span class="tick"></span>
+        <div class="item-title" id="item_title_<%= task.id %>"><%= task.description %></div>
+      </span></div>
+
+    <div class="item-edit display-none" id="item_title_edit_<%= task.id %>">
+      <input type="text" class="item-edit-text" id="edit_<%= task.id %>" value="<%= task.description %>">
+      <input type="button" value="Ok" onclick="EditItemName(<%= task.id %>)">
+      <input type="button" value="Cancel" onclick="HideEditItem(<%= task.id %>)">
+    </div>
+    <span class="action">
+        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
+      </span>
+    <div class="clear"></div>
+    <div class="item-hasduedate ">
+      <span>
+        <input type="checkbox" id="checkbox_<%= task.id %>" class="item-hasduedate-checkbox"> 
+        <label for="checkbox_<%= task.id %>">Due date</label>
+      </span>
+      <span style="display: none" id="duedateHolder_<%= task.id %>">
+        <span class="item-duedate ">
+          <input type="text" id="duedate_<%= task.id %>" class="item-duedate-input hasDatepicker" value="" readonly="">
+        </span>
+      </span>
+    </div>
+  </div>
+  <% 
+  index +=1
+  end %>
+  <% end %>

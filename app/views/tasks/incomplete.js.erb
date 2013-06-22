@@ -1,0 +1,3 @@
+<% if @success %>
+$("#task_<%= @task.id %>").html('<%= escape_javascript(render 'task_incompleted') %>');
+<% end %>
