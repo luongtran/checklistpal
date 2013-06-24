@@ -16,13 +16,13 @@
 
 $(function() {
        
-	$('.mark_comp').live('click', function() {
+	$('.mark_comp').on('click', function() {
 		if ($(this).is(':checked')) {
 			$(this).parent().trigger('submit.rails');
 		}
 	});
 	
-	$('.mark_in_comp').live('click', function() {
+	$('.mark_in_comp').on('click', function() {
 		
             $(this).parent().trigger('submit.rails');
 		
@@ -41,7 +41,7 @@ $(function() {
             return false;
         }
         );
-         $(".btn-delete").live("click",(function(){
+         $(".btn-delete").on("click",(function(){
              $('#list-items li').eq('task_<%= @task.id%>').remove();
          })
          );
@@ -49,7 +49,7 @@ $(function() {
         var html_form_edit = '<form action="#" class="edit_task_frm"><input type="text" class="small-text" name="task[description]" id="task_description" />'+
                             '<input type="submit" value="Save" class="btn btn-large btn-primary" />'+
                             '<input type="button" value="Cancel" class="btn btn-large btn-inverse/>\n\'</form>';
-        $('.btn-edit').live("click", function() {
+        $('.btn-edit').on("click", function() {
             var obj_task_des = $(this).parent().parent(".checkbox").children(".task-des");
             var url = obj_task_des.data("url");
             var task_des = obj_task_des.text();
@@ -58,7 +58,7 @@ $(function() {
             obj_task_des.children(".edit_task_frm").attr("action", url);
         });
         
-        $('.edit_task_frm').live("submit", function() {
+        $('.edit_task_frm').on("submit", function() {
             var form = this;
             $.ajax({
                type: "post" ,
@@ -82,9 +82,9 @@ $(function() {
             return false; 
         });
         
-        $('.checkbox').live("mouseenter", function() {
+        $('.checkbox').on("mouseenter", function() {
             $(this).children(".action").show();
-        }).live("mouseleave", function() {
+        }).on("mouseleave", function() {
             $(this).children(".action").hide();
         });   
 //         $('.checkbox').hover(
@@ -95,7 +95,7 @@ $(function() {
 //                $(this).children(".action").hide();
 //            }
 //        );
-        $('.logo-editbt').live("click" , function(){
+        $('.logo-editbt').on("click" , function(){
                       
         });
 });

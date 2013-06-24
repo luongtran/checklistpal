@@ -1,22 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
-  
+
   def new
     @plan = params[:plan]
-     if @plan == "member"
-       redirect_to member_registration_path(resource)
-     elsif @plan =="vipmember"
-       redirect_to vipmember_registration_path(resource)
-     end
+    if @plan && ENV["ROLES"].include?(@plan) && @plan != "admin"
+      super
+    else
+      redirect_to signup_options_path, :notice => 'Please select a subscription plan below.'
+    end
   end
 
-  def member
-      @user = User.new(params[:user])
-  end
-  
-  def vipmember
-      @user = User.new(params[:user])
-  end
-  
   def update_plan
     @user = current_user
     role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
@@ -46,5 +38,4 @@ class RegistrationsController < Devise::RegistrationsController
       resource.add_role(params[:plan])
     end
   end
-  
 end

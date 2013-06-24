@@ -63,5 +63,8 @@ module Checklistpal
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Config to using stripe.js
+    config.stripe.publishable_key = "pk_test_hNltPbfQGTFuyleT8Rw5W8R5"
   end
 end

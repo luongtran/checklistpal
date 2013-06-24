@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   before_save :update_stripe
   before_destroy :cancel_subscription
 
-
   def update_plan(role)
     self.role_ids = []
     self.add_role(role.name)
@@ -28,9 +27,10 @@ class User < ActiveRecord::Base
   end
   
   def update_stripe
-    return if email.include?("user@example.com")
+    return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?
     if customer_id.nil?
+
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
       end

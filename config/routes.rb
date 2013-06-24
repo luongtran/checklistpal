@@ -1,4 +1,8 @@
 Checklistpal::Application.routes.draw do
+
+  resources :subscriptions
+
+
   mount StripeEvent::Engine => '/stripe'
   devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]},:sign_out_via => ["DELETE","GET"], :controllers => { :registrations => 'registrations' }
   root :to => 'home#index'
@@ -21,7 +25,7 @@ Checklistpal::Application.routes.draw do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
     match '/signup_member' => 'registrations#member' , :as => :member_registration
-    match '/signup_vip_member' => 'registrations#vipmember' , :as => :vipmember_registration
+    match '/signup_paid_member' => 'registrations#paid' , :as => :paid_registration
   end
   resources :users
 end

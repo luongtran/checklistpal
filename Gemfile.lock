@@ -84,6 +84,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
+    excon (0.22.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -100,6 +101,14 @@ GEM
       json (>= 1.7.6)
     gherkin (2.11.6-x86-mingw32)
       json (>= 1.7.6)
+    heroku (2.39.3)
+      heroku-api (~> 0.3.7)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.7)
+      rest-client (~> 1.6.1)
+      rubyzip
+    heroku-api (0.3.11)
+      excon (~> 0.22.1)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -116,9 +125,11 @@ GEM
     multi_json (1.7.6)
     mysql2 (0.3.11)
     mysql2 (0.3.11-x86-mingw32)
+    netrc (0.7.7)
     nokogiri (1.5.9)
     nokogiri (1.5.9-x86-mingw32)
     orm_adapter (0.4.0)
+    pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -183,6 +194,9 @@ GEM
     stripe (1.7.11)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
+    stripe-rails (0.2.5)
+      rails (>= 3)
+      stripe
     stripe_event (0.6.0)
       rails (>= 3.1)
       stripe (~> 1.6)
@@ -223,16 +237,18 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.6.3)
+  heroku
   jquery-rails
   launchy (>= 2.2.0)
   mysql2
+  pg
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
   simple_form (>= 2.1.0)
-  stripe (>= 1.7.11)
+  stripe-rails
   stripe_event (>= 0.4.0)
   thin
   uglifier (>= 1.0.3)

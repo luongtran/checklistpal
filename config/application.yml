@@ -12,6 +12,6 @@ GMAIL_PASSWORD: "LAC VIET mtd9 EVA"
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: 1234qwer
-ROLES: [admin, member, vipmember]
-STRIPE_API_KEY: sk_test_H16ZPQUpRLDZZcGsvQbZao2g
-STRIPE_PUBLIC_KEY: pk_test_hNltPbfQGTFuyleT8Rw5W8R5 
+ROLES: [admin, free, paid]
+STRIPE_API_KEY: "sk_test_H16ZPQUpRLDZZcGsvQbZao2g"
+STRIPE_PUBLIC_KEY: "pk_test_hNltPbfQGTFuyleT8Rw5W8R5"

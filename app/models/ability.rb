@@ -6,8 +6,8 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :view, :member if user.has_role? :member
-      can :view, :vipmember if user.has_role? :vipmember
+      #can :view, :member if user.has_role? :member
+      #can :view, :vipmember if user.has_role? :paid
     end
   end
 end
