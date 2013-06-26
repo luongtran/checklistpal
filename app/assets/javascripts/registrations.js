@@ -26,8 +26,8 @@ $('.registrations').ready(function() {
         },
         handleStripeResponse: function(status, response) {
           if (status === 200) {
-            $('#user_stripe_token').val(response.id)
-            $('.card_form')[0].submit()
+            $('#user_stripe_token').val(response.id);
+            $('.card_form')[0].submit();
           } else {
             $('#stripe_error').text(response.error.message).show();
             return $('input[type=submit]').prop('disabled', false);

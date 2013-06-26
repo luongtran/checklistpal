@@ -8,6 +8,11 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to signup_options_path, :notice => 'Please select a subscription plan below.'
     end
   end
+  
+  def create
+    super
+    session[:omniauth] = nil unless @user.new_record?
+  end
 
   def update_plan
     @user = current_user
@@ -36,6 +41,10 @@ class RegistrationsController < Devise::RegistrationsController
     super
     if params[:plan]
       resource.add_role(params[:plan])
+      if session[:omniauth]
+        @user.apply_omniauth(session[:omniauth])
+        @user.valid?
+      end
     end
   end
 end

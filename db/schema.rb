@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624070538) do
+ActiveRecord::Schema.define(:version => 20130626031038) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.string   "token_secret"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "lists", :force => true do |t|
     t.string   "name"
@@ -31,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20130624070538) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id", :length => {"name"=>191, "resource_type"=>191, "resource_id"=>nil}
   add_index "roles", ["name"], :name => "index_roles_on_name", :length => {"name"=>191}
+
+  create_table "subscriptions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tasks", :force => true do |t|
     t.string   "description"
@@ -58,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20130624070538) do
     t.string   "name"
     t.string   "customer_id"
     t.string   "last_4_digits"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true, :length => {"email"=>191}

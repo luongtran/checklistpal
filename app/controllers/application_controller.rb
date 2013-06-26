@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
     case current_user.roles.first.name
       when 'admin'
         users_path
-      when 'member'
+      when 'free'
         content_member_path
-      when 'vipmember'
+      when 'paid'
         content_vipmember_path
       else
         root_path

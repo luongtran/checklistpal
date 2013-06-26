@@ -22,24 +22,27 @@
       <div class="path_top clearfix">
         <div class="pull-right">
           <div id="accountpanel">
-            <form method="post" action="" class="clearfix">
-              <div class="pull-left"><span class="inline">
-                <% if !current_user %>
-                <%= link_to "Sign up", signup_options_path %>
-                    <% else %>
-                <%= link_to "Sign out" ,destroy_user_session_path %>
+              <% if !current_user %>
+                  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'clearfix' }) do |f| %>
+                      <div class="pull-left"><span class="inline">
+                        <%= link_to "Sign up", signup_options_path %>                    
+                      </span></div>
+                      <div class="pull-left">
+                        <%= f.email_field :email, :placeholder => "email", :class => "input-small" , :autofocus => true %>
+                      </div>
+                      <div class="pull-left">                
+                        <%= f.password_field :password , :placeholder => "password", :class => "input-small" %>
+                      </div>
+                      <div class="pull-left">
+                      <input type="submit" value="" class="submitbt">
+                      </div>
                     <% end %>
-              </span></div>
-              <div class="pull-left">
-                <input type="text" name="email" placeholder="email" class="input-small">
-              </div>
-              <div class="pull-left">
-                <input type="password" name="password" placeholder="password" class="input-small">
-              </div>
-              <div class="pull-left">
-                <input type="submit" value="" class="submitbt">
-              </div>
-            </form>
+                   <% else %>
+                      <div class="clearfix"><span class="inline">
+                      <%= link_to "Sign out" ,destroy_user_session_path %>
+                      </span>
+                      </div>
+                    <% end %>
           </div>
         </div>
       </div>

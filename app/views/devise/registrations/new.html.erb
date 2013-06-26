@@ -1,38 +1,91 @@
 <% content_for :head do %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
-<h2>Sign up</h2>
-<div id="stripe_error" class="alert alert-error" style="display:none" >
+<div class="section clearfix">
+  <div id="signupfree">
+    <div class="clearfix">
+      <div class="divine50">
+        <div class="signoption row-fluid">
+          <div class="signuppanel">
+            <h3>Create a <%= @user.roles.first.name %> account</h3>
+            <div id="stripe_error" class="alert alert-error" style="display:none" ></div>
+            <div class="panel">
+              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical row-fluid' }) do |f| %>
+                <%= hidden_field_tag 'plan', params[:plan] %>
+                <%= f.error_notification %>
+                <div class="controls">
+                  <%= f.input :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
+                </div>
+                <div class="controls">
+                  <%= f.input :name, :autofocus => true, :placeholder =>"User name", :class =>"span9",:required => true %>
+                </div>
+                <div class="controls">
+                  <%= label_tag :password, "Password" %>
+                  <%= f.password_field :password, :required => true, :placeholder =>"Password", :class =>"span5",:required => true %>
+                </div>
+                <div class="controls">
+                  <%= label_tag :password_confirmation, "Password confirmation" %>
+                  <%= f.password_field :password_confirmation, :required => true, :placeholder =>"Password again", :class =>"span5",:required => true %>
+                </div>
+                <% if @user.roles.first.name != 'free' %>
+                  <% if @user.stripe_token %>
+                    <p>Credit card acceptance is pending.</p>
+                  <% else %>
+                    <div class="field">
+                      <%= label_tag :card_number, "Credit Card Number" %>
+                      <%= text_field_tag :card_number, nil, name: nil %>
+                    </div>
+                    <div class="field">
+                      <%= label_tag :card_code, "Card Security Code (CVV)" %>
+                      <%= text_field_tag :card_code, nil, name: nil %>
+                    </div>
+                    <div class="field">
+                      <%= label_tag :card_month, "Card Expiration" %>
+                      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+                      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+                    </div>
+                    <div class="field">
+                      <%= f.input :coupon, :label => 'Promotional Coupon (if any)' %>
+                    </div>
+                  <% end %> <%# End if stripe_token present ! %>
+                  <%= f.hidden_field :stripe_token %>
+                <% end %> <%# end if paid user register %>
+                <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+              <% end %> <%# End simple form %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="divine50">
+        <div class="signoption">
+          <% if @user.roles.first.name == "free" %>
+          <div class="signinpanel">
+            <h3 class="text-center">Log In</h3>
+            <div class="social-account">
+              <p class="text-center">Sign in with Your Facebook Account</p>
+              <p class="text-center"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) ,:class => "btn btn-primary facebookbt"%></p>
+              
+            </div>
+            <hr class="divider">
+            <div class="panel">
+                <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'row-fluid' }) do |f| %>
+                <div class="controls">
+                  <% label_tag :email ,"Email" %>
+                  <%= f.email_field :email, :placeholder => "Email address", :class => "input-block-level" , :autofocus => true %>
+                </div>
+                <div class="controls controls-row">
+                  <%= f.password_field :password , :placeholder => "Password", :class => "span7" %>
+                  <span class="span5"><%= link_to "Forgot your password?", new_password_path(resource_name), :class => "forgotpass" %></span>
+                </div>
+                <div class="controls">
+                  <input type="submit" value="Sign in" class="btn btn-primary">
+                </div>
+                <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f| %>
-  <h3><%= params[:plan].titleize if params[:plan] %> Subscription Plan</h3>
-  <%= hidden_field_tag 'plan', params[:plan] %>
-  <%= f.error_notification %>
-  <%#= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %> 
-  <%= f.input :email, :required => true %>
-  <%= f.password_field :password, :required => true %>
-  <%= f.password_field :password_confirmation, :required => true %>
-  <% if @user.stripe_token %>
-    <p>Credit card acceptance is pending.</p>
-  <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_code, "Card Security Code (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
-    </div>
-    <div class="field">
-      <%= f.input :coupon, :label => 'Promotional Coupon (if any)' %>
-    </div>
-  <% end %>
-  <%= f.hidden_field :stripe_token %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>

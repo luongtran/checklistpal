@@ -1,10 +1,8 @@
 Checklistpal::Application.routes.draw do
 
-  resources :subscriptions
-
-
+  match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
-  devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]},:sign_out_via => ["DELETE","GET"], :controllers => { :registrations => 'registrations' }
+  devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]},:sign_out_via => ["DELETE","GET"], :controllers => {:registrations => 'registrations' ,omniauth_callbacks: "authentications" }
   root :to => 'home#index'
   match '/list/:id' => 'Lists#show', :as => :list_view
   match '/list/create' => 'Lists#create' , :as =>  :create_list
