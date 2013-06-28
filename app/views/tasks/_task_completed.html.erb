@@ -1,12 +1,24 @@
-<label class="checkbox">
-<%= form_tag(incomplete_task_path(@list, @task), :remote => true) do |f| %>
-  <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp' %>
-  <span class="task-des" data-url="<%= edit_task_path(@list.id, @task.id) %>">
-    <div class="item-title" id="item_title_<%= @task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); font-weight: bold;"><%= @task.description  %> </div>
+<label class="items">
+  <span class="taskname">
+    <%= form_tag(incomplete_task_path(@list, @task), :remote => true) do |f| %>
+    
+      <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp'%>
+    
+    <% end %>
+    <span class="task-des" data-url="<%= edit_task_path(@list.id, @task.id) %>">
+      <div class="item-title" id="item_title_<%= @task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); "><%= @task.description  %> </div>
+    </span>
+  </span>
+  <span class="taskduedate">
+    <% if @task.hasduedate %>
+      <%= check_box_tag 'no_dua_date', 0 , true , :class => "checkbox mark_noduedate" %>
+    <% else %>
+      <%= check_box_tag 'has_due_date' , 1 , false , :class => "checbok mask_hasduedate "%>
+    <% end %>
+    <input type="text" value="" class="inputdate" data-date-format="mm/dd/yyyy" id="due_date_<%= @task.id %>">
   </span>
   <span class="action">
-        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
-      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,@task.id),:class => 'btn-delete', :remote => true %>
- </span>
-<% end %>
+    <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+    <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,@task.id),:class => 'btn-delete', :remote => true %>
+  </span>
 </label>

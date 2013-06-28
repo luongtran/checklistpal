@@ -48,6 +48,38 @@ class TasksController < ApplicationController
     end
   end
   
+  def hasduedate
+    @task = @list.tasks.find(params[:id])
+      if @task.update_attributes({ hasduedate: true })
+        @success = 1
+      else
+        @success = 0
+      end
+      respond_with @list , @task , @success
+  end
+  
+  def noduedate
+    @task = @list.tasks.find(params[:id])
+      if @task.update_attributes({ hasduedate: false })
+        @success = 1
+      else
+        @success = 0
+      end
+      respond_with @list , @task , @success
+  end
+  
+  def due_date
+    @task = @list.tasks.find(params[:id])
+    if @task.update_attributes({
+          :due_date => params[:due_date_value]
+        })
+      @success = 1
+    else
+      @suceess = 0
+      respond_with @list, @task, @success
+    end
+  end
+  
   def sort
       params[:task].each_with_index do |id, index|
       Task.update_all(['position=?', index+1], ['id=?', id])

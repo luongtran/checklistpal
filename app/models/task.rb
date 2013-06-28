@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   attr_accessible :description, :due_date, :completed , :list_id, :position
-  belongs_to :list
+  belongs_to :list 
   scope :items, where("list_id is not null").order('position')
     
   acts_as_list  

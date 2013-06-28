@@ -14,7 +14,7 @@
     <div class="section clearfix">
       <div id="todolistsearch">
         <div class="searchbox">
-          <%= simple_form_for [@list, @list.tasks.new] do |form| %>
+          <%= simple_form_for [@list, @list.tasks.new ] do |form| %>
             <div class="row-fluid">
               <%= form.text_field :description, :class => "input-block-level searchboxtodolist" %>
               <%= form.submit :value => "add +",  :class => "btn btn-primary" %>
@@ -40,4 +40,3 @@
         </span>
       </div>
     </div>
-

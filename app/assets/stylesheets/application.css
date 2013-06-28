@@ -9,7 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ * require_tree .
+ *= require bootstrap-datepicker
  */
 .handle:hover{
     cursor: move;
@@ -18,18 +19,15 @@
 .handle{
     line-height: 50px;
 }
-/*.checkbox{
-    min-height : 40px;
-    font-family : tahoma ;
-    font-size : 18px;
-    font-weight: bold;
+.checkbox{
+    min-height : 50px;
 }
-*/.checkbox:hover{
+
+.checkbox:hover{
     min-height : 50px;
     vertical-align:middle;
     background-color : rgb(252, 249, 208);    
 }
-
 .action {
     float:right;
     display:none;
@@ -37,4 +35,35 @@
 
 .small-text {
     height:18px;
+}
+.inputdate{
+    display:none;
+}
+.items-box{
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #020100;
+}
+.item-box> input {
+  position: absolute;
+  outline: none;
+  left: 0;
+  top: 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border: none;
+  margin: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.item-box > input:active + .box {
+  border-color: #aaa;
+  background-color: #ddd;
+}
+.item-box.checked > .box > .tick {
+  display: none;
 }

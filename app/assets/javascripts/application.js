@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap-datepicker
 
 $(function() {
        
@@ -23,9 +24,7 @@ $(function() {
 	});
 	
 	$('.mark_in_comp').on('click', function() {
-		
             $(this).parent().trigger('submit.rails');
-		
 	});
         
         $("form#new_task").submit(function() {
@@ -48,7 +47,7 @@ $(function() {
         
         var html_form_edit = '<form action="#" class="edit_task_frm"><input type="text" class="small-text" name="task[description]" id="task_description" />'+
                             '<input type="submit" value="Save" class="btn btn-large btn-primary" />'+
-                            '<input type="button" value="Cancel" class="btn btn-large btn-inverse/>\n\'</form>';
+                            '<input type="button" value="Cancel" class="btn btn-large btn-inverse/>\n\</form>';
         $('.btn-edit').on("click", function() {
             var obj_task_des = $(this).parent().parent(".checkbox").children(".task-des");
             var url = obj_task_des.data("url");
@@ -82,20 +81,23 @@ $(function() {
             return false; 
         });
         
-        $('.checkbox').on("mouseenter", function() {
+        $('.items').on("mouseenter", function() {
             $(this).children(".action").show();
         }).on("mouseleave", function() {
             $(this).children(".action").hide();
         });   
-//         $('.checkbox').hover(
-//            function() {
-//                $(this).children(".action").show();
-//            },
-//            function() {
-//                $(this).children(".action").hide();
-//            }
-//        );
+
         $('.logo-editbt').on("click" , function(){
                       
         });
+        $('.mark_noduedate').on("click" , function(){
+            if ($(this).is(':checked')) {
+                    $(this).parent().trigger('submit.rails');
+                    $(this).children(".inputdate").show();
+		}
+        });    
+        $('.mark_noduedate').on("click" , function(){
+                $(this).parent().trigger('submit.rails');
+             $(this).children(".inputdate").hide();
+       });
 });

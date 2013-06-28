@@ -19,6 +19,8 @@ Checklistpal::Application.routes.draw do
   match 'lists/:list_id/tasks/:id/incomplete' => 'tasks#incomplete', :as => :incomplete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit" , :as => :edit_task
   match 'lists/:list_id/tasks/:id/delete' => "tasks#delete" , :as => :delete_task
+  match 'lists/:list_id/tasks/:id/hasduedate' => 'tasks#hasduedate' 
+  match 'lists/:list_id/tasks/:id/noduedate' => 'tasks#noduedate' 
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'

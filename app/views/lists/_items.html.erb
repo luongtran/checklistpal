@@ -6,33 +6,78 @@
   <% @list.tasks.items.each do |task| 
     index = 0 %>
   <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
-    <label class="checkbox">
-      <% if !task.completed %>
-      <%= form_tag(complete_task_path(@list.id, task.id), :remote => true) do |f| %>
-      <%= check_box_tag 'mark_complete', 1, false, :class => 'checkbox mark_comp' %>
-      <% end %> 
-      <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
-        <%= task.description %>
-      </span>
-      <span class="action">
-        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
-      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
-      </span>
-      <% else %>
-      <%= form_tag(incomplete_task_path(@list.id, task.id), :remote => true) do |f| %>
-      <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp' %>
-      <% end %>
-      <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
-      <div class="item-title" id="item_title_<%= task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); font-weight: bold;"><%= task.description  %> </div>
-      </span>
-      <span class="action">
-        <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
-      	<%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id), :class => 'btn-delete' ,:remote => true %>
-      </span>          
-    <% end %>
-   </label>
-  </li>
-  <% 
-  index +=1
-  end %>
-  <% end %>
+      
+    <% if !task.completed %> <!-- Render task incompleted -->
+    
+      <label class="checkbox">
+        <span class="mark">
+          <%= form_tag(complete_task_path(@list.id, task.id), :remote => true) do |f| %>
+            <%= check_box_tag 'mark_complete', 1, false, :class => 'checkbox mark_comp' %>
+          <% end %>
+        </span>
+       
+        <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+          <div class="item-title" id="item_title_<%= task.id %>"><%= task.description %></div>
+        </span>
+        
+        <span class="action">
+          <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+          <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
+        </span>
+        <span class="clear"></span>
+        <span class="taskduedate">
+                <% if task.hasduedate %>
+                  <%= check_box_tag 'no_dua_date', 0 , true , :class => "checkbox task-noduedate" %>
+                <% else %>
+                  <%= check_box_tag 'has_due_date' , 1 , false , :class => "checbok task-hasduedate "%>
+                <% end %>
+                <span><p>Due date</p> </span>
+                <span><input type="text" value="" data-date-format="mm/dd/yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>"></span> 
+        </span>
+      </label>
+        
+        <% else %>  <!--   Render task completed -->
+        
+        <label class="items">
+          <span class="mark">
+            <%= form_tag(incomplete_task_path(@list.id, task.id), :remote => true) do |f| %>
+               <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp', :style => "float:left;" %>
+            <% end %>
+          </span>
+          
+          <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+            <div class="item-title" id="item_title_<%= task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); "><%= task.description  %> </div>
+          </span>
+           
+          <span class="action">
+                  <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+                  <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id), :class => 'btn-delete' ,:remote => true %>
+                </span> 
+          <span class="clear"></span>
+          <span class="taskduedate" >
+            <% if task.hasduedate %>
+              <%= check_box_tag 'no_dua_date', 0 , true , :class => "checkbox mark_noduedate" %>
+            <% else %>
+              <%= check_box_tag 'has_due_date' , 1 , false , :class => "checbok mask_hasduedate "%>
+            <% end %>
+            <span><p>Due date</p> </span>
+            <span><input type="text" value="" data-date-format="mm/dd/yyyy" class="datepicker inputdate"></span>
+          </span>
+        </label>
+        
+        <% end %>
+      
+    </li>
+    <% 
+    index +=1
+    end %>
+<% end %>
+<script>
+    $('.datepicker').datepicker({
+      onSelect: function()
+         { 
+           var dateObject = $(this).datepicker('getDate'); 
+           alert(dateObject.toString());
+        }
+    });
+</script>
