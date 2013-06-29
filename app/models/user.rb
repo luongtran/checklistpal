@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe
   before_destroy :cancel_subscription
-  has_many :list
-  has_many :authentications, :dependent => :delete_all
+  has_many :lists
+  has_many :authentications, :dependent => :destroy
+  has_many :my_connections , :dependent => :destroy , :through => :lists
 
   def update_plan(role)
     self.role_ids = []
@@ -32,7 +33,6 @@ class User < ActiveRecord::Base
   def update_stripe
     return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?
-   # return if !uid.blank?
     if customer_id.nil?
       if !stripe_token.present? && roles.first.name != 'free'
         raise "Stripe token not present. Can't create account."

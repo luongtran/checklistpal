@@ -50,7 +50,7 @@ class TasksController < ApplicationController
   
   def hasduedate
     @task = @list.tasks.find(params[:id])
-      if @task.update_attributes({ hasduedate: true })
+      if @task.update_attributes({hasduedate: true})
         @success = 1
       else
         @success = 0
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
   
   def noduedate
     @task = @list.tasks.find(params[:id])
-      if @task.update_attributes({ hasduedate: false })
+      if @task.update_attributes({hasduedate: false})
         @success = 1
       else
         @success = 0
@@ -68,7 +68,7 @@ class TasksController < ApplicationController
       respond_with @list , @task , @success
   end
   
-  def due_date
+  def update_due_date
     @task = @list.tasks.find(params[:id])
     if @task.update_attributes({
           :due_date => params[:due_date_value]
@@ -76,7 +76,7 @@ class TasksController < ApplicationController
       @success = 1
     else
       @suceess = 0
-      respond_with @list, @task, @success
+      respond_with @success
     end
   end
   

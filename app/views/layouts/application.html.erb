@@ -10,8 +10,7 @@
     <%= stylesheet_link_tag    "fontkit/awesome/css/font-awesome.min", :media => "all" %>
     <%= stylesheet_link_tag    "jquery-ui-1.10.3.custom.min", :media => "all" %>
     <%= stylesheet_link_tag    "application", :media => "all" %>    
-    <%#= javascript_include_tag "bootstrap.min" %>
-    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js", "rails" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js", "rails" %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
     <%= javascript_include_tag "jquery.externalscript" %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
@@ -39,9 +38,16 @@
                       </div>
                     <% end %>
                    <% else %>
-                      <div class="clearfix"><span class="inline">
-                      <%= link_to "Sign out" ,destroy_user_session_path %>
-                      </span>
+                      <div class="clearfix">
+                        <span class="inline text-warning">
+                         <%= current_user.name + ' - ' + current_user.email %>
+                        </span>
+                        <span class="inline">
+                        <%= link_to "Sign out" ,destroy_user_session_path, :class => "btn btn-mini btn-info" %>
+                        </span>                        
+                        <span class="inline">
+                        <%= link_to "My List", my_list_path, :class => "btn btn-mini btn-info"%>
+                        </span>
                       </div>
                     <% end %>
           </div>

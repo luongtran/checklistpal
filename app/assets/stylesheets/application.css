@@ -14,17 +14,16 @@
  */
 .handle:hover{
     cursor: move;
-    line-height: 50px;
+    line-height: 10px;
 }
 .handle{
-    line-height: 50px;
+    line-height: 10px;
 }
 .checkbox{
-    min-height : 50px;
+    min-height : 10px;
 }
-
 .checkbox:hover{
-    min-height : 50px;
+    min-height : 10px;
     vertical-align:middle;
     background-color : rgb(252, 249, 208);    
 }
@@ -37,33 +36,5 @@
     height:18px;
 }
 .inputdate{
-    display:none;
-}
-.items-box{
-    position: relative;
-    display: block;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #020100;
-}
-.item-box> input {
-  position: absolute;
-  outline: none;
-  left: 0;
-  top: 0;
-  padding: 0;
-  width: 16px;
-  height: 16px;
-  border: none;
-  margin: 0;
-  opacity: 0;
-  z-index: 1;
-}
-
-.item-box > input:active + .box {
-  border-color: #aaa;
-  background-color: #ddd;
-}
-.item-box.checked > .box > .tick {
-  display: none;
+    display:none ;
 }

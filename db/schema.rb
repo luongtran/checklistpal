@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627083634) do
+ActiveRecord::Schema.define(:version => 20130629092840) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -31,12 +31,30 @@ ActiveRecord::Schema.define(:version => 20130627083634) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "my_connections", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.integer  "invite_user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "myconnections", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "connect_user_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
     t.string   "resource_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "max_connections"
+    t.integer  "max_savedlist"
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id", :length => {"name"=>191, "resource_type"=>191, "resource_id"=>nil}

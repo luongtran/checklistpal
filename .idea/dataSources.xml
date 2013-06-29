@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1640859705">
+  <component name="DataSourceManagerImpl" format="xml" hash="1346291297">
     <data-source source="LOCAL" name="Rails checklistpal: test" product="MySQL" version="6.0.11-alpha-community" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="cf70f514-0de9-465c-bef7-4cc7e644c8bd">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>

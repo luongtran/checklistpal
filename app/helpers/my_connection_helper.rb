@@ -1,0 +1,2 @@
+module MyConnectionHelper
+end

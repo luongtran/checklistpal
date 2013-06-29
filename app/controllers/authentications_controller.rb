@@ -24,7 +24,7 @@ class AuthenticationsController < ApplicationController
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
-      user.email = omni['extra']['raw_info'].email 
+      user.email = omni['extra']['raw_info'].email
       user.password = Devise.friendly_token[0,20]
       user.apply_omniauth(omni)
       user.add_role(role.name)

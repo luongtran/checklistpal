@@ -1,0 +1,27 @@
+<div class="section clearfix">
+  <div class="pull-right">
+    <div id="quickmenu">
+      <div class="clearfix"><a href="<%= new_list_path() %>" class="pull-left">+ New</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><a href="#" class="pull-left">PRINT</a></div>
+    </div>
+  </div>
+  <div class="pull-left">
+    <div class="pull-left">
+      <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section clearfix">
+  <div id="signupfree">
+    <div class="clearfix">
+      <h3 class="text-success">Find or Invite</h3>
+      <div class="span8">
+        <%= form_tag create_invite_connect_path(@list) do |f| %>
+          <p><%#= text_field :user , :name %></p>
+          <p><%= email_field :user, :email %></p>
+          <p><%= submit_tag "Search", :class => "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

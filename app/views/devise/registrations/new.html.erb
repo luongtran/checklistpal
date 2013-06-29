@@ -2,6 +2,16 @@
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
 <div class="section clearfix">
+            <div class="pull-right">
+              <div id="quickmenu">
+                <div class="clearfix"><a href="#" class="pull-left">+ New</a><a href="#" class="pull-left">SAVE</a><a href="#" class="pull-left">PRINT</a></div>
+              </div>
+            </div>
+            <div class="pull-left">
+              <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span><a href="#" class="logo-editbt">(edit)</a></div>
+            </div>
+          </div>
+<div class="section clearfix">
   <div id="signupfree">
     <div class="clearfix">
       <div class="divine50">
@@ -13,18 +23,19 @@
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical row-fluid' }) do |f| %>
                 <%= hidden_field_tag 'plan', params[:plan] %>
                 <%= f.error_notification %>
+                <% if resource.errors.full_messages.present? %>
+                <%= resource.errors.full_messages %>
+                <% end %>
                 <div class="controls">
-                  <%= f.input :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
+                  <%= f.email_field :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
                 </div>
                 <div class="controls">
-                  <%= f.input :name, :autofocus => true, :placeholder =>"User name", :class =>"span9",:required => true %>
+                  <%= f.text_field :name, :autofocus => true, :placeholder =>"User name", :class =>"span5",:required => true %>
                 </div>
                 <div class="controls">
-                  <%= label_tag :password, "Password" %>
                   <%= f.password_field :password, :required => true, :placeholder =>"Password", :class =>"span5",:required => true %>
                 </div>
                 <div class="controls">
-                  <%= label_tag :password_confirmation, "Password confirmation" %>
                   <%= f.password_field :password_confirmation, :required => true, :placeholder =>"Password again", :class =>"span5",:required => true %>
                 </div>
                 <% if @user.roles.first.name != 'free' %>
@@ -32,20 +43,18 @@
                     <p>Credit card acceptance is pending.</p>
                   <% else %>
                     <div class="field">
-                      <%= label_tag :card_number, "Credit Card Number" %>
-                      <%= text_field_tag :card_number, nil, name: nil %>
+                      <%= text_field_tag :card_number, nil, name: nil , :placeholder =>"Credit Card Number" , class: "span5" %>
                     </div>
                     <div class="field">
-                      <%= label_tag :card_code, "Card Security Code (CVV)" %>
-                      <%= text_field_tag :card_code, nil, name: nil %>
+                      <%= text_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
                     </div>
                     <div class="field">
                       <%= label_tag :card_month, "Card Expiration" %>
-                      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-                      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+                      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "span5"}%>
+                      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year" ,class: "span4"}%>
                     </div>
                     <div class="field">
-                      <%= f.input :coupon, :label => 'Promotional Coupon (if any)' %>
+                      <%= f.text_field :coupon, :placeholder => 'Promotional Coupon (if any)', :class => "span9" %>
                     </div>
                   <% end %> <%# End if stripe_token present ! %>
                   <%= f.hidden_field :stripe_token %>
@@ -64,7 +73,6 @@
             <div class="social-account">
               <p class="text-center">Sign in with Your Facebook Account</p>
               <p class="text-center"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) ,:class => "btn btn-primary facebookbt"%></p>
-              
             </div>
             <hr class="divider">
             <div class="panel">
@@ -75,7 +83,7 @@
                 </div>
                 <div class="controls controls-row">
                   <%= f.password_field :password , :placeholder => "Password", :class => "span7" %>
-                  <span class="span5"><%= link_to "Forgot your password?", new_password_path(resource_name), :class => "forgotpass" %></span>
+                  <span class="span5"><%= link_to "Forgot password?", new_password_path(resource_name), :class => "forgotpass" %></span>
                 </div>
                 <div class="controls">
                   <input type="submit" value="Sign in" class="btn btn-primary">

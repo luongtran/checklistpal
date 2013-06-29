@@ -11,20 +11,32 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require_tree .
+// require jquery_ujs
 //= require bootstrap-datepicker
+//= require_tree .
 
 $(function() {
        
 	$('.mark_comp').on('click', function() {
-		if ($(this).is(':checked')) {
-			$(this).parent().trigger('submit.rails');
+		if ($(this).is(':checked')) 
+                {
+                	$(this).parent().trigger('submit.rails');
 		}
+                else
+                {
+                        alert("Fail to completed this task :) ");
+                }
 	});
 	
 	$('.mark_in_comp').on('click', function() {
-            $(this).parent().trigger('submit.rails');
+           if ($(this).is(':checked')) 
+                {
+                    alert("Fail to incompleted this task :) ");
+		}
+                else
+                {
+                    $(this).parent().trigger('submit.rails');
+                }
 	});
         
         $("form#new_task").submit(function() {
@@ -41,11 +53,11 @@ $(function() {
         }
         );
          $(".btn-delete").on("click",(function(){
-             $('#list-items li').eq('task_<%= @task.id%>').remove();
+             $('#list-items li').eq('task_<%= @task.id %>').remove();
          })
          );
         
-        var html_form_edit = '<form action="#" class="edit_task_frm"><input type="text" class="small-text" name="task[description]" id="task_description" />'+
+        var html_form_edit = '<form action="#" class="edit_task_frm"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
                             '<input type="submit" value="Save" class="btn btn-large btn-primary" />'+
                             '<input type="button" value="Cancel" class="btn btn-large btn-inverse/>\n\</form>';
         $('.btn-edit').on("click", function() {
@@ -90,14 +102,27 @@ $(function() {
         $('.logo-editbt').on("click" , function(){
                       
         });
-        $('.mark_noduedate').on("click" , function(){
+        $('.task-hasduedate').on("click", function(){
             if ($(this).is(':checked')) {
                     $(this).parent().trigger('submit.rails');
-                    $(this).children(".inputdate").show();
+                    //$(".inputdate").removeClass("hidden");
+                    $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
 		}
-        });    
-        $('.mark_noduedate').on("click" , function(){
+                else
+                    {
+                        $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
+                        alert("Can't setup task has due date ");
+                    }
+        });
+        
+        $('.task-noduedate').on("click" , function(){
                 $(this).parent().trigger('submit.rails');
-             $(this).children(".inputdate").hide();
+              if ($(this).is(':checked')) {  
+                  $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
+                    //$(".inputdate").addClass("hidden");
+              }
+              else
+                  $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
+                    //$(".inputdate").removeClass("hidden");  
        });
 });

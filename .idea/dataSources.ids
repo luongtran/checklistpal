@@ -1127,10 +1127,39 @@
     <schema name="" catalog="information_schema"/>
     <schema name="" catalog="mysql"/>
     <schema name="" catalog="test"/>
+    <table name="authentications" schema="" catalog="checklistpal_development" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="provider" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="uid" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="token_secret" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="lists" schema="" catalog="checklistpal_development" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="my_connections" schema="" catalog="checklistpal_development" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="list_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="invite_user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="myconnections" schema="" catalog="checklistpal_development" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="list_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="connect_user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
@@ -1143,12 +1172,20 @@
       <column name="resource_type" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="max_connections" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="max_savedlist" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="index_roles_on_name" unique="false" columns="name"/>
       <index name="index_roles_on_name_and_resource_type_and_resource_id" unique="false" columns="name,resource_type,resource_id"/>
     </table>
     <table name="schema_migrations" schema="" catalog="checklistpal_development" type="TABLE">
       <column name="version" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="subscriptions" schema="" catalog="checklistpal_development" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="tasks" schema="" catalog="checklistpal_development" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -1159,6 +1196,7 @@
       <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="position" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="hasduedate" sqlType="BIT" length="0" precision="0" nullable="true" jdbcType="-7" def="MA=="/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="users" schema="" catalog="checklistpal_development" type="TABLE">
@@ -1178,6 +1216,8 @@
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <column name="customer_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <column name="last_4_digits" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="provider" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="uid" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
       <index name="index_users_on_reset_password_token" unique="true" columns="reset_password_token"/>
