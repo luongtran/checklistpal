@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       when 'paid'
         content_vipmember_path
       else
-        root_path
+        my_list_path
     end
   end
   

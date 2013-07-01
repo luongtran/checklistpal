@@ -1,3 +1,17 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#invitation_form').bind("ajax:beforeSend",  function() {
+            $("#loading").toggle();
+            $('#frm_invite_user').hide();
+        }).bind("ajax:success", function(xhr, data, status) {
+                    $("#loading").toggle()
+                    $('#frm_invite_user').hide();
+                    $('#bt-invite-user').show();
+                    $('#notice').text('Invitation email has been sent successfully').css('color', 'green').fadeIn(300).delay(30000).fadeOut(300);
+                });
+    });
+</script>
 <div class="section clearfix">
       <div class="pull-right">
         <div id="quickmenu">
@@ -21,9 +35,32 @@
             </div>
           <% end %>
         </div>
+
+        <% if current_user %>
+        <% is_created_user =  current_user.id == @list.user_id ? true : false%>
+        <% if is_created_user %>
+            <%= button_tag 'Invite user', :id => 'bt-invite-user', :class => 'btn btn-info'  %>
+            <div id="loading" style="display: none;">
+              <%= image_tag 'loading.gif' %>
+            </div>
+            <div id="frm_invite_user" style="display: none;">
+              <h3>Invite user join in your list</h3>
+              <%= form_tag invite_user_path(@list), :id => 'invitation_form',:remote => true do  %>
+                  <%= text_field_tag 'name',nil, class: "span5" ,placeholder:"User name" %><br/>
+                  <%= email_field_tag 'user_email',nil, class: "span5",placeholder: "Email address" %><br/>
+                  <%= submit_tag 'Send invitation', :class => 'btn btn-info' %>
+                  <%= button_tag 'Cancel', :id => 'bt-cancel-invite', :class => 'btn', :type => 'button' %>
+              <% end %>
+
+            </div>
+            <hr/>
+        <% end %>
+        <% end %>
         <div class="todolist">
           <div class="row-fluid">
             <span class="span12">
+              <div class="notice" id="notice">
+              </div>
               <ul class="unstyled" id="list-items" data-update-url="<%= sort_tasks_path %>">
                 <%= render :partial => "lists/items" %>
               </ul>

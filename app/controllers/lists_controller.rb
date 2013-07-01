@@ -52,6 +52,47 @@ class ListsController < ApplicationController
   
   def show
     @list = List.find(params[:id])
+    logger = Logger.new('log/show_list.log')
+    logger.info("----------------Log for view List by Id --------------")
+    logger.info(@list)
+    if current_user.present?   # if user login
+        if @list.user_id.present?        # if list not have user_id < public list
+          logger.info("----Private list -----")
+            if current_user.id != @list.user_id   # if current_user is not owner
+              logger.info("------Current user is not list owner - 62------")
+              logger.info(@list.list_team_members.find(:first , :conditions => ['user_id = ?', current_user.id]))
+              if @list.list_team_members.present?
+                @list_team_member = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
+                if @list_team_member.user_id == current_user.id     #if current_user being invite for this list
+
+                  @owner = User.find(@list.user_id)
+                  flash[:notice] = "You are viewing list of #{@owner.email}"
+                  return
+                else
+                  logger.info(@list.list_team_members)
+                  flash[:alert] = "You not have permission to view this list !"
+                  redirect_to my_list_path
+                end
+              end
+                flash[:alert] = "You not have permission to view this list !"
+                redirect_to my_list_path
+            else
+              logger.info("----current user owner this list -----")
+              flash[:notice] = "Welcome #{current_user.email} !"
+
+            end
+        else
+            logger.info("----Public list -----")
+            flash[:notice] = "You  are viewing list of anonymous user "
+        end
+    else     #if user not login
+      if @list.user_id.present?   # if list  have user_id < Private list
+        flash[:alert] = "You not have permission to view this list !"
+        redirect_to root_path
+      else                         # if list not have user_id < Public list
+        flash[:notice] = "You  are viewing list of anonymous user !"
+      end
+    end
   end
   
   
@@ -87,5 +128,25 @@ class ListsController < ApplicationController
       format.html
     end
   end
+
+ def invite_user
+   @list = List.find(params[:list_id])
+   @user_email = params[:user_email]
+   @user_name = params[:name]
+   logger = Logger.new('log/list_invite_user.log')
+   logger.info("----List for invite-----")
+   logger.info(@list)
+   logger.info(@user_name)
+   logger.info(@user_email)
+   User.invite!(:email => @user_email , :name => @user_name)
+   user = User.find(:first, :conditions => ['email = ?', @user_email])
+   #if !user.blank?
+     list_team_member = ListTeamMember.new({:user_id => user.id, :list_id => @list.id, :active => false, :invitation_token =>	user.invitation_token})
+     list_team_member.save
+   #end
+
+
+   render :json => {:success => true}
+ end
   
 end

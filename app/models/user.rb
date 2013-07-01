@@ -3,17 +3,18 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable ,:omniauthable, :invitable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid , :invitation_token,:invitation_sent_at,:invitation_accepted_at,:invitation_limit,:invited_by_id,:invited_by_type
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe
   before_destroy :cancel_subscription
   has_many :lists
+  has_many :tasks
+  has_many :list_team_members
   has_many :authentications, :dependent => :destroy
-  has_many :my_connections , :dependent => :destroy , :through => :lists
 
   def update_plan(role)
     self.role_ids = []
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
   def update_stripe
     return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?
+    return if !invitation_token.blank?
     if customer_id.nil?
       if !stripe_token.present? && roles.first.name != 'free'
         raise "Stripe token not present. Can't create account."

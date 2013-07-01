@@ -54,6 +54,7 @@ $(function() {
         );
          $(".btn-delete").on("click",(function(){
              $('#list-items li').eq('task_<%= @task.id %>').remove();
+
          })
          );
         
@@ -102,27 +103,31 @@ $(function() {
         $('.logo-editbt').on("click" , function(){
                       
         });
-        $('.task-hasduedate').on("click", function(){
-            if ($(this).is(':checked')) {
-                    $(this).parent().trigger('submit.rails');
-                    //$(".inputdate").removeClass("hidden");
-                    $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
-		}
-                else
-                    {
-                        $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
-                        alert("Can't setup task has due date ");
-                    }
-        });
-        
-        $('.task-noduedate').on("click" , function(){
-                $(this).parent().trigger('submit.rails');
-              if ($(this).is(':checked')) {  
-                  $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
-                    //$(".inputdate").addClass("hidden");
-              }
-              else
-                  $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
-                    //$(".inputdate").removeClass("hidden");  
-       });
+
+    $('#bt-invite-user').click(function() {
+        $('#frm_invite_user').show();
+        $(this).hide();
+         });
+
+    $('#bt-cancel-invite').click(function() {
+        $('#frm_invite_user').hide();
+        $('#bt-invite-user').show();
+    });
+    $(".task-hasduedate").bind('change', function(){
+            var list_id = $(this).attr('data_target');
+            url = null;
+            $.ajax({
+                url: list_id+'/tasks/'+this.value+'/hasduedate',
+                type: 'POST',
+                data: {"hasduedate": this.checked}
+            });
+        if ($(this).is(':checked')) {
+            $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
+        }
+        else{
+            $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
+        }
+
+
+    });
 });

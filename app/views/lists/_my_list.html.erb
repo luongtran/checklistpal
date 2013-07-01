@@ -3,8 +3,7 @@
       <td><%= link_to list.name, list %></td>
       <td><%= list.tasks.completed.count %></td>
       <td><%= list.tasks.count %></td>
-      <td><%= list.my_connections.count%></td>
       <td><%= link_to("Delete List", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini btn-danger deletelistbt') %></td>
-      <td><%= link_to "Invite to you list", invite_connect_path(list), :class => 'btn btn-mini btn-danger listinvitebt' %></td>
+
     </tr>
   <% end %>
