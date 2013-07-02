@@ -4,8 +4,17 @@ class TasksController < ApplicationController
   
   def create
     @task = @list.tasks.new(params[:task])
+      if current_user
+      @task.user_id = current_user.id
+      logger = Logger.new('log/task_create.log')
+      logger.info('---NEW TASK -- user_id ----')
+      logger.info(current_user.id)
+      logger.info(@task.user_id)
+      logger.info(@task.id)
+      end
     if @task.save
       flash[:notice] = "Task Created"
+      logger.info(@task.id)
     else
       flash[:error] = "It just didn't happen for you"
     end
@@ -30,22 +39,13 @@ class TasksController < ApplicationController
   
   def complete
     @task = @list.tasks.find(params[:id])
-    if @task.update_attributes({ completed: true }) 
+    if @task != nil?
+     @task.update_attributes({ completed: params[:completed] }) 
       @success = 1
     else
       @success = 0
     end
     respond_with  @task, @success
-  end
-  
-  def incomplete
-    @task = @list.tasks.find(params[:id])
-    if @task.update_attributes({ completed: false })
-      @success = 1
-    else
-      @success = 0
-      respond_with @task, @success
-    end
   end
   
   def hasduedate
@@ -62,14 +62,14 @@ class TasksController < ApplicationController
 
   def update_due_date
     @task = @list.tasks.find(params[:id])
-    if @task.update_attributes({
-          :due_date => params[:due_date_value]
-        })
+    if @task != nil?
+      @task.update_attributes(due_date: params[:due_date_value])
       @success = 1
     else
+      flash[:notice] = "can't update due_date"
       @suceess = 0
-      respond_with @task,@success
     end
+    respond_with @task,@success
   end
   
   def sort

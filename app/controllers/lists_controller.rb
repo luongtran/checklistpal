@@ -59,30 +59,21 @@ class ListsController < ApplicationController
         if @list.user_id.present?        # if list not have user_id < public list
           logger.info("----Private list -----")
             if current_user.id != @list.user_id   # if current_user is not owner
-              logger.info("------Current user is not list owner - 62------")
-              logger.info(@list.list_team_members.find(:first , :conditions => ['user_id = ?', current_user.id]))
-              if @list.list_team_members.present?
+                if @list.list_team_members.present?
                 @list_team_member = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
-                if @list_team_member.user_id == current_user.id     #if current_user being invite for this list
-
-                  @owner = User.find(@list.user_id)
-                  flash[:notice] = "You are viewing list of #{@owner.email}"
-                  return
-                else
-                  logger.info(@list.list_team_members)
-                  flash[:alert] = "You not have permission to view this list !"
-                  redirect_to my_list_path
+                  if !@list_team_member.blank?
+                    @owner = User.find(@list.user_id)
+                    flash[:notice] = "You are viewing list of #{@owner.email}"
+                  end
+                    flash[:alert] = "You not have permission to view this list !"
+                    redirect_to my_list_path
                 end
-              end
                 flash[:alert] = "You not have permission to view this list !"
                 redirect_to my_list_path
             else
-              logger.info("----current user owner this list -----")
               flash[:notice] = "Welcome #{current_user.email} !"
-
             end
         else
-            logger.info("----Public list -----")
             flash[:notice] = "You  are viewing list of anonymous user "
         end
     else     #if user not login
@@ -148,5 +139,11 @@ class ListsController < ApplicationController
 
    render :json => {:success => true}
  end
+
+ # def check_permission
+ #  @user = current_user
+ #  @list = List.find(params[:list_id])
+ #   if @list
+ # end
   
 end

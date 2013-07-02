@@ -17,28 +17,24 @@
 
 $(function() {
        
-	$('.mark_comp').on('click', function() {
-		if ($(this).is(':checked')) 
-                {
-                	$(this).parent().trigger('submit.rails');
-		}
-                else
-                {
-                        alert("Fail to completed this task :) ");
-                }
+	$('.mark_comp').bind('change', function() {
+    var list_id = $(this).attr('data_target');
+                url = null;
+                $.ajax({
+                    url: list_id+'/tasks/'+this.value+'/complete',
+                    type: 'POST',
+                    data: {"completed": this.checked}
+                });
+          
+          if ($(this).is(':checked')) {
+            $(this).parent().parent().parent('.checkbox').children().children('.item-title').addClass('item-completed');
+            }
+            else{
+            $(this).parent().parent().parent('.checkbox').children().children('.item-title').removeClass('item-completed');
+            }    
+
 	});
 	
-	$('.mark_in_comp').on('click', function() {
-           if ($(this).is(':checked')) 
-                {
-                    alert("Fail to incompleted this task :) ");
-		}
-                else
-                {
-                    $(this).parent().trigger('submit.rails');
-                }
-	});
-        
         $("form#new_task").submit(function() {
            var url = $(this).attr("action");
             $.post(
@@ -54,16 +50,14 @@ $(function() {
         );
          $(".btn-delete").on("click",(function(){
              $('#list-items li').eq('task_<%= @task.id %>').remove();
-
-         })
-         );
+         }));
         
-        var html_form_edit = '<form action="#" class="edit_task_frm"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
-                            '<input type="submit" value="Save" class="btn btn-large btn-primary" />'+
-                            '<input type="button" value="Cancel" class="btn btn-large btn-inverse/>\n\</form>';
+        var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
+                            '<input type="submit" value="Update task name" class="btn btn-small" />'+
+                            '<input type="button" value="Cancel" class="btn btn-mini btn-danger/>\n\</form>';
         $('.btn-edit').on("click", function() {
-            var obj_task_des = $(this).parent().parent(".checkbox").children(".task-des");
-            var url = obj_task_des.data("url");
+            var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
+            var url = obj_task_des.data("url");            
             var task_des = obj_task_des.text();
             obj_task_des.html(html_form_edit);
             obj_task_des.children().children('#task_description').val(task_des);
@@ -71,10 +65,10 @@ $(function() {
         });
         
         $('.edit_task_frm').on("submit", function() {
-            var form = this;
+            var form = this;      
             $.ajax({
                type: "post" ,
-               url: $(this).attr("action"),
+               url: $(this).attr("action"),               
                data: $(this).serialize(),
                dataType: "json",
                success:function(data) {
@@ -82,9 +76,8 @@ $(function() {
                    var task = data.task;
                    if(success === 1) {
                       $(form).parent(".task-des").html(task.description);
-                      
                    } else {
-                       form.append('<span class="error">Cannot be saved</span>');
+                      form.append('<span class="error">Cannot be saved</span>');
                    }
                },
                error:function() {
@@ -121,13 +114,25 @@ $(function() {
                 type: 'POST',
                 data: {"hasduedate": this.checked}
             });
-        if ($(this).is(':checked')) {
+        
+      if ($(this).is(':checked')) {
             $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
         }
         else{
             $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
-        }
-
+        }    
 
     });
+    $('.datepicker').datepicker({
+        onClose: function(strDate)
+        {
+          if (strDate === "") {
+            alert(strDate)
+            return;
+          }
+          alert(strDate)
+          $(this).parent().trigger('submit.rails');
+          
+        }
+  });
 });

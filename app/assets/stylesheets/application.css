@@ -38,3 +38,14 @@
 .inputdate{
     display:none ;
 }
+.ui-datepicker{
+    z-index: 100;
+}
+.item-completed {
+    text-decoration: line-through; 
+    color: rgb(153, 153, 153);
+}
+#task_description{
+    height: 16px;
+    width: 50%;
+}

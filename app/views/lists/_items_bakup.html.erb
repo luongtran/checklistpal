@@ -1,0 +1,93 @@
+
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<% if @list.tasks.length %>
+  <% @list.tasks.items.each do |task| 
+    index = 0 %>
+    <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
+
+      <% if !task.completed %> <!-- Render task incompleted -->
+        <div class="items">
+          <label class="checkbox">
+            <span class="mark">
+              <%= form_tag(complete_task_path(@list.id, task.id), :remote => true) do |f| %>
+                <%= check_box_tag 'mark_complete', 1, false, :class => 'checkbox mark_comp' %>
+              <% end %>
+            </span>
+            <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+              <div class="item-title" id="item_title_<%= task.id %>"><%= task.description %></div>
+            </span>
+          </label>
+          <span class="action">
+            <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+            <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
+          </span>
+          <span class="clear"></span>
+          <span class="taskduedate">
+            <label class="duedate">
+            
+                <%= form_tag(has_due_date_path(@list.id, task.id), :remote => true ) do |f| %>
+                  <%= check_box_tag 'hasduedate', task.id , task.hasduedate, :class => "task-hasduedate",:data_target => @list.id %>
+                <% end %>
+             
+              <span>Due date</span>
+            </label>
+            <% if task.hasduedate %>
+              <span class="sp-duedate">
+              <% else %>
+                <span class="sp-duedate hidden">
+                <% end %>
+                <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
+                  <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-dd-mm" class="datepicker inputdate" id="due_date_<%= task.id %>">
+                <% end %>
+              </span>
+            </span>
+        </div>
+      <% else %>  <!--   Render task completed -->
+        <div class="items">
+          <label class="checkbox">
+            <span class="mark">
+              <%= form_tag(incomplete_task_path(@list.id, task.id), :remote => true) do |f| %>
+                <%= check_box_tag 'mark_in_complete', 0, true, :class => 'checkbox mark_in_comp', :style => "float:left;" %>
+              <% end %>
+            </span>
+
+            <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+              <div class="item-title" id="item_title_<%= task.id %>" style="text-decoration: line-through; color: rgb(153, 153, 153); "><%= task.description  %></div>
+            </span>
+          </label>
+          <span class="action">
+            <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "#",:class => 'btn-edit' %>
+            <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id), :class => 'btn-delete' ,:remote => true %>
+          </span> 
+          <span class="clear"></span>
+          <span class="taskduedate" >
+            <label class="duedate">
+              <%= form_tag(has_due_date_path(@list.id, task.id), :remote => true ) do |f| %>
+                <%= check_box_tag 'hasduedate', task.id , task.hasduedate, :class => "task-hasduedate", :data_target => @list.id %>
+              <% end %>
+              <span>Due date</span>
+            </label>
+            <% if task.hasduedate %>
+              <span class="sp-duedate">
+              <% else %>
+                <span class="sp-duedate hidden">
+                <% end %>
+                <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
+
+                  <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-dd-mm" class="datepicker inputdate" id="due_date_<%= task.id %>">
+
+                <% end %>
+              </span>
+
+            </span>
+        </div>
+      <% end %>
+
+    </li>
+    <% 
+    index +=1
+    end %>
+<% end %>

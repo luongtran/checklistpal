@@ -16,12 +16,9 @@ Checklistpal::Application.routes.draw do
   get 'content/vipmember'
   match '/signup_options' => 'home#signup_options' , :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
-  match 'lists/:list_id/tasks/:id/incomplete' => 'tasks#incomplete', :as => :incomplete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit" , :as => :edit_task
   match 'lists/:list_id/tasks/:id/delete' => "tasks#delete" , :as => :delete_task
   match 'lists/:list_id/tasks/:id/hasduedate' => "tasks#hasduedate" , :as => :has_due_date
-  #match 'lists/:list_id/tasks/:id/hasduedate' => 'tasks#hasduedate' , :as => :has_due_date
-  #match 'lists/:list_id/tasks/:id/noduedate' => 'tasks#noduedate' , :as => :no_due_date
   match 'lists/:list_id/tasks/:id/update_due_date' => 'tasks#update_due_date' , :as => :update_due_date
   match 'mylist' => "lists#mylist" , :as => :my_list
   match 'list/:list_id/invite-user' => 'lists#invite_user', :as => :invite_user
