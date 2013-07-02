@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   def hasduedate
     @task = @list.tasks.find(params[:id])
       if @task != nil?
-       @task.update_attributes(hasduedate: params[:hasduedate])
+       @task.update_attributes(:hasduedate => params[:hasduedate])
         @success = 1
       else
         set_flash "Error, please try again !"
@@ -57,7 +57,10 @@ class TasksController < ApplicationController
   def update_due_date
     @task = @list.tasks.find(params[:id])
     if @task != nil?
-      @task.update_attributes(due_date: params[:due_date_value])
+      logger = Logger.new('log/due_date_val.log')
+      logger.info('--test--')
+      logger.info(params[:due_date_value])
+      @task.update_attributes({:due_date => params[:due_date_value]})
       @success = 1
     else
       flash[:notice] = "can't update due_date"

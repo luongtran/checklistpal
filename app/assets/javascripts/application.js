@@ -118,18 +118,7 @@ $(function() {
                         }
 
                     });
-                    $('.datepicker').datepicker({
-                        onClose: function(strDate)
-                        {
-                            if (strDate === "") {
-                                alert(strDate)
-                                return;
-                            }
-                            alert(strDate)
-                            $(this).parent().trigger('submit.rails');
-
-                        }
-                    });
+                    $('.datepicker').datepicker({dateFormat: 'yyyy-mm-dd'});
                 });
             }
         );
