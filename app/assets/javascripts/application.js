@@ -16,7 +16,137 @@
 //= require_tree .
 
 $(function() {
-       
+    $("form#new_task").submit(function() {
+        var url = $(this).attr("action");
+        $.post(
+            url,
+            $(this).serialize(),
+            function(response) {
+                $("#list-items").html(response);
+                $(this).val('');
+                $(function() {
+                    $("form#new_task").submit(function() {
+                        var url = $(this).attr("action");
+                        $.post(
+                            url,
+                            $(this).serialize(),
+                            function(response) {
+                                $("#list-items").html(response);
+                                $(this).val('');
+                            }
+                        );
+                        return false;
+                    });
+                    $('.mark_comp').bind('change', function() {
+                        var list_id = $(this).attr('data_target');
+                        url = null;
+                        $.ajax({
+                            url: list_id+'/tasks/'+this.value+'/complete',
+                            type: 'POST',
+                            data: {"completed": this.checked}
+                        });
+
+                        if ($(this).is(':checked')) {
+                            $(this).parent().parent().parent('.checkbox').children().children('.item-title').addClass('item-completed');
+                        }
+                        else{
+                            $(this).parent().parent().parent('.checkbox').children().children('.item-title').removeClass('item-completed');
+                        }
+
+                    });
+
+                    $(".btn-delete").on("click",(function(){
+                        $('#list-items li').eq('task_<%= @task.id %>').remove();
+                    }));
+
+                    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
+                        '<input type="submit" value="Update task name" class="btn btn-small" />'+
+                        '<input type="button" value="Cancel" class="btn btn-mini btn-danger/>\n\</form>';
+                    $('.btn-edit').on("click", function() {
+                        var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
+                        var url = obj_task_des.data("url");
+                        var task_des = obj_task_des.text();
+                        obj_task_des.html(html_form_edit);
+                        obj_task_des.children().children('#task_description').val(task_des);
+                        obj_task_des.children(".edit_task_frm").attr("action", url);
+                        $('.edit_task_frm').on("submit", function() {
+                            var form = this;
+                            $.ajax({
+                                type: "post" ,
+                                url: $(this).attr("action"),
+                                data: $(this).serialize(),
+                                dataType: "json",
+                                success:function(data) {
+                                    var success = data.success;
+                                    var task = data.task;
+                                    if(success === 1) {
+                                        $(form).parent(".task-des").html(task.description);
+                                    } else {
+                                        form.append('<span class="error">Cannot be saved</span>');
+                                    }
+                                },
+                                error:function() {
+                                    alert("Error");
+                                }
+                            });
+                            return false;
+                        });
+                    });
+
+
+                    $('.items').on("mouseenter", function() {
+                        $(this).children(".action").show();
+                    }).on("mouseleave", function() {
+                            $(this).children(".action").hide();
+                        });
+
+                    $('.logo-editbt').on("click" , function(){
+
+                    });
+
+                    $('#bt-invite-user').click(function() {
+                        $('#frm_invite_user').show();
+                        $(this).hide();
+                    });
+
+                    $('#bt-cancel-invite').click(function() {
+                        $('#frm_invite_user').hide();
+                        $('#bt-invite-user').show();
+                    });
+                    $(".task-hasduedate").bind('change', function(){
+                        var list_id = $(this).attr('data_target');
+                        url = null;
+                        $.ajax({
+                            url: list_id+'/tasks/'+this.value+'/hasduedate',
+                            type: 'POST',
+                            data: {"hasduedate": this.checked}
+                        });
+
+                        if ($(this).is(':checked')) {
+                            $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').removeClass('hidden');
+                        }
+                        else{
+                            $(this).parent().parent().parent('.taskduedate').children('.sp-duedate').addClass('hidden');
+                        }
+
+                    });
+                    $('.datepicker').datepicker({
+                        onClose: function(strDate)
+                        {
+                            if (strDate === "") {
+                                alert(strDate)
+                                return;
+                            }
+                            alert(strDate)
+                            $(this).parent().trigger('submit.rails');
+
+                        }
+                    });
+                });
+            }
+        );
+        return false;
+    });
 	$('.mark_comp').bind('change', function() {
     var list_id = $(this).attr('data_target');
                 url = null;
@@ -34,20 +164,7 @@ $(function() {
             }    
 
 	});
-	
-        $("form#new_task").submit(function() {
-           var url = $(this).attr("action");
-            $.post(
-                url,
-                $(this).serialize(),
-                function(response) {
-                    $("#list-items").html(response);
-                    $(this).val('');
-                }
-            ); 
-            return false;
-        }
-        );
+
          $(".btn-delete").on("click",(function(){
              $('#list-items li').eq('task_<%= @task.id %>').remove();
          }));

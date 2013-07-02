@@ -65,8 +65,6 @@ class ListsController < ApplicationController
                     @owner = User.find(@list.user_id)
                     flash[:notice] = "You are viewing list of #{@owner.email}"
                   end
-                    flash[:alert] = "You not have permission to view this list !"
-                    redirect_to my_list_path
                 end
                 flash[:alert] = "You not have permission to view this list !"
                 redirect_to my_list_path

@@ -4,9 +4,9 @@
     <list default="true" id="0514ef39-aa14-41c8-b462-19cebd2a85b0" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\lists\_items_test.html.erb" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\tasks\edit.html.erb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,10 +85,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="16" selection-start="2841" selection-end="2841" vertical-scroll-proportion="0.0">
+            <state line="144" column="19" selection-start="6638" selection-end="6638" vertical-scroll-proportion="-2.5026643">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -96,10 +96,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tasks_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/tasks_controller.rb">
+      <file leaf-file-name="create.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/tasks/create.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="67" selection-start="1961" selection-end="1965" vertical-scroll-proportion="0.23090278">
+            <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -108,16 +108,7 @@
       <file leaf-file-name="lists_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="62" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="1" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.0">
+            <state line="66" column="21" selection-start="2389" selection-end="2389" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,10 +147,10 @@
         <option value="$PROJECT_DIR$/app/views/tasks/_task_completed.html.erb" />
         <option value="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
         <option value="$PROJECT_DIR$/app/views/tasks/delete.js.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
@@ -970,13 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tasks/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tasks/delete.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="96" vertical-scroll-proportion="-0.0">
@@ -991,15 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="16" selection-start="2841" selection-end="2841" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="66" selection-start="126" selection-end="126" vertical-scroll-proportion="-0.59855336">
@@ -1007,24 +982,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="62" selection-start="2735" selection-end="2735" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="1" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.0">
+        <state line="46" column="1" selection-start="1058" selection-end="1058" vertical-scroll-proportion="1.3576388">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/tasks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="67" selection-start="1961" selection-end="1965" vertical-scroll-proportion="0.23090278">
+        <state line="85" column="58" selection-start="2137" selection-end="2137" vertical-scroll-proportion="1.5347222">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="21" selection-start="2389" selection-end="2389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tasks/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="19" selection-start="6638" selection-end="6638" vertical-scroll-proportion="-2.5026643">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
