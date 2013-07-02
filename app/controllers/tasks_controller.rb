@@ -6,15 +6,9 @@ class TasksController < ApplicationController
     @task = @list.tasks.new(params[:task])
       if current_user
       @task.user_id = current_user.id
-      logger = Logger.new('log/task_create.log')
-      logger.info('---NEW TASK -- user_id ----')
-      logger.info(current_user.id)
-      logger.info(@task.user_id)
-      logger.info(@task.id)
       end
     if @task.save
       flash[:notice] = "Task Created"
-      logger.info(@task.id)
     else
       flash[:error] = "It just didn't happen for you"
     end
@@ -82,16 +76,28 @@ class TasksController < ApplicationController
   def delete
     @task = @list.tasks.find(params[:id])
     @task_id = @task.id
-    if current_user.id != @task.user_id
-      flash[:alert] = "You not have permission to delete this task !"
-      @success = 0
-    else
-      if @task.destroy
+    if @task.user_id.present?
+      if !current_user
+        flash[:alert] = "You have no permission to delete this task !"
+        @success = 0
+      elsif current_user.id != @task.user_id
+        flash[:alert] = "You have no permission to delete this task !"
+        @success = 0
+      else
+        if @task.destroy
         flash[:notice] = "Task deleted !"
         @success = 1
-      else
-        @success = 0
+        else
+          @success = 0
+        end
       end
+    else
+        if @task.destroy
+        flash[:notice] = "Task deleted !"
+        @success = 1
+        else
+          @success = 0
+        end
     end
     respond_with @list , @task , @success
   end

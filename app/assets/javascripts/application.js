@@ -62,30 +62,30 @@ $(function() {
             obj_task_des.html(html_form_edit);
             obj_task_des.children().children('#task_description').val(task_des);
             obj_task_des.children(".edit_task_frm").attr("action", url);
-        });
-        
-        $('.edit_task_frm').on("submit", function() {
-            var form = this;      
-            $.ajax({
-               type: "post" ,
-               url: $(this).attr("action"),               
-               data: $(this).serialize(),
-               dataType: "json",
-               success:function(data) {
-                   var success = data.success;
-                   var task = data.task;
-                   if(success === 1) {
-                      $(form).parent(".task-des").html(task.description);
-                   } else {
-                      form.append('<span class="error">Cannot be saved</span>');
-                   }
-               },
-               error:function() {
-                alert("error");
-               }
+            $('.edit_task_frm').on("submit", function() {
+                var form = this;
+                $.ajax({
+                    type: "post" ,
+                    url: $(this).attr("action"),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success:function(data) {
+                        var success = data.success;
+                        var task = data.task;
+                        if(success === 1) {
+                            $(form).parent(".task-des").html(task.description);
+                        } else {
+                            form.append('<span class="error">Cannot be saved</span>');
+                        }
+                    },
+                    error:function() {
+                        alert("Error");
+                    }
+                });
+                return false;
             });
-            return false; 
         });
+
         
         $('.items').on("mouseenter", function() {
             $(this).children(".action").show();
