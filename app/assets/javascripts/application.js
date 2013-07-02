@@ -25,18 +25,6 @@ $(function() {
                 $("#list-items").html(response);
                 $(this).val('');
                 $(function() {
-                    $("form#new_task").submit(function() {
-                        var url = $(this).attr("action");
-                        $.post(
-                            url,
-                            $(this).serialize(),
-                            function(response) {
-                                $("#list-items").html(response);
-                                $(this).val('');
-                            }
-                        );
-                        return false;
-                    });
                     $('.mark_comp').bind('change', function() {
                         var list_id = $(this).attr('data_target');
                         url = null;

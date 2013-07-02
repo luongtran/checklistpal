@@ -5,8 +5,6 @@
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\lists\_items_test.html.erb" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\tasks\edit.html.erb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,7 +86,7 @@
       <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="19" selection-start="6638" selection-end="6638" vertical-scroll-proportion="-2.5026643">
+            <state line="34" column="19" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.6980462">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -1012,7 +1010,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="19" selection-start="6638" selection-end="6638" vertical-scroll-proportion="-2.5026643">
+        <state line="34" column="19" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.6980462">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
