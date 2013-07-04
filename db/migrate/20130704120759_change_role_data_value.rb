@@ -5,9 +5,10 @@ class ChangeRoleDataValue < ActiveRecord::Migration
         role.max_savedlist = 3
         role.max_connections = 2
       elsif role.name == "paid" 
-        role.max_savedlist = 50000
-        role.max_connections = 50000
+        role.max_savedlist = 8388606
+        role.max_connections = 8388606
       end
+      role.save
     end
   end
 

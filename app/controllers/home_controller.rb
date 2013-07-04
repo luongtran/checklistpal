@@ -14,8 +14,12 @@ class HomeController < ApplicationController
       end
     else
       @user = current_user
-      num_list = !@user.lists.blank? ? @user.lists.count : 1
+      num_list = !@user.lists.blank? ? @user.lists.count : 0
+      logger = Logger.new('log/index_log.log')
+        logger.info("Max saved lits")
+        logger.info(Role.find(current_user.roles.first.id).max_savedlist)
       if num_list < Role.find(current_user.roles.first.id).max_savedlist
+        
         @list = List.create({
             :name => "Checklist pal",
             :description => "To do list",
