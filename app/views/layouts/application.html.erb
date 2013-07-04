@@ -81,12 +81,17 @@
       </div>
     </div>
     <!-- Modal save form -->
-    <div id="saveform" class="modal hide fade">
-      <div class ="text-center">
-        <span class="span6">
-          <p class="text-error">Please press Ctr + D button</p><p class="text-error"> to save your list to browser bookmark</p>
-        </span>
-      </div>
+    <div class="modal hide fade" id="saveform">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">How to Save Todo List</h3>
+	</div>
+	<div class="modal-body text-center">
+		<h4 class="text-success">Please press Ctr + D button</p><p class="text-success"> to save your list to browser bookmark</h4>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	</div>
     </div>
   </body>
 </html>

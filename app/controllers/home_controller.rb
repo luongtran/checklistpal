@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  
   def index
     if !current_user
       @list = List.create({
@@ -15,7 +14,8 @@ class HomeController < ApplicationController
       end
     else
       @user = current_user
-      if @user.lists.count < Role.find(current_user.roles.first.id).max_savedlist
+      num_list = !@user.lists.blank? ? @user.lists.count : 0
+      if num_list < Role.find(current_user.roles.first.id).max_savedlist
         @list = List.create({
             :name => "Checklist pal",
             :description => "To do list",
