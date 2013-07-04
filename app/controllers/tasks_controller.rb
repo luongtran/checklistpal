@@ -7,6 +7,7 @@ class TasksController < ApplicationController
       if current_user
       @task.user_id = current_user.id
       end
+      @task.position = 1
     if @task.save
       flash[:notice] = "Task Created"
     else
