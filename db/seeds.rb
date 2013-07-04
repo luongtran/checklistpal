@@ -18,7 +18,7 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.add_role :admin
 user2 = User.find_or_create_by_email :name => 'Member User', :email => 'user2@example.com', :password => '1234qwer', :password_confirmation => '1234qwer'
-user2.add_role :member
+user2.add_role :free
 user3 = User.find_or_create_by_email :name => 'Vipmember User', :email => 'user3@example.com', :password => '1234qwer', :password_confirmation => '1234qwer'
-user3.add_role :vipmember
+user3.add_role :paid
 puts "users: #{user2.name}, #{user3.name}"

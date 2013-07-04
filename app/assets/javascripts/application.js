@@ -55,8 +55,8 @@ $(function() {
             url,
             $(this).serialize(),
             function(response) {
+                $("form#new_task").children().children('.searchboxtodolist').val('');
                 $("#list-items").html(response);
-                $(this).children().children('.searchboxtodolist').text('');
                 $(function() {
                     $('.mark_comp').bind('change', function() {
                         var list_id = $(this).attr('data_target');
@@ -155,7 +155,7 @@ $(function() {
                     });
                     $('.datepicker').datepicker({
                         dateFormat: "yy-mm-dd",
-                        onSelect: function(dateText, inst) {
+                        onSelect: function(dateText) {
                             $(this).val(dateText);
                             $(this).change();
                             $(this).parent().trigger('submit.rails');
@@ -264,7 +264,7 @@ $(function() {
     });
     $('.datepicker').datepicker({
         dateFormat: "yy-mm-dd",
-        onSelect: function(dateText, inst) {
+        onSelect: function(dateText) {
             $(this).val(dateText);
             $(this).change();
             $(this).parent().trigger('submit.rails');

@@ -4,8 +4,7 @@ class HomeController < ApplicationController
     if !current_user
       @list = List.create({
             :name => "Checklist pal",
-            :description => "To do list",
-            :user_id => @user.id
+            :description => "To do list"            
           })
       if @list.save
         flash[:notice] = "List created"
