@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       end
     else
       @user = current_user
-      num_list = !@user.lists.blank? ? @user.lists.count : 0
+      num_list = !@user.lists.blank? ? @user.lists.count : 1
       if num_list < Role.find(current_user.roles.first.id).max_savedlist
         @list = List.create({
             :name => "Checklist pal",
