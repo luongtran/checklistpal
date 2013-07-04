@@ -1,3 +1,16 @@
+<% if @success == 1 %>
 $("#task_<%= @task_id %>").fadeOut(1000, function() {
   $("#task_<%= @task_id %>").remove();
 });
+<% else %>
+
+$("#task_<%= @task_id %>").children("#delete_error").delay(1).fadeIn('normal', function() {
+    $(this).css({
+        "background-color": "yellow",
+        "font-weight": "bold",
+        "height" : "13px",
+        "width" : "250px"
+    }) ;
+    $(this).delay(1500).fadeOut();
+});
+<% end %>

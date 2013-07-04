@@ -10,12 +10,45 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-// require jquery_ujs
-//= require bootstrap-datepicker
-//= require_tree .
 
 $(function() {
+   $(".logo-editbt").on("click", function(){
+        var html_form = '<form action="#" class="edit_list_frm" remote="true"><input type="text" class="input-small" name="list[name]" id="list_name" />'+
+                        '<input type="submit" value="Save" class="btn btn-small btn-success" />'+
+                        '<input type="button" value="Cancel" class="btn btn-small canceleditlistbt" /></form>';
+        var obj = $(this).parent("#logo").children(".list-name");
+        url = obj.data("url");
+        var list_cur_name = obj.text();
+        obj.html(html_form);
+        obj.children().children("#list_name").val(list_cur_name);
+        obj.children(".edit_list_frm").attr("action", url);
+        $('.edit_list_frm').on("submit", function(){
+            var form = this;
+            $.ajax({
+                type: "post" , 
+                url: $(this).attr("action"),
+                data: $(this).serialize(),
+                dataType: "json",
+                success:function(data){
+                    var success = data.success;
+                    var list = data.list;
+                    if(success === 1){
+                        $(form).parent(".list-name").html(list.name);
+                    }else
+                    {
+                        form.append("Can't be saved");
+                    }
+                }, error:function(){
+                    alert("Error");
+                }
+            });
+            return false;
+        });
+        $('.canceleditlistbt').on("click",function(){
+                            $('.edit_list_frm').parent(".list-name").html(list_cur_name);
+        });
+        
+    });
     $("form#new_task").submit(function() {
         var url = $(this).attr("action");
         $.post(
@@ -23,7 +56,7 @@ $(function() {
             $(this).serialize(),
             function(response) {
                 $("#list-items").html(response);
-                $(this).val('');
+                $(this).children().children('.searchboxtodolist').text('');
                 $(function() {
                     $('.mark_comp').bind('change', function() {
                         var list_id = $(this).attr('data_target');
@@ -43,13 +76,12 @@ $(function() {
 
                     });
 
-                    $(".btn-delete").on("click",(function(){
-                        $('#list-items li').eq('task_<%= @task.id %>').remove();
-                    }));
+//                    $(".btn-delete").on("click",(function(){
+//                    }));
 
                     var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
                         '<input type="submit" value="Update task name" class="btn btn-small" />'+
-                        '<input type="button" value="Cancel" class="btn btn-mini btn-danger/>\n\</form>';
+                        '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
                     $('.btn-edit').on("click", function() {
                         var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
                         var url = obj_task_des.data("url");
@@ -78,6 +110,9 @@ $(function() {
                                 }
                             });
                             return false;
+                        });
+                        $('.canceledittaskbt').on("click",function(){
+                            $('.edit_task_frm').parent(".task-des").html(task_des);
                         });
                     });
 
@@ -118,7 +153,14 @@ $(function() {
                         }
 
                     });
-                    $('.datepicker').datepicker({dateFormat: 'yyyy-mm-dd'});
+                    $('.datepicker').datepicker({
+                        dateFormat: "yy-mm-dd",
+                        onSelect: function(dateText, inst) {
+                            $(this).val(dateText);
+                            $(this).change();
+                            $(this).parent().trigger('submit.rails');
+                        }
+                    });
                 });
             }
         );
@@ -148,7 +190,7 @@ $(function() {
         
         var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
                             '<input type="submit" value="Update task name" class="btn btn-small" />'+
-                            '<input type="button" value="Cancel" class="btn btn-mini btn-danger/>\n\</form>';
+                            '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
         $('.btn-edit').on("click", function() {
             var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
             var url = obj_task_des.data("url");            
@@ -158,6 +200,7 @@ $(function() {
             obj_task_des.children(".edit_task_frm").attr("action", url);
             $('.edit_task_frm').on("submit", function() {
                 var form = this;
+
                 $.ajax({
                     type: "post" ,
                     url: $(this).attr("action"),
@@ -178,6 +221,9 @@ $(function() {
                 });
                 return false;
             });
+            $('.canceledittaskbt').on("click",function(){
+                $('.edit_task_frm').parent(".task-des").html(task_des);
+               });
         });
 
         
@@ -218,15 +264,11 @@ $(function() {
 
     });
     $('.datepicker').datepicker({
-        onClose: function(strDate)
-        {
-          if (strDate === "") {
-            alert(strDate)
-            return;
-          }
-          alert(strDate)
-          $(this).parent().trigger('submit.rails');
-          
+        dateFormat: "yy-mm-dd",
+        onSelect: function(dateText, inst) {
+            $(this).val(dateText);
+            $(this).change();
+            $(this).parent().trigger('submit.rails');
         }
-  });
+    });
 });

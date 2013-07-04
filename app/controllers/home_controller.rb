@@ -1,14 +1,34 @@
 class HomeController < ApplicationController
   
   def index
-  @list = List.create({
-      :name => "Checklist Pal",
-      :description => "To do list"
-    }) 
-  if current_user
-    @list.user_id = current_user.id
-  end
-  @list.save
-    redirect_to list_view_path(@list)
+    if !current_user
+      @list = List.new(params[:list])
+      if @list.save
+        flash[:notice] = "List created"
+        redirect_to list_url(@list)
+      else
+        flash[:error] = "Could not post list"
+        respond_with(@list, :location => list_url(@list))
+      end
+    else
+      @user = current_user
+      if @user.lists.count < Role.find(current_user.roles.first.id).max_savedlist
+        @list = List.create({
+            :name => "Checklist pal",
+            :description => "To do list",
+            :user_id => @user.id
+          })
+        if @list.save
+          flash[:notice] = "List create successfuly !"
+          redirect_to list_url(@list) 
+        else
+          flash[:error] = "Can't create list !"
+          redirect_to my_list_path
+        end
+      else
+        flash[:alert] = "Could not create more list, Please upgrade you account !!!"
+        redirect_to my_list_path
+      end        
+    end
   end
 end

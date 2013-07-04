@@ -4,6 +4,6 @@
       <td><%= list.tasks.completed.count %></td>
       <td><%= list.tasks.count %></td>
       <td><%= link_to("Delete List", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini btn-danger deletelistbt') %></td>
-
+      <td><%= link_to("Delete 1 List", delete_list_path(list) ,:data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini btn-danger deletelistbt') %>
     </tr>
   <% end %>

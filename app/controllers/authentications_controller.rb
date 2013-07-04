@@ -39,6 +39,8 @@ class AuthenticationsController < ApplicationController
     end
   end
   def create
+    logger = Logger.new("log/create_face.log")
+    logger.info("------------Login FACEOOK--------------")
     @authentication = Authentication.new(params[:authentication])
     if @authentication.save
       redirect_to authentications_url, :notice => "Successfully created authentication."

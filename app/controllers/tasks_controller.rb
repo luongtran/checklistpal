@@ -43,10 +43,10 @@ class TasksController < ApplicationController
   end
   
   def hasduedate
-    @task = @list.tasks.find(params[:id])
+    @task = @list.tasks.find(params[:id])    
       if @task != nil?
        @task.update_attributes(:hasduedate => params[:hasduedate])
-        @success = 1
+        @success = 1        
       else
         set_flash "Error, please try again !"
         @success = 0
@@ -56,10 +56,10 @@ class TasksController < ApplicationController
 
   def update_due_date
     @task = @list.tasks.find(params[:id])
+    logger = Logger.new('log/update-due-date.log')
+    logger.info('Update due date')
+    logger.info(params[:due_date_value])
     if @task != nil?
-      logger = Logger.new('log/due_date_val.log')
-      logger.info('--test--')
-      logger.info(params[:due_date_value])
       @task.update_attributes({:due_date => params[:due_date_value]})
       @success = 1
     else
@@ -80,24 +80,26 @@ class TasksController < ApplicationController
     @task = @list.tasks.find(params[:id])
     @task_id = @task.id
     if @task.user_id.present?
-      if !current_user
-        flash[:alert] = "You have no permission to delete this task !"
-        @success = 0
-      elsif current_user.id != @task.user_id
-        flash[:alert] = "You have no permission to delete this task !"
-        @success = 0
+      if current_user.id != @task.user_id
+          if current_user.id = @list.user_id
+              if @task.destroy
+                @success = 1
+              else
+                @success = 0
+              end
+          else
+            @success = 0
+          end
       else
         if @task.destroy
-        flash[:notice] = "Task deleted !"
-        @success = 1
+          @success = 1
         else
           @success = 0
         end
       end
     else
         if @task.destroy
-        flash[:notice] = "Task deleted !"
-        @success = 1
+          @success = 1
         else
           @success = 0
         end

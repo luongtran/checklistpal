@@ -1,8 +1,7 @@
 class ListsController < ApplicationController
   
  before_filter :authenticate_user!, :only => [:create , :destroy ]
-  
-  respond_to :html, :xml, :js
+ respond_to :html, :xml, :js
   
   def index
     respond_with(@lists = List.all)
@@ -15,38 +14,32 @@ class ListsController < ApplicationController
   def create
     if !current_user
       @list = List.new(params[:list])
-        if @list.save
-          flash[:notice] = "List created"
-          redirect_to list_url(@list)
-        else
-          flash[:error] = "Could not post list"
-          respond_with(@list, :location => list_url(@list))
-        end
+      if @list.save
+        flash[:notice] = "List created"
+        redirect_to list_url(@list)
+      else
+        flash[:error] = "Could not post list"
+        respond_with(@list, :location => list_url(@list))
+      end
     else
       @user = current_user
-        logger = Logger.new('log/list.log')
-        logger.info("----USER- ROLE - LISTlimit -----")
-        logger.info(@user.email)
-        logger.info(@user.roles.first.name)
-        logger.info(Role.find(current_user.roles.first.id).max_savedlist)
-        logger.info(@user.lists.count)
-        if @user.lists.count < Role.find(current_user.roles.first.id).max_savedlist
+      if @user.lists.count < Role.find(current_user.roles.first.id).max_savedlist
         @list = List.create({
-            :name => params[:list][:name],
+            :name => "Checklist pal",
             :description => "To do list",
             :user_id => @user.id
           })
-            if @list.save
-              flash[:notice] = "List create successfuly !"
-              redirect_to list_url(@list) 
-            else
-              flash[:error] = "Can't create list !"
-              redirect_to :back
-            end
+        if @list.save
+          flash[:notice] = "List create successfuly !"
+          redirect_to list_url(@list) 
         else
-          flash[:notice] = "Could not create more list, Please upgrade you account !!!"
-          redirect_to :back
-        end        
+          flash[:error] = "Can't create list !"
+          redirect_to my_list_path
+        end
+      else
+        flash[:alert] = "Could not create more list, Please upgrade you account !!!"
+        redirect_to my_list_path
+      end        
     end
   end
   
@@ -60,10 +53,11 @@ class ListsController < ApplicationController
           logger.info("----Private list -----")
             if current_user.id != @list.user_id   # if current_user is not owner
                 if @list.list_team_members.present?
-                @list_team_member = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
+                @list_team_members = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
                   if !@list_team_member.blank?
                     @owner = User.find(@list.user_id)
                     flash[:notice] = "You are viewing list of #{@owner.email}"
+                    return
                   end
                 end
                 flash[:alert] = "You not have permission to view this list !"
@@ -83,10 +77,17 @@ class ListsController < ApplicationController
       end
     end
   end
-  
-  
+
   def edit
     @list = List.find(params[:id])
+    if @list.update_attributes(params[:list])
+      @success = 1
+    else
+      @success = 0
+    end
+    respond_to do |format|
+      format.json { render :json => {:success => @success, :list => @list}}
+    end
   end
   
   def destroy
@@ -95,8 +96,8 @@ class ListsController < ApplicationController
       flash[:notice] = "List Deleted"
       redirect_to my_list_url
     else
-      flash[:error] = "It just didn't happen for you"
-      redirect_to my_list_url
+      flash[:error] = "Can't delete list"
+      redirect_to list_path(@list)
     end
   end
   def update
@@ -118,6 +119,14 @@ class ListsController < ApplicationController
     end
   end
 
+ def myconnection
+   @user = current_user
+   @lists = List.find(:all , :conditions => ["user_id = ?" ,@user.id])
+   if @user.lists.present?
+   @user_connect = @user.list_team_members.find(:all, :conditions => [''])
+   end
+ end
+
  def invite_user
    @list = List.find(params[:list_id])
    @user_email = params[:user_email]
@@ -133,15 +142,6 @@ class ListsController < ApplicationController
      list_team_member = ListTeamMember.new({:user_id => user.id, :list_id => @list.id, :active => false, :invitation_token =>	user.invitation_token})
      list_team_member.save
    #end
-
-
    render :json => {:success => true}
  end
-
- # def check_permission
- #  @user = current_user
- #  @list = List.find(params[:list_id])
- #   if @list
- # end
-  
 end
