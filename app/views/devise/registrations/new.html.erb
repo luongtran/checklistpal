@@ -43,10 +43,10 @@
                     <p>Credit card acceptance is pending.</p>
                   <% else %>
                     <div class="field">
-                      <%= text_field_tag :card_number, nil, name: nil , :placeholder =>"Credit Card Number" , class: "span5" %>
+                      <%= number_field_tag :card_number, nil, name: nil , :placeholder =>"Credit Card Number" , class: "span5" %>
                     </div>
                     <div class="field">
-                      <%= text_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
+                      <%= number_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
                     </div>
                     <div class="field">
                       <%= label_tag :card_month, "Card Expiration" %>

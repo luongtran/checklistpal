@@ -48,10 +48,13 @@
                          <%= current_user.email %>
                         </span>
                         <span class="inline">
-                        <%= link_to "Sign out" ,destroy_user_session_path, :class => "btn btn-mini btn-info" %>
+                        <%= link_to "Edit my account" ,edit_registration_path(current_user), :class => "btn btn-mini btn-info" %>
                         </span>                        
                         <span class="inline">
                         <%= link_to "My List", my_list_path, :class => "btn btn-mini btn-info"%>
+                        </span>
+                        <span class="inline">
+                        <%= link_to "Sign out" ,destroy_user_session_path, :class => "btn btn-mini btn-info" %>
                         </span>
                       </div>
                     <% end %>

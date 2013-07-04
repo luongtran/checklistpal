@@ -54,12 +54,14 @@ class ListsController < ApplicationController
             if current_user.id != @list.user_id   # if current_user is not owner
                 if @list.list_team_members.present?
                 @list_team_members = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
-                  if !@list_team_member.blank?
+                  if !@list_team_members.blank?                    
                     @owner = User.find(@list.user_id)
                     flash[:notice] = "You are viewing list of #{@owner.email}"
                     return
                   end
                 end
+                logger.info(@list_team_members)
+                logger.info(current_user)
                 flash[:alert] = "You not have permission to view this list !"
                 redirect_to my_list_path
             else
@@ -92,12 +94,13 @@ class ListsController < ApplicationController
   
   def destroy
     @list = List.find(params[:id])
-    if @list.destroy
+    if current_user.id == @list.user_id 
+      @list.destroy
       flash[:notice] = "List Deleted"
       redirect_to my_list_url
     else
       flash[:error] = "Can't delete list"
-      redirect_to list_path(@list)
+      redirect_to root_path
     end
   end
   def update
@@ -113,7 +116,7 @@ class ListsController < ApplicationController
   
   def mylist
     @user = current_user
-    @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])
+    @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])    
     response do |format|
       format.html
     end
@@ -144,4 +147,26 @@ class ListsController < ApplicationController
    #end
    render :json => {:success => true}
  end
+ 
+ def who_connection
+   @list = List.find(params[:id])
+   @list_team_members = @list.list_team_members.find(:all, :conditions => ["list_id = ? " , @list.id])
+   user_ids = []
+   logger = Logger.new('log/who_connect.log')
+   logger.info(@list_team_members)
+   @list_team_members.each do |member|
+     user_ids += [member.user_id]
+   end
+   if !user_ids.empty?
+     @users = User.where('id IN (?)',user_ids)
+     @success = 1
+   else
+     @success = 0
+   end  
+   response do |format|
+      format.html
+      format.json { render :json => {:success => @success, :users => @users}}
+    end
+ end
+
 end

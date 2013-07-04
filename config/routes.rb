@@ -24,6 +24,7 @@ Checklistpal::Application.routes.draw do
   match 'lists/:list_id/tasks/:id/hasduedate' => "tasks#hasduedate" , :as => :has_due_date
   match 'lists/:list_id/tasks/:id/update_due_date' => 'tasks#update_due_date' , :as => :update_due_date
   match 'mylist' => "lists#mylist" , :as => :my_list
+  match 'who_connection/:id' => "lists#who_connection" , :as => :who_connect
   match 'mylist/:id/delete' => "lists#destroy" , :as => :delete_list
   match 'list/:list_id/invite-user' => 'lists#invite_user', :as => :invite_user
   devise_scope :user do

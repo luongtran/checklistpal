@@ -38,3 +38,16 @@
     text-decoration: line-through; 
     color: rgb(153, 153, 153);
 }
+form.edit_list_frm{
+    display: inline; 
+    width: 500px
+}
+form.edit_list_frm input[type="text"]{
+    display: inline;
+    height: 14px;        
+    width: 300px;
+}
+form.edit_list_frm input.btn{
+    display: inline;
+    width: 80px;
+}
