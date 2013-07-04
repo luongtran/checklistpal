@@ -14,18 +14,14 @@
  */
 .handle:hover{
     cursor: move;
-    line-height: 10px;
+    background-color : rgb(252, 249, 208);    
+    /*line-height: 10px;*/
 }
 .handle{
-    line-height: 10px;
+    /*line-height: 10px;*/
 }
 .checkbox{
-    min-height : 10px;
-}
-.checkbox:hover{
-    min-height : 10px;
-    vertical-align:middle;
-    background-color : rgb(252, 249, 208);    
+    /*min-height : 10px;*/
 }
 .action {
     float:right;
@@ -37,9 +33,6 @@
 }
 .inputdate{
     display:none ;
-}
-.ui-datepicker{
-    z-index: 100;
 }
 .item-completed {
     text-decoration: line-through; 

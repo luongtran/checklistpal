@@ -2,7 +2,11 @@ class HomeController < ApplicationController
   
   def index
     if !current_user
-      @list = List.new(params[:list])
+      @list = List.create({
+            :name => "Checklist pal",
+            :description => "To do list",
+            :user_id => @user.id
+          })
       if @list.save
         flash[:notice] = "List created"
         redirect_to list_url(@list)

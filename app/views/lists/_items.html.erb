@@ -16,11 +16,11 @@
               <% end %>
             </span>
 
-            <span class="task-des" data-url="<%= edit_task_path(@list.id, task.id) %>">
+            <span class="task-des">
               <% if !task.completed %> <!-- Render task incompleted -->
-              <div class="item-title" id="item_title_<%= task.id %>">&nbsp;<%= task.description %></div>
+              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= task.description %></div>
               <% else %>                <!-- Render task completed -->
-              <div class="item-title item-completed" id="item_title_<%= task.id %>">&nbsp;<%= task.description %></div>
+              <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= task.description %></div>
               <% end %>
             </span>
           </label>

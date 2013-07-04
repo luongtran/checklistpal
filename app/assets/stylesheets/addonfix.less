@@ -1,0 +1,117 @@
+@import-once "lesshat";
+
+/* Large desktop */
+//@media (min-width: 1200px) { ... }
+@min-desktop: 1200px;
+/* Portrait tablet to landscape and desktop */
+//@media (min-width: 768px) and (max-width: 979px) { ... }
+@min-tablet: 768px;
+@max-destop: 979px;
+/* Landscape phone to portrait tablet */
+//@media (max-width: 767px) { ... }
+@min-tablet: 767px;
+/* Landscape phones and down */
+//@media (max-width: 480px) { ... }
+@max-phone: 480px;
+
+#logo .logo-editbt {
+	top: 3px;
+}
+
+#list-items {
+	position: relative;
+	> li {
+		display: block;
+		margin-bottom: 20px;
+		.items {
+			position: relative;
+			padding: 10px;
+			background-color: lighten(grey, 45%);
+			.border-radius(5px);
+			> .checkbox:hover {
+				background-color: transparent;
+				.border-radius(5px);
+			}
+			.action {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			.mark {
+				form {
+					margin-bottom: 0;
+				}
+			}
+			.task-des {
+				form {
+					margin-bottom: 0;
+					overflow: hidden;
+				}
+				input[type="text"] {
+					width: 50%;
+					height: 11px;
+					padding: 4px;
+					padding-left: 7px;
+					float: left;
+					margin-right: 10px;
+				}
+				input.btn {
+					width: 20%;
+					float: left;
+				}
+			}
+		}
+	}
+	> li:nth-child(2n) {
+		.items {
+			margin-right: 0;
+		}
+	}
+	.taskduedate {
+		display: block;
+		position: relative;
+		.duedate {
+			overflow: hidden;
+			> form {
+				float: left;
+				margin-bottom: 0;
+				input[type="checkbox"].task-hasduedate {
+					margin-right: 7px;
+					margin-top: 0 !important;
+					margin-bottom: 0 !important;
+				}
+			}
+			> span {
+				float: left;
+			}
+		}
+		.sp-duedate {
+			left: 90px;
+			position: absolute;
+			top: 0px;
+			form {
+				margin-bottom: 0;
+				.datepicker.inputdate.hasDatepicker {
+					width: 100px;
+					padding: 2px;
+					padding-left: 7px;
+					height: auto;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: @max-phone) {
+	#todolistsearch .todolist {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#quickmenu {
+		margin-top: 0;
+		margin-bottom: 15px;
+	}
+	#logo span {
+		font-size: 28px;
+	}
+}

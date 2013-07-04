@@ -83,7 +83,7 @@ $(function() {
                         '<input type="submit" value="Update task name" class="btn btn-small" />'+
                         '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
                     $('.btn-edit').on("click", function() {
-                        var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
+                        var obj_task_des = $(this).parent().parent(".items").children().children().children(".item-title");
                         var url = obj_task_des.data("url");
                         var task_des = obj_task_des.text();
                         obj_task_des.html(html_form_edit);
@@ -100,7 +100,7 @@ $(function() {
                                     var success = data.success;
                                     var task = data.task;
                                     if(success === 1) {
-                                        $(form).parent(".task-des").html(task.description);
+                                        $(form).parent(".item-title").html(task.description);
                                     } else {
                                         form.append('<span class="error">Cannot be saved</span>');
                                     }
@@ -112,7 +112,7 @@ $(function() {
                             return false;
                         });
                         $('.canceledittaskbt').on("click",function(){
-                            $('.edit_task_frm').parent(".task-des").html(task_des);
+                            $('.edit_task_frm').parent(".item-title").html(task_des);
                         });
                     });
 
@@ -191,40 +191,39 @@ $(function() {
         var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />'+
                             '<input type="submit" value="Update task name" class="btn btn-small" />'+
                             '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
-        $('.btn-edit').on("click", function() {
-            var obj_task_des = $(this).parent().parent(".items").children().children(".task-des");
-            var url = obj_task_des.data("url");            
-            var task_des = obj_task_des.text();
-            obj_task_des.html(html_form_edit);
-            obj_task_des.children().children('#task_description').val(task_des);
-            obj_task_des.children(".edit_task_frm").attr("action", url);
-            $('.edit_task_frm').on("submit", function() {
-                var form = this;
-
-                $.ajax({
-                    type: "post" ,
-                    url: $(this).attr("action"),
-                    data: $(this).serialize(),
-                    dataType: "json",
-                    success:function(data) {
-                        var success = data.success;
-                        var task = data.task;
-                        if(success === 1) {
-                            $(form).parent(".task-des").html(task.description);
-                        } else {
-                            form.append('<span class="error">Cannot be saved</span>');
-                        }
-                    },
-                    error:function() {
-                        alert("Error");
-                    }
-                });
-                return false;
-            });
-            $('.canceledittaskbt').on("click",function(){
-                $('.edit_task_frm').parent(".task-des").html(task_des);
-               });
-        });
+        $('.btn-edit').on("click", function(){
+                        var obj_task_des = $(this).parent().parent(".items").children().children().children(".item-title");
+                        var url = obj_task_des.data("url");
+                        var task_des = obj_task_des.text();
+                        obj_task_des.html(html_form_edit);
+                        obj_task_des.children().children('#task_description').val(task_des);
+                        obj_task_des.children(".edit_task_frm").attr("action", url);
+                        $('.edit_task_frm').on("submit", function() {
+                            var form = this;
+                            $.ajax({
+                                type: "post" ,
+                                url: $(this).attr("action"),
+                                data: $(this).serialize(),
+                                dataType: "json",
+                                success:function(data) {
+                                    var success = data.success;
+                                    var task = data.task;
+                                    if(success === 1) {
+                                        $(form).parent(".item-title").html(task.description);
+                                    } else {
+                                        form.append('<span class="error">Cannot be saved</span>');
+                                    }
+                                },
+                                error:function() {
+                                    alert("Error");
+                                }
+                            });
+                            return false;
+                        });
+                        $('.canceledittaskbt').on("click",function(){
+                            $('.edit_task_frm').parent(".item-title").html(task_des);
+                        });
+                    });
 
         
         $('.items').on("mouseenter", function() {
