@@ -6,11 +6,11 @@
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_<%= comment.id %>" href="#collapse_<%= comment.id %>">
-              <%= User.find(comment.user_id).email %> - <%= comment.created_at.to_time.strftime("%m/%d/%Y") %> 
+              <%= User.find(comment.user_id).email %> <%= comment.created_at.to_time.strftime("%m/%d/%Y") %>
             </a>
           </div>
-          <div id="collapse_<%= comment.id %>" class="accordion-body collapse in">
-            <div class="accordion-inner">              
+          <div id="collapse_<%= comment.id %>" class="accordion-body collapse out">
+            <div class="accordion-inner">                            
               <div class="alert alert-success comment-content">
                 <%= comment.content %> 
               </div>

@@ -25,9 +25,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-      @task = Task.find(params[:task_id])
-      @task.comments.new(params[:comment])      
-      # @comment = Comment.new
+#      @task = Task.find(params[:task_id])
+#      @task.comments.new(params[:comment])      
+    @comment = Comment.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
