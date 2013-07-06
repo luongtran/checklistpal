@@ -31,15 +31,24 @@ $(function() {
                 dataType: "json",
                 success:function(data){
                     var success = data.success;
+                    var permission = data.permission;
                     var list = data.list;
-                    if(success === 1){
-                        $(form).parent(".list-name").html(list.name);
-                    }else
+                    if (permission === true)
                     {
-                        form.append("Can't be saved");
+                        if (success === 1) 
+                        {
+                            $(form).parent(".list-name").html(list.name);
+                        } else
+                        {
+                            form.append("Can't be saved");
+                        } 
+                    } else
+                    {
+                        alert("You have no permission to edit this list!");
+                        $('.edit_list_frm').parent(".list-name").html(list_cur_name);
                     }
                 }, error:function(){
-                    alert("Error");
+                    alert("Errroooooorrrrrrr");
                 }
             });
             return false;
@@ -119,13 +128,11 @@ $(function() {
 
                     $('.items').on("mouseenter", function() {
                         $(this).children(".action").show();
+                        $(this).children(".comment-add").show();
                     }).on("mouseleave", function() {
-                            $(this).children(".action").hide();
+                        $(this).children(".action").hide();
+                        $(this).children(".comment-add").hide();
                         });
-
-                    $('.logo-editbt').on("click" , function(){
-
-                    });
 
                     $('#bt-invite-user').click(function() {
                         $('#frm_invite_user').show();
@@ -161,6 +168,14 @@ $(function() {
                             $(this).parent().trigger('submit.rails');
                         }
                     });
+                     $('.add_comment_bt').on('click', function() {
+                    var url = $(this).parent().attr("action");
+                    $.post(
+                            url,
+                            $(this).serialize(),
+                            function(response) {
+                            });
+                });
                 });
             }
         );
@@ -232,8 +247,8 @@ $(function() {
             $(this).children(".action").hide();
         });   
 
-        $('.logo-editbt').on("click" , function(){
-                      
+        $('.show-comment').on("click" , function(){
+              $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");        
         });
 
     $('#bt-invite-user').click(function() {
@@ -270,4 +285,12 @@ $(function() {
             $(this).parent().trigger('submit.rails');
         }
     });
+   $('.add_comment_bt').on('click' , function(){
+       var url = $(this).parent().attr("action");
+       $.post(
+        url,
+        $(this).serialize(),
+        function(response){          
+        });   
+   });
 });

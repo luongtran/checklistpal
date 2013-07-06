@@ -28,7 +28,7 @@
             <%= link_to content_tag_for(:i, @list, :class => "icon-edit edit_task_bt") , "javascript:;",:class => 'btn-edit' %>
             <%= link_to content_tag_for(:i, @list, :class => "icon-trash remove_task_bt"), delete_task_path(@list.id,task.id),:class => 'btn-delete' , :remote => true %>
           </span>
-          <span class="clear"></span>
+          <%#*<span class="clear"></span>%>
           <span class="taskduedate">
             <label class="duedate">
                 <%= form_tag(has_due_date_path(@list.id, task.id), :remote => true ) do |f| %>
@@ -37,7 +37,7 @@
             <span>Due date</span>
             </label>
             <% if task.hasduedate %>
-              <span class="sp-duedate">
+              <%#*<span class="sp-duedate">%>
               <% else %>
                 <span class="sp-duedate hidden">
                 <% end %>
@@ -46,7 +46,15 @@
                 <% end %>
               </span>
             </span>
-        </div>
+            <% if current_user %>
+            <span class="comment-togger">
+              <buton class="show-comment btn btn-mini btn-success">Show comment</buton>
+            </span>
+            <span class="comment-add">
+              <%= render :partial => "comments/comment_task", :locals => {:task => task} %>
+            </span> 
+            <% end %>
+     </div>
     </li>
     <% 
     index +=1

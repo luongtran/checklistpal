@@ -1,0 +1,90 @@
+<style type="text/css">
+  #error_mess {
+    display:none;
+  }
+</style>
+<div class="section clearfix">
+  <div class="pull-right">
+    <div id="quickmenu">
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %></div>
+    </div>
+  </div>
+  <div class="pull-left">
+    <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span></div>
+  </div>
+</div>
+<hr class="divider">
+<div class="section clearfix">
+  <div id="invite">
+    <div class="clearfix">
+      <div class="divine30">
+        <div class="signoption row-fluid">
+          <div class="invitepanel">
+            <h3>Find or Invite</h3>
+            <div class="panel">
+              <%= form_tag invite_path, :id => 'invitation_form',:class => "row-fluid",:remote => true do  %>
+              <div class="alert alert-error" id="error_mess">
+              </div>
+                <div class="controls controls-row">
+                  <%= text_field_tag 'user_name',nil, class: "span8" ,placeholder:"Username" %><span class="span4">or</span>
+                  </div>
+                  <div class="controls">
+                      <%= email_field_tag 'user_email',nil, class: "input-block-level",placeholder: "Email address" %>
+                    </div>                    
+                    <div class="controls">
+                      <div id="loading" style="display: none;">
+                        <%= image_tag 'loading.gif' %>
+                      </div>
+                      <%= submit_tag 'Search', :class => 'btn btn-primary btnsearch' %>                        
+                    </div>
+                  <% end %>
+            </div>
+            <div class="panel" id="list_invites">
+            </div>
+              </div>
+            </div>
+          </div>
+          <div class="myconnection pull-right">
+            <h3 class="title-gray">My connections</h3>
+            <div class="space"></div>
+            <div class="searchmini clearfix">
+              <input type="text" class="textinput input-medium">
+              <input type="submit" value="" class="submitbt">
+            </div>
+            <div class="panel">
+              <% if !@my_connects.blank? %>
+                <% @my_connects.each do |connect| %>
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="name"><%= connect.email %></span>
+                  </label>
+                <% end %>
+              <% else %>
+              <span>This list have no connection</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+        <script type="text/javascript">
+          $(document).ready(function() {
+            
+            $('#invitation_form').on('submit', function() {
+                  var dat = $('#user_email').val();
+                  if (dat === "" || dat === null) {
+                    dat = $('#user_name').val();
+                  }
+                  if(dat === "" || dat === null) {
+                    $('#error_mess').text("Please fill username or email").fadeIn(300).delay(3000).fadeOut(300);
+                    return false;
+                  }
+            return true;
+            });
+            $('#invitation_form').bind("ajax:beforeSend", function() {
+              $("#loading").toggle();
+            }).bind("ajax:success", function(xhr, data, status) {
+              $("#loading").toggle();  
+            });
+          });
+        </script>

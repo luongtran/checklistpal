@@ -28,6 +28,11 @@
     display:none;
 }
 
+.comment-add {
+    float:right;
+    display:none;
+}
+
 .small-text {
     height:18px;
 }

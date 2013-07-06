@@ -8,13 +8,29 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid , :invitation_token,:invitation_sent_at,:invitation_accepted_at,:invitation_limit,:invited_by_id,:invited_by_type
-  attr_accessor :stripe_token, :coupon
+  attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_save :update_stripe
   before_destroy :cancel_subscription
   has_many :lists
   has_many :tasks
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
+  has_many :comments
+  
+  
+  def self.list_create(user_id,list_id)
+    if user = User.find(user_id)
+      if user.lists.length > 0
+        if !user.lists.find(:all , :conditions =>["id = ?", list_id]).empty?
+          return true
+        end
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
 
   def update_plan(role)
     self.role_ids = []
@@ -32,6 +48,7 @@ class User < ActiveRecord::Base
    
   
   def update_stripe
+    return if skip_stripe_update
     return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?    
     if customer_id.nil?

@@ -1,0 +1,5 @@
+<% if @success %>
+$(".comment-add").html('<%= j(render :partial => 'comments/comment_task', :locals => { :task => @task }) %>');
+<% else %>
+alert("error");
+<% end %>

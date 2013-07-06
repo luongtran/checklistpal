@@ -1,0 +1,5 @@
+<% if @message != null || @message != "" %>
+    $("#list_invites").text("<%= @message %>");
+    $("#list_invites").addClass("alert alert-success");
+<% else %>
+<% end %>

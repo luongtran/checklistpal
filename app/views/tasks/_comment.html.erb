@@ -1,0 +1,3 @@
+<%= simple_form_for ([@task, @task.comments.build]) do |f| %>
+    <%= f.text_area :comment %>        
+<% end %>

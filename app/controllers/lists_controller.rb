@@ -44,52 +44,61 @@ class ListsController < ApplicationController
   end
   
   def show
-    @list = List.find(params[:id])
-    logger = Logger.new('log/show_list.log')
-    logger.info("----------------Log for view List by Id --------------")
-    logger.info(@list)
-    if current_user.present?   # if user login
+    if !List.find(:all , :conditions => ["id = ?", params[:id]]).empty?
+      @list = List.find(params[:id])
+      if current_user.present?   # if user login
         if @list.user_id.present?        # if list not have user_id < public list
-          logger.info("----Private list -----")
             if current_user.id != @list.user_id   # if current_user is not owner
                 if @list.list_team_members.present?
-                @list_team_members = @list.list_team_members.find(:first , :conditions => ['user_id = ? AND list_id =? ', current_user.id ,@list.id ])
-                  if !@list_team_members.blank?                    
+                @list_team_member = @list.list_team_members.find(:first , :conditions => ['invited_id = ? AND list_id =? ', current_user.id ,@list.id ])
+                  if !@list_team_member.blank?                    
                     @owner = User.find(@list.user_id)
                     flash[:notice] = "You are viewing list of #{@owner.email}"
                     return
                   end
-                end
-                logger.info(@list_team_members)
-                logger.info(current_user)
-                flash[:alert] = "You not have permission to view this list !"
+                else
+                flash[:alert] = "You have no permission to view this list !"
                 redirect_to my_list_path
+                end
             else
               flash[:notice] = "Welcome #{current_user.email} !"
+              return
             end
         else
             flash[:notice] = "You  are viewing list of anonymous user "
+            return
         end
     else     #if user not login
       if @list.user_id.present?   # if list  have user_id < Private list
-        flash[:alert] = "You not have permission to view this list !"
-        redirect_to root_path
+        flash[:alert] = "You have no permission to view this list !"
+        return
       else                         # if list not have user_id < Public list
         flash[:notice] = "You  are viewing list of anonymous user !"
+        return
       end
+    end
+    else
+      flash[:notice] = "List not exists or deleted !"
+      redirect_to root_path
     end
   end
 
   def edit
+    if User.list_create(current_user.id,params[:id])    
+    @permission = true
     @list = List.find(params[:id])
-    if @list.update_attributes(params[:list])
-      @success = 1
-    else
-      @success = 0
+      if @list.update_attributes(params[:list])
+        @success = 1
+      else
+        @success = 0
+      end        
+    else    
+      flash[:alert] = "You have no permission to edit this list"
+      @permission = false
     end
-    respond_to do |format|
-      format.json { render :json => {:success => @success, :list => @list}}
-    end
+      respond_to do |format|
+      format.json { render :json => {:success => @success, :list => @list , :permission => @permission}}   
+      end
   end
   
   def destroy
@@ -116,35 +125,30 @@ class ListsController < ApplicationController
   
   def mylist
     @user = current_user
-    @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])    
+    @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])
+    @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ?", @user.id])
+    list_ids = []
+    if @list_team_members
+      @list_team_members.each do |member|
+        list_ids += [member.list_id]
+      end
+      if !list_ids.empty?
+        @friend_lists = List.where('id IN (?)',list_ids)
+      end
+    end 
     response do |format|
       format.html
     end
   end
 
- def myconnection
-   @user = current_user
-   @lists = List.find(:all , :conditions => ["user_id = ?" ,@user.id])
-   if @user.lists.present?
-   @user_connect = @user.list_team_members.find(:all, :conditions => [''])
-   end
- end
-
  def invite_user
    @list = List.find(params[:list_id])
    @user_email = params[:user_email]
-   @user_name = params[:name]
-   logger = Logger.new('log/list_invite_user.log')
-   logger.info("----List for invite-----")
-   logger.info(@list)
-   logger.info(@user_name)
-   logger.info(@user_email)
-   User.invite!(:email => @user_email , :name => @user_name)
+   @user_name = params[:name] 
+   User.invite!({:email => @user_email}, current_user)
    user = User.find(:first, :conditions => ['email = ?', @user_email])
-   #if !user.blank?
      list_team_member = ListTeamMember.new({:user_id => user.id, :list_id => @list.id, :active => false, :invitation_token =>	user.invitation_token})
      list_team_member.save
-   #end
    render :json => {:success => true}
  end
  

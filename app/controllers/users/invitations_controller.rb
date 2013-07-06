@@ -1,6 +1,9 @@
 class Users::InvitationsController < Devise::InvitationsController
 
-
+  def new
+    build_resource
+    render :new
+  end
   # POST /resource/invitation
   def create
     self.resource = resource_class.invite!(resource_params, current_inviter)
@@ -16,7 +19,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # GET /resource/invitation/accept?invitation_token=abcdef
-  def edit
+  def edit    
     role = Role.find(:first, :conditions => ["name = ?", "free"])
     resource.add_role(role.name)
     resource.invitation_limit = role.max_connections
@@ -25,18 +28,13 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # PUT /resource/invitation
   def update
-    logger = Logger.new('log/invite_token.log')
-    logger.info('--------Log for update invitation-------')
-    logger.info(params[:user][:invitation_token])
-
-    @user = User.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
-    #if !@user.blank?
-      list_team_member = ListTeamMember.find(:first, :conditions => ['user_id = ? AND invitation_token = ?', @user.id, @user.invitation_token])
+  #  @user = User.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
+    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
+    if list_team_member
       list_team_member.active = true
       list_team_member.save
-
-    #end
-    super
+    end
+      super
   end
 
   # GET /resource/invitation/remove?invitation_token=abcdef
@@ -64,5 +62,18 @@ class Users::InvitationsController < Devise::InvitationsController
       set_flash_message(:alert, :invitation_token_invalid)
       redirect_to after_sign_out_path_for(resource_name)
     end
+  end
+#  def after_accept_path_for(resource)
+#    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
+#    if list_team_member
+#      @list = List.find(list_team_member.list_id)
+#      redirect_to list_path(@list)
+#    else
+#      redirect_to my_list_path
+#    end    
+#  end  
+  private
+  def user_params
+    params.require(:user).permit(:invitation_token, :password, :password_confirmation)
   end
 end

@@ -1,0 +1,26 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<hr/>
+<h3>Results</h3>
+<ul class="unstyled">
+  <% @users.each do |user| %>
+  <li>
+    <span class="span12">
+    <span class="name span4">
+      <%= user.name %>
+    </span>
+    <span class="email span4">
+      <%= user.email %>
+    </span>
+    <span class ="span4">
+        <%= form_tag invite_user_path(@list_id),:class => "invite-user", :remote => true do %>
+        <%= hidden_field_tag :user_id, user.id %>
+        <%= submit_tag "Invite", :class => "btn btn-success" %>
+      <% end %>
+    </span>
+    </span>
+  </li>
+  <% end %>
+</ul>
