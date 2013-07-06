@@ -26,8 +26,8 @@
                 <input type="checkbox"><%= link_to list.name, list %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>
               </label>
               <% end %>
-              <hr/>
-              <% if @friend_lists.length > 0 %>
+              <hr/>			  
+              <% if @friend_lists %>
               <h3>Invitation list</h3>
               <% @friend_lists.each do |list| %>
               <label class="checkbox">

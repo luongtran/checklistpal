@@ -133,7 +133,7 @@ class ListsController < ApplicationController
         list_ids += [member.list_id]
       end
       if !list_ids.empty?
-        @friend_lists = List.where('id IN (?)',list_ids)
+        @friend_lists = List.where('id IN (?)',list_ids)	  	
       end
     end 
     response do |format|
