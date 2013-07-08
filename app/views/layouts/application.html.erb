@@ -57,13 +57,13 @@
           </div>
         </div>
         <div class="pull-right">
-          <div id="accountpanel">
+          <div id="accountpanel" >
             <div class="clearfix">
               <span class="inline">
-                <%= link_to "My Account" ,edit_registration_path(current_user)%>
+                <%= link_to "My Account" ,edit_registration_path(current_user),:style =>"color:white !important;"%>
               </span> 
               <span class="inline">&nbsp;&nbsp;
-                <%= link_to "Logout" ,destroy_user_session_path%>
+                <%= link_to "Logout" ,destroy_user_session_path,:style =>"color:white !important;" %>
               </span>
             </div>
           </div>
