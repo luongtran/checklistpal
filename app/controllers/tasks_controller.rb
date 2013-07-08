@@ -100,6 +100,10 @@ class TasksController < ApplicationController
     end
     respond_with @list , @task , @success
   end
+  
+  def show
+    @task = @list.tasks.find(params[:id])
+  end
 
   private
   def find_list

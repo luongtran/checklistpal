@@ -114,9 +114,6 @@ class HomeController < ApplicationController
         if(!ListTeamMember.is_existed_in_connection(current_user.id, params[:list_id], @user.id))
           logger = Logger.new('log/invite_id.log')
           logger.info(User.number_connect(current_user))
-#          if User.number_connect(current_user) < current_user.roles.max_connections
-#            
-#          end
           @user.skip_stripe_update = true
           @user.invite!(current_user)
 #          User.invite!({:email => @user.email},current_user)

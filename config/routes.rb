@@ -32,6 +32,7 @@ Checklistpal::Application.routes.draw do
   match '/invite/:list_id' => 'home#invite' ,:as => :invite
   match 'invite/(:list_id)/user' => "home#invite_user_by_id", :as => :invite_user
   match 'task/:task_id/comment/create' => "comments#create" , :as => :add_comment
+  match '/lists/:list_id/task/:id/show' => "tasks#show" , :as => :view_task
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
