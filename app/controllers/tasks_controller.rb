@@ -13,10 +13,6 @@ class TasksController < ApplicationController
     else
       flash[:error] = "It just didn't happen for you"
     end
-#    respond_to do |format|
-#      format.html
-#    end
-    #respond_with @list
     render :partial => 'lists/items'
   end
   
@@ -57,9 +53,6 @@ class TasksController < ApplicationController
 
   def update_due_date
     @task = @list.tasks.find(params[:id])
-    logger = Logger.new('log/update-due-date.log')
-    logger.info('Update due date')
-    logger.info(params[:due_date_value])
     if @task != nil?
       @task.update_attributes({:due_date => params[:due_date_value]})
       @success = 1
@@ -82,7 +75,7 @@ class TasksController < ApplicationController
     @task_id = @task.id
     if @task.user_id.present?
       if current_user.id != @task.user_id
-          if current_user.id = @list.user_id
+          if current_user.id == @list.user_id
               if @task.destroy
                 @success = 1
               else

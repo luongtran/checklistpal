@@ -19,21 +19,21 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # GET /resource/invitation/accept?invitation_token=abcdef
-  def edit    
-    role = Role.find(:first, :conditions => ["name = ?", "free"])
-    resource.add_role(role.name)
-    resource.invitation_limit = role.max_connections
-    render :edit
+  def edit
+    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:invitation_token]])
+    if list_team_member
+    list_team_member.update_attributes(:active => true)     
+    @user = User.find(:first, :conditions => ["id = ?",list_team_member.invited_id])
+      if @user.sign_in_count > 0
+        @user.accept_invitation!    
+        sign_in @user, :bypass => true
+      else
+        render :edit
+      end
+    end
   end
-
   # PUT /resource/invitation
   def update
-  #  @user = User.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
-    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
-    if list_team_member
-      list_team_member.active = true
-      list_team_member.save
-    end
       super
   end
 

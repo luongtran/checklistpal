@@ -48,7 +48,7 @@ $(function() {
                         $('.edit_list_frm').parent(".list-name").html(list_cur_name);
                     }
                 }, error: function() {
-                    alert("Errroooooorrrrrrr");
+                    alert("Error");
                 }
             });
             return false;
@@ -169,14 +169,6 @@ $(function() {
                                 $(this).parent().trigger('submit.rails');
                             }
                         });
-                        $('.add_comment_bt').on('click', function() {
-                            var url = $(this).parent().attr("action");
-                            $.post(
-                                    url,
-                                    $(this).serialize(),
-                                    function(response) {
-                                    });
-                        });
                     });
                 }
         );
@@ -285,13 +277,5 @@ $(function() {
             $(this).change();
             $(this).parent().trigger('submit.rails');
         }
-    });
-    $('.add_comment_bt').on('click', function() {
-        var url = $(this).parent().attr("action");
-        $.post(
-                url,
-                $(this).serialize(),
-                function(response) {
-                });
     });
 });

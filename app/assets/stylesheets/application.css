@@ -30,7 +30,7 @@
 
 .comment-add {
     float:right;
-    display:none;
+    display:none;    
 }
 
 .small-text {
@@ -55,4 +55,22 @@ form.edit_list_frm input[type="text"]{
 form.edit_list_frm input.btn{
     display: inline;
     width: 80px;
+}
+.comment-show{
+    height:auto !important;
+}
+.accordion-body{
+    background-color:#eeeeee;
+}
+.path_top_login{
+    background-color:#106FB1;
+}
+.container{
+    /*margin-top:40px;*/
+}
+#accountpanel{
+    margin-right:200px;
+}
+#white-logo{
+    margin-left:200px;
 }

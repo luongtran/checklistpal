@@ -43,9 +43,8 @@ class HomeController < ApplicationController
     @list_id = params[:list_id]
     @list = List.find(@list_id)
     @list_team_members = current_user.list_team_members.find(:all , :conditions =>["list_id = ? AND active = ?", @list_id , true])    
-    logger = Logger.new('log/my_con.log')
-    logger.info('-----------My connect - user = ? ---------'+current_user.email)
-    logger.info(@my_connects)
+    logger = Logger.new('log/member.log')
+    logger.info(@list_team_members)
     user_ids = []
     if @list_team_members
       @list_team_members.each do |member|
@@ -113,8 +112,14 @@ class HomeController < ApplicationController
       @message = ""
       if @user
         if(!ListTeamMember.is_existed_in_connection(current_user.id, params[:list_id], @user.id))
+          logger = Logger.new('log/invite_id.log')
+          logger.info(User.number_connect(current_user))
+#          if User.number_connect(current_user) < current_user.roles.max_connections
+#            
+#          end
           @user.skip_stripe_update = true
           @user.invite!(current_user)
+#          User.invite!({:email => @user.email},current_user)
           if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
             @success = true
             @message = "You already sent successfully an invitation email to #{@user.email}"
@@ -132,7 +137,4 @@ class HomeController < ApplicationController
     end
   end
   
-  def friend_list
-    @friend_list = ListTeamMember.find(:all,:conditions =>["invited_id = ? ", current_user.id])
-  end
 end

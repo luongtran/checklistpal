@@ -10,22 +10,20 @@
   body * {
     visibility:hidden;
   }
-  .todolist, .todolist * ,.pull-left ,.pull-left * {
+  .todolist, .todolist * ,.list-name{
     visibility:visible;
   }
-  .logo {
+  #logo{
     position:absolute;
-    left: 20px;
-    top: 10px;  
-  }
-  .footer {
-    position:absolute;
-    left: 20px;
-    top: 30px;
+    left:40px;
+    top:10px;   
   }
   .todolist {
     position:absolute;
     left:40px;
-    top:200px;
+    top:30px;
+  }
+  .comment-togger {
+     visibility:hidden; 
   }
 }

@@ -176,6 +176,10 @@ class User < ActiveRecord::Base
     user
   end
   
+  def self.number_connect(resource)
+    return resource.list_team_members.find(:all , :conditions => ["active = ? ",true]).count
+  end
+  
   def to_s
     email
   end

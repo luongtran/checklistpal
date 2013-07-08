@@ -2,15 +2,15 @@
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
 <div class="section clearfix">
-            <div class="pull-right">
-              <div id="quickmenu">
-                <div class="clearfix"><a href="#" class="pull-left">+ New</a><a href="#" class="pull-left">SAVE</a><a href="#" class="pull-left">PRINT</a></div>
-              </div>
-            </div>
-            <div class="pull-left">
-              <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span><a href="#" class="logo-editbt">(edit)</a></div>
-            </div>
-          </div>
+  <div class="pull-right">
+    <div id="quickmenu">
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="javascript:;"  class="bookmark pull-left">BOOKMARK</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %></div>
+    </div>
+  </div>
+  <div class="pull-left">
+    <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span><a href="#" class="logo-editbt">(edit)</a></div>
+  </div>
+</div>
 <div class="section clearfix">
   <div id="signupfree">
     <div class="clearfix">
@@ -24,7 +24,7 @@
                 <%= hidden_field_tag 'plan', params[:plan] %>
                 <%= f.error_notification %>
                 <% if resource.errors.full_messages.present? %>
-                <%= resource.errors.full_messages %>
+                  <%= resource.errors.full_messages %>
                 <% end %>
                 <div class="controls">
                   <%= f.email_field :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
@@ -44,56 +44,86 @@
                   <% else %>
                     <div class="field">
                       <%= number_field_tag :card_number, nil, name: nil , :placeholder =>"Credit Card Number" , class: "span5" %>
+                      </div>
+                      <div class="field">
+                        <%= number_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
+                        </div>
+                        <div class="field">
+                          <%= label_tag :card_month, "Card Expiration" %>
+                          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "span5"}%>
+                            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year" ,class: "span4"}%>
+                            </div>
+                            <div class="field">
+                              <%= f.text_field :coupon, :placeholder => 'Promotional Coupon (if any)', :class => "span9" %>
+                            </div>
+                          <% end %> <%# End if stripe_token present ! %>
+                          <%= f.hidden_field :stripe_token %>
+                        <% end %> <%# end if paid user register %>
+                        <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+                      <% end %> <%# End simple form %>
                     </div>
-                    <div class="field">
-                      <%= number_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
+                  </div>
+                </div>
+              </div>
+              <div class="divine50">
+                <div class="signoption">
+                  <% if @user.roles.first.name == "free" %>
+                    <div class="signinpanel">
+                      <h3 class="text-center">Log In</h3>
+                      <div class="social-account">
+                        <p class="text-center">Sign in with Your Facebook Account</p>
+                        <p class="text-center"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) ,:class => "btn btn-primary facebookbt"%></p>
+                      </div>
+                      <hr class="divider">
+                      <div class="panel">
+                        <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'row-fluid' }) do |f| %>
+                          <div class="controls">
+                            <% label_tag :email ,"Email" %>
+                            <%= f.email_field :email, :placeholder => "Email address", :class => "input-block-level" , :autofocus => true %>
+                          </div>
+                          <div class="controls controls-row">
+                            <%= f.password_field :password , :placeholder => "Password", :class => "span7" %>
+                            <span class="span5"><%= link_to "Forgot password?", new_password_path(resource_name), :class => "forgotpass" %></span>
+                          </div>
+                          <div class="controls">
+                            <input type="submit" value="Sign in" class="btn btn-primary">
+                          </div>
+                        <% end %>
+                      </div>
                     </div>
-                    <div class="field">
-                      <%= label_tag :card_month, "Card Expiration" %>
-                      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "span5"}%>
-                      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year" ,class: "span4"}%>
-                    </div>
-                    <div class="field">
-                      <%= f.text_field :coupon, :placeholder => 'Promotional Coupon (if any)', :class => "span9" %>
-                    </div>
-                  <% end %> <%# End if stripe_token present ! %>
-                  <%= f.hidden_field :stripe_token %>
-                <% end %> <%# end if paid user register %>
-                <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-              <% end %> <%# End simple form %>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="divine50">
-        <div class="signoption">
-          <% if @user.roles.first.name == "free" %>
-          <div class="signinpanel">
-            <h3 class="text-center">Log In</h3>
-            <div class="social-account">
-              <p class="text-center">Sign in with Your Facebook Account</p>
-              <p class="text-center"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) ,:class => "btn btn-primary facebookbt"%></p>
-            </div>
-            <hr class="divider">
-            <div class="panel">
-                <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'row-fluid' }) do |f| %>
-                <div class="controls">
-                  <% label_tag :email ,"Email" %>
-                  <%= f.email_field :email, :placeholder => "Email address", :class => "input-block-level" , :autofocus => true %>
-                </div>
-                <div class="controls controls-row">
-                  <%= f.password_field :password , :placeholder => "Password", :class => "span7" %>
-                  <span class="span5"><%= link_to "Forgot password?", new_password_path(resource_name), :class => "forgotpass" %></span>
-                </div>
-                <div class="controls">
-                  <input type="submit" value="Sign in" class="btn btn-primary">
-                </div>
-                <% end %>
-            </div>
+<!-- Modal save form -->
+        <div class="modal hide fade" id="saveform">
+          <div class="modal-body text-center">
+            <h4 class="text-success">Please Login or Signup </p><p class="text-success"> to save your list or share it with your friends</h4>
           </div>
-          <% end %>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <script>
+          $("a.bookmark").click(function(e){
+            e.preventDefault(); // this will prevent the anchor tag from going the user off to the link
+            var bookmarkUrl = this.href;
+            var bookmarkTitle = this.title;
+            if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) { 
+                    alert("This function is not available in Google Chrome. Click the star symbol at the end of the address-bar or hit Ctrl-D (Command+D for Macs) to create a bookmark.");      
+            }else if (window.sidebar) { // For Mozilla Firefox Bookmark
+                window.sidebar.addPanel(bookmarkTitle, bookmarkUrl,"");
+            } else if( window.external || document.all) { // For IE Favorite
+                window.external.AddFavorite( bookmarkUrl, bookmarkTitle);          
+            } else if(window.opera) { // For Opera Browsers
+                $("a.bookmark").attr("href",bookmarkUrl);
+                $("a.bookmark").attr("title",bookmarkTitle);
+                $("a.bookmark").attr("rel","sidebar");
+            } else { // for other browsers which does not support
+                 alert('Your browser does not support this bookmark action');
+                 return false;
+            }
+          });
+        </script>

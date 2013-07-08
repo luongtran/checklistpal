@@ -71,7 +71,7 @@ class ListsController < ApplicationController
     else     #if user not login
       if @list.user_id.present?   # if list  have user_id < Private list
         flash[:alert] = "You have no permission to view this list !"
-        return
+        redirect_to root_path
       else                         # if list not have user_id < Public list
         flash[:notice] = "You  are viewing list of anonymous user !"
         return
@@ -126,7 +126,7 @@ class ListsController < ApplicationController
   def mylist
     @user = current_user
     @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])
-    @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ?", @user.id])
+    @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ? AND active = ?", @user.id , true])
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|
@@ -140,37 +140,4 @@ class ListsController < ApplicationController
       format.html
     end
   end
-
- def invite_user
-   @list = List.find(params[:list_id])
-   @user_email = params[:user_email]
-   @user_name = params[:name] 
-   User.invite!({:email => @user_email}, current_user)
-   user = User.find(:first, :conditions => ['email = ?', @user_email])
-     list_team_member = ListTeamMember.new({:user_id => user.id, :list_id => @list.id, :active => false, :invitation_token =>	user.invitation_token})
-     list_team_member.save
-   render :json => {:success => true}
- end
- 
- def who_connection
-   @list = List.find(params[:id])
-   @list_team_members = @list.list_team_members.find(:all, :conditions => ["list_id = ? " , @list.id])
-   user_ids = []
-   logger = Logger.new('log/who_connect.log')
-   logger.info(@list_team_members)
-   @list_team_members.each do |member|
-     user_ids += [member.user_id]
-   end
-   if !user_ids.empty?
-     @users = User.where('id IN (?)',user_ids)
-     @success = 1
-   else
-     @success = 0
-   end  
-   response do |format|
-      format.html
-      format.json { render :json => {:success => @success, :users => @users}}
-    end
- end
-
 end
