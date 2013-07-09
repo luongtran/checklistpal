@@ -23,7 +23,9 @@
     left:40px;
     top:30px;
   }
-  .comment-togger {
-     visibility:hidden; 
+
+  a:link:after { content: ""; }
+  .comment-togger.show-comment{
+    visibility:hidden; 
   }
 }

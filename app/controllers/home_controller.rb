@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user! , :only => [:find_invite , :invite ]
+  before_filter :authenticate_user! , :only => [:find_invite , :invite ,:invite_user_by_id ,:search_my_connect]
   def index
     if !current_user
       @list = List.create({
-            :name => "Checklist pal",
+            :name => "Name of List",
             :description => "To do list"            
           })
       if @list.save
@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       num_list = !@user.lists.blank? ? @user.lists.count : 0
       if num_list < Role.find(current_user.roles.first.id).max_savedlist
         @list = List.create({
-            :name => "Checklist pal",
+            :name => "Name of List",
             :description => "To do list",
             :user_id => @user.id
           })
@@ -54,6 +54,33 @@ class HomeController < ApplicationController
         @my_connects = User.where('id IN (?)',user_ids)
       end
     end    
+  end
+
+  def search_my_connect
+    if !User.list_create(current_user.id,params[:list_id])
+      redirect_to my_list_path
+     end
+    @list_id = params[:list_id]
+    @list = List.find(@list_id)
+    @user_email = params[:user_email_find]
+    @list_team_members = current_user.list_team_members.find(:all , :conditions =>["list_id = ? AND active = ?", @list_id , true])
+    user_ids = []
+    if @list_team_members
+      @list_team_members.each do |member|
+        user_ids += [member.invited_id]
+      end
+      if !user_ids.empty?
+        @my_connects = User.where('id IN (?) AND email like ?',user_ids, @user_email)
+        if @my_connects.length > 0
+          @success = true
+        else
+          @success = false
+        end
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
   end
   
   def invite

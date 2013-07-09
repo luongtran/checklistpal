@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Tudli</title>
+    
     <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
     <%= stylesheet_link_tag    "bootstrap-responsive.min", :media => "all" %>
     <%= stylesheet_link_tag    "combine", :media => "all" %>
@@ -60,7 +61,7 @@
           <div id="accountpanel" >
             <div class="clearfix">
               <span class="inline">
-                <%= link_to "My Account" ,edit_registration_path(current_user),:style =>"color:white !important;"%>
+                <%= link_to "My Account" ,my_account_path,:style =>"color:white !important;"%>
               </span> 
               <span class="inline">&nbsp;&nbsp;
                 <%= link_to "Logout" ,destroy_user_session_path,:style =>"color:white !important;" %>
@@ -83,8 +84,8 @@
           <div class="pull-left">© Checklistpal.com</div>
           <div class="pull-right">
             <ul class="unstyled footermenu">
-              <li><a href="#">SUPPORT</a></li>
-              <li><a href="#">About</a></li>
+              <li><a href="#supportform" data-toggle="modal">SUPPORT</a></li>
+              <li><a href="#aboutform" data-toggle="modal">About</a></li>
             </ul>
           </div>
         </div>
@@ -101,6 +102,24 @@
       </div>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    <!-- Modal support form -->
+    <div class="modal hide fade" id="supportform">
+      <div class="modal-body text-center">
+        <p class="text-success">If you have some question . please send we an email to : support@tudli.com or call : 0888.888.888 </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-small btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    <!-- Modal about form -->
+    <div class="modal hide fade" id="aboutform">
+      <div class="modal-body text-center">
+        <p class="text-success">About us .......</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-small btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
   </body>

@@ -16,10 +16,12 @@
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
-            <div class="searchmini clearfix">
-              <input type="text" class="textinput input-medium">
+            <%#div class="searchmini clearfix"%>
+              <%= form_tag search_my_list_path ,:class => "searchmini clearfix",:remote => true do %>
+              <%= text_field_tag 'list_name',nil, class: "textinput input-medium" ,placeholder:"Search ...." ,:required => true %>
               <input type="submit" value="" class="submitbt">
-            </div>
+              <% end %>
+            <!-- </div> -->
             <div class="panel">
               <h3>Created list</h3>
               <% @lists.each do |list| %>

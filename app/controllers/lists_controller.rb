@@ -140,4 +140,17 @@ class ListsController < ApplicationController
       format.html
     end
   end
+  def search_my_list
+    @user = current_user
+    @list_name = params[:list_name]
+    @lists = List.find(:all, :conditions => ["user_id = ? AND name like ?" ,@user.id,"%#{@list_name}%"])
+    if @lists.length > 0
+      @success = true
+    else
+      @success = false
+    end
+    response do |format|
+      format.js
+    end
+  end
 end

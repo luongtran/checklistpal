@@ -6,7 +6,7 @@
 <% if @list.tasks.length %>
   <% @list.tasks.items.each do |task| 
     index = 0 %>
-<div class="task-items">
+    <div class="taskinfo">
     <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
       <div id="delete_error" class="text-error hide">You have no permission to delete this task</div>
       <div class="items">
@@ -24,6 +24,12 @@
             <% end %>
           </span>
         </div>
+        <% if current_user %>
+          <span class="comment-togger">
+            <buton class="show-comment btn btn-mini"><i class="icon-plus icon-white "></i>&nbsp;Comment</buton>
+          </span>
+        <% end %>
+        
         <span class="taskduedate">
           <span>Due date</span>
           <span class="sp-duedate">
@@ -32,18 +38,16 @@
             <% end %>
           </span>
         </span>
-        <% if current_user %>
-          <span class="comment-togger">
-            <buton class="show-comment btn btn-mini btn-success"><i class="icon-comment icon-white "></i>&nbsp;Comment</buton>
-          </span>
-          <span class="comment-add">
-            <%= render :partial => "comments/comment_task", :locals => {:task => task} %>
-          </span> 
-        <% end %>
         <span class="action">
           <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>&nbsp;&nbsp;&nbsp;&nbsp
           <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline", :remote => true %>
         </span>
+        
+        <% if current_user %>          
+          <span class="comment-add">
+            <%= render :partial => "comments/comment_task", :locals => {:task => task} %>
+          </span> 
+        <% end %>
       </div>
     </li>
     </div>

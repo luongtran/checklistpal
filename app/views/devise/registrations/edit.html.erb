@@ -70,7 +70,37 @@
                 <% end %>
                   </div>
                   <div class="modal-body">
-                    <%= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin'}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+                      <div class="clearfix">
+                        <div class="divine50">
+                          <div class="signoption text-center">
+                            <h3><strong>Free</strong> account</h3>
+                            <hr class="divider">
+                            <ul class="unstyled">
+                              <li>Create unlimited lists</li>
+                              <li>(3) Saved lists</li>
+                              <li>(2) Connections</li>
+                              <li>Comment on your lists</li>
+                              <li>Print your lists</li>
+                              <li>Share your lists</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="divine50">
+                          <div class="signoption text-center">
+                            <h3><strong>$4.95 /month</strong> account</h3>
+                            <hr class="divider">
+                            <ul class="unstyled">
+                              <li>Create unlimited lists</li>
+                              <li><u><strong>Unlimited</strong></u> saved lists</li>
+                              <li><u><strong>Unlimited</strong></u> connections</li>
+                              <li>Comment on your list</li>
+                              <li>Print your lists</li>
+                              <li>Share your lists</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <%= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin'}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
                   </div>
                   <div class="modal-footer">
                     <%= f.submit "Change Plan", :class => "btn btn-primary" %>

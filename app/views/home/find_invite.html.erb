@@ -47,10 +47,11 @@
           <div class="myconnection pull-right">
             <h3 class="title-gray">My connections</h3>
             <div class="space"></div>
-            <div class="searchmini clearfix">
-              <input type="text" class="textinput input-medium">
+            <%= form_tag search_my_connect_path ,:class => "searchmini clearfix",:remote => true do %>
+            <%= hidden_field_tag :list_id , @list.id %>
+              <%= text_field_tag 'user_email_find',nil, class: "textinput input-medium" ,placeholder:"Search ...." ,:required => true %>
               <input type="submit" value="" class="submitbt">
-            </div>
+              <% end %>
             <div class="panel">
               <% if !@my_connects.blank? %>
                 <% @my_connects.each do |connect| %>

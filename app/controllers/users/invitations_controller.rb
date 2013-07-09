@@ -26,7 +26,8 @@ class Users::InvitationsController < Devise::InvitationsController
     @user = User.find(:first, :conditions => ["id = ?",list_team_member.invited_id])
       if @user.sign_in_count > 0
         @user.accept_invitation!    
-        sign_in @user, :bypass => true
+        sign_in :user, @user
+        redirect_to my_list_path
       else
         render :edit
       end
