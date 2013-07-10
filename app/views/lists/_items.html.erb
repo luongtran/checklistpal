@@ -23,26 +23,23 @@
               <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to task.description , view_task_path(@list.id,task.id) %></div>
             <% end %>
           </span>
+          <% if task.comments.count > 0 %>
+          <span class="number_comment">(<%= task.comments.count %> Comments)</span>
+          <% end %>
+          <% if task.hasduedate %>
+          <span class="due_date_show">
+            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
+          </span>
+          <% end %>
         </div>
-        <% if current_user %>
-          <span class="comment-togger">
-            <buton class="show-comment btn btn-mini"><i class="icon-plus icon-white "></i>&nbsp;Comment</buton>
-          </span>
-        <% end %>
-        
-        <span class="taskduedate">
-          <span>Due date</span>
-          <span class="sp-duedate">
-            <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
-              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-dd-mm" class="datepicker inputdate" id="due_date_<%= task.id %>">
-            <% end %>
-          </span>
-        </span>
         <span class="action">
+          <a href="javascript:;" class="show_comment_bt">Comment</a>
+            <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
+              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="dd-mm-yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>">
+            <% end %>
           <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>&nbsp;&nbsp;&nbsp;&nbsp
           <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline", :remote => true %>
         </span>
-        
         <% if current_user %>          
           <span class="comment-add">
             <%= render :partial => "comments/comment_task", :locals => {:task => task} %>

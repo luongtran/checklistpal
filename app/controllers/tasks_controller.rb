@@ -54,10 +54,9 @@ class TasksController < ApplicationController
   def update_due_date
     @task = @list.tasks.find(params[:id])
     if @task != nil?
-      @task.update_attributes({:due_date => params[:due_date_value]})
+      @task.update_attributes({:hasduedate => true,:due_date => params[:due_date_value]})
       @success = 1
-    else
-      flash[:notice] = "can't update due_date"
+    else      
       @suceess = 0
     end
     respond_with @task,@success

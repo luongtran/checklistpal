@@ -25,7 +25,6 @@
 }
 .action {
     float:right;
-    display:none;
 }
 
 .comment-add {
@@ -35,9 +34,6 @@
 
 .small-text {
     height:18px;
-}
-.inputdate{
-    display:none ;
 }
 .item-completed {
     text-decoration: line-through; 

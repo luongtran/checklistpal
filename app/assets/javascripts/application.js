@@ -125,25 +125,10 @@ $(function() {
                             });
                         });
 
-
-                        $('.items').on("mouseenter", function() {
-                            $(this).children(".action").show();
-                        }).on("mouseleave", function() {
-                            $(this).children(".action").hide();
-                        });
-                        $('.show-comment').on("click", function() {
+                        $('.show_comment_bt').on("click", function() {
                             $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
                         });
-
-                        $('#bt-invite-user').click(function() {
-                            $('#frm_invite_user').show();
-                            $(this).hide();
-                        });
-
-                        $('#bt-cancel-invite').click(function() {
-                            $('#frm_invite_user').hide();
-                            $('#bt-invite-user').show();
-                        });
+                        
                         $(".task-hasduedate").bind('change', function() {
                             var list_id = $(this).attr('data_target');
                             url = null;
@@ -233,26 +218,10 @@ $(function() {
         });
     });
 
-
-    $('.items').on("mouseenter", function() {
-        $(this).children(".action").show();
-    }).on("mouseleave", function() {
-        $(this).children(".action").hide();
-    });
-
-    $('.show-comment').on("click", function() {
+    $('.show_comment_bt').on("click", function() {
         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
     });
 
-    $('#bt-invite-user').click(function() {
-        $('#frm_invite_user').show();
-        $(this).hide();
-    });
-
-    $('#bt-cancel-invite').click(function() {
-        $('#frm_invite_user').hide();
-        $('#bt-invite-user').show();
-    });
     $(".task-hasduedate").bind('change', function() {
         var list_id = $(this).attr('data_target');
         url = null;
