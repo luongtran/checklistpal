@@ -11,7 +11,11 @@
     <%= stylesheet_link_tag    "fontkit/awesome/css/font-awesome.min", :media => "all" %>
     <%= stylesheet_link_tag    "jquery-ui-1.10.3.custom.min", :media => "all" %>
     <%= stylesheet_link_tag    "addonfix", :media => "all" %>
+    <% if current_user %>
     <%= stylesheet_link_tag    "print" , :media => "print" %>
+    <% else %>
+    <%= stylesheet_link_tag    "print_nologin" , :media => "print" %>
+    <% end %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js", "rails" %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>

@@ -6,6 +6,7 @@ assets\:precompile=Compile all the assets named in config.assets.precompile
 assets\:precompile\:all=
 assets\:precompile\:nondigest=
 assets\:precompile\:primary=
+bourbon\:install[sass_path]=Move files to the Rails assets directory.
 db\:_dump=
 db\:abort_if_pending_migrations=
 db\:charset=

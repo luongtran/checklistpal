@@ -1,0 +1,21 @@
+/* 
+    Document   : print
+    Created on : Jul 4, 2013, 9:13:17 AM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  .webpage-inner , .webpage-inner * {
+    visibility:visible;
+  }
+
+  a:link:after { content: ""; }
+  .comment-togger.show-comment{
+    visibility:hidden; 
+  }
+}
