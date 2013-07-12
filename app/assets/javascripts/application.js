@@ -59,6 +59,13 @@ $(function() {
 
     });
     $("form#new_task").submit(function() {
+        var task_description = $("form#new_task").find('input[type="text"]').val();
+        if (task_description == null || task_description == ""){
+            //alert('required');
+            $('#error-message').text("Task Name is required").fadeIn(300).delay(1000).fadeOut(300);
+            return false;
+        }
+        
         var url = $(this).attr("action");
         $.post(
                 url,

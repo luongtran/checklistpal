@@ -18,7 +18,7 @@
           </span>
           <span class="task-des">
             <% if !task.completed %> <!-- Render task incompleted -->
-              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to task.description , view_task_path(@list.id,task.id) %></div>
+              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to truncate(task.description,:length => 50) , view_task_path(@list.id,task.id) %></div>
             <% else %>                <!-- Render task completed -->
               <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to task.description , view_task_path(@list.id,task.id) %></div>
             <% end %>
@@ -35,7 +35,7 @@
         <span class="action">
           <a href="javascript:;" class="show_comment_bt">Comment</a>
             <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
-              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="dd-mm-yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>">
+              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="dd-mm-yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>" placeholder="Due date">
             <% end %>
           <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>
           <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline", :remote => true %>
