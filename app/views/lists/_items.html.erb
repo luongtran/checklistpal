@@ -37,7 +37,7 @@
             <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
               <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="dd-mm-yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>">
             <% end %>
-          <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>&nbsp;&nbsp;&nbsp;&nbsp
+          <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>
           <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline", :remote => true %>
         </span>
         <% if current_user %>          
