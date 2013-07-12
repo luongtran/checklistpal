@@ -13,8 +13,10 @@
 .taskinfo>.handle{padding:10px;-webkit-border-radius:5px;-webkit-background-clip:padding-box;-moz-border-radius:5px;-moz-background-clip:padding;border-radius:5px;background-clip:padding-box}
 .taskinfo form{margin-bottom:0}.taskinfo form input{margin-bottom:0}
 .taskinfo .taskduedate span{line-height:26px}
-.taskinfo .items{position:relative}.taskinfo .items .action{position:absolute;top:0;right:0}
-.taskinfo .items .checkbox{margin-bottom:10px}
+.taskinfo .items{position:relative;overflow:hidden}.taskinfo .items .action{position:absolute;top:0;right:0}
+.taskinfo .items .checkbox{margin-bottom:10px;float:left}.taskinfo .items .checkbox>span{display:inline-block;float:left;margin-right:10px}
+.taskinfo .items .action{position:inherit;top:auto;right:auto}.taskinfo .items .action>*{float:left;margin-left:10px}
+.taskinfo .items .action form input{height:11px;width:80px}
 .taskinfo .item-title form input{margin-right:5px}
 .taskinfo .item-title form input[type="text"]{height:16px}
 .taskinfo .item-title>a{float:left;margin-right:20px}
