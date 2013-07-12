@@ -85,9 +85,11 @@ $(function() {
 
                             if ($(this).is(':checked')) {
                                 $(this).parent().parent().parent('.checkbox').children().children('.item-title').addClass('item-completed');
+                                $(this).parent().parent().parent('.checkbox').children().children().children('.task_name').addClass('item-completed');
                             }
                             else {
                                 $(this).parent().parent().parent('.checkbox').children().children('.item-title').removeClass('item-completed');
+                                $(this).parent().parent().parent('.checkbox').children().children().children('.task_name').removeClass('item-completed');
                             }
 
                         });
@@ -177,9 +179,11 @@ $(function() {
 
         if ($(this).is(':checked')) {
             $(this).parent().parent().parent('.checkbox').children().children('.item-title').addClass('item-completed');
+            $(this).parent().parent().parent('.checkbox').children().children().children('.task_name').addClass('item-completed');
         }
         else {
             $(this).parent().parent().parent('.checkbox').children().children('.item-title').removeClass('item-completed');
+            $(this).parent().parent().parent('.checkbox').children().children().children('.task_name').removeClass('item-completed');
         }
 
     });

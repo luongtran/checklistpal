@@ -18,9 +18,9 @@
           </span>
           <span class="task-des">
             <% if !task.completed %> <!-- Render task incompleted -->
-              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to truncate(task.description,:length => 50) , view_task_path(@list.id,task.id) %></div>
+              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to truncate(task.description,:length => 50) , view_task_path(@list.id,task.id),:class => "task_name" %></div>
             <% else %>                <!-- Render task completed -->
-              <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to task.description , view_task_path(@list.id,task.id) %></div>
+              <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= link_to task.description , view_task_path(@list.id,task.id),:class => "task_name item-completed" %></div>
             <% end %>
           </span>
           <% if task.comments.count > 0 %>

@@ -61,7 +61,6 @@ class ListsController < ApplicationController
                 redirect_to my_list_path
                 end
             else
-              flash[:notice] = "Welcome #{current_user.email} !"
               return
             end
         else
