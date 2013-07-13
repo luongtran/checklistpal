@@ -2,18 +2,28 @@ class UserMailer < ActionMailer::Base
   default :from => "notifications@example.com"
   
   def expire_email(user)
-    mail(:to => user.email, :subject => "Subscription Cancelled")
+    @user = user
+    @template = EmailTemplate.find(:first , :condition => ["email_type = ?","Expire Email"])
+    mail(:to => user.email, :subject => @template.title)
   end
   def thanks_email(user)
-    mail(:to => user.email, :subject => "Thanks for subcribing !")
+    @user = user
+    @template = EmailTemplate.find(:first , :condition => ["email_type = ?","Thanks Email"])
+    mail(:to => @user.email, :subject => @template.title)
   end
   def delete_account(user)
-    mail(:to => user.email, :subject => "You account have been deleted")
+    @user = user
+    @template = EmailTemplate.find(:first , :condition => ["email_type = ?","Delete Account Email"])
+    mail(:to => @user.email, :subject => @template.title)
   end
   def upgraded(user)
-    mail(:to => user.email , :subject => "You account has been upgraded to PAID plan")
+    @user = user
+    @template = EmailTemplate.find(:first , :condition => ["email_type = ?","Upgraded Email"])
+    mail(:to => @user.email , :subject => @template.title)
   end
   def downgraded(user)
-    mail(:to => user.email , :subject => "You account has been downgraded to FREE plan")
+    @user = user
+    @template = EmailTemplate.find(:first , :condition => ["email_type = ?","Downgraded Email"])
+    mail(:to => @user.email , :subject => @template.title)    
   end
 end
