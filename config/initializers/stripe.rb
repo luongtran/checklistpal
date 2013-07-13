@@ -8,6 +8,8 @@ StripeEvent.setup do
   end
   subscribe 'customer.subscription.updated' do |event|
     user = User.find_by_customer_id(event.data.object.customer)
+    role = Role.find(:first , :conditions => ["name = ?",event.data.object.plan.id])
+    user.add_role(role.name)
     user.updated
   end
   subscribe 'customer.deleted' do |event|
