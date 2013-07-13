@@ -8,6 +8,7 @@ gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
+gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

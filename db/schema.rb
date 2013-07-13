@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712030401) do
+ActiveRecord::Schema.define(:version => 20130713092711) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -112,6 +112,17 @@ ActiveRecord::Schema.define(:version => 20130712030401) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id", :length => {"name"=>191, "resource_type"=>191, "resource_id"=>nil}
   add_index "roles", ["name"], :name => "index_roles_on_name", :length => {"name"=>191}
+
+  create_table "static_pages", :force => true do |t|
+    t.boolean  "active"
+    t.string   "title"
+    t.text     "content"
+    t.string   "page_name"
+    t.string   "updated_by"
+    t.string   "created_by"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.datetime "created_at", :null => false

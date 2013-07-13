@@ -88,8 +88,8 @@
           <div class="pull-left">© Checklistpal.com</div>
           <div class="pull-right">
             <ul class="unstyled footermenu">
-              <li><a href="#supportform" data-toggle="modal">SUPPORT</a></li>
-              <li><a href="#aboutform" data-toggle="modal">About</a></li>
+              <li><a href="<%= support_path %>" target="_blank">SUPPORT</a></li>
+              <li><a href="<%= about_path %>" target="_blank">About</a></li>
             </ul>
           </div>
         </div>
@@ -107,24 +107,6 @@
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
-    </div>
-    <!-- Modal support form -->
-    <div class="modal hide fade" id="supportform">
-      <div class="modal-body text-center">
-        <p class="text-success">If you have some question . please send we an email to : support@tudli.com or call : 0888.888.888 </p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
-      </div>
-    </div>
-    <!-- Modal about form -->
-    <div class="modal hide fade" id="aboutform">
-      <div class="modal-body text-center">
-        <p class="text-success">About us .......</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-small btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
-      </div>
-    </div>
+    </div>    
   </body>
 </html>

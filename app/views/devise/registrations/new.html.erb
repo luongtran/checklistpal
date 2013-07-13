@@ -4,11 +4,13 @@
 <div class="section clearfix">
   <div class="pull-right">
     <div id="quickmenu">
-      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="javascript:;"  class="bookmark pull-left">BOOKMARK</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %></div>
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+ New</a><a href="javascript:;"  class="bookmark pull-left">BOOKMARK</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %></div>
     </div>
   </div>
   <div class="pull-left">
-    <div id="logo"><img alt="checklistpal" src="../assets/logo.png"><span>&nbsp;checklist<span>pal</span></span><a href="#" class="logo-editbt">(edit)</a></div>
+    <div id="logo">
+      <%= image_tag "blue_logo.png"%>
+    </div>
   </div>
 </div>
 <div class="section clearfix">
@@ -72,7 +74,17 @@
                       <h3 class="text-center">Log In</h3>
                       <div class="social-account">
                         <p class="text-center">Sign in with Your Facebook Account</p>
-                        <p class="text-center"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) ,:class => "btn btn-primary facebookbt"%></p>
+                        <p class="text-center">
+                        
+                        
+                        
+                        <%= link_to user_omniauth_authorize_path(:facebook), :class=> "btn btn-primary facebookbt" do %>
+                          <%= content_tag(:i, "", :class => "icon-facebook") %>  Connect with Facebook
+                        <% end %>
+                        
+                        </p>
+                        
+                        
                       </div>
                       <hr class="divider">
                       <div class="panel">

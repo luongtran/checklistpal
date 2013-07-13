@@ -15,6 +15,14 @@ GIT
       rails (>= 3.0.0)
       sass (>= 3.1.0)
 
+GIT
+  remote: git://github.com/pshoukry/ckeditor.git
+  revision: 9090ff6ff04a494c1a48781031c47749a20a922d
+  specs:
+    ckeditor (4.0.0.rc2)
+      mime-types
+      orm_adapter
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -54,6 +62,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.2)
     attr_required (0.0.5)
+    bcrypt-ruby (3.1.1)
     bcrypt-ruby (3.1.1-x86-mingw32)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -108,6 +117,7 @@ GEM
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     excon (0.25.1)
     execjs (1.4.0)
@@ -130,6 +140,8 @@ GEM
       rails (>= 3, < 5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    gherkin (2.12.0)
+      multi_json (~> 1.3)
     gherkin (2.12.0-x86-mingw32)
       multi_json (~> 1.3)
     has_scope (0.5.1)
@@ -177,9 +189,12 @@ GEM
     multi_json (1.7.7)
     multi_test (0.0.1)
     multipart-post (1.2.0)
+    mysql2 (0.3.11)
     mysql2 (0.3.11-x86-mingw32)
     netrc (0.7.7)
     nifty-generators (0.4.6)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -304,6 +319,7 @@ DEPENDENCIES
   bootstrap-sass (>= 2.3.0.0)
   cancan (>= 1.6.9)
   capybara (>= 2.0.3)
+  ckeditor!
   coffee-rails (~> 3.2.1)
   cucumber-rails (>= 1.3.1)
   database_cleaner (>= 1.0.0.RC1)

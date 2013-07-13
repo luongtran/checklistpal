@@ -39,10 +39,12 @@ Checklistpal::Application.routes.draw do
   match '/lists/:list_id/task/:id/show' => "tasks#show" , :as => :view_task
   match '/mylist/search' => 'lists#search_my_list' , :as => :search_my_list
   match '/search_my_connect' => 'home#search_my_connect' , :as => :search_my_connect
+  match '/about' => 'static_pages#about'  , :as => :about
+  match '/support' => 'static_pages#support',:as => :support
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
     get 'my_account', :to => 'devise/registrations#edit' , :as => :my_account
   end
-  #resources :users
+  resources :users
 end

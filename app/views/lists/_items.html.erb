@@ -28,7 +28,7 @@
           <% else %>
           <span class="number_comment hidden" id="number_comment_<%= task.id %>">(<%= task.comments.count %> Comments)</span>
           <% end %>
-          <% if task.hasduedate %>
+          <% if task.hasduedate && task.due_date != nil %>
           <span class="due_date_show">
             <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%Y-%m-%d") %></span>
           </span>
