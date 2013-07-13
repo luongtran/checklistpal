@@ -63,6 +63,8 @@ class TasksController < ApplicationController
   end
   
   def sort
+      logger = Logger.new('log/sort_task.log')
+      logger.info(params[:task])
       params[:task].each_with_index do |id, index|
       Task.update_all(['position=?', index+1], ['id=?', id])
     end

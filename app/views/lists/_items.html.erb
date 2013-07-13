@@ -6,7 +6,7 @@
 <% if @list.tasks.length %>
   <% @list.tasks.items.each do |task| 
     index = 0 %>
-    <div class="taskinfo">
+    <div class="taskinfo handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
     <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
       <div id="delete_error" class="text-error hide">You have no permission to delete this task</div>
       <div class="items">
