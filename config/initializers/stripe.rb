@@ -10,7 +10,7 @@ StripeEvent.setup do
     user = User.find_by_customer_id(event.data.object.customer)
     user.updated
   end
-  subcripbe 'customer.deleted' do |event|
+  subscribe 'customer.deleted' do |event|
     user = User.find_by_customer_id(event.data.object.customer)
     user.deleted
   end
