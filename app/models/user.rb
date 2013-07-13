@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable ,:omniauthable, :invitable
+         :recoverable, :rememberable,  :validatable ,:omniauthable, :invitable #:trackable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid , :invitation_token,:invitation_sent_at,:invitation_accepted_at,:invitation_limit,:invited_by_id,:invited_by_type
@@ -46,7 +46,6 @@ class User < ActiveRecord::Base
     false
   end
    
-  
   def update_stripe
     return if skip_stripe_update
     return if email.include?(ENV['ADMIN_EMAIL'])

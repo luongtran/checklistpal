@@ -7,9 +7,11 @@ class Users::InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
   def create
     self.resource = resource_class.invite!(resource_params, current_inviter)
+      if resource.sign_in_count = 0
       role = Role.find(:first, :conditions => ["name = ?", "free"])
       resource.add_role(role.name)
       resource.invitation_limit = role.max_connections
+      end
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions, :email => self.resource.email
       respond_with resource, :location => after_invite_path_for(resource)

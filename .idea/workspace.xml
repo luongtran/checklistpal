@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0514ef39-aa14-41c8-b462-19cebd2a85b0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/lists.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/print_nologin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/admin/tasks.rb" />
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\jquery-ui-1.10.3.custom.min.js" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\lists\_items_test.html.erb" afterPath="" />
       <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\tasks\edit.html.erb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="0514ef39-aa14-41c8-b462-19cebd2a85b0" time="1373581338477" ignored="false" />
+    <file path="/Dummy.txt" changelist="0514ef39-aa14-41c8-b462-19cebd2a85b0" time="1373699800736" ignored="false" />
     <file path="$PROJECT_DIR$/../easytradein/app/assets/javascripts/easytradein.js" changelist="0514ef39-aa14-41c8-b462-19cebd2a85b0" time="1372814654239" ignored="false" />
     <file path="/easytradein.js" changelist="0514ef39-aa14-41c8-b462-19cebd2a85b0" time="1372039367367" ignored="false" />
     <file path="/users_controller.rb" changelist="0514ef39-aa14-41c8-b462-19cebd2a85b0" time="1372042839976" ignored="false" />
@@ -148,10 +136,10 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="251" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0">
+            <state line="18" column="251" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1373286333282" expanded="true" signature="3:1353" placeholder="if ... end" />
-                <marker date="1373286333282" expanded="true" signature="1512:1776" placeholder="do ... end" />
+                <marker date="1373628654945" expanded="true" signature="3:185" placeholder="if ... end" />
+                <marker date="1373628654945" expanded="true" signature="1989:2022" placeholder="do ... end" />
               </folding>
             </state>
           </provider>
@@ -169,15 +157,12 @@
       <file leaf-file-name="_items.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="12" selection-start="2505" selection-end="2505" vertical-scroll-proportion="0.0">
+            <state line="43" column="12" selection-start="2588" selection-end="2588" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1373455500340" expanded="true" signature="102:2730" placeholder="if ... end" />
-                <marker date="1373455500340" expanded="true" signature="590:754" placeholder="do ... end" />
-                <marker date="1373455500340" expanded="true" signature="825:1372" placeholder="if ... end" />
-                <marker date="1373455500340" expanded="true" signature="1407:1537" placeholder="if ... end" />
-                <marker date="1373455500340" expanded="true" signature="1554:1748" placeholder="if ... end" />
-                <marker date="1373455500340" expanded="true" signature="1950:2151" placeholder="do ... end" />
-                <marker date="1373455500340" expanded="true" signature="2464:2653" placeholder="if ... end" />
+                <marker date="1373629822599" expanded="true" signature="102:2813" placeholder="if ... end" />
+                <marker date="1373629822599" expanded="true" signature="590:754" placeholder="do ... end" />
+                <marker date="1373629822599" expanded="true" signature="825:1015" placeholder="if ... end" />
+                <marker date="1373629822599" expanded="true" signature="2547:2736" placeholder="if ... end" />
               </folding>
             </state>
           </provider>
@@ -195,7 +180,7 @@
       <file leaf-file-name="_comment_task.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="75" selection-start="853" selection-end="853" vertical-scroll-proportion="-10.461538">
+            <state line="16" column="75" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -366,14 +351,14 @@
     <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../easytradein" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
     <property name="dynamic.classpath" value="false" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -494,13 +479,6 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -530,6 +508,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
@@ -756,9 +741,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="69" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="69" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/static_pages_controller.rb">
@@ -821,32 +804,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="251" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0">
+        <state line="18" column="251" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1373286333282" expanded="true" signature="3:1353" placeholder="if ... end" />
-            <marker date="1373286333282" expanded="true" signature="1512:1776" placeholder="do ... end" />
+            <marker date="1373628654945" expanded="true" signature="3:185" placeholder="if ... end" />
+            <marker date="1373628654945" expanded="true" signature="1989:2022" placeholder="do ... end" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="12" selection-start="2505" selection-end="2505" vertical-scroll-proportion="0.0">
+        <state line="43" column="12" selection-start="2588" selection-end="2588" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1373455500340" expanded="true" signature="102:2730" placeholder="if ... end" />
-            <marker date="1373455500340" expanded="true" signature="590:754" placeholder="do ... end" />
-            <marker date="1373455500340" expanded="true" signature="825:1372" placeholder="if ... end" />
-            <marker date="1373455500340" expanded="true" signature="1407:1537" placeholder="if ... end" />
-            <marker date="1373455500340" expanded="true" signature="1554:1748" placeholder="if ... end" />
-            <marker date="1373455500340" expanded="true" signature="1950:2151" placeholder="do ... end" />
-            <marker date="1373455500340" expanded="true" signature="2464:2653" placeholder="if ... end" />
+            <marker date="1373629822599" expanded="true" signature="102:2813" placeholder="if ... end" />
+            <marker date="1373629822599" expanded="true" signature="590:754" placeholder="do ... end" />
+            <marker date="1373629822599" expanded="true" signature="825:1015" placeholder="if ... end" />
+            <marker date="1373629822599" expanded="true" signature="2547:2736" placeholder="if ... end" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="75" selection-start="853" selection-end="853" vertical-scroll-proportion="-10.461538">
+        <state line="16" column="75" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

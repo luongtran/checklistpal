@@ -24,24 +24,29 @@
             <% end %>
           </span>
           <% if task.comments.count > 0 %>
-          <span class="number_comment">(<%= task.comments.count %> Comments)</span>
+          <span class="number_comment" id="number_comment_<%= task.id %>">(<%= task.comments.count %> Comments)</span>
+          <% else %>
+          <span class="number_comment hidden" id="number_comment_<%= task.id %>">(<%= task.comments.count %> Comments)</span>
           <% end %>
           <% if task.hasduedate %>
           <span class="due_date_show">
-            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
+            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%Y-%m-%d") %></span>
+          </span>
+          <% else %>
+            <span class="due_date_show hidden">
           </span>
           <% end %>
         </div>
         <span class="action">
           <a href="javascript:;" class="show_comment_bt">Comment</a>
             <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
-              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="dd-mm-yyyy" class="datepicker inputdate" id="due_date_<%= task.id %>" placeholder="Due date">
+              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-mm-dd" class="datepicker inputdate" id="due_date_<%= task.id %>" placeholder="Due date">
             <% end %>
           <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" %>
           <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline", :remote => true %>
         </span>
         <% if current_user %>          
-          <span class="comment-add">
+        <span class="comment-add" id ="comment_add_<%= task.id %>">
             <%= render :partial => "comments/comment_task", :locals => {:task => task} %>
           </span> 
         <% end %>

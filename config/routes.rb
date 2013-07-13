@@ -44,5 +44,5 @@ Checklistpal::Application.routes.draw do
     put 'update_card', :to => 'registrations#update_card'
     get 'my_account', :to => 'devise/registrations#edit' , :as => :my_account
   end
-  resources :users
+  #resources :users
 end
