@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
       customer.update_subscription(:plan => role.name)
+      if role.name == 'free'
+      UserMailer.downgraded(self).deliver
+      elsif role.name == 'paid'
+      UserMailer.upgraded(self).deliver
+      end
     end
     true
   rescue Stripe::StripeError => e

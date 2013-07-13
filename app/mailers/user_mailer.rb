@@ -10,4 +10,10 @@ class UserMailer < ActionMailer::Base
   def delete_account(user)
     mail(:to => user.email, :subject => "You account have been deleted")
   end
+  def upgraded
+    mail(:to => user.email , :subject => "You account has been upgraded to PAID plan")
+  end
+  def downgraded
+    mail(:to => user.email , :subject => "You account has been downgraded to FREE plan")
+  end
 end
