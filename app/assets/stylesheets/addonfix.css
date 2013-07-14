@@ -50,3 +50,6 @@
 #todolistsearch .taskinfo .handle {
     padding:0;
 }
+.taskinfo>.handle {
+    padding:0;
+}
