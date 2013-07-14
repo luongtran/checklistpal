@@ -43,3 +43,10 @@
 .path_top_login {
     margin-bottom: 10px;;
 }
+
+#todolistsearch .taskinfo .checkbox {
+    margin-bottom: 0;
+}
+#todolistsearch .taskinfo .handle {
+    padding:0;
+}
