@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="00b78723-c07e-413a-8a9d-86fd7f51bc8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/print.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/print.css" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +31,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addonfix.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="addonfix.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="14" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.95115334">
+            <state line="56" column="21" selection-start="6936" selection-end="6936" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="print.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/print.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="5" selection-start="468" selection-end="468" vertical-scroll-proportion="0.648">
               <folding />
             </state>
           </provider>
@@ -64,6 +74,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/print.css" />
       </list>
     </option>
   </component>
@@ -323,7 +334,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="14" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.95115334">
+        <state line="56" column="21" selection-start="6936" selection-end="6936" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/print.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="5" selection-start="468" selection-end="468" vertical-scroll-proportion="0.648">
           <folding />
         </state>
       </provider>

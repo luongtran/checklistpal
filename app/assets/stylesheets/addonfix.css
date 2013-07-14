@@ -53,3 +53,6 @@
 .taskinfo>.handle {
     padding:0;
 }
+.taskinfo .items .checkbox  {
+    margin-bottom: 0;
+}

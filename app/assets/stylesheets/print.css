@@ -7,25 +7,31 @@
 */
 
 @media print {
-  body * {
-    visibility:hidden;
-  }
-  .todolist, .todolist * ,.list-name{
-    visibility:visible;
-  }
-  #logo{
-    position:absolute;
-    left:40px;
-    top:10px;   
-  }
-  .todolist {
-    position:absolute;
-    left:40px;
-    top:30px;
-  }
+    body * {
+        visibility: hidden;
+    }
 
-  a:link:after { content: ""; }
-  .comment-togger.show-comment{
-    visibility:hidden; 
-  }
+    .todolist, .todolist *, .list-name {
+        visibility: visible;
+    }
+
+    #logo {
+        position: absolute;
+        left: 40px;
+        top: 10px;
+    }
+
+    .todolist {
+        position: absolute;
+        left: 50px;
+        top: 70px;
+    }
+
+    a:link:after {
+        content: "";
+    }
+
+    .comment-togger.show-comment {
+        visibility: hidden;
+    }
 }
