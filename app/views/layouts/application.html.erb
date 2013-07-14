@@ -51,25 +51,27 @@
         </div>
       </div>
     <% else %>
-      <div class="path_top_login clearfix container">
-        <div class="pull-left">
-          <div id="white-logo">
-            <div class="clearfix">
+      <div class="path_top_login clearfix">
+        <div class="container">
+          <div class="pull-left">
+            <div id="white-logo">
+              <div class="clearfix">
               <span class="inline">
                 <%= image_tag "white_logo.png" %>
               </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="pull-right">
-          <div id="accountpanel" >
-            <div class="clearfix">
+          <div class="pull-right">
+            <div id="accountpanel" >
+              <div class="clearfix">
               <span class="inline">
                 <%= link_to "My Account" ,my_account_path,:style =>"color:white !important;"%>
-              </span> 
+              </span>
               <span class="inline">&nbsp;&nbsp;
                 <%= link_to "Logout" ,destroy_user_session_path,:style =>"color:white !important;" %>
               </span>
+              </div>
             </div>
           </div>
         </div>
