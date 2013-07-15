@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
   end
   def downgraded(user)
     @user = user
-    while @user.lists.count <= 3
+    while @user.lists.count > 3
       @user.lists.first.destroy
     end
     @template = EmailTemplate.find(:first , :conditions => ["email_type = ?","Downgraded Email"])
