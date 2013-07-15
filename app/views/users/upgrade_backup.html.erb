@@ -1,0 +1,115 @@
+<div class="section clearfix">
+  <div id="signupoptions">
+    <div class="signupoptions-inner">
+      <div class="clearfix">
+        <div class="title-signup">
+          <h4 class="text-center">You plan is <strong><%= @user.roles.first.name %></strong>. Please upgrade to <strong>Paid </strong>account</h4>
+        </div>
+        <div class="signoption text-center">
+          <h3><strong>$4.95 /month</strong> account</h3>
+          <hr class="divider">
+          <ul class="unstyled">
+            <li>Create unlimited lists</li>
+            <li><u><strong>Unlimited</strong></u> saved lists</li>
+            <li><u><strong>Unlimited</strong></u> connections</li>
+            <li>Comment on your list</li>
+            <li>Print your lists</li>
+            <li>Share your lists</li>
+          </ul>
+        </div>     
+        <div class="divider50">
+          <% if @user.last_4_digits.present? %>
+            Using card ending with <%= @user.last_4_digits %>
+          <% else %>
+            You have no creadit card. Please update your credit card information!
+          <% end %>
+          <a data-toggle="modal" href="#card-data" class="btn btn-small btn-info" type="button">Change card</a>
+
+          <p>
+            You plan is <%= @user.roles.first.name.titleize %>
+            <a data-toggle="modal" href="#plan-options" class="btn btn-small btn-success" type="button">Change plan</a>
+          </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+<div id="card-data" class="modal" style="display: none;">
+  <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Change Credit Card</h3>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <%= label_tag :card_number, "Credit Card Number" %>
+        <%= number_field_tag :card_number, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_code, "Card Security Code (CVV)" %>
+        <%= number_field_tag :card_code, nil, name: nil %>
+      </div>
+      <div class="field">
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
+      </div>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :stripe_token %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "Change Credit Card", :class => "btn btn-primary" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>
+<div id="plan-options" class="modal" style="display: none;">
+  <%= simple_form_for resource, :as => resource_name, :url => update_plan_path, :html => {:method => :put, :class => 'form-horizontal' } do |f| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Change Plan</h3>
+      <% if resource.errors.full_messages.present? %>
+        <%= resource.errors.full_messages %>
+      <% end %>
+    </div>
+    <div class="modal-body">
+      <div class="clearfix">
+        <div class="divine50">
+          <div class="signoption text-center">
+            <h3><strong>Free</strong> account</h3>
+            <hr class="divider">
+            <ul class="unstyled">
+              <li>Create unlimited lists</li>
+              <li>(3) Saved lists</li>
+              <li>(2) Connections</li>
+              <li>Comment on your lists</li>
+              <li>Print your lists</li>
+              <li>Share your lists</li>
+            </ul>
+          </div>
+        </div>
+        <div class="divine50">
+          <div class="signoption text-center">
+            <h3><strong>$4.95 /month</strong> account</h3>
+            <hr class="divider">
+            <ul class="unstyled">
+              <li>Create unlimited lists</li>
+              <li><u><strong>Unlimited</strong></u> saved lists</li>
+              <li><u><strong>Unlimited</strong></u> connections</li>
+              <li>Comment on your list</li>
+              <li>Print your lists</li>
+              <li>Share your lists</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <%= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin'}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit "Change Plan", :class => "btn btn-primary" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>

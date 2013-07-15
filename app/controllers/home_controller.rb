@@ -30,8 +30,9 @@ class HomeController < ApplicationController
           respond_with(@list, :location => list_url(@list))
         end
       else
-        flash[:alert] = "Could not create more list, Please upgrade you account !!!"
-        redirect_to my_list_path
+       # flash[:alert] = "Could not create more list, Please upgrade you account !!!"
+       flash[:alert] = %Q[Could not create more list, Please <a href="/users/edit">upgrade</a> you account].html_safe
+        redirect_to my_list_path 
       end        
     end
   end

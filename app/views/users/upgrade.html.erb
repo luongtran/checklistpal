@@ -1,0 +1,70 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<% end %>
+<div class="section clearfix">
+  <div class="pull-right">
+    <div id="quickmenu">
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
+    </div>
+  </div>
+  <div class="pull-left">
+    <div id="logo">
+      <%= image_tag "blue_logo.png"%>
+    </div>
+  </div>
+</div>
+<div class="section clearfix">
+  <div id="signupfree">
+    <div class="clearfix">
+      <h3>You account is <%= @user.roles.first.name %> account. Please update your credit card information to upgrade account</h3>
+      <div class="divine50">
+        <div class="signoption row-fluid">
+          <div class="signuppanel">
+            <div id="stripe_error" class="alert alert-error" style="display:none" ></div>
+            <div class="panel">
+              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'card_form form-vertical row-fluid' }) do |f| %>                
+                <%= f.error_notification %>
+                <% if resource.errors.full_messages.present? %>
+                  <%= resource.errors.full_messages %>
+                <% end %>
+                <div class="controls">
+                  <%= f.email_field :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
+                </div>
+                <div class="controls">
+                  <%= f.text_field :name, :autofocus => true, :placeholder =>"User name", :class =>"span5",:required => true %>
+                </div>
+                <div class="controls">
+                  <%= f.password_field :password, :required => true, :placeholder =>"Password", :class =>"span5",:required => true %>
+                </div>
+                <div class="controls">
+                  <%= f.password_field :password_confirmation, :required => true, :placeholder =>"Password again", :class =>"span5",:required => true %>
+                </div>
+                
+                  <% if @user.stripe_token %>
+                    <p>Credit card acceptance is pending.</p>
+                  <% else %>
+                    <div class="field">
+                      <%= number_field_tag :card_number, nil, name: nil , :placeholder =>"Credit Card Number" , class: "span5" %>
+                      </div>
+                      <div class="field">
+                        <%= number_field_tag :card_code, nil, name: nil,:placeholder =>"Card Security Code (CVV)" ,class: "span5" %>
+                        </div>
+                        <div class="field">
+                          <%= label_tag :card_month, "Card Expiration" %>
+                          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",class: "span5"}%>
+                            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year" ,class: "span4"}%>
+                            </div>
+                            <div class="field">
+                              <%= f.text_field :coupon, :placeholder => 'Promotional Coupon (if any)', :class => "span9" %>
+                            </div>
+                          <% end %> <%# End if stripe_token present ! %>
+                          <%= f.hidden_field :stripe_token %>
+                        <%= f.button :submit, 'Upgrade', :class => 'btn-primary' %>
+                      <% end %> <%# End simple form %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tudli</title>
+    <title><%= yield(:title) %></title>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
     <%= stylesheet_link_tag    "bootstrap-responsive.min", :media => "all" %>
@@ -31,6 +31,7 @@
   <body>
     <% if !current_user %>
       <div class="path_top_logout clearfix">
+        <div class="container">
         <div class="pull-right">
           <div id="accountpanel">
             <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'clearfix' }) do |f| %>
@@ -48,6 +49,7 @@
               </div>
             <% end %>
           </div>
+        </div>
         </div>
       </div>
     <% else %>
@@ -77,7 +79,7 @@
         </div>
       </div>
     <% end %>
-    <div class="container">
+    <div class="container" id="container">
       <div class="webpage">
         <div class="webpage-inner">
           <%= render 'layouts/messages' %>

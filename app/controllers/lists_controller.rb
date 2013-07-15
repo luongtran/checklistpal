@@ -37,8 +37,7 @@ class ListsController < ApplicationController
           redirect_to my_list_path
         end
       else
-        flash[:alert] = "Could not create more list, Please upgrade you account !!!"
-        redirect_to my_list_path
+        redirect_to my_list_path flash[:alert] = %Q[Could not create more list, Please <a href="/upgrade">upgrade</a>PAID you account].html_safe
       end        
     end
   end
