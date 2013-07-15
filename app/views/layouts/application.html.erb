@@ -29,7 +29,30 @@
   </head>
   <script type="text/javascript">Stripe.setPublishableKey("pk_test_hNltPbfQGTFuyleT8Rw5W8R5");</script>
   <body>
-    <% if current_user %>
+    <% if !current_user %>
+      <div class="path_top_logout clearfix">
+        <div class="container">
+        <div class="pull-right">
+          <div id="accountpanel">
+            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'clearfix' }) do |f| %>
+              <div class="pull-left"><span class="inline">
+                  <%= link_to "Free Sign Up", signup_options_path ,:class =>"btn-small btn-primary" %> 
+                </span></div>
+              <div class="pull-left">
+                <%= f.email_field :email, :placeholder => "email", :class => "input-small" , :autofocus => true %>
+              </div>
+              <div class="pull-left">                
+                <%= f.password_field :password , :placeholder => "password", :class => "input-small" %>
+              </div>
+              <div class="pull-left">
+                <input type="submit" value="" class="submitbt">
+              </div>
+            <% end %>
+          </div>
+        </div>
+        </div>
+      </div>
+    <% else %>
       <div class="path_top_login clearfix navbar-static-top">
         <div class="container">
           <div class="pull-left">
@@ -56,29 +79,7 @@
         </div>
       </div>
     <% end %>
-     <div class="container">
-       <% if !current_user %>
-       <div class="path_top_logout clearfix">
-        <div class="pull-right">
-          <div id="accountpanel">
-            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'clearfix' }) do |f| %>
-              <div class="pull-left"><span class="inline">
-                  <%= link_to "Free Sign Up", signup_options_path ,:class =>"btn-small btn-primary" %> 
-                </span></div>
-              <div class="pull-left">
-                <%= f.email_field :email, :placeholder => "email", :class => "input-small" , :autofocus => true %>
-              </div>
-              <div class="pull-left">                
-                <%= f.password_field :password , :placeholder => "password", :class => "input-small" %>
-              </div>
-              <div class="pull-left">
-                <input type="submit" value="" class="submitbt">
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-       <% end %>
+    <div class="container" id="container">
       <div class="webpage">
         <div class="webpage-inner">
           <%= render 'layouts/messages' %>

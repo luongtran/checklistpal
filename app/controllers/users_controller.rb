@@ -32,5 +32,9 @@ class UsersController < ApplicationController
        redirect_to users_path, :notice => "Can't delete yourself."
      end
    end
-  
+  def upgrade
+    @user = current_user
+    @role = @user.roles
+    puts @user.roles
+  end
 end

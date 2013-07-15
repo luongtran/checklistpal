@@ -7,10 +7,32 @@
 */
 
 @media print {
-    body * {
+/*    body * {
+        visibility: hidden;
+    }*/
+    .searchboxtodolist{
         visibility: hidden;
     }
-
+    #logo{
+        visibility: hidden;
+    }
+    #quickmenu .clearfix .pull-left{
+        visibility: hidden;
+    }
+    .footer .clearfix .pull-left{
+        position: absolute;
+        left: 10px;
+        bottom: 20px;
+    }
+    .footer .clearfix .pull-right{
+        visibility: hidden;
+    }
+    .row-fluid input{
+        visibility: hidden;
+    }
+    .path_top_login{
+        visibility: hidden;
+    }
     .todolist, .todolist *, .list-name {
         visibility: visible;
     }
