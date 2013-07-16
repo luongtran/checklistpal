@@ -73,3 +73,10 @@
     width: 16px;
     height: 17px;
 }
+
+@media (max-width: 480px) {
+	#todolistsearch .searchbox .btn-primary {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}
