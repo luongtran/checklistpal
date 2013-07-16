@@ -20,5 +20,12 @@
   <% end %>
   <%= form_tag add_comment_path(task),:class =>"form_create_comment", :remote => true do %>
     <%= text_area_tag :content , nil, :style => "width:775px;height:100px;" %>
-    <%= submit_tag "Add comment" , :class => "add_comment_bt btn btn-medium btn-warning" %>
+    <%= submit_tag "Add comment" , :class => "add_comment_bt btn btn-small btn-warning" %>
+    <%= button_tag "Close",:type => "button",:class => "close_comment_bt btn btn-small" %>
   <% end %>
+<script>
+  $(".close_comment_bt").on("click", function(){
+    $(this).parent().children("#content").val("");
+    $(this).parent().parent('.comment-add').fadeOut(300);
+  });
+</script>

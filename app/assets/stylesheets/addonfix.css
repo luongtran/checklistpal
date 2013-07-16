@@ -31,7 +31,7 @@
 .taskinfo .items:hover .action{opacity:1}
 .taskinfo .item-title form input{margin-right:5px}
 .taskinfo .item-title form input[type="text"]{height:16px}
-.taskinfo .item-title>a{float:left;color:#222222;}
+.taskinfo .item-title>a{color:#222222;}
 .taskinfo .item-title>.comment-togger{float:left;margin-right:10px}
 .taskinfo .item-title>.taskduedate{float:left}.taskinfo .item-title>.taskduedate input[type="text"]{border:none;background-color:#f0f0f0;-webkit-border-radius:100px;-webkit-background-clip:padding-box;-moz-border-radius:100px;-moz-background-clip:padding;border-radius:100px;background-clip:padding-box;color:#b0b0b0;font-style:italic;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;color:none}
 .taskinfo .comment-add{width:100%}.taskinfo .comment-add>div{width:100%}

@@ -60,7 +60,7 @@ $(function() {
     });
     $("form#new_task").submit(function() {
         var task_description = $("form#new_task").find('input[type="text"]').val();
-        if (task_description == null || task_description == ""){
+        if (task_description === null || task_description === ""){
             //alert('required');
             $('#error-message').text("Task Name is required").fadeIn(300).delay(1000).fadeOut(300);
             return false;
@@ -118,8 +118,12 @@ $(function() {
                                         var success = data.success;
                                         var task = data.task;
                                         if (success === 1) {
-                                            $(form).parent(".item-title").html(task.description);
-                                        } else {
+                                        $(function() {
+                                            var urlRegEx = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-]*)?\??(?:[\-\+=&;%@\.\w]*)#?(?:[\.\!\/\\\w]*))?)/g;
+                                             $(form).parent(".item-title").html(task.description.replace(urlRegEx, "<a href='$1' target='_blank'>$1</a>"));
+                                              });
+//                       
+                                    } else {
                                             form.append('<span class="error">Cannot be saved</span>');
                                         }
                                     },
@@ -135,6 +139,9 @@ $(function() {
                         });
 
                         $('.show_comment_bt').on("click", function() {
+                            $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+                        });
+                        $('.number_comment').on("click", function() {
                             $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
                         });
                         
@@ -216,7 +223,12 @@ $(function() {
                     var success = data.success;
                     var task = data.task;
                     if (success === 1) {
-                        $(form).parent(".item-title").html(task.description);
+                        $(function() {
+                            var urlRegEx = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-]*)?\??(?:[\-\+=&;%@\.\w]*)#?(?:[\.\!\/\\\w]*))?)/g;
+                             $(form).parent(".item-title").html(task.description.replace(urlRegEx, "<a href='$1' target='_blank'>$1</a>"));
+                              });
+                            console.log(task.description.html())
+//                        $(form).parent(".item-title").html(task.description);
                     } else {
                         form.append('<span class="error">Cannot be saved</span>');
                     }
@@ -235,7 +247,9 @@ $(function() {
     $('.show_comment_bt').on("click", function() {
         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
     });
-
+     $('.number_comment').on("click", function() {
+                            $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+                        });
     $(".task-hasduedate").bind('change', function() {
         var list_id = $(this).attr('data_target');
         url = null;

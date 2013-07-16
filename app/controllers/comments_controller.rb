@@ -54,9 +54,14 @@ class CommentsController < ApplicationController
   def create
     @success = false
     @task = Task.find(params[:task_id])
-    if @task.comments.new(:user_id => current_user.id ,:task_id => @task.id,:content => params[:content]).save
+    if (params[:content] != "")
+      if @task.comments.new(:user_id => current_user.id ,:task_id => @task.id,:content => params[:content]).save
       @success = true
+      end
+    else
+      @success =false
     end
+    
     respond_to do |format|
       format.js
     end

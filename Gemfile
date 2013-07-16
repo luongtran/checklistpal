@@ -9,6 +9,7 @@ gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
 gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
+#gem "friendly_id", "~> 4.0.0"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -41,5 +42,5 @@ gem "figaro", ">= 0.6.3"
 gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem 'thin'
-
+gem 'rails_autolink'
 gem "mocha", :group => :test

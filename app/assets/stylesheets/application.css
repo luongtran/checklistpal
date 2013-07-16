@@ -60,7 +60,5 @@ form.edit_list_frm input.btn{
 }
 .path_top_login{
     background-color:#106FB1;
-}
-.container{
-    /*margin-top:40px;*/
+    margin-bottom: 25px;
 }

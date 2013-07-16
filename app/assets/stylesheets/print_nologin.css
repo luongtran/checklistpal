@@ -18,4 +18,20 @@
   .comment-togger.show-comment{
     visibility:hidden; 
   }
+   #quickmenu .clearfix .pull-left{
+        visibility: hidden;
+    }
+    .todolist {
+        position: absolute;
+        left: 50px;
+        top: 70px;
+    }
+     #logo {
+        position: absolute;
+        left: 40px;
+        top: 10px;
+    }
+    .searchbox *{
+        visibility:hidden;
+    }
 }

@@ -12,6 +12,7 @@ Checklistpal::Application.routes.draw do
   #match '/lists/create' => 'Lists#create' , :as =>  :create_list
   #match "lists/:list_id/tasks" => "tasks#create"
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
+  get '/lists/:slug' => 'Lists#show', :as => :list_view
   resources :lists do
     resources :tasks 
   end
@@ -20,7 +21,6 @@ Checklistpal::Application.routes.draw do
     end
   get 'content/member'
   get 'content/vipmember'
-  get '/lists/:id' => 'Lists#show', :as => :list_view
   match '/signup_options' => 'home#signup_options' , :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit" , :as => :edit_task
@@ -28,16 +28,16 @@ Checklistpal::Application.routes.draw do
   match 'lists/:list_id/tasks/:id/delete' => "tasks#delete" , :as => :delete_task
   match 'lists/:list_id/tasks/:id/hasduedate' => "tasks#hasduedate" , :as => :has_due_date
   match 'lists/:list_id/tasks/:id/update_due_date' => 'tasks#update_due_date' , :as => :update_due_date
-  match 'mylist' => "lists#mylist" , :as => :my_list
+  match 'mylists' => "lists#mylist" , :as => :my_list
   match 'who_connection/:id' => "lists#who_connection" , :as => :who_connect
-  match 'mylist/:id/delete' => "lists#destroy" , :as => :delete_list
+  match 'mylists/:id/delete' => "lists#destroy" , :as => :delete_list
   #match 'list/:list_id/invite-user' => 'lists#invite_user', :as => :invite_user
-  match '/invite_user/:list_id' => 'home#find_invite' ,:as => :find_invite
+  match '/invite_user' => 'home#find_invite' ,:as => :find_invite
   match '/invite/:list_id' => 'home#invite' ,:as => :invite
   match 'invite/(:list_id)/user' => "home#invite_user_by_id", :as => :invite_user
   match 'task/:task_id/comment/create' => "comments#create" , :as => :add_comment
   match '/lists/:list_id/task/:id/show' => "tasks#show" , :as => :view_task
-  match '/mylist/search' => 'lists#search_my_list' , :as => :search_my_list
+  match '/mylists/search' => 'lists#search_my_list' , :as => :search_my_list
   match '/search_my_connect' => 'home#search_my_connect' , :as => :search_my_connect
   match '/about' => 'static_pages#about'  , :as => :about
   match '/support' => 'static_pages#support',:as => :support

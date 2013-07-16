@@ -1,17 +1,19 @@
 class HomeController < ApplicationController
   before_filter :authenticate_user! , :only => [:find_invite , :invite ,:invite_user_by_id ,:search_my_connect]
+  require 'securerandom'
   def index
+    random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create({
             :name => "Name of List",
-            :description => "To do list"            
+            :description => "To do list",
+            :slug => random_string
           })
       if @list.save
         flash[:notice] = "List created"
-        redirect_to list_url(@list)
+        redirect_to list_url(@list.slug)
       else
-        flash[:error] = "Could not post list"
-        respond_with(@list, :location => list_url(@list))
+        flash[:error] = "Could not post list"        
       end
     else
       @user = current_user
@@ -20,14 +22,15 @@ class HomeController < ApplicationController
         @list = List.create({
             :name => "Name of List",
             :description => "To do list",
-            :user_id => @user.id
+            :user_id => @user.id,
+            :slug => random_string
           })
         if @list.save
           flash[:notice] = "List create successfuly !"
-          redirect_to list_url(@list) 
+          redirect_to list_url(@list.slug) 
         else
           flash[:error] = "Can't create list !"
-          respond_with(@list, :location => list_url(@list))
+          return false
         end
       else
        # flash[:alert] = "Could not create more list, Please upgrade you account !!!"
@@ -41,11 +44,12 @@ class HomeController < ApplicationController
      if !User.list_create(current_user.id,params[:list_id])
       redirect_to my_list_path
      end
-    @list_id = params[:list_id]
+      logger = Logger.new('log/member.log')
+      logger.info(params[:datalist])
+    @list_ids = params[:datalist]
     @list = List.find(@list_id)
     @list_team_members = current_user.list_team_members.find(:all , :conditions =>["list_id = ? AND active = ?", @list_id , true])    
-    logger = Logger.new('log/member.log')
-    logger.info(@list_team_members)
+    
     user_ids = []
     if @list_team_members
       @list_team_members.each do |member|

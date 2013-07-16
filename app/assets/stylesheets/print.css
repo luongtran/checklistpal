@@ -7,9 +7,9 @@
 */
 
 @media print {
-/*    body * {
-        visibility: hidden;
-    }*/
+    /*    body * {
+            visibility: hidden;
+        }*/
     .searchboxtodolist{
         visibility: hidden;
     }
@@ -27,9 +27,9 @@
     .footer .clearfix .pull-right{
         visibility: hidden;
     }
-    .row-fluid input{
+/*    .row-fluid input{
         visibility: hidden;
-    }
+    }*/
     .path_top_login{
         visibility: hidden;
     }
@@ -52,8 +52,15 @@
     a:link:after {
         content: "";
     }
+     .searchbox *{
+        visibility:hidden;
+    }
 
     .comment-togger.show-comment {
         visibility: hidden;
+    }
+    .list-name{
+        font-family:bold;
+        font-size:26px;
     }
 }

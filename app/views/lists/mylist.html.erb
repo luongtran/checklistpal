@@ -2,7 +2,7 @@
 <div class="section clearfix">
   <div class="pull-right">
     <div id="quickmenu">
-      <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+ New</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+ New</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %><a href="#" class="btninvite pull-left" title="Please select a list to invited by checked on checkbox" data-url="<%= find_invite_path %>">+ INVITE</a><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
     </div>
   </div>
   <div class="pull-left">
@@ -23,21 +23,30 @@
               <input type="submit" value="" class="submitbt">
               <% end %>
             <!-- </div> -->
-            <div class="panel">
+              <div class="panel">
               <h3>Created list</h3>
               <% @lists.each do |list| %>
               <label class="checkbox">
-                <input type="checkbox"><%= link_to truncate(list.name,:length => 40), list  %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>
-              </label>
+                <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>
+              </label>              
               <% end %>
               <hr/>			  
-              <% if @friend_lists %>
-              <h3>Invitation list</h3>
+              <% if !@friend_lists.blank? %>
+              <h3>Invited list</h3>
+              <ul class="unstyle">
               <% @friend_lists.each do |list| %>
-              <label class="checkbox">
-                <input type="checkbox"><%= link_to truncate(list.name,:length => 40), list %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>
-              </label>
+                <li><%= link_to truncate(list.name,:length => 40), list %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span></li>
               <% end %>
+                </ul>
+              <% end %>
+              
+              <% if !@my_connects.blank? %>
+              <h3>My connection </h3>
+              <ul class="unstyle">
+              <% @my_connects.each do |connect| %>
+                <li><%=  truncate(connect.email,:length => 40) %></li>
+              <% end %>
+              </ul>
               <% end %>
             </div>
           </div>
@@ -46,3 +55,23 @@
     </div>
   </div>
 </div>
+<%#*<script>%>
+  <%#*$('.btninvite').on("click", function(){%>
+    <%#*var list_ids = new Array();%>
+   <%#*$('input[name="listselects"]:checked').each(function(){%>
+      <%#*list_ids.push($(this).val());%>
+      <%#*});%>
+      <%#*var datalist = JSON.stringify(list_ids);%> 
+      <%#*console.log(list_ids);%>
+      <%#*console.log(datalist);%>
+      <%#*var url = $(this).data("url");%>
+      <%#*$.ajax({%>
+                <%#*type: "post",%>
+                <%#*url: url,%>
+                <%#*data: datalist,%>
+                <%#*dataType: "json",%>
+                <%#*success:function(data){%>
+              <%#*}});%>
+  <%#*});%> 
+  
+<%#*</script>%>

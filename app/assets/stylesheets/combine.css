@@ -224,7 +224,7 @@ body .btn.btn-primary:hover {
 }
 
 #logo img {
-    margin-top: -15px
+    margin-top: -8px
 }
 
 #logo span {
@@ -239,7 +239,7 @@ body .btn.btn-primary:hover {
 }
 
 #quickmenu {
-    margin-top: -15px;
+    margin-top: -8px;
     font-size: 10px
 }
 
@@ -458,7 +458,4 @@ div#paid .hitline {
     width: 27px;
     height: 27px;
     border: 0
-}
-#container{
-    margin-top:25px;
 }
