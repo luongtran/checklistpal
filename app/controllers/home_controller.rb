@@ -5,10 +5,10 @@ class HomeController < ApplicationController
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create({
-            :name => "Name of List",
-            :description => "To do list",
-            :slug => random_string
-          })
+          :name => "Name of List",
+          :description => "To do list",
+          :slug => random_string
+        })
       if @list.save
         flash[:notice] = "List created"
         redirect_to list_url(@list.slug)
@@ -33,23 +33,20 @@ class HomeController < ApplicationController
           return false
         end
       else
-       # flash[:alert] = "Could not create more list, Please upgrade you account !!!"
-       flash[:alert] = %Q[Could not create more list, Please <a href="/users/edit">upgrade</a> you account].html_safe
+        # flash[:alert] = "Could not create more list, Please upgrade you account !!!"
+        flash[:alert] = %Q[Could not create more list, Please <a href="/users/edit">upgrade</a> you account].html_safe
         redirect_to my_list_path 
       end        
     end
   end
   
   def find_invite
-     if !User.list_create(current_user.id,params[:list_id])
+    if !User.list_create(current_user.id,params[:list_id])
       redirect_to my_list_path
-     end
-      logger = Logger.new('log/member.log')
-      logger.info(params[:datalist])
-    @list_ids = params[:datalist]
+    end
+    @list_id = params[:list_id]
     @list = List.find(@list_id)
     @list_team_members = current_user.list_team_members.find(:all , :conditions =>["list_id = ? AND active = ?", @list_id , true])    
-    
     user_ids = []
     if @list_team_members
       @list_team_members.each do |member|
@@ -61,10 +58,48 @@ class HomeController < ApplicationController
     end    
   end
 
+  def pass_parametter
+    @list_ids = params[:list]
+    @list_id = JSON.parse(@list_ids)
+    session[:list_ids] =   @list_id;
+    render :json => {
+      :location => url_for(:controller => 'home', :action => 'find_multi_invite')
+      # :flash => {:notice => "Hello #{authorized_user.name}."}
+    }
+  end
+  
+  def find_multi_invite
+    #if !User.list_create(current_user.id,params[:list_id])
+    #  redirect_to my_list_path
+    #end
+    @list_ids = session[:list_ids]
+    logger = Logger.new('log/invite_multi.log')  
+    logger.info('------------start-------------')
+    logger.info(@list_ids)
+
+    @lists = List.where('id IN (?)',@list_ids)
+    user_ids = []
+    @lists.each do |list|
+      @list_team_members = current_user.list_team_members.find(:all , :conditions =>["list_id = ? AND active = ?", list.id , true])
+      if @list_team_members
+        @list_team_members.each do |member|
+          user_ids += [member.invited_id]
+        end
+      end
+    end
+    if !user_ids.empty?
+      @my_connects = User.where('id IN (?)',user_ids)
+    end
+    #    respond_to do |format|
+    #      format.js
+    #      format.html
+    #    end
+  end
+
   def search_my_connect
     if !User.list_create(current_user.id,params[:list_id])
       redirect_to my_list_path
-     end
+    end
     @list_id = params[:list_id]
     @list = List.find(@list_id)
     @user_email = params[:user_email_find]
@@ -87,6 +122,53 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+  def invite_multi
+    logger = Logger.new('log/invite_multi.log')
+    logger.info('-------------fuction------------')
+    logger.info(session[:list_ids])
+    @success = false
+    invite_email = params[:user_email]
+    invite_name = params[:user_name]
+    condition = ""
+    if !invite_email.blank? && !invite_name.blank?
+      condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
+    else
+      if !invite_email.blank?
+        condition = ["email like ?", "%#{invite_email}%"]
+      else if !invite_name.blank?
+          condition = ["name like ?", "%#{invite_name}%"]
+        end
+      end
+    end
+    @has_over_connect = false
+    @users = User.find(:all, :conditions => condition)
+    @users -= [current_user]
+    if @users.length > 0
+      @has_list_users = true
+    else
+      num_connect = !current_user.list_team_members.blank? ? current_user.list_team_members.count : 0
+      if num_connect < Role.find(current_user.roles.first.id).max_connections
+        if(!invite_email.blank?)
+          @user = User.new({:email => invite_email})
+          role = Role.find(:first, :conditions => ["name = ?", "free"])
+          @user.add_role(role.name)
+          @user.save
+          @user.invite!(current_user)
+          
+          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_ids], :active => false, :invitation_token => @user.invitation_token}).save
+            @success = true
+          end
+        end
+      else
+        @has_over_connect = true
+      end
+      @has_list_users = false
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
   
   def invite
     if !User.list_create(current_user.id,params[:list_id])
@@ -100,10 +182,10 @@ class HomeController < ApplicationController
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
     else 
       if !invite_email.blank?
-          condition = ["email like ?", "%#{invite_email}%"]
+        condition = ["email like ?", "%#{invite_email}%"]
       else if !invite_name.blank?
-              condition = ["name like ?", "%#{invite_name}%"]
-           end
+          condition = ["name like ?", "%#{invite_name}%"]
+        end
       end
     end
     @has_over_connect = false
@@ -121,49 +203,95 @@ class HomeController < ApplicationController
           @user.add_role(role.name)
           @user.save
           @user.invite!(current_user)
-            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
-              @success = true
-            end
+          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
+            @success = true
+          end
         end
       else
         @has_over_connect = true
       end
       @has_list_users = false
     end
-    
     respond_to do |format|
       format.js
     end
   end
   
-  def invite_user_by_id
-    if !User.list_create(current_user.id,params[:list_id])
-      redirect_to my_list_path      
-    else
-      @user = User.find(params[:user_id])    
-      @message = ""
-      if @user
-        if(!ListTeamMember.is_existed_in_connection(current_user.id, params[:list_id], @user.id))
-          logger = Logger.new('log/invite_id.log')
-          logger.info(User.number_connect(current_user))
-          @user.skip_stripe_update = true
-          @user.invite!(current_user)
-#          User.invite!({:email => @user.email},current_user)
-          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
+  def invite_user_by_id_multi_list
+    # if !User.list_create(current_user.id,params[:list_id])
+    # redirect_to my_list_path      
+    #else
+    @user = User.find(params[:user_id])   
+    @list_ids = session[:list_ids]
+    logger = Logger.new('log/invite_id_multi.log')  
+    logger.info('------------inviteby id multi-------------')
+    logger.info(@list_ids)
+    @lists = List.where('id IN (?)',@list_ids)
+    @message = ""
+    if @user && @lists
+      @user.skip_stripe_update = true
+      @user.invite!(current_user)
+      @lists.each do |list|
+        if(!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
+          #          User.invite!({:email => @user.email},current_user)
+          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
             @success = true
             @message = "You already sent successfully an invitation email to #{@user.email}"
           end
         else
-          @message = "The user #{@user.email} already existed in your connections"
+          @message = "The list #{@list.name} already sharing for #{@user.email} "
         end
-      else
-        @message = "User not found"
+      end
+    else
+      @message = "Invited failer"
+    end
+    @success = false
+    respond_to do |format|
+      format.js
+    end
+    #end
+  end
+  
+  def invite_user_by_id
+    @message = ""
+    if !User.list_create(current_user.id,params[:list_id])
+      redirect_to my_list_path
+      return
+    else
+      num_connect = current_user.list_team_members.where('active = ?',true).count
+      logger = Logger.new('log/number_coonection.log')
+      logger.info("-Num connect-")
+      logger.info(num_connect)
+      if num_connect > Role.find(current_user.roles.first.id).max_connections
+        @message = %Q[Could not invite more user, Please <a href="/users/edit">upgrade</a> you account].html_safe
+        redirect_to my_list_path
+        return
+      else  
+        @user = User.find(params[:user_id])  
+        if @user
+          if(!ListTeamMember.is_existed_in_connection(current_user.id, params[:list_id], @user.id))
+            logger = Logger.new('log/invite_id.log')
+            logger.info(User.number_connect(current_user))
+            @user.skip_stripe_update = true
+            @user.invite!(current_user)
+            #          User.invite!({:email => @user.email},current_user)
+            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
+              @success = true
+              @message = "You already sent successfully an invitation email to #{@user.email}"
+            end
+          else
+            @message = "The user #{@user.email} already existed in your connections"
+          end
+        else
+          @message = "User not found"
+        end
       end
       @success = false
-      respond_to do |format|
-        format.js
-      end
+    end
+    respond_to do |format|
+      format.js
     end
   end
+
   
 end

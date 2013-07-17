@@ -2,26 +2,262 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b54fe8c7-4f4b-4723-9e59-c232005eb19e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/nbproject/project.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\CHANGES.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\build-config.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\ckeditor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\config.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\contents.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\af.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\bg.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\bn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\bs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\cs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\cy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\da.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\de.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\el.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\en.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\eo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\es.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\et.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\eu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\fa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\fi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\fo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\fr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\gl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\gu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\he.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\hi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\hr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\hu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\is.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\it.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ja.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ka.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\km.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ko.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ku.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\lt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\lv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\mk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\mn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ms.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\nb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\nl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\no.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\pl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\pt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ro.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ru.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\si.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sq.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sr-latn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\sv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\th.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\tr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\ug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\uk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\vi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\lang\zh.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\about\dialogs\about.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\about\dialogs\logo_ckeditor.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\clipboard\dialogs\paste.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\dialog\dialogDefinition.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\fakeobjects\images\spacer.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\icons.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\image\dialogs\image.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\image\images\noimage.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\link\dialogs\anchor.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\link\dialogs\link.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\link\images\anchor.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\magicline\images\icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\pastefromword\filter\default.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\scayt\LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\scayt\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\scayt\dialogs\options.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\scayt\dialogs\toolbar.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\bg.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\cs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\cy.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\de.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\el.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\en.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\eo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\es.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\et.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\fa.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\fi.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\fr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\gl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\he.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\hr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\hu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\it.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\ku.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\lv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\nb.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\nl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\no.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\pl.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\ru.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\si.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\sk.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\sq.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\sv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\th.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\tr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\ug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\table\dialogs\table.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\ciframe.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\tmp.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\wsc.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\wsc.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\plugins\wsc\dialogs\wsc_ie.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\ajax.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\api.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\appendto.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\inlineall\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\outputxhtml\outputxhtml.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\posteddata.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\sample.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\sample.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\assets\uilanguages\languages.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\datafiltering.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\divreplace.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\inlineall.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\inlinebycode.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\dialog\assets\my_dialog.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\dialog\dialog.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\enterkey\enterkey.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\htmlwriter\outputforflash.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\htmlwriter\outputhtml.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\magicline\magicline.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\toolbar\toolbar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\plugins\wysiwygarea\fullpage.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\readonly.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\replacebyclass.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\replacebycode.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\sample.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\sample.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\sample_posteddata.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\tabindex.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\uicolor.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\uilanguages.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\samples\xhtmlstyle.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog_ie.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog_ie7.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog_ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog_iequirks.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\dialog_opera.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor_gecko.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor_ie.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor_ie7.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor_ie8.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\editor_iequirks.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\icons.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\images\arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\images\close.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\images\mini.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\skins\moono\readme.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\ckeditor\styles.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\javascripts\jquery-ui-1.10.3.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\lists\_items_test.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\tasks\edit.html.erb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/list_team_member.rb" afterPath="$PROJECT_DIR$/app/models/list_team_member.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1373970724560" ignored="false" />
+    <file path="/Dummy.txt" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374030168503" ignored="false" />
     <file path="/addonfix.css" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1373971010074" ignored="false" />
+    <file path="/home_controller.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374029812979" ignored="false" />
+    <file path="/find_multi_invite.html.erb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374027503124" ignored="false" />
+    <file path="/routes.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374029190435" ignored="false" />
+    <file path="/mylist.html.erb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374030376971" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,25 +271,75 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <flatten value="false" />
+    <groupTables value="false" />
+    <sortChildren value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="checklistpal" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="addonfix.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
+      <file leaf-file-name="home_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="24" selection-start="7674" selection-end="7674" vertical-scroll-proportion="0.9486448">
+            <state line="204" column="73" selection-start="6867" selection-end="6867" vertical-scroll-proportion="0.4373928">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addonfix.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.less">
+      <file leaf-file-name="list_team_member.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/list_team_member.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="379" selection-end="414" vertical-scroll-proportion="0.0">
+            <state line="2" column="20" selection-start="135" selection-end="141" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mylist.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="27" selection-start="3050" selection-end="3050" vertical-scroll-proportion="-26.153847">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="find_multi_invite.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/home/find_multi_invite.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="67" selection-start="754" selection-end="769" vertical-scroll-proportion="-0.65384614">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="77" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="find_invite.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="34" selection-start="2051" selection-end="2067" vertical-scroll-proportion="-0.65384614">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="invite_multi.log" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/invite_multi.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="3" selection-start="2841" selection-end="2844" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,14 +364,19 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
+        <option value="$PROJECT_DIR$/app/models/list_team_member.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/find_multi_invite.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="29" />
-    <option name="width" value="1420" />
-    <option name="height" value="860" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -142,6 +433,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -160,11 +465,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -182,7 +483,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lists" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -191,12 +536,50 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="appearance" />
+    <property name="FullScreen" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby">
+      <module name="" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b54fe8c7-4f4b-4723-9e59-c232005eb19e" name="Default" comment="" />
@@ -206,25 +589,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="29" width="1420" height="860" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.67096776" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15378788" sideWeight="0.67096776" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -288,16 +672,85 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.less">
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="379" selection-end="414" vertical-scroll-proportion="0.0">
+        <state line="150" column="23" selection-start="4898" selection-end="4898" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/list_team_member.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="135" selection-end="141" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="24" selection-start="7674" selection-end="7674" vertical-scroll-proportion="0.9486448">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="379" selection-end="414" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="379" selection-end="414" vertical-scroll-proportion="0.028619528" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="41" selection-start="7061" selection-end="7061" vertical-scroll-proportion="0.099827886" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/list_team_member.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="135" selection-end="141" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/find_multi_invite.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="67" selection-start="754" selection-end="769" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="77" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="34" selection-start="2051" selection-end="2067" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/invite_multi.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="3" selection-start="2841" selection-end="2844" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="27" selection-start="3050" selection-end="3050" vertical-scroll-proportion="-26.153847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="204" column="73" selection-start="6867" selection-end="6867" vertical-scroll-proportion="0.4373928">
           <folding />
         </state>
       </provider>

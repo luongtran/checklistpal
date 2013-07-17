@@ -3,6 +3,7 @@ class ListTeamMember < ActiveRecord::Base
   belongs_to :invite, :class_name => "User"
   belongs_to :user
   belongs_to :list
+
   
   def self.is_existed_in_connection(user_id, list_id, invited_id)
     return ListTeamMember.find(:all, :conditions => ["user_id = ? AND list_id = ? AND invited_id = ? AND active = ?", user_id, list_id, invited_id, true]).length > 0

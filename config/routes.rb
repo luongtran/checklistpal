@@ -32,9 +32,13 @@ Checklistpal::Application.routes.draw do
   match 'who_connection/:id' => "lists#who_connection" , :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy" , :as => :delete_list
   #match 'list/:list_id/invite-user' => 'lists#invite_user', :as => :invite_user
-  match '/invite_user' => 'home#find_invite' ,:as => :find_invite
+  match '/invite_user/:list_id' => 'home#find_invite' ,:as => :find_invite
+  match '/find_multi_invite' => 'home#find_multi_invite', :as => :find_invite_multi
+  match '/pass_parametter' => 'home#pass_parametter', :as => :pass_parametter
   match '/invite/:list_id' => 'home#invite' ,:as => :invite
+  match '/invite_multi' => 'home#invite_multi', :as => :invitation
   match 'invite/(:list_id)/user' => "home#invite_user_by_id", :as => :invite_user
+  match '/inviteuser' => 'home#invite_user_by_id_multi_list' ,:as => :invite_user_multi
   match 'task/:task_id/comment/create' => "comments#create" , :as => :add_comment
   match '/lists/:list_id/task/:id/show' => "tasks#show" , :as => :view_task
   match '/mylists/search' => 'lists#search_my_list' , :as => :search_my_list
