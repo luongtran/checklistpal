@@ -86,10 +86,14 @@ class ListsController < ApplicationController
     @user = current_user
     @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])
     @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ? AND active = ?", @user.id , true])
+    logger = Logger.new('log/list_team_17.log')
+    logger.info(@list_team_members)
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|
         list_ids += [member.list_id]
+        logger.info(member.list_id)
+        logger.info(list_ids)
       end
       if !list_ids.empty?
         @friend_lists = List.where('id IN (?)',list_ids)	  	

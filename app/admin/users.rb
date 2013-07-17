@@ -4,6 +4,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+ #   column :role
     column :current_sign_in_at
     column :last_sign_in_at
     column :sign_in_count
@@ -11,6 +12,7 @@ ActiveAdmin.register User do
   end
 
   filter :email
+#  filter :role
 
   form do |f|
     f.inputs "User Details" do

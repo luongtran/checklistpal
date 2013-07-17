@@ -22,7 +22,7 @@
           <div class="invitepanel">
             <h3>Find or Invite</h3>
             <div class="panel">
-                  <%= form_tag invitation_path, :id => 'invitation_form',:class => "row-fluid",:remote => true do  %>
+                  <%= form_tag invitation_multi_path, :id => 'invitation_form',:class => "row-fluid",:remote => true do  %>
                   <div class="alert alert-error" id="error_mess"></div>
                   <div class="controls controls-row">
                     <%= text_field_tag 'user_name',nil, class: "span8" ,placeholder:"Username" %><span class="span4">or</span>

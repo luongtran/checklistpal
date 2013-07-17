@@ -7,7 +7,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
   def create
     self.resource = resource_class.invite!(resource_params, current_inviter)
-    if resource.sign_in_count = 0
+    if resource.last_sign_in_at != "" ||  resource.last_sign_in_at != nil
       role = Role.find(:first, :conditions => ["name = ?", "free"])
       resource.add_role(role.name)
       resource.invitation_limit = role.max_connections
@@ -23,6 +23,10 @@ class Users::InvitationsController < Devise::InvitationsController
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
     list_team_members = ListTeamMember.find(:all, :conditions => ['invitation_token = ?', params[:invitation_token]])
+    logger = Logger.new('log/accept_inviation.log')
+    logger.info(Time.now)
+    logger.info(list_team_members)
+
     if list_team_members
       list_team_members.each do |list_team_member|
         list_team_member.update_attributes(:active => true)
@@ -30,7 +34,7 @@ class Users::InvitationsController < Devise::InvitationsController
       end
     end
     @user = User.find(:first, :conditions => ["id = ?",@user_id])
-    if @user.sign_in_count > 0
+    if @user.last_sign_in_at != nil
       @user.accept_invitation!    
       sign_in :user, @user
       redirect_to my_list_path
@@ -40,6 +44,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
   # PUT /resource/invitation
   def update
+    ListTeamMember.find(:all, :conditions=>[])
     super
   end
 
