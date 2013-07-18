@@ -31,7 +31,6 @@ class HomeController < ApplicationController
           return false
         end
       else
-        # flash[:alert] = "Could not create more list, Please upgrade you account !!!"
         flash[:alert] = %Q[Could not create more list, Please <a href="/users/edit">upgrade</a> you account].html_safe
         redirect_to my_list_path 
       end        
@@ -62,19 +61,11 @@ class HomeController < ApplicationController
     session[:list_ids] =   @list_id;
     render :json => {
       :location => url_for(:controller => 'home', :action => 'find_multi_invite')
-      # :flash => {:notice => "Hello #{authorized_user.name}."}
     }
   end
   
-  def find_multi_invite
-    #if !User.list_create(current_user.id,params[:list_id])
-    #  redirect_to my_list_path
-    #end
+  def find_multi_invite   
     @list_ids = session[:list_ids]
-    logger = Logger.new('log/invite_multi.log')  
-    logger.info('------------start-------------')
-    logger.info(@list_ids)
-
     @lists = List.where('id IN (?)',@list_ids)
     user_ids = []
     @lists.each do |list|
@@ -88,10 +79,6 @@ class HomeController < ApplicationController
     if !user_ids.empty?
       @my_connects = User.where('id IN (?)',user_ids)
     end
-    #    respond_to do |format|
-    #      format.js
-    #      format.html
-    #    end
   end
 
   def search_my_connect
@@ -143,25 +130,42 @@ class HomeController < ApplicationController
       @has_list_users = true
     else
       num_connect = User.number_connect(current_user)
-      logger = Logger.new('log/18_7_numconnect.log')
-      logger.info(num_connect)
-      if num_connect < Role.find(current_user.roles.first.id).max_connections
+      if User.already_connect(current_user,@user)
         if(!invite_email.blank?)
-          @user = User.new({:email => invite_email})
-          role = Role.find(:first, :conditions => ["name = ?", "free"])
-          @user.add_role(role.name)
-          @user.save
-          @user.invite!(current_user)
-          @list_ids = session[:list_ids]
-          @lists = List.where('id IN (?)',@list_ids)
-          @lists.each do |list|
-            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
-              @success = true
+            @user = User.new({:email => invite_email})
+            role = Role.find(:first, :conditions => ["name = ?", "free"])
+            @user.add_role(role.name)
+            @user.save
+            @user.invite!(current_user)
+            @list_ids = session[:list_ids]
+            @lists = List.where('id IN (?)',@list_ids)
+            @lists.each do |list|
+              if(!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
+                if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
+                  @success = true
+                end
+              end
             end
           end
-        end
       else
-        @has_over_connect = true
+        if num_connect < Role.find(current_user.roles.first.id).max_connections
+          if(!invite_email.blank?)
+            @user = User.new({:email => invite_email})
+            role = Role.find(:first, :conditions => ["name = ?", "free"])
+            @user.add_role(role.name)
+            @user.save
+            @user.invite!(current_user)
+            @list_ids = session[:list_ids]
+            @lists = List.where('id IN (?)',@list_ids)
+            @lists.each do |list|
+              if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
+                @success = true
+              end
+            end
+          end
+        else
+          @has_over_connect = true
+        end
       end
       @has_list_users = false
     end
@@ -196,9 +200,6 @@ class HomeController < ApplicationController
       @has_list_users = true
     else
       num_connect = User.number_connect(current_user)
-      #@num_connect = @connect.group('invited_id').count
-      #logger = Logger.new('log/numberconnect.log')
-      #logger.info(@num_connect)      ;
       if num_connect < Role.find(current_user.roles.first.id).max_connections
         if(!invite_email.blank?)
           @user = User.new({:email => invite_email})
@@ -206,8 +207,13 @@ class HomeController < ApplicationController
           @user.add_role(role.name)
           @user.save
           @user.invite!(current_user)
-          if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
-            @success = true
+          if(!ListTeamMember.is_existed_in_connection(current_user.id, @list_id , @user.id))
+            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
+              @success = true
+            end
+          else
+            @success = false
+            @message = "The list already sharing for #{@user.email}"
           end
         end
       else
@@ -221,7 +227,6 @@ class HomeController < ApplicationController
   end
   
   def invite_user_by_id_multi_list
-
     @user = User.find(params[:user_id])   
     @list_ids = session[:list_ids]
     @lists = List.where('id IN (?)',@list_ids)
@@ -236,7 +241,7 @@ class HomeController < ApplicationController
             @message = "You already sent successfully an invitation email to #{@user.email}"
           end
         else
-          @message = "The list #{@list.name} already sharing for #{@user.email} "
+          @message = "The list #{@list.name} already sharing for #{@user.email}"
         end
       end
     else
@@ -246,7 +251,6 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
-    #end
   end
   
   def invite_user_by_id
@@ -256,9 +260,6 @@ class HomeController < ApplicationController
       return
     else
       num_connect = User.number_connect(current_user)
-      logger = Logger.new('log/number_coonection.log')
-      logger.info("-Num connect-")
-      logger.info(num_connect)
       if num_connect > Role.find(current_user.roles.first.id).max_connections
         @message = %Q[Could not invite more user, Please <a href="/users/edit">upgrade</a> you account].html_safe
         redirect_to my_list_path
@@ -267,11 +268,8 @@ class HomeController < ApplicationController
         @user = User.find(params[:user_id])  
         if @user
           if(!ListTeamMember.is_existed_in_connection(current_user.id, params[:list_id], @user.id))
-            logger = Logger.new('log/invite_id.log')
-            logger.info(User.number_connect(current_user))
             @user.skip_stripe_update = true
             @user.invite!(current_user)
-            #          User.invite!({:email => @user.email},current_user)
             if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
               @success = true
               @message = "You already sent successfully an invitation email to #{@user.email}"
@@ -289,6 +287,4 @@ class HomeController < ApplicationController
       format.js
     end
   end
-
-  
 end

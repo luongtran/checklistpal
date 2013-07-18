@@ -5,10 +5,6 @@ class AuthenticationsController < ApplicationController
   def facebook
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
-    
-    logger = Logger.new('log/facebook.log')
-    logger.info('------facebook------------')
-    
     if authentication
       flash[:notice] = "Logged in Successfully"
       sign_in_and_redirect User.find(authentication.user_id)
@@ -20,7 +16,6 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect current_user
     else
       role = Role.find(:first, :conditions => ["name = ?", "free"])
-      logger.info(role)
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
@@ -39,8 +34,6 @@ class AuthenticationsController < ApplicationController
     end
   end
   def create
-    logger = Logger.new("log/create_face.log")
-    logger.info("------------Login FACEOOK--------------")
     @authentication = Authentication.new(params[:authentication])
     if @authentication.save
       redirect_to authentications_url, :notice => "Successfully created authentication."

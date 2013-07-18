@@ -1,18 +1,5 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.json
-  def index
-      @task = Task.find(params[:task_id])
-      @comments = @task.comments.all
-#      @comments = Comment.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @comments }
-    end
-  end
-
-  # GET /comments/1
-  # GET /comments/1.json
+ 
   def show
     @task = Task.find(params[:task_id])
       @comments = @task.comments.all

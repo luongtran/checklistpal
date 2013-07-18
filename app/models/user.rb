@@ -178,6 +178,11 @@ class User < ActiveRecord::Base
       update_attributes(params) 
   end
   
+  def update_without_password(params={})
+    params.delete(:current_password)
+    super(params)
+  end
+  
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -198,6 +203,14 @@ class User < ActiveRecord::Base
     end
     return User.where("id IN (?)",@user_ids).count
   end
+  
+  def self.already_connect(user,invite_user)
+   if user.list_team_members.find(:first,:conditions =>["active = ? AND invited_id = ?",true,invite_user.id])
+     return true
+   else
+     return false
+   end   
+  end
    
   def self.number_free_user
     count = 0
@@ -209,7 +222,6 @@ class User < ActiveRecord::Base
       end
     end
     return count    
-  #  return Role.find(:all,:conditions => ["name = ?", 'free']).count
   end
   
   def self.number_paid_user

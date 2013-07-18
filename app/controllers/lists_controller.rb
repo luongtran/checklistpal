@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
- before_filter :authenticate_user!, :only => [:destroy ,:mylist, :edit]
- respond_to :html, :xml, :js
+  before_filter :authenticate_user!, :only => [:destroy ,:mylist, :edit]
+  respond_to :html, :xml, :js
  
   def show
     @list = List.find(:first , :conditions => ["slug = ?", params[:slug]])
@@ -42,8 +42,8 @@ class ListsController < ApplicationController
 
   def edit
     if User.list_create(current_user.id,params[:id])    
-    @permission = true
-    @list = List.find(params[:id])
+      @permission = true
+      @list = List.find(params[:id])
       if @list.update_attributes(params[:list])
         @success = 1
       else
@@ -52,26 +52,23 @@ class ListsController < ApplicationController
     else    
       @permission = false
     end
-      respond_to do |format|
+    respond_to do |format|
       format.json { render :json => {:success => @success, :list => @list , :permission => @permission}}   
-      end
+    end
   end
   
   def destroy
     @list = List.find(params[:id])
     if current_user.id == @list.user_id 
       @list.destroy
-      flash[:notice] = "List Deleted"
-      redirect_to my_list_url
+      redirect_to my_list_url notice: "List Deleted"
     else
-      flash[:error] = "Can't delete list"
-      redirect_to root_path
+      redirect_to root_path  alert: "Can't delete list"
     end
   end
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(params[:list])
-      flash[:notice] = "List updated"
       respond_with(@list, :location => list_url(@list))
     else
       flash[:error] = 'Something is Awry :('
@@ -117,7 +114,7 @@ class ListsController < ApplicationController
     else 
       @current_connect.each do |f|
         f.destroy
-        end
+      end
       @success = true
       @is_not_connect = true
       redirect_to my_list_url
