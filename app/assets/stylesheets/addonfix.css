@@ -84,3 +84,9 @@
 .taskinfo .comment-add {
 	margin-bottom:10px;
 }
+.connect-email{
+    margin-left : 20px;
+}
+.btndeletelist{
+    /*float:right;*/
+}

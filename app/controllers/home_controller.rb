@@ -10,7 +10,6 @@ class HomeController < ApplicationController
           :slug => random_string
         })
       if @list.save
-        flash[:notice] = "List created"
         redirect_to list_url(@list.slug)
       else
         flash[:error] = "Could not post list"        
@@ -26,7 +25,6 @@ class HomeController < ApplicationController
             :slug => random_string
           })
         if @list.save
-          flash[:notice] = "List create successfuly !"
           redirect_to list_url(@list.slug) 
         else
           flash[:error] = "Can't create list !"
@@ -144,7 +142,9 @@ class HomeController < ApplicationController
     if @users.length > 0
       @has_list_users = true
     else
-      num_connect = current_user.list_team_members.where('active = ?',true).count
+      num_connect = User.number_connect(current_user)
+      logger = Logger.new('log/18_7_numconnect.log')
+      logger.info(num_connect)
       if num_connect < Role.find(current_user.roles.first.id).max_connections
         if(!invite_email.blank?)
           @user = User.new({:email => invite_email})
@@ -195,7 +195,7 @@ class HomeController < ApplicationController
     if @users.length > 0
       @has_list_users = true
     else
-      num_connect = current_user.list_team_members.where('active = ?',true).count
+      num_connect = User.number_connect(current_user)
       #@num_connect = @connect.group('invited_id').count
       #logger = Logger.new('log/numberconnect.log')
       #logger.info(@num_connect)      ;
@@ -255,7 +255,7 @@ class HomeController < ApplicationController
       redirect_to my_list_path
       return
     else
-      num_connect = current_user.list_team_members.where('active = ?',true).count
+      num_connect = User.number_connect(current_user)
       logger = Logger.new('log/number_coonection.log')
       logger.info("-Num connect-")
       logger.info(num_connect)

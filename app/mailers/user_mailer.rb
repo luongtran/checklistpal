@@ -29,4 +29,9 @@ class UserMailer < ActionMailer::Base
     @template = EmailTemplate.find(:first , :conditions => ["email_type = ?","Downgraded Email"])
     mail(:to => @user.email , :subject => @template.title)    
   end
+  def welcome_email(user)
+    @user = user
+    @template = EmailTemplate.find(:first, :conditions => ["email_type = ?","Welcome Email"])
+    mail(:to => @user.email , :subject => @template.title)
+  end
 end

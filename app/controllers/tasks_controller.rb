@@ -9,9 +9,11 @@ class TasksController < ApplicationController
       end
       @task.position = 1
     if @task.save
-      flash[:notice] = "Task Created"
+      @message = "Task create"   
+      @success = true
     else
-      flash[:error] = "It just didn't happen for you"
+      @message = "It just didn't happen for you"
+      @success = false
     end
     render :partial => 'lists/items'
   end

@@ -15,14 +15,18 @@
   </div>
 </div>
 <div class="section clearfix">
+  <% if @user.roles.first.name == 'free' %>
+  <h3>Free Sign Up</h3>
+  <% else %>
+  <h3>Create Paid Account</h3>
+  <% end %>
   <div id="signupfree">
     <div class="clearfix">
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
-            <h3>Create a <%= @user.roles.first.name %> account</h3>
             <div id="stripe_error" class="alert alert-error" style="display:none" ></div>
-            <div class="panel">
+            <div class="panel" style="margin-top : 20px;">
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical row-fluid' }) do |f| %>
                 <%= hidden_field_tag 'plan', params[:plan] %>
                 <%= f.error_notification %>
@@ -71,21 +75,15 @@
               <div class="divine50">
                 <div class="signoption">
                   <% if @user.roles.first.name == "free" %>
-                    <div class="signinpanel">
+                    <div class="signinpanel" style="margin-top : -55px;">
                       <h3 class="text-center">Log In</h3>
                       <div class="social-account">
                         <p class="text-center">Sign in with Your Facebook Account</p>
-                        <p class="text-center">
-                        
-                        
-                        
+                        <p class="text-center">                        
                         <%= link_to user_omniauth_authorize_path(:facebook), :class=> "btn btn-primary facebookbt" do %>
                           <%= content_tag(:i, "", :class => "icon-facebook") %>  Connect with Facebook
                         <% end %>
-                        
-                        </p>
-                        
-                        
+                        </p>                        
                       </div>
                       <hr class="divider">
                       <div class="panel">

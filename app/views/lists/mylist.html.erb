@@ -6,91 +6,88 @@
     </div>
   </div>
   <div class="pull-left">    
-    <h3>MY LISTS</h3>
+    <h3>My Lists</h3>
   </div>
 </div>
-<hr class="divider">
 <div class="section clearfix">
   <div id="mylist">
     <div class="clearfix">
       <div class="divine50">
         <div class="signoption row-fluid">
-          <div class="signuppanel">
-            <%#div class="searchmini clearfix"%>
-              <%= form_tag search_my_list_path ,:class => "searchmini clearfix",:remote => true do %>
+          <div class="mylist">
+            <%= form_tag search_my_list_path ,:class => "searchmini clearfix",:remote => true do %>
               <%= text_field_tag 'list_name',nil, class: "textinput input-medium" ,placeholder:"Search ...." ,:required => true %>
-              <input type="submit" value="" class="submitbt">
+                <input type="submit" value="" class="submitbt">
               <% end %>
-            <!-- </div> -->
               <div class="panel">
-              <h3>Created list</h3>
-              <% @lists.each do |list| %>
-              <label class="checkbox">
-                <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>
-              </label>              
-              <% end %>
-              <hr/>			  
-              <% if !@friend_lists.blank? %>
-              <h3>Invited list</h3>
-              <ul class="unstyle">
-              <% @friend_lists.each do |list| %>
-                <li><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span></li>
-              <% end %>
-                </ul>
-              <% end %>
-              
-              <% if !@my_connects.blank? %>
-              <h3>My connection </h3>
-              <ul class="unstyle">
-              <% @my_connects.each do |connect| %>
-                <li><%=  truncate(connect.email,:length => 40) %></li>
-              <% end %>
-              </ul>
-              <% end %>
+                <% @lists.each do |list| %>
+                  <label class="checkbox">
+                    <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete list", list_path(list), :data => { :confirm => "Delete this list?" }, :method => :delete, :class => 'btn btn-mini btn-danger btndeletelist') %>
+                  </label> 
+                  <% @connect_users = ListTeamMember.find(:all, :conditions => ["list_id = ? AND active = ?",list.id ,true]) %>
+                  <% uids = [] %>
+                  <% if !@connect_users.blank? %>
+                    <% @connect_users.each do |con| %>
+                      <% uids += [con.invited_id] %>
+                    <% end %>
+                    <% @connects = User.where("id in (?)",uids) %>
+                    <% @connects.each do |connect| %>
+                      <ul class="unstyled">
+                        <li class ="connect-email"><%= connect.email %>                
+                          <%= link_to("Remove", remove_connect_path(list.id,connect.id), :data => { :confirm => "Remove user from you list ?" }, :class => 'btn btn-mini btn-warning')%>
+                        </li>
+                      </ul>
+                    <% end %>
+                  <% end %>
+                  <hr/>
+                <% end %>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="divine50">
+          <% if !@friend_lists.blank? %>
+            <h3>Invited list</h3>
+            <ul class="unstyled">
+              <% @friend_lists.each do |list| %>
+                <li><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span></li>                
+              <% end %>
+            </ul>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script>
-  $('.btninvite').on("click", function(){
-    var list_ids = new Array();
-   $('input[name="listselects"]:checked').each(function(){
-      list_ids.push($(this).val());
+  <script>
+    $('.btninvite').on("click", function() {
+      var list_ids = new Array();
+      $('input[name="listselects"]:checked').each(function() {
+        list_ids.push($(this).val());
       });
-      console.log(list_ids.length);
-      if(list_ids.length === 0)
+      if (list_ids.length === 0)
       {
-          $('input[name="listselects"]').each(function(){
-              list_ids.push($(this).val());
-          });
-
+        $('input[name="listselects"]').each(function() {
+          list_ids.push($(this).val());
+        });
       }
-      console.log(list_ids)
       var datalist = JSON.stringify(list_ids);
       var url = $(this).data("url");
       $.ajax({
-                type: "post",
-                url: url,
-                data: {'list':datalist},
-                dataType: "json",
-                success:function(data){
-                    //data = $.parseJSON(data);
-                    console.log(data);
-                    console.log(data.location)
-                    if (data.location) {
-                        window.location.href = data.location;
-                    }
-                    if (data.flash && data.flash.notice) {
-                        // Maybe display flash message, etc.
-                    }
-                },
-               error: function() {
-              // If login fails, sending 422 error code sends you here.
-                }
-              });
-  }); 
-  
-</script>
+        type: "post",
+        url: url,
+        data: {'list': datalist},
+        dataType: "json",
+        success: function(data) {
+          if (data.location) {
+            window.location.href = data.location;
+          }
+          if (data.flash && data.flash.notice) {
+            // Maybe display flash message, etc.
+          }
+        },
+        error: function() {
+          // If login fails, sending 422 error code sends you here.
+        }
+      });
+    });
+  </script>

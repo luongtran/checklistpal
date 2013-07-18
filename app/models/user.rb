@@ -12,12 +12,11 @@ class User < ActiveRecord::Base
   before_save :update_stripe
   before_destroy :cancel_subscription
  # has_one :role
-  has_many :lists
+  has_many :lists , :dependent => :delete_all
   has_many :tasks
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
-  has_many :comments
-  
+  has_many :comments  , :dependent => :destroy
   
   def self.list_create(user_id,list_id)
     if user = User.find(user_id)
@@ -137,6 +136,9 @@ class User < ActiveRecord::Base
   def deleted
     UserMailer.delete_account(self).deliver
   end
+  def welcome
+    UserMailer.welcome_email(self).deliver
+  end
    
 #  Defined fod Facebook Authentication
     def apply_omniauth(omni)
@@ -189,7 +191,37 @@ class User < ActiveRecord::Base
   end
   
   def self.number_connect(resource)
-    return resource.list_team_members.find(:all , :conditions => ["active = ? ",true]).count
+    listconnect = resource.list_team_members.find(:all , :conditions => ["active = ? ",true])
+    @user_ids = []
+    listconnect.each do |list|
+      @user_ids += [list.invited_id]
+    end
+    return User.where("id IN (?)",@user_ids).count
+  end
+   
+  def self.number_free_user
+    count = 0
+    self.all.each do |user|
+      if !user.roles.first.nil?
+        if user.roles.first.name == "free"
+        count += 1
+        end
+      end
+    end
+    return count    
+  #  return Role.find(:all,:conditions => ["name = ?", 'free']).count
+  end
+  
+  def self.number_paid_user
+    count = 0
+    self.all.each do |user|
+      if !user.roles.first.nil?
+        if user.roles.first.name == "paid"
+        count += 1
+        end
+      end
+    end
+    return count
   end
   
   def to_s

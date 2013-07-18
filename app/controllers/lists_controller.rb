@@ -23,7 +23,6 @@ class ListsController < ApplicationController
             return
           end
         else
-          flash[:notice] = "You  are viewing list of anonymous user "
           return
         end
       else     #if user not login
@@ -31,7 +30,6 @@ class ListsController < ApplicationController
           flash[:alert] = "You have no permission to view this list !"
           redirect_to root_path
         else                         # if list not have user_id < Public list
-          flash[:notice] = "You  are viewing list of anonymous user !"
           return
         end
       end
@@ -52,7 +50,6 @@ class ListsController < ApplicationController
         @success = 0
       end        
     else    
-      flash[:alert] = "You have no permission to edit this list"
       @permission = false
     end
       respond_to do |format|
@@ -86,14 +83,10 @@ class ListsController < ApplicationController
     @user = current_user
     @lists = List.find(:all, :conditions => ["user_id = ?" ,@user.id])
     @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ? AND active = ?", @user.id , true])
-    logger = Logger.new('log/list_team_17.log')
-    logger.info(@list_team_members)
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|
         list_ids += [member.list_id]
-        logger.info(member.list_id)
-        logger.info(list_ids)
       end
       if !list_ids.empty?
         @friend_lists = List.where('id IN (?)',list_ids)	  	
@@ -113,6 +106,24 @@ class ListsController < ApplicationController
       format.html
     end
   end
+  
+  def remove_connect
+    @is_not_connect = false
+    @list_id = params[:list_id]
+    @user_id = params[:user_id]
+    @current_connect = ListTeamMember.find(:all, :conditions => ["list_id = ? and invited_id = ?",@list_id,@user_id])
+    if @current_connect.empty?
+      @success = false
+    else 
+      @current_connect.each do |f|
+        f.destroy
+        end
+      @success = true
+      @is_not_connect = true
+      redirect_to my_list_url
+    end
+  end
+  
   def search_my_list
     @user = current_user
     @list_name = params[:list_name]
