@@ -14,7 +14,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Recent Customers" do
-          table_for User.order('id desc').limit(50) do
+          table_for User.order('id desc').limit(20) do
             column("Name") { |user| status_tag(user.name,:ok) }
             column("Email") { |user| link_to(user.email, admin_user_path(user.id)) }
             column("Role") {|user| !user.roles.first.nil? ? user.roles.first.name : "Don't have" }

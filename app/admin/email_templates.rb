@@ -6,6 +6,7 @@ ActiveAdmin.register EmailTemplate do
   end
   show do
       h3 email_template.title
+      div email_template.created_at
       div do
         raw email_template.body
       end
