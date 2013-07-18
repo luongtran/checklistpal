@@ -90,3 +90,6 @@
 .btndeletelist{
     /*float:right;*/
 }
+.container{
+    width: auto !important;
+}
