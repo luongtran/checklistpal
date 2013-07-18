@@ -79,9 +79,9 @@
 		padding-left: 16px;
 		padding-right: 16px;
 	}
-        .body {
-            padding-left:0px;
-            padding-right:0px;
+        body{
+            padding-left:0px !important;
+            padding-right:0px !important;
         }
 }
 
