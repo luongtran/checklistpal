@@ -1,16 +1,11 @@
 Checklistpal::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
   match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
   devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]},:sign_out_via => ["DELETE","GET"], :controllers => {:registrations => 'registrations' ,omniauth_callbacks: "authentications",:invitations => 'users/invitations' }
   ActiveAdmin.routes(self)
   root :to => 'home#index'
-
-  #get 'lists/:id', to: 'Lists#show', constraints: {id: /^\d/}
-  #match '/lists/create' => 'Lists#create' , :as =>  :create_list
-  #match "lists/:list_id/tasks" => "tasks#create"
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   resources :lists do
@@ -30,7 +25,6 @@ Checklistpal::Application.routes.draw do
   match 'remove_connect/:list_id/:user_id' => 'lists#remove_connect' , :as => :remove_connect
   match 'who_connection/:id' => "lists#who_connection" , :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy" , :as => :delete_list
-  #match 'list/:list_id/invite-user' => 'lists#invite_user', :as => :invite_user
   match '/invite_user/:list_id' => 'home#find_invite' ,:as => :find_invite
   match '/find_multi_invite' => 'home#find_multi_invite', :as => :find_invite_multi
   match '/pass_parametter' => 'home#pass_parametter', :as => :pass_parametter
@@ -44,11 +38,9 @@ Checklistpal::Application.routes.draw do
   match '/search_my_connect' => 'home#search_my_connect' , :as => :search_my_connect
   match '/about' => 'static_pages#about'  , :as => :about
   match '/support' => 'static_pages#support',:as => :support
-  #match 'upgrade' => 'users#upgrade' , :as => :upgrade_account
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
     get 'my_account', :to => 'devise/registrations#edit' , :as => :my_account
   end
-  #resources :users
 end

@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable,  :validatable ,:omniauthable, :invitable ,:trackable
+    :recoverable, :rememberable,  :validatable ,:omniauthable, :invitable  ,:trackable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid , :invitation_token,:invitation_sent_at,:invitation_accepted_at,:invitation_limit,:invited_by_id,:invited_by_type
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_save :update_stripe
   before_destroy :cancel_subscription
- # has_one :role
+  # has_one :role
   has_many :lists , :dependent => :delete_all
   has_many :tasks
   has_many :list_team_members
@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
       customer = Stripe::Customer.retrieve(customer_id)
       customer.update_subscription(:plan => role.name)
       if role.name == 'free'
-      UserMailer.downgraded(self).deliver
+        UserMailer.downgraded(self).deliver
       elsif role.name == 'paid'
-      UserMailer.upgraded(self).deliver
+        UserMailer.upgraded(self).deliver
       end
     end
     true
@@ -101,7 +101,8 @@ class User < ActiveRecord::Base
       customer.description = name
       customer.save
     end
-    self.last_4_digits = customer.active_card.last4 unless roles.first.name == 'free'
+    self.last_4_digits = customer.cards.data.first["last4"] unless roles.first.name == 'free'
+   # self.last_4_digits = customer.active_card.last4 
     self.customer_id = customer.id
     self.stripe_token = nil
   rescue Stripe::StripeError => e
@@ -140,8 +141,8 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver
   end
    
-#  Defined fod Facebook Authentication
-    def apply_omniauth(omni)
+  #  Defined fod Facebook Authentication
+  def apply_omniauth(omni)
     authentications.build(:provider => omni['provider'], 
       :uid => omni['uid'], 
       :token => omni['credentials'].token, 
@@ -175,13 +176,14 @@ class User < ActiveRecord::Base
       params.delete(:password) 
       params.delete(:password_confirmation) if params[:password_confirmation].blank? 
     end 
-      update_attributes(params) 
+    params.delete(:current_password)
+    update_attributes(params) 
   end
   
-  def update_without_password(params={})
-    params.delete(:current_password)
-    super(params)
-  end
+  #  def update_without_password(params={})
+  #    params.delete(:current_password)
+  #    super(params)
+  #  end
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -205,11 +207,11 @@ class User < ActiveRecord::Base
   end
   
   def self.already_connect(user,invite_user)
-   if user.list_team_members.find(:first,:conditions =>["active = ? AND invited_id = ?",true,invite_user.id])
-     return true
-   else
-     return false
-   end   
+    if user.list_team_members.find(:first,:conditions =>["active = ? AND invited_id = ?",true,invite_user.id])
+      return true
+    else
+      return false
+    end   
   end
    
   def self.number_free_user
@@ -217,7 +219,7 @@ class User < ActiveRecord::Base
     self.all.each do |user|
       if !user.roles.first.nil?
         if user.roles.first.name == "free"
-        count += 1
+          count += 1
         end
       end
     end
@@ -229,7 +231,7 @@ class User < ActiveRecord::Base
     self.all.each do |user|
       if !user.roles.first.nil?
         if user.roles.first.name == "paid"
-        count += 1
+          count += 1
         end
       end
     end
