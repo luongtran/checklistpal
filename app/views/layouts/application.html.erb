@@ -59,7 +59,8 @@
             <div id="white-logo">
               <div class="clearfix">
               <span class="inline">
-                <%= image_tag "white_logo.png" %>
+                <%#= link_to(image_tag "white_logo.png",:border => 0, :alt => 'MYLIST'), my_list_path %>
+                <%= link_to image_tag("white_logo.png", :border => 0, :alt => '', :title => ''), my_list_path %>
               </span>
               </div>
             </div>

@@ -179,12 +179,6 @@ class User < ActiveRecord::Base
     params.delete(:current_password)
     update_attributes(params) 
   end
-  
-  #  def update_without_password(params={})
-  #    params.delete(:current_password)
-  #    super(params)
-  #  end
-  
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
