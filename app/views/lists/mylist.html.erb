@@ -34,12 +34,11 @@
                     <% @connects.each do |connect| %>
                       <ul class="unstyled">
                         <li class ="connect-email"><%= connect.email %>                
-                          <%= link_to("Remove", remove_connect_path(list.id,connect.id), :data => { :confirm => "Remove user from you list ?" }, :class => 'btn btn-mini btn-warning')%>
+                          <%= link_to("Remove", remove_connect_path(list.id,connect.id), :data => { :confirm => "Remove user from you list ?" }, :class => 'btn btn-mini btn-info')%>
                         </li>
                       </ul>
                     <% end %>
                   <% end %>
-                  <hr/>
                 <% end %>
               </div>
             </div>
