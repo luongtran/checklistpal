@@ -97,3 +97,9 @@
 .container{
     width: auto !important;
 }
+/*.mylist .panel .checkbox > input[type="button"]{
+    display:none;
+}
+.mylist .panel .checkbox > a:hover{
+    display:inline;
+}*/

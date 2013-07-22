@@ -21,7 +21,7 @@
               <% end %>
               <div class="panel">
                 <% @lists.each do |list| %>
-                  <label class="checkbox">
+                   <label class="checkbox">
                     <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete list", list_path(list), :data => { :confirm => "Delete this list?" }, :method => :delete, :class => 'btn btn-mini btn-danger btndeletelist') %>
                   </label> 
                   <% @connect_users = ListTeamMember.find(:all, :conditions => ["list_id = ? AND active = ?",list.id ,true]) %>
