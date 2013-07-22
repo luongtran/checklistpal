@@ -10,7 +10,11 @@ StripeEvent.setup do
     user = User.find_by_customer_id(event.data.object.customer)
     role = Role.find(:first , :conditions => ["name = ?",event.data.object.plan.id])
     user.add_role(role.name)
-    user.updated
+#    if role.name == 'free'
+#        UserMailer.downgraded(self).deliver
+#      elsif role.name == 'paid'
+#        UserMailer.upgraded(self).deliver
+#      end
   end
   subscribe 'customer.deleted' do |event|
     user = User.find_by_customer_id(event.data.object.subscription.customer)

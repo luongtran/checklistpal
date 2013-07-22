@@ -13,3 +13,4 @@ class ApplicationController < ActionController::Base
 #    (session[:"user_return_to"].nil?) ? "/" : session[:"user_return_to"].to_s
 #  end  
   end
+                          
