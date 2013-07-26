@@ -29,4 +29,4 @@ production:
   pool: 5
   username: root
   password: "123456"
-  host: localhost
+  host: 127.0.0.1

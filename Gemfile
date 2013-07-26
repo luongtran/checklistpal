@@ -16,7 +16,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
 gem "acts_as_list"
 gem 'bootstrap-datepicker-rails'
