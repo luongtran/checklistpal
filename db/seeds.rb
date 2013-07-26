@@ -10,9 +10,8 @@ YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
   puts 'role: ' << role
 end
-#Role.create(:name => "admin")
-#Role.create({:name => "free", :max_savedlist => 3 , :max_connections => 2})
-#Role.create({:name => "paid", :max_savedlist => 50000 , :max_connections => 50000 })
+Role.create({:name => "free", :max_savedlist => 3 , :max_connections => 2})
+Role.create({:name => "paid", :max_savedlist => 50000 , :max_connections => 50000 })
 puts 'DEFAULT USERS'
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.name
