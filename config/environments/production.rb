@@ -1,6 +1,5 @@
 Checklistpal::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  require 'smtp-tls'
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -73,7 +72,7 @@ Checklistpal::Application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :address              => "email-smtp.us-east-1.amazonaws.com",
-    :port                 => "587",
+    :port                 => "25",
     :domain               => "tudli.com",
     :user_name            => ENV['GMAIL_USERNAME'],
     :password             => ENV['GMAIL_PASSWORD'],
