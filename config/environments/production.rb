@@ -74,8 +74,8 @@ Checklistpal::Application.configure do
     :address              => "email-smtp.us-east-1.amazonaws.com",
     :port                 => "25",
     :domain               => "tudli.com",
-    :user_name            => ENV['GMAIL_USERNAME'],
-    :password             => ENV['GMAIL_PASSWORD'],
+    :user_name            => "AKIAJLWC3F6INL5BKOCQ",
+    :password             => "AkfugHWTu69yZyzJago4P4nGqjWSRExLBYmHtppa2PO+",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
