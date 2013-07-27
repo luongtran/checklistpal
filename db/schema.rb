@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20130716075710) do
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id", :length => {"author_type"=>191, "author_id"=>nil}
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace", :length => {"namespace"=>191}
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id", :length => {"resource_type"=>191, "resource_id"=>191}
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -95,22 +95,6 @@ ActiveRecord::Schema.define(:version => 20130716075710) do
 
   add_index "lists", ["slug"], :name => "index_lists_on_slug", :unique => true, :length => {"slug"=>191}
 
-  create_table "my_connections", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "list_id"
-    t.integer  "invite_user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "myconnections", :force => true do |t|
-    t.integer  "list_id"
-    t.integer  "connect_user_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -121,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20130716075710) do
     t.integer  "max_savedlist"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id", :length => {"name"=>191, "resource_type"=>191, "resource_id"=>nil}
-  add_index "roles", ["name"], :name => "index_roles_on_name", :length => {"name"=>191}
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "static_pages", :force => true do |t|
     t.boolean  "active"
@@ -131,11 +115,6 @@ ActiveRecord::Schema.define(:version => 20130716075710) do
     t.string   "page_name"
     t.string   "updated_by"
     t.string   "created_by"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "subscriptions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -64,9 +64,9 @@ Checklistpal::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  config.stripe.publishable_key = "pk_live_n7aD9YEbMm3NuHMUGgtxWCGo"
-  config.action_mailer.default_url_options = { :host => "checklistpal.herokuapp.com" }
-  config.action_mailer.asset_host = "checklistpal.herokuapp.com"
+  config.stripe.publishable_key = ENV['STRIPE_PUBLIC_KEY']
+  config.action_mailer.default_url_options = { :host => "tudli.com" }
+  config.action_mailer.asset_host = "tudli.com"
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -75,8 +75,8 @@ Checklistpal::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => "587",
       :domain               => "gmail.com",
-      :user_name            => "quangtest709",
-      :password             => "LAC VIET mtd9 EVA",
+      :user_name            => ENV['GMAIL_USERNAME'],
+      :password             => ENV['GMAIL_PASSWORD'],
       :authentication       => "plain",
       :enable_starttls_auto => true
   }

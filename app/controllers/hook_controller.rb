@@ -1,7 +1,7 @@
-class HookController < ApplicationController
+class Hoapi_keyokController < ApplicationController
   require 'json'
 
-  Stripe.api_key = "sk_test_H16ZPQUpRLDZZcGsvQbZao2g"
+  Stripe.api_key = ENV['STRIPE_API_KEY']
 
   def receiver
 

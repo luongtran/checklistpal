@@ -13,5 +13,5 @@ ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: 1234qwer
 ROLES: [admin, free, paid]
-STRIPE_API_KEY: "sk_test_H16ZPQUpRLDZZcGsvQbZao2g"
-STRIPE_PUBLIC_KEY: "pk_test_hNltPbfQGTFuyleT8Rw5W8R5"
+STRIPE_API_KEY: "sk_test_qUfVi1KXqTvYd6HkjMmjypGH"
+STRIPE_PUBLIC_KEY: "pk_test_HPXDBoB6Mpx2Rpkte2WoUad0"

@@ -26,6 +26,6 @@
     </div>
 <% end %>
 <div class="section clearfix">
-  <h3><%= @page.title %></h3>
-  <p><%= raw @page.content %></p>
+  <h3><%= @page.nil? ? "About us ..." : @page.title %></h3>
+  <p><%= raw (@page.nil? ? "" : @page.content) %></p>
 </div>

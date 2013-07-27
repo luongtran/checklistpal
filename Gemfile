@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'mysql2'
-gem 'heroku'
+
+gem 'pg'
+
 gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'nifty-generators'

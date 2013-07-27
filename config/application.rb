@@ -66,6 +66,6 @@ module Checklistpal
     config.assets.version = '1.0'
 
     # Config to using stripe.js
-    config.stripe.publishable_key = "pk_test_hNltPbfQGTFuyleT8Rw5W8R5"
+    config.stripe.publishable_key = "pk_test_HPXDBoB6Mpx2Rpkte2WoUad0"
   end
 end
