@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 gem 'mysql2'
 
 gem 'pg'
-
+gem 'ambethia-smtp-tls'
 gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'nifty-generators'
