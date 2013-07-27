@@ -34,6 +34,7 @@ class UserMailer < ActionMailer::Base
     @template = EmailTemplate.find(:first, :conditions => ["email_type = ?","Welcome Email"])
     mail(:to => @user.email , :subject => @template.title)
   end
+  ### Test
   def self.test_send
     mail(:to => "htluan2605@gmail.com" , :subject => "Hello") 
   end
