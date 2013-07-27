@@ -4,14 +4,13 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-    :recoverable, :rememberable,  :validatable ,:omniauthable, :invitable  ,:trackable
+    :recoverable, :rememberable,  :validatable ,:omniauthable, :invitable#  ,:trackable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon,:provider, :uid , :invitation_token,:invitation_sent_at,:invitation_accepted_at,:invitation_limit,:invited_by_id,:invited_by_type
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_save :update_stripe
   before_destroy :cancel_subscription
-  # has_one :role
   has_many :lists , :dependent => :delete_all
   has_many :tasks
   has_many :list_team_members
