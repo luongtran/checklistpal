@@ -77,7 +77,7 @@ Checklistpal::Application.configure do
       :domain               => "gmail.com",
       :user_name            => "thanhquang1988",#ENV['GMAIL_USERNAME'],
       :password             => "NetBeans IDE 7.3",#ENV['GMAIL_PASSWORD'],
-      :authentication       => "plain",
-      :enable_starttls_auto => true
+      :authentication       => "login"
+#      :enable_starttls_auto => true
   }
 end
