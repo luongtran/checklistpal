@@ -14,4 +14,3 @@
 /log/*.log
 /tmp
 /nbproject/private/
-/config/database.yml
