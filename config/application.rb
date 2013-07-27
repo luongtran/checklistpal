@@ -67,5 +67,6 @@ module Checklistpal
 
     # Config to using stripe.js
     config.stripe.publishable_key = "pk_test_HPXDBoB6Mpx2Rpkte2WoUad0"
+    # nothing
   end
 end
