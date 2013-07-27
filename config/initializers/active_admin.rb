@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Checklistpal" 
+  config.site_title = "Tudli"
   config.register_javascript 'ckeditor/config.js'
   config.register_javascript 'ckeditor/ckeditor.js' 
   config.register_javascript "ckeditor/ckeditor"

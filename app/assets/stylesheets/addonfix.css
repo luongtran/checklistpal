@@ -97,6 +97,11 @@
 .container{
     width: auto !important;
 }
+
+#accountpanel .inline {
+    border-right: 1px solid #888;
+    padding-right: 5px;
+}
 /*.mylist .panel .checkbox > input[type="button"]{
     display:none;
 }
