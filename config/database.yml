@@ -4,9 +4,10 @@ development:
   reconnect: false
   database: checklistpal_development
   pool: 5
+  host: 127.0.0.1
   username: root
   password: Htlu@n2605
-  host: 127.0.0.1
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,16 +21,15 @@ development:
 #  username: root
 #  password: "123456"
 #  host: localhost
+# abc
 
-#production:
-#  adapter: mysql2
-#  encoding: utf8
-#  reconnect: false
-#  database: checklistpal_production
-#  pool: 5
-#  username: root
-#  password: "123456"
-#  host: 127.0.0.1
-# TETSTSTSTSTT
-# Test2
-#Test 3
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: checklistpal_production
+  pool: 5
+  host: localhost
+  username: root
+  password: "123456"
+  
