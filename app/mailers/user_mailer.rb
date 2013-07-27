@@ -35,7 +35,8 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email , :subject => @template.title)
   end
   ### Test
-  def self.test_send
-    mail(:to => "htluan2605@gmail.com" , :subject => "Hello") 
+  def test_mail
+    puts "\n\n___Send test mail \n +username : #{ENV['GMAIL_USERNAME']}\n+password : #{ENV['GMAIL_PASSWORD']}"
+    mail(:to => "htluan2605@gmail.com" , :subject => "Hello")   
   end
 end
