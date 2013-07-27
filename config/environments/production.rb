@@ -74,7 +74,7 @@ Checklistpal::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => "email-smtp.us-east-1.amazonaws.com",
     :port                 => "587",
-    :domain               => "unknown",
+    :domain               => "tudli.com",
     :user_name            => "AKIAJLWC3F6INL5BKOCQ",
     :password             => "AkfugHWTu69yZyzJago4P4nGqjWSRExLBYmHtppa2PO+",
     :authentication       => "plain",
