@@ -1,6 +1,6 @@
 set :application, "Checklist Pal"
 set :scm, :git
-set :repository,  "C://Sites//checklistpal"
+set :repository,  "git@github.com:luongtran/checklistpal.git"
 set :scm_passphrase, ""
 set :user, "ubuntu"
 set :password, ""
