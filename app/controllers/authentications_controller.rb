@@ -7,7 +7,9 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
     if authentication
       flash[:notice] = "Logged in Successfully"
-      sign_in_and_redirect User.find(authentication.user_id)
+      @user = User.find(authentication.user_id)
+      @user.add_role(Role.find(:first, :conditions => ["name = ?", "free"]).name)
+      sign_in_and_redirect @user #User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
       token_secret = ""
