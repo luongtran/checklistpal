@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b54fe8c7-4f4b-4723-9e59-c232005eb19e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
@@ -22,7 +23,7 @@
     <file path="/mylist_old.html.erb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374892333634" ignored="false" />
     <file path="/active_admin.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374892368058" ignored="false" />
     <file path="/about.html.erb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374895359450" ignored="false" />
-    <file path="/database.yml" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374898158869" ignored="false" />
+    <file path="/database.yml" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374898628749" ignored="false" />
     <file path="/seeds.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374895158961" ignored="false" />
     <file path="/production.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374896534420" ignored="false" />
     <file path="/stripe.rb" changelist="b54fe8c7-4f4b-4723-9e59-c232005eb19e" time="1374895711241" ignored="false" />
@@ -92,7 +93,7 @@
       <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="42" selection-start="687" selection-end="687" vertical-scroll-proportion="0.88509876">
+            <state line="34" column="7" selection-start="737" selection-end="737" vertical-scroll-proportion="0.8168761">
               <folding />
             </state>
           </provider>
@@ -503,13 +504,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="748" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.67096776" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31136364" sideWeight="0.86754966" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31136364" sideWeight="0.86754966" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -644,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="40" selection-start="470" selection-end="470" vertical-scroll-proportion="0.48833033">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="40" selection-start="2083" selection-end="2083" vertical-scroll-proportion="0.0">
@@ -672,9 +666,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="22" selection-start="470" selection-end="470" vertical-scroll-proportion="0.48833033">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="42" selection-start="687" selection-end="687" vertical-scroll-proportion="0.88509876">
+        <state line="34" column="7" selection-start="737" selection-end="737" vertical-scroll-proportion="0.8168761">
           <folding />
         </state>
       </provider>
