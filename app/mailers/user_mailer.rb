@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "quangtest709@gmail.com"
+  default :from => "Tudli.com <quangtest709@gmail.com>"
   
   def expire_email(user)
     @user = user
