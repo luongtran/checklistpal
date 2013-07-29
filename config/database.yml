@@ -4,9 +4,9 @@ development:
   reconnect: false
   database: checklistpal_development
   pool: 5
-  host: localhost
+  host: 127.0.0.1
   username: root
-  password: "123456"
+  password: Htlu@n2605
   
 
 # Warning: The database defined as "test" will be erased and

@@ -6,10 +6,10 @@ class HomeController < ApplicationController
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create({
-                              :name => "Name of List",
-                              :description => "To do list",
-                              :slug => random_string
-                          })
+          :name => "Name of List",
+          :description => "To do list",
+          :slug => random_string
+        })
       if @list.save
         redirect_to list_url(@list.slug)
       else
@@ -20,11 +20,11 @@ class HomeController < ApplicationController
       num_list = !@user.lists.blank? ? @user.lists.count : 0
       if num_list < Role.find(current_user.roles.first.id).max_savedlist
         @list = List.create({
-                                :name => "Name of List",
-                                :description => "To do list",
-                                :user_id => @user.id,
-                                :slug => random_string
-                            })
+            :name => "Name of List",
+            :description => "To do list",
+            :user_id => @user.id,
+            :slug => random_string
+          })
         if @list.save
           redirect_to list_url(@list.slug)
         else
@@ -61,7 +61,7 @@ class HomeController < ApplicationController
     @list_id = JSON.parse(@list_ids)
     session[:list_ids] = @list_id;
     render :json => {
-        :location => url_for(:controller => 'home', :action => 'find_multi_invite')
+      :location => url_for(:controller => 'home', :action => 'find_multi_invite')
     }
   end
 

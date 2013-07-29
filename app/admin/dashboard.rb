@@ -36,10 +36,10 @@ ActiveAdmin.register_page "Dashboard" do
 #      end
 #    end             
     ul do
-      li "Total users :" + User.all.count.to_s
-      li "Total Lists made:"+ List.all.count.to_s
-      li "Total Paid users:" + User.number_paid_user.to_s
-      li "Total Free users:" + User.number_free_user.to_s
+      li "Total users: " + User.all.count.to_s
+      li "Total Lists made: "+ List.all.count.to_s
+      li "Total Paid users: " + User.number_paid_user.to_s
+      li "Total Free users: " + User.number_free_user.to_s
     end
   end
 end

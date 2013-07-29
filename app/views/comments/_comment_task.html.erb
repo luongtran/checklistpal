@@ -10,7 +10,7 @@
           <div id="collapse_<%= comment.id %>" class="accordion-body collapse in">
             <div class="accordion-inner">                            
               <div class="comment-content">
-                <%= comment.content %> 
+                <%= auto_link(comment.content , :html => { :target => '_blank',:class => "comment_content" })%> 
               </div>
             </div>
           </div>

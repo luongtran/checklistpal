@@ -40,13 +40,14 @@
     #logo {
         position: absolute;
         left: 40px;
-        top: 10px;
+        top: 30px;
+        color:red;
     }
 
     .todolist {
         position: absolute;
         left: 50px;
-        top: 70px;
+        top: 80px;
     }
 
     a:link:after {
@@ -62,5 +63,9 @@
     .list-name{
         font-family:bold;
         font-size:26px;
+    }
+    #logo span{
+        font-family:'Open Sans';
+        padding: 10px;
     }
 }
