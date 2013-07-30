@@ -44,4 +44,4 @@ gem "binding_of_caller"#, ">= 0.7.1", :group => :development, :platforms => [:mr
 gem 'thin'
 gem 'rails_autolink'
 gem "mocha", :group => :test
-gem 'therubyracer' 
+#gem 'therubyracer'
