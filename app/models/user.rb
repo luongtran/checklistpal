@@ -200,6 +200,7 @@ class User < ActiveRecord::Base
   end
   
   def self.already_connect(user,invite_user)
+
     if user.list_team_members.find(:first,:conditions =>["active = ? AND invited_id = ?",true,invite_user.id])
       return true
     else

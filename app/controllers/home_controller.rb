@@ -132,7 +132,6 @@ class HomeController < ApplicationController
       @has_list_users = true
     else
       num_connect = User.number_connect(current_user)
-
       #if User.already_connect(current_user, @user)
       if (!invite_email.blank?)
         @user = User.new({:email => invite_email})
@@ -140,7 +139,9 @@ class HomeController < ApplicationController
         #role = Role.where(:conditions => ["name = ?", "free"]).first;
         @user.add_role(role.name)
         @user.save
+
         @user.invite!(current_user)
+
         @list_ids = session[:list_ids]
         @lists = List.where('id IN (?)', @list_ids)
         @lists.each do |list|
@@ -177,6 +178,7 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
+
   end
 
   def invite
