@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716075710) do
+ActiveRecord::Schema.define(:version => 20130730021607) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20130716075710) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.string   "description"
+    t.text     "description"
     t.date     "due_date"
     t.boolean  "completed",   :default => false
     t.integer  "list_id"

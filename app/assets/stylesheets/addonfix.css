@@ -108,3 +108,12 @@
 .mylist .panel .checkbox > a:hover{
     display:inline;
 }*/
+
+.task-des{
+	max-width:750px;
+}
+@media (max-width:900px){
+.task-des{
+	width: 70%;
+}
+}
