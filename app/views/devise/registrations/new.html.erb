@@ -29,10 +29,18 @@
             <div class="panel" style="margin-top : 20px;">
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical row-fluid' }) do |f| %>
                 <%= hidden_field_tag 'plan', params[:plan] %>
-                <%= f.error_notification %>
-                <% if resource.errors.full_messages.present? %>
-                  <%= resource.errors.full_messages %>
-                <% end %>
+                 <%#= f.error_notification %>
+                  <% if resource.errors.full_messages.present? %>
+                  
+                    <% resource.errors.full_messages.each do |message| %>
+                    <div class="alert alert-error">
+                    <%= message %>
+                      <a class="close" data-dismiss="alert">x</a>
+                    </div>
+                    <% end %>
+                  
+                  <% end %>
+             
                 <div class="controls">
                   <%= f.email_field :email, :placeholder =>"Email address", :class =>"span9" ,:required => true %>
                 </div>

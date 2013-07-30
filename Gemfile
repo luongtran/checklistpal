@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'pg'
-#gem 'ambethia-smtp-tls'
+
+
 gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'nifty-generators'
@@ -44,3 +44,4 @@ gem "binding_of_caller"#, ">= 0.7.1", :group => :development, :platforms => [:mr
 gem 'thin'
 gem 'rails_autolink'
 gem "mocha", :group => :test
+gem 'therubyracer' 

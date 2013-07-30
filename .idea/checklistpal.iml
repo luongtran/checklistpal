@@ -93,7 +93,6 @@
     <orderEntry type="library" scope="PROVIDED" name="omniauth-facebook (v1.4.1, ruby-1.9.3-p392) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="omniauth-oauth2 (v1.1.1, ruby-1.9.3-p392) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.4.0, ruby-1.9.3-p392) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pg (v0.15.1, ruby-1.9.3-p392) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyamorous (v0.5.0, ruby-1.9.3-p392) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, ruby-1.9.3-p392) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="quiet_assets (v1.0.2, ruby-1.9.3-p392) [gem]" level="application" />
