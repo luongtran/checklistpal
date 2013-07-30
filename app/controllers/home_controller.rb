@@ -110,6 +110,7 @@ class HomeController < ApplicationController
   end
 
   def invite_multi
+    puts "\n\n_____________invite_multi"
     @success = false
     invite_email = params[:user_email]
     invite_name = params[:user_name]
@@ -132,33 +133,35 @@ class HomeController < ApplicationController
       @has_list_users = true
     else
       num_connect = User.number_connect(current_user)
+      puts "___________#{num_connect}____connects"
       #if User.already_connect(current_user, @user)
-      if (!invite_email.blank?)
-        @user = User.new({:email => invite_email})
-        role = Role.find(:first, :conditions => ["name = ?", "free"])
-        #role = Role.where(:conditions => ["name = ?", "free"]).first;
-        @user.add_role(role.name)
-        @user.save
-
-        @user.invite!(current_user)
-
-        @list_ids = session[:list_ids]
-        @lists = List.where('id IN (?)', @list_ids)
-        @lists.each do |list|
-          if (!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
-            if current_user.list_team_members.create({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token})
-              @success = true
-            end
-          end
-        end
-      end
+      #if (!invite_email.blank?)
+      #  @user = User.new({:email => invite_email})
+      #  role = Role.find(:first, :conditions => ["name = ?", "free"])
+      #  #role = Role.where(:conditions => ["name = ?", "free"]).first;
+      #  @user.add_role(role.name)
+      #  @user.save
+      #  @user.invite!(current_user)
+      #  @list_ids = session[:list_ids]
+      #  @lists = List.where('id IN (?)', @list_ids)
+      #  puts "______#{@lists.count}____"
+      #  @lists.each do |list|
+      #    if (!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
+      #      if current_user.list_team_members.create({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token})
+      #        @success = true
+      #      end
+      #    end
+      #  end
+      #end
       #else
+      puts "#{num_connect}______________number connect"
       if num_connect < Role.find(current_user.roles.first.id).max_connections
+
         if (!invite_email.blank?)
           @user = User.new({:email => invite_email})
           role = Role.find(:first, :conditions => ["name = ?", "free"])
           @user.add_role(role.name)
-          @user.save
+          #@user.save
           @user.invite!(current_user)
           @list_ids = session[:list_ids]
           @lists = List.where('id IN (?)', @list_ids)
@@ -172,8 +175,6 @@ class HomeController < ApplicationController
         @has_over_connect = true
       end
       #end
-
-      @has_list_users = false
     end
     respond_to do |format|
       format.js
@@ -213,7 +214,7 @@ class HomeController < ApplicationController
           @user = User.new({:email => invite_email})
           role = Role.find(:first, :conditions => ["name = ?", "free"])
           @user.add_role(role.name)
-          @user.save
+          #@user.save
           @user.invite!(current_user)
           if (!ListTeamMember.is_existed_in_connection(current_user.id, @list_id, @user.id))
             if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
