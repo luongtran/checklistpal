@@ -4,13 +4,13 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Welcome Email"])
-    @template = EmailTemplate.where(email_type: "welcome_email").first
+    @template = EmailTemplate.where(email_type: "Welcome Email").first
     mail(:to => @user.email, :subject => @template.title)
   end
 
   def expire_email(user)
     @user = user
-    @template = EmailTemplate.where(email_type: "expire_email").first
+    @template = EmailTemplate.where(email_type: "Expire Email").first
     mail(:to => user.email, :subject => @template.title)
   end
 
@@ -23,14 +23,14 @@ class UserMailer < ActionMailer::Base
   def delete_account(user)
     @user = user
     #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Delete Account Email"])
-    @template = EmailTemplate.where(email_type: "delete_account_email").first
+    @template = EmailTemplate.where(email_type: "Delete Account Email").first
     mail(:to => @user.email, :subject => @template.title)
   end
 
   def upgraded(user)
     @user = user
     #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Upgraded Email"])
-    @template = EmailTemplate.where(email_type: "upgraded_email").first
+    @template = EmailTemplate.where(email_type: "Upgraded Email").first
     mail(:to => @user.email, :subject => @template.title)
   end
 
@@ -40,7 +40,7 @@ class UserMailer < ActionMailer::Base
       @user.lists.first.destroy
     end
     #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Downgraded Email"])
-    @template = EmailTemplate.where(email_type: "downgraded_email").first
+    @template = EmailTemplate.where(email_type: "Downgraded Email").first
     mail(:to => @user.email, :subject => @template.title)
   end
 
