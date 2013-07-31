@@ -1,23 +1,33 @@
+<style>
+    .padd {
+        padding-left: 7px;
+        color: #cd4c4a;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+      $('.error').addClass('padd');
+    });
+</script>
 <div class="section clearfix">
   <div class="pull-right">
     <div id="quickmenu">
-      <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+ New</a><a href="javascript:;"  class="bookmark pull-left">BOOKMARK</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a><%= link_to_function("PRINT", "javascript:print()",html_options={:class => "pull-left",:target => "_blank"}) %></div>
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a></div>
     </div>
   </div>
   <div class="pull-left">
     <div id="logo">
-      <%= image_tag "blue_logo.png"%>
+      <%= image_tag "blue_logo.png" %>
     </div>
   </div>
 </div>
+
 <h3>Please create a password to accept and login</h3>
-
-<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
-
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-
-  <%= f.submit "Save My Password" %>
+<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :put} do |f| %>
+    <%#= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Save My Password", :class => "btn btn-primary" %>
 <% end %>
+

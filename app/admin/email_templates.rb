@@ -14,6 +14,8 @@ ActiveAdmin.register EmailTemplate do
       raw email_template.body
     end
   end
+  filter :email_type
+  filter :title
   form do |f|
     f.inputs "" do
       f.input :title

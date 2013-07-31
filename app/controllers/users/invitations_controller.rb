@@ -25,7 +25,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
     #list_team_members = ListTeamMember.find(:all, :conditions => ['invitation_token = ?', params[:invitation_token]])
-    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]).first
+    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token])
     if list_team_members
       list_team_members.each do |list_team_member|
         list_team_member.update_attributes(:active => true)
