@@ -1,4 +1,5 @@
 ActiveAdmin.register List do
+  actions :all, :except => [:destroy, :new]
   config.batch_actions = true
   index do
     selectable_column

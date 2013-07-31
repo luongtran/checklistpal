@@ -1,11 +1,11 @@
 ActiveAdmin.register User do
-  config.batch_actions = true  
+  config.batch_actions = true
   index do
     selectable_column
     id_column
     column :email
- #   column :role
-    column "User plan" do |user| 
+    #   column :role
+    column "User plan" do |user|
       user.roles.first.nil? ? "NULL" : user.roles.first.name
     end
     column "Created" do |user|
@@ -16,7 +16,9 @@ ActiveAdmin.register User do
     column :sign_in_count
     default_actions
   end
-  
+  filter :email
+  filter :roles
+  filter :email
   form do |f|
     f.inputs "User Details" do
       f.input :name

@@ -130,9 +130,9 @@ class User < ActiveRecord::Base
     UserMailer.expire_email(self).deliver
     destroy
   end
-  def updated
-    UserMailer.thanks_email(self).deliver
-  end
+  #def updated
+  #  UserMailer.thanks_email(self).deliver
+  #end
   def deleted
     UserMailer.delete_account(self).deliver
   end

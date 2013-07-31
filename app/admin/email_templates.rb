@@ -1,27 +1,24 @@
 ActiveAdmin.register EmailTemplate do
-  index do                            
-    column :email_type  
+  actions :all, :except => [:destroy, :new]
+  index do
+    column :email_type do |e|
+      e.email_type.titleize
+    end
     column :title
-    default_actions                   
+    default_actions
   end
   show do
-      h3 email_template.title
-      div email_template.created_at
-      div do
-        raw email_template.body
-      end
+    #h3 email_template.title
+    div email_template.created_at
+    div do
+      raw email_template.body
     end
+  end
   form do |f|
-    f.inputs "Select Pages" do
-      f.select :email_type, EmailTemplate::TYPES.collect { |s| [s.titleize] }, {:prompt=>"------------Select page to edit -----------"} ,:style => "width:100%"      
-    end
-    f.inputs "Details" do
+    f.inputs "" do
       f.input :title
+      f.input :body, :as => :ckeditor
     end
-    f.inputs "Contents" do
-      f.input :body ,:as => :ckeditor
-    end
-    
     f.actions
   end
 end
