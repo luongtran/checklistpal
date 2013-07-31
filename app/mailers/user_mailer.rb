@@ -4,6 +4,7 @@ class UserMailer < ActionMailer::Base
   def expire_email(user)
     @user = user
     @template = EmailTemplate.find(:first , :conditions => ["email_type = ?","Expire Email"])
+
     mail(:to => user.email, :subject => @template.title)
   end
   def thanks_email(user)
