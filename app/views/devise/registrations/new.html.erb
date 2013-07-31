@@ -31,7 +31,6 @@
                 <%= hidden_field_tag 'plan', params[:plan] %>
                  <%#= f.error_notification %>
                   <% if resource.errors.full_messages.present? %>
-                  
                     <% resource.errors.full_messages.each do |message| %>
                     <div class="alert alert-error">
                     <%= message %>
