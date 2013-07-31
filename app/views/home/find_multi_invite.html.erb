@@ -4,6 +4,7 @@
     }
 </style>
 <div class="section clearfix">
+  <div class="pull-left"><h1>Invite Anyone</h1></div>
   <div class="pull-right">
     <div id="quickmenu">
       <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
@@ -17,7 +18,7 @@
       <div class="divine30">
         <div class="signoption row-fluid">
           <div class="invitepanel">
-            <h3>Invite Anyone</h3>
+            <h3>Find and Invite Anyone</h3>
             <div class="panel">
                   <%= form_tag invitation_multi_path, :id => 'invitation_form',:class => "row-fluid",:remote => true do  %>
                   <div class="alert alert-error" id="error_mess"></div>

@@ -4,11 +4,13 @@ class Users::InvitationsController < Devise::InvitationsController
     build_resource
     render :new
   end
+
   # POST /resource/invitation
   def create
     self.resource = resource_class.invite!(resource_params, current_inviter)
     if resource.sign_in_count = 0
-      role = Role.find(:first, :conditions => ["name = ?", "free"])
+      #role = Role.find(:first, :conditions => ["name = ?", "free"])
+      role = Role.where(name: 'free').first
       resource.add_role(role.name)
       resource.invitation_limit = role.max_connections
     end
@@ -22,25 +24,28 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
-    list_team_members = ListTeamMember.find(:all, :conditions => ['invitation_token = ?', params[:invitation_token]])
+    #list_team_members = ListTeamMember.find(:all, :conditions => ['invitation_token = ?', params[:invitation_token]])
+    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]).first
     if list_team_members
       list_team_members.each do |list_team_member|
         list_team_member.update_attributes(:active => true)
         @user_id = list_team_member.invited_id
       end
     end
-    @user = User.find(:first, :conditions => ["id = ?",@user_id])
+    #@user = User.find(:first, :conditions => ["id = ?", @user_id])
+    @user = User.find(@user_id)
     if @user.last_sign_in_at != nil
-      @user.accept_invitation!    
+      @user.accept_invitation!
       sign_in :user, @user
       redirect_to my_list_path
     else
       render :edit
     end
   end
+
   # PUT /resource/invitation
   def update
-    ListTeamMember.find(:all, :conditions=>[])
+    ListTeamMember.find(:all, :conditions => [])
     super
   end
 
@@ -70,6 +75,7 @@ class Users::InvitationsController < Devise::InvitationsController
       redirect_to after_sign_out_path_for(resource_name)
     end
   end
+
   #  def after_accept_path_for(resource)
   #    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
   #    if list_team_member
