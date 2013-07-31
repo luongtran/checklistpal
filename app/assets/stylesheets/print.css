@@ -10,29 +10,35 @@
     /*    body * {
             visibility: hidden;
         }*/
-    .searchboxtodolist{
+    .searchboxtodolist {
         visibility: hidden;
     }
-    #logo{
+
+    #logo {
         visibility: hidden;
     }
-    #quickmenu .clearfix .pull-left{
+
+    #quickmenu .clearfix .pull-left {
         visibility: hidden;
     }
-    .footer .clearfix .pull-left{
+
+    .footer .clearfix .pull-left {
         position: absolute;
         left: 10px;
         bottom: 20px;
     }
-    .footer .clearfix .pull-right{
+
+    .footer .clearfix .pull-right {
         visibility: hidden;
     }
-/*    .row-fluid input{
-        visibility: hidden;
-    }*/
-    .path_top_login{
+
+    /*    .row-fluid input{
+            visibility: hidden;
+        }*/
+    .path_top_login {
         visibility: hidden;
     }
+
     .todolist, .todolist *, .list-name {
         visibility: visible;
     }
@@ -41,7 +47,7 @@
         position: absolute;
         left: 40px;
         top: 30px;
-        color:red;
+        color: red;
     }
 
     .todolist {
@@ -53,19 +59,28 @@
     a:link:after {
         content: "";
     }
-     .searchbox *{
-        visibility:hidden;
+
+    .searchbox * {
+        visibility: hidden;
     }
 
     .comment-togger.show-comment {
         visibility: hidden;
     }
-    .list-name{
-        font-family:bold;
-        font-size:26px;
+
+    .list-name {
+        font-family: bold;
+        font-size: 26px;
     }
-    #logo span{
-        font-family:'Open Sans';
+
+    #logo span {
+        font-family: 'Open Sans';
         padding: 10px;
+    }
+
+    @media (max-width:900px) {
+        .checkbox {
+            width: 100%;
+        }
     }
 }

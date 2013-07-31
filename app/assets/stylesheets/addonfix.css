@@ -443,7 +443,7 @@
     max-width: 750px;
 }
 
-@media (max-width:900px) {
+@media (max-width:800px) {
     .task-des {
         width: 70%;
     }

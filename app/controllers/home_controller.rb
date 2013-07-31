@@ -110,10 +110,18 @@ class HomeController < ApplicationController
   end
 
   def invite_multi
-    puts "\n\n_____________invite_multi"
     @success = false
+
+    #invite by usename or email
+    @invite_yourself = false
     invite_email = params[:user_email]
     invite_name = params[:user_name]
+    if invite_email == current_user.email
+      @invite_yourself = true
+      return
+    end
+
+
     condition = ""
     if !invite_email.blank? && !invite_name.blank?
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
@@ -128,12 +136,17 @@ class HomeController < ApplicationController
     end
     @has_over_connect = false
     @users = User.find(:all, :conditions => condition)
+    #  @users = User.where(:conditions => condition)
+
     @users -= [current_user]
+
     if @users.length > 0
+
       @has_list_users = true
+      puts "@has_list_users = true"
     else
+      puts "@has_list_users = false"
       num_connect = User.number_connect(current_user)
-      puts "___________#{num_connect}____connects"
       #if User.already_connect(current_user, @user)
       #if (!invite_email.blank?)
       #  @user = User.new({:email => invite_email})
@@ -154,13 +167,10 @@ class HomeController < ApplicationController
       #  end
       #end
       #else
-      puts "#{num_connect}______________number connect"
       if num_connect < Role.find(current_user.roles.first.id).max_connections
-
         if (!invite_email.blank?)
           @user = User.new({:email => invite_email})
-          role = Role.find(:first, :conditions => ["name = ?", "free"])
-          @user.add_role(role.name)
+          @user.add_role('free')
           #@user.save
           @user.invite!(current_user)
           @list_ids = session[:list_ids]
@@ -190,6 +200,7 @@ class HomeController < ApplicationController
     invite_email = params[:user_email]
     invite_name = params[:user_name]
     condition = ""
+
     if !invite_email.blank? && !invite_name.blank?
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
     else
@@ -201,6 +212,7 @@ class HomeController < ApplicationController
         end
       end
     end
+
     @has_over_connect = false
     @users = User.find(:all, :conditions => condition)
     @users -= [current_user]
@@ -212,7 +224,7 @@ class HomeController < ApplicationController
       if num_connect < Role.find(current_user.roles.first.id).max_connections
         if (!invite_email.blank?)
           @user = User.new({:email => invite_email})
-          role = Role.find(:first, :conditions => ["name = ?", "free"])
+          role = Role.where(name: 'free').first
           @user.add_role(role.name)
           #@user.save
           @user.invite!(current_user)

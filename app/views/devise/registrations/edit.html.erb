@@ -47,7 +47,7 @@
                   <%= f.password_field :password_confirmation, :required => false, :placeholder =>"Password again", :class =>"span5" %>
                 </div>
                 <div class="controls">
-                  <%= f.password_field :current_password, :required => true, :placeholder =>"Current password", :class =>"span5",:hint => "we need your current password to confirm your changes",:required => true %>
+                  <%#= f.password_field :current_password, :required => true, :placeholder =>"Current password", :class =>"span5",:hint => "we need your current password to confirm your changes",:required => true %>
                 </div>
                 <%= f.button :submit, 'Update', :class => 'btn-primary' %>
               <% end %>
