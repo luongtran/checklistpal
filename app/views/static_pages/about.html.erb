@@ -24,11 +24,12 @@
       </div>
       <div class="pull-left">
         <div id="logo">
-          <%= image_tag "blue_logo.png" %>
+          <%= link_to (image_tag "blue_logo.png"), root_path %>
         </div>
       </div>
     </div>
 <% end %>
 <div class="section clearfix">
+  <h1> <%= @page.nil? ? "About Us" : @page.title %></h1>
   <p><%= raw (@page.nil? ? "" : @page.content) %></p>
 </div>

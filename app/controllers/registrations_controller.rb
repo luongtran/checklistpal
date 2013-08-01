@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to signup_options_path, :notice => 'Please select a subscription plan below.'
     end
   end
-  
+
   def create
     super
 
@@ -29,12 +29,16 @@ class RegistrationsController < Devise::RegistrationsController
   def update_card
     @user = current_user
     @user.stripe_token = params[:user][:stripe_token]
-    if @user.save
-      redirect_to edit_user_registration_path, :notice => 'Updated card.'
+    if @user.update_credit_card
+      @user.save
+      flash.notice = "Your card has been updated!"
     else
-      flash.alert = 'Unable to update card.'
-      render :edit
+      #else
+      flash.alert = "The card has been declined!"
+      #  render :edit
     end
+    redirect_to edit_user_registration_path
+    #end
   end
 
   private

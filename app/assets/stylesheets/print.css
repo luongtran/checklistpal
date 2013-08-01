@@ -13,6 +13,9 @@
     .searchboxtodolist {
         visibility: hidden;
     }
+    .items{
+        width:1000px;
+    }
 
     #logo {
         visibility: hidden;

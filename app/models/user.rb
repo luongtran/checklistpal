@@ -112,6 +112,20 @@ class User < ActiveRecord::Base
     false
   end
 
+  def update_credit_card
+    customer = Stripe::Customer.retrieve(customer_id)
+    customer.card = stripe_token
+    if customer.save
+      puts "\n\n___last 4 : #{customer.cards.data.first["last4"]}"
+      self.last_4_digits = customer.cards.data.first["last4"]
+      return true
+    end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe Error: " + e.message
+    errors.add :base, "Unable to updated your account: #{e.message}."
+    false
+  end
+
   def cancel_subscription
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)

@@ -13,6 +13,9 @@
   .webpage-inner , .webpage-inner * {
     visibility:visible;
   }
+    .items{
+        width:1000px;
+    }
 
   a:link:after { content: ""; }
   .comment-togger.show-comment{
