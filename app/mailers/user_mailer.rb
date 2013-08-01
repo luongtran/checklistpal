@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
   default :from => "info@tudli.com"
+  #default :from => "Tudli.com <quangtest709@gmail.com>"
   # TYPES = ['welcome_email','upgraded_email','downgraded_email','expire_email','delete_account_email']
   def welcome_email(user)
     @user = user
@@ -45,9 +46,10 @@ class UserMailer < ActionMailer::Base
   end
 
 
-  ### Test
+  # Test mail
   def test_mail(dest_email)
     puts "\n\n___Create test e-mail to #{dest_email}"
     mail(:to => "#{dest_email}", :subject => "Hello")
   end
+  # Test line
 end
