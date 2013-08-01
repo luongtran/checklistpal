@@ -1,7 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default :from => "info@tudli.com"
+  default :from => "Tudli.com <info@tudli.com>"
   #default :from => "Tudli.com <quangtest709@gmail.com>"
-  # TYPES = ['welcome_email','upgraded_email','downgraded_email','expire_email','delete_account_email']
   def welcome_email(user)
     @user = user
     #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Welcome Email"])
