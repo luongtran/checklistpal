@@ -27,7 +27,7 @@
                   <div class="alert alert-error" id="error_mess"></div>
                   <div class="controls controls-row inline">
 
-                    <%= text_field_tag 'user_name', nil, class: "span8", placeholder: "Username"%>
+                    <%= text_field_tag 'user_name', nil, class: "span8", placeholder: "Username" %>
                     <span class="span4">or</span>
                   </div>
 
@@ -47,17 +47,15 @@
           </div>
         </div>
       </div>
-      <style>
-          .dis {
-              display: none;
-          }
-      </style>
       <script>
-//          $("#user_email").onSelect( function () {
-//              alert('sele')               ;
-//              $("#user_name").addClass('dis');
-//          });
+          $("#user_email").keydown(function () {
+              $("#user_name").val('');
+          });
+          $("#user_name").keydown(function () {
+              $("#user_email").val('');
+          });
       </script>
+
       <div class="myconnection pull-right">
         <h3 class="title-gray">My connections</h3>
 
