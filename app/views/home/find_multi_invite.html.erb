@@ -26,8 +26,8 @@
               <%= form_tag invitation_multi_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
                   <div class="alert alert-error" id="error_mess"></div>
                   <div class="controls controls-row inline">
-                    <input type="radio" name="paytype" id="radio" value="1"/>
-                    <%= text_field_tag 'user_name', nil, class: "span8", placeholder: "Username", :required => true %>
+
+                    <%= text_field_tag 'user_name', nil, class: "span8", placeholder: "Username"%>
                     <span class="span4">or</span>
                   </div>
 
@@ -49,13 +49,14 @@
       </div>
       <style>
           .dis {
-              disabled: disabled;
+              display: none;
           }
       </style>
       <script>
-          $("#user_email").on("click", function () {
-              $("#user_name").addClass('dis');
-          });
+//          $("#user_email").onSelect( function () {
+//              alert('sele')               ;
+//              $("#user_name").addClass('dis');
+//          });
       </script>
       <div class="myconnection pull-right">
         <h3 class="title-gray">My connections</h3>
