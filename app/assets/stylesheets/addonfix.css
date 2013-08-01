@@ -443,6 +443,12 @@
     max-width: 750px;
 }
 
-.checkbox {
-    width: 100%;
+@media (max-width:800px) {
+    .task-des {
+        width: 70%;
+    }
+
+}
+.checkbox{
+    width:100%;
 }
