@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_create :update_stripe
+  after_create :send_welcome_mail
   after_destroy :cancel_subscription
   has_many :lists, :dependent => :delete_all
   has_many :tasks
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
   def self.list_create(user_id, list_id)
     if user = User.find(user_id)
       if user.lists.length > 0
-        if !user.lists.find(:all, :conditions => ["id = ?", list_id]).empty?
+        if !user.lists.where(id: list_id).empty?
           return true
         end
       else
@@ -124,6 +125,10 @@ class User < ActiveRecord::Base
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to cancel your subscription. #{e.message}."
     false
+  end
+
+  def send_welcome_mail
+    UserMailer.welcome_email(self).deliver
   end
 
   def expire
