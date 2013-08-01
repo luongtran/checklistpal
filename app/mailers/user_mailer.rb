@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "tudli.com"
+  default :from => "admin@tudli.com"
   # TYPES = ['welcome_email','upgraded_email','downgraded_email','expire_email','delete_account_email']
   def welcome_email(user)
     @user = user
