@@ -1,5 +1,7 @@
 class Users::InvitationsController < Devise::InvitationsController
 
+  skip_before_filter :require_no_authentication, :only => :edit
+
   def new
     build_resource
     render :new
@@ -24,19 +26,18 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
-    #list_team_members = ListTeamMember.find(:all, :conditions => ['invitation_token = ?', params[:invitation_token]])
-    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token])
+    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]) # bad code !! need check params before use
+    @user_id = nil
     if list_team_members
       list_team_members.each do |list_team_member|
         list_team_member.update_attributes(:active => true)
         @user_id = list_team_member.invited_id
       end
     end
-    #@user = User.find(:first, :conditions => ["id = ?", @user_id])
     @user = User.find(@user_id)
     if @user.last_sign_in_at != nil
       @user.accept_invitation!
-      sign_in :user, @user
+      sign_in(:user, @user)
       redirect_to my_list_path
     else
       render :edit
@@ -45,7 +46,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # PUT /resource/invitation
   def update
-    ListTeamMember.find(:all, :conditions => [])
+
     super
   end
 

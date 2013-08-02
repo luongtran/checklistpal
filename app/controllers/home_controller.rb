@@ -262,7 +262,7 @@ class HomeController < ApplicationController
             @message = "Invitation sent to #{@user.email}"
           end
         else
-          @message = "The list #{@list.name} already sharing for #{@user.email}"
+          @message = "The list already sharing for #{@user.email}"
         end
       end
     else
