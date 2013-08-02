@@ -1,36 +1,34 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
 <hr/>
 <h3>Results</h3>
 <ul class="unstyled">
+  <div id="loading2" class="alert alert-success" style="display: none;">
+    Sending email  <%= image_tag 'loading.gif' %>
+  </div>
   <% @users.each do |user| %>
-  <li>
+      <li>
     <span class="name span4">
       <%= user.name %>
     </span>
     <span class="email span4">
       <%= user.email %>
     </span>
-    <span class ="span4">
-        <%= form_tag invite_user_path(@list_id),:class => "invite-user", :remote => true do %>
-        <%= hidden_field_tag :user_id, user.id %>  
-        <div id="loading2" class="alert alert-success" style="display: none;">
-           Invitation email sending<%= image_tag 'loading.gif' %>
-        </div>
+    <span class="span4">
+        <%= form_tag invite_user_path(@list_id), :class => "invite-user", :remote => true do %>
+        <%= hidden_field_tag :user_id, user.id %>
+          <br/>
         <button type="submit" class="btn btn-success btn-small btninvite">
-           <i class="icon-user"></i>&nbsp;Invite  
+          <i class="icon-user"></i>&nbsp;Invite
         </button>
       <% end %>
     </span>
-  </li>
+      </li>
   <% end %>
 </ul>
 <script>
-  $(document).ready(function() {
-        $('.btninvite').on("click",  function(){
-          $(this).parent(".invite-user").children("#loading2").toggle();
+    $(document).ready(function () {
+        $('.btninvite').on("click", function () {
+            $("#loading2").toggle();
+            $('.btninvite').css({ display: "none" });
         });
-      });  
+    });
 </script>

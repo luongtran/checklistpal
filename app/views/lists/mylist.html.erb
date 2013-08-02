@@ -38,7 +38,7 @@
                       <% @connects.each do |connect| %>
                           <ul class="unstyled">
                             <li class="connect-email"><%= connect.email %>
-                              <%= link_to("Remove", remove_connect_path(list.id, connect.id), :data => {:confirm => "Remove user from you list ?"}, :class => 'btn btn-mini btn-info') %>
+                              <%= link_to("Remove", remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"}, :class => 'btn btn-mini btn-info') %>
                             </li>
                           </ul>
                       <% end %>
