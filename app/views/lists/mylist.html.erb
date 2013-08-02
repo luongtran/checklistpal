@@ -2,10 +2,12 @@
 <div class="section clearfix">
   <div class="pull-right">
     <div id="quickmenu">
-      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a><a href="#" class="btninvite pull-left" title="Please select a list to invited by checked on checkbox" data-url="<%= pass_parametter_path %>">+ INVITE</a><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+
+        New</a><a href="#" class="btninvite pull-left" title="Please select a list to invited by checked on checkbox" data-url="<%= pass_parametter_path %>">+
+        INVITE</a><a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
     </div>
   </div>
-  <div class="pull-left">    
+  <div class="pull-left">
     <h3>My Lists</h3>
   </div>
 </div>
@@ -15,78 +17,80 @@
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="mylist">
-            <%= form_tag search_my_list_path ,:class => "searchmini clearfix",:remote => true do %>
-              <%= text_field_tag 'list_name',nil, class: "textinput input-medium" ,placeholder:"Search ...." ,:required => true %>
+            <%= form_tag search_my_list_path, :class => "searchmini clearfix", :remote => true do %>
+                <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
                 <input type="submit" value="" class="submitbt">
-              <% end %>
-              <div class="panel">
-                <% @lists.each do |list| %>
-                   <label class="checkbox">
-                    <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span>&nbsp;<%= link_to("Delete list", list_path(list), :data => { :confirm => "Delete this list?" }, :method => :delete, :class => 'btn btn-mini btn-danger btndeletelist') %>
-                  </label> 
-                  <% @connect_users = ListTeamMember.find(:all, :conditions => ["list_id = ? AND active = ?",list.id ,true]) %>
+            <% end %>
+            <div class="panel">
+              <% @lists.each do |list| %>
+                  <label class="checkbox">
+                    <input type="checkbox" name="listselects" value="<%= list.id %>"><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                    <span><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i>
+                    </span>&nbsp;<%= link_to("Delete list", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btndeletelist') %>
+                  </label>
+                  <% @connect_users = ListTeamMember.find(:all, :conditions => ["list_id = ? AND active = ?", list.id, true]) %>
                   <% uids = [] %>
                   <% if !@connect_users.blank? %>
-                    <% @connect_users.each do |con| %>
-                      <% uids += [con.invited_id] %>
-                    <% end %>
-                    <% @connects = User.where("id in (?)",uids) %>
-                    <% @connects.each do |connect| %>
-                      <ul class="unstyled">
-                        <li class ="connect-email"><%= connect.email %>                
-                          <%= link_to("Remove", remove_connect_path(list.id,connect.id), :data => { :confirm => "Remove user from you list ?" }, :class => 'btn btn-mini btn-info')%>
-                        </li>
-                      </ul>
-                    <% end %>
+                      <% @connect_users.each do |con| %>
+                          <% uids += [con.invited_id] %>
+                      <% end %>
+                      <% @connects = User.where("id in (?)", uids) %>
+                      <% @connects.each do |connect| %>
+                          <ul class="unstyled">
+                            <li class="connect-email"><%= connect.email %>
+                              <%= link_to("Remove", remove_connect_path(list.id, connect.id), :data => {:confirm => "Remove user from you list ?"}, :class => 'btn btn-mini btn-info') %>
+                            </li>
+                          </ul>
+                      <% end %>
                   <% end %>
-                <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
-        <div class="divine50">
-          <% if !@friend_lists.blank? %>
-            <h3>Invited list</h3>
-            <ul class="unstyled">
+      </div>
+      <div class="divine50">
+        <% if !@friend_lists.blank? %>
+            <h3 style="margin-left: 10px;">Invited list</h3>
+            <ul class="unstyled"  style="margin-left: 15px;">
               <% @friend_lists.each do |list| %>
-                <li><%= link_to truncate(list.name,:length => 40), list_view_path(list.slug) %><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y")%></i></span></li>                
+                  <li><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                    <span><i><%= "   "+list.created_at.to_time.strftime("%m/%d/%Y") %></i></span></li>
               <% end %>
             </ul>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
-  <script>
-    $('.btninvite').on("click", function() {
-      var list_ids = new Array();
-      $('input[name="listselects"]:checked').each(function() {
-        list_ids.push($(this).val());
-      });
-      if (list_ids.length === 0)
-      {
-        $('input[name="listselects"]').each(function() {
-          list_ids.push($(this).val());
+</div>
+<script>
+    $('.btninvite').on("click", function () {
+        var list_ids = new Array();
+        $('input[name="listselects"]:checked').each(function () {
+            list_ids.push($(this).val());
         });
-      }
-      var datalist = JSON.stringify(list_ids);
-      var url = $(this).data("url");
-      $.ajax({
-        type: "post",
-        url: url,
-        data: {'list': datalist},
-        dataType: "json",
-        success: function(data) {
-          if (data.location) {
-            window.location.href = data.location;
-          }
-          if (data.flash && data.flash.notice) {
-            // Maybe display flash message, etc.
-          }
-        },
-        error: function() {
-          // If login fails, sending 422 error code sends you here.
+        if (list_ids.length === 0) {
+            $('input[name="listselects"]').each(function () {
+                list_ids.push($(this).val());
+            });
         }
-      });
+        var datalist = JSON.stringify(list_ids);
+        var url = $(this).data("url");
+        $.ajax({
+            type: "post",
+            url: url,
+            data: {'list': datalist},
+            dataType: "json",
+            success: function (data) {
+                if (data.location) {
+                    window.location.href = data.location;
+                }
+                if (data.flash && data.flash.notice) {
+                    // Maybe display flash message, etc.
+                }
+            },
+            error: function () {
+                // If login fails, sending 422 error code sends you here.
+            }
+        });
     });
-  </script>
+</script>
