@@ -29,17 +29,13 @@ class UserMailer < ActionMailer::Base
 
   def upgraded(user)
     @user = user
-    #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Upgraded Email"])
     @template = EmailTemplate.where(email_type: "Upgraded Email").first
     mail(:to => @user.email, :subject => @template.title)
   end
 
   def downgraded(user)
     @user = user
-    while @user.lists.count > 3
-      @user.lists.first.destroy
-    end
-    #@template = EmailTemplate.find(:first, :conditions => ["email_type = ?", "Downgraded Email"])
+
     @template = EmailTemplate.where(email_type: "Downgraded Email").first
     mail(:to => @user.email, :subject => @template.title)
   end

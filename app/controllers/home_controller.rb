@@ -32,7 +32,7 @@ class HomeController < ApplicationController
           return false
         end
       else
-        flash[:alert] = %Q[Please <a href="/users/edit">upgrade</a> to create more lists].html_safe
+        flash[:notice] = %Q[Please <a href="/users/edit">upgrade</a> your plan to create more lists!].html_safe
         redirect_to my_list_path
       end
     end

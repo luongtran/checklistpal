@@ -4,6 +4,7 @@ Checklistpal::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
   devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]},:sign_out_via => ["DELETE","GET"], :controllers => {:registrations => 'registrations' ,omniauth_callbacks: "authentications",:invitations => 'users/invitations' }
+
   ActiveAdmin.routes(self)
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'

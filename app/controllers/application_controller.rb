@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
       Devise::InvitationsController.send(:remove_method, method) if ApplicationController.method_defined? method
       end
   end
+  #def after_update_path_for(resource)
+  #  redirect_to invite_user_path
+  #end
 #  def after_sign_in_path_for(resource)
 #    (session[:"user_return_to"].nil?) ? "/" : session[:"user_return_to"].to_s
 #  end  

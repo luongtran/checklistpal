@@ -1,52 +1,58 @@
-<% title "Sign up page" %>  
+<% title "Sign up page" %>
 <div class="section clearfix">
-      <div class="pull-right">
-        <div id="quickmenu">
-          <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+ New</a><a href="javascript:;"  class="bookmark pull-left">BOOKMARK</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a></div>
-          </div>
-      </div>
-      <div class="pull-left">
-        <div id="logo">
-          <%= link_to (image_tag "blue_logo.png"), root_path %>
-        </div>
+  <div class="pull-right">
+    <div id="quickmenu">
+      <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+
+        New</a><a href="#saveform" data-toggle="modal" data-remote="true" class="pull-left">SAVE</a>
       </div>
     </div>
+  </div>
+  <div class="pull-left">
+    <div id="logo">
+      <%= link_to (image_tag "blue_logo.png"), root_path %>
+    </div>
+  </div>
+</div>
 <div class="section clearfix">
+  <% free_plan = Role.where(name: 'free').first
+  %>
+
   <h3>Choose a Plan</h3>
-      <div id="signupoptions">
-        <div class="signupoptions-inner">
-          <div class="clearfix">
-            <div class="divine50">
-              <div class="signoption text-center">
-                <h3><strong>Free</strong> account</h3>
-                <hr class="divider">
-                <ul class="unstyled">
-                  <li>Create unlimited lists</li>
-                  <li>(3) Saved lists</li>
-                  <li>(2) Connections</li>
-                  <li>Comment on your lists</li>
-                  <li>Print your lists</li>
-                  <li>Share your lists</li>
-                </ul>
-                <p><%= link_to 'Sign Up',  new_user_registration_path(:plan => 'free') , :class => 'btn btn-small btn-primary  signup text-center' %></p>
-              </div>
-            </div>
-            <div class="divine50">
-              <div class="signoption text-center">
-                <h3><strong>$4.95 /mo</strong> account</h3>
-                <hr class="divider">
-                <ul class="unstyled">
-                  <li>Create unlimited lists</li>
-                  <li><u><strong>Unlimited</strong></u> saved lists</li>
-                  <li><u><strong>Unlimited</strong></u> connections</li>
-                  <li>Comment on your lists</li>
-                  <li>Print your lists</li>
-                  <li>Share your lists</li>
-                </ul>
-                <p><%= link_to 'Sign Up',  new_user_registration_path(:plan => 'paid') , :class => 'btn btn-primary btn-medium signup text-center' %></p>
-              </div>
-            </div>
+
+  <div id="signupoptions">
+    <div class="signupoptions-inner">
+      <div class="clearfix">
+        <div class="divine50">
+          <div class="signoption text-center">
+            <h3><strong>Free</strong> account</h3>
+            <hr class="divider">
+            <ul class="unstyled">
+              <li>Create unlimited lists</li>
+              <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
+              <li>(<%= free_plan.max_connections %>) Connections</li>
+              <li>Comment on your lists</li>
+              <li>Print your lists</li>
+              <li>Share your lists</li>
+            </ul>
+            <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'free'), :class => 'btn btn-small btn-primary  signup text-center' %></p>
+          </div>
+        </div>
+        <div class="divine50">
+          <div class="signoption text-center">
+            <h3><strong>$4.95 /mo</strong> account</h3>
+            <hr class="divider">
+            <ul class="unstyled">
+              <li>Create unlimited lists</li>
+              <li><u><strong>Unlimited</strong></u> saved lists</li>
+              <li><u><strong>Unlimited</strong></u> connections</li>
+              <li>Comment on your lists</li>
+              <li>Print your lists</li>
+              <li>Share your lists</li>
+            </ul>
+            <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'paid'), :class => 'btn btn-primary btn-medium signup text-center' %></p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
