@@ -1,8 +1,8 @@
 <p>Hey Hey Hey!</p>
 
-<p>You've been invited to http://www.tudli.com to help complete a list.</p>
+<p><%= @resource.invited_by.email %> has invited you to www.tudli.com to help complete a to do list.</p>
 
-<p><%= link_to 'Click to Accept Invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<p><%= link_to 'Click to Accept Your Invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
 
 

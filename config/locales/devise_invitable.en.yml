@@ -14,4 +14,4 @@ en:
         submit_button: "Set my password"
     mailer:
       invitation_instructions:
-        subject: 'Help me finish this list ...'
+        subject: "You've been invited to Tudli.com"
