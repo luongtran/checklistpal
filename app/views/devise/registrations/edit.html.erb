@@ -5,11 +5,13 @@
 <div class="section clearfix">
 
   <div class="pull-right">
-    <div id="quickmenu">
-      <div class="clearfix">
-        <a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY
-        LISTS</a></div>
-    </div>
+    <% if false %>
+        <div id="quickmenu">
+          <div class="clearfix">
+            <a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY
+            LISTS</a></div>
+        </div>
+    <% end %>
   </div>
   <div class="pull-left">
     <div id="logo">
@@ -71,10 +73,12 @@
 
               <% if !@user.last_4_digits.blank? %>
                   <% if @user.roles.first.name == 'free' %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary" type="button">Upgrade to
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary" type="button">Upgrade
+                        to
                         Paid</a>
                   <% else %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary" type="button">Downgrade to
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary" type="button">Downgrade
+                        to
                         Free</a>
                   <% end %>
               <% end %>

@@ -1,5 +1,4 @@
 class InitializeEmailemplate < ActiveRecord::Migration
-  # TYPES = ['welcome_email','upgraded_email','downgraded_email','expire_email','delete_account_email']
   def up
     EmailTemplate.create(:title => "Your subscription has changed",
                          :body => "<h3> Your new subscription details are: </h3>",

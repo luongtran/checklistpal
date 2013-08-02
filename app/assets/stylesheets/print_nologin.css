@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : print
     Created on : Jul 4, 2013, 9:13:17 AM
     Author     : User
@@ -19,7 +19,7 @@
 
   a:link:after { content: ""; }
   .comment-togger.show-comment{
-    visibility:hidden; 
+    visibility:hidden;
   }
    #quickmenu .clearfix .pull-left{
         visibility: hidden;
