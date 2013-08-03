@@ -14,9 +14,9 @@ ActiveAdmin.register StaticPage do
   #  end
   #end
   form do |f|
-    f.inputs "" do
+    f.inputs do
       f.input :title
-      f.input :content, :as => :ckeditor
+      f.input :content, as: :wysihtml5, commands: :all, blocks: :all
     end
     #f.inputs "Contents" do
     #

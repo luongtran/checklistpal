@@ -9,7 +9,7 @@ gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
-gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
+#gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
 #gem "friendly_id", "~> 4.0.0"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -44,4 +44,6 @@ gem "binding_of_caller"#, ">= 0.7.1", :group => :development, :platforms => [:mr
 gem 'thin'
 gem 'rails_autolink'
 gem "mocha", :group => :test
+gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 #gem 'therubyracer'

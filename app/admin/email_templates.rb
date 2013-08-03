@@ -17,9 +17,9 @@ ActiveAdmin.register EmailTemplate do
   filter :email_type
   filter :title
   form do |f|
-    f.inputs "" do
+    f.inputs  do
       f.input :title
-      f.input :body, :as => :ckeditor
+      f.input :body, as: :wysihtml5, commands: :all, blocks: :all
     end
     f.actions
   end
