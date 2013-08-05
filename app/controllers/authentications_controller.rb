@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     if authentication
       flash[:notice] = "Logged in Successfully"
       @user = User.find(authentication.user_id)
-      @user.add_role(Role.find(:first, :conditions => ["name = ?", "free"]).name)
+      @user.add_role(role = Role.where(name: 'free').first.name)
       sign_in_and_redirect @user #User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
@@ -17,7 +17,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Authentication successful."
       sign_in_and_redirect current_user
     else
-      role = Role.find(:first, :conditions => ["name = ?", "free"])
+      role = Role.where(name: 'free').first
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
@@ -31,7 +31,7 @@ class AuthenticationsController < ApplicationController
       else
         flash[:alert] = "Email you input already exist !!!"
         session[:omniauth] = omni.except('extra')
-        redirect_to new_user_registration_path
+        redirect_to new_user_registration_url
       end
     end
   end
