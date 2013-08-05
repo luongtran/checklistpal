@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     if authentication
       flash[:notice] = "Logged in Successfully"
       @user = User.find(authentication.user_id)
-      @user.add_role(role = Role.where(name: 'free').first.name)
+      @user.add_role("free")
       sign_in_and_redirect @user #User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
@@ -17,18 +17,19 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Authentication successful."
       sign_in_and_redirect current_user
     else
-      role = Role.where(name: 'free').first
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
       user.email = omni['extra']['raw_info'].email
       user.password = Devise.friendly_token[0,20]
       user.apply_omniauth(omni)
-      user.add_role(role.name)
+      user.add_role("free")
       if user.save
         flash[:notice] = "Logged in."
         sign_in_and_redirect User.find(user.id)             
       else
+        logger = Logger.new('log/facebook.log')
+        logger.info(Time.now)
         flash[:alert] = "Email you input already exist !!!"
         session[:omniauth] = omni.except('extra')
         redirect_to new_user_registration_url
