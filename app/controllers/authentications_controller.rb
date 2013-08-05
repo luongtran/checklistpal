@@ -30,7 +30,7 @@ class AuthenticationsController < ApplicationController
       else
         logger = Logger.new('log/facebook.log')
         logger.info(Time.now)
-        flash[:alert] = "Your email has already been taken !"
+        flash[:alert] = "Can't register with your facebook account: email has already been taken !"
         session[:omniauth] = omni.except('extra')
         redirect_to signup_options_url
       end
