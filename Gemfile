@@ -46,4 +46,7 @@ gem 'rails_autolink'
 gem "mocha", :group => :test
 gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+group :development do
+  gem 'capistrano'
+end
 #gem 'therubyracer'
