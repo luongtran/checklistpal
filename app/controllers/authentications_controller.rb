@@ -26,13 +26,13 @@ class AuthenticationsController < ApplicationController
       user.add_role("free")
       if user.save
         flash[:notice] = "Logged in."
-        sign_in_and_redirect User.find(user.id)             
+        sign_in_and_redirect User.find(user.id)
       else
         logger = Logger.new('log/facebook.log')
         logger.info(Time.now)
-        flash[:alert] = "Email you input already exist !!!"
+        flash[:alert] = "Your email has already been taken !"
         session[:omniauth] = omni.except('extra')
-        redirect_to new_user_registration_url
+        redirect_to signup_options_url
       end
     end
   end
