@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #def after_sign_in_path_for(resource)
-  #  if resource.class == AdminUser
-  #    admin_dashboard_path
-  #  else
-  #    my_list_path
-  #  end
-  #
-  #end
+  def after_sign_in_path_for(resource)
+    if resource.class == AdminUser
+      admin_dashboard_path
+    else
+      my_list_path
+    end
+
+  end
 end
                           
