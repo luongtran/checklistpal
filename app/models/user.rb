@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   before_create :update_stripe
   after_create :send_welcome_mail
   after_destroy :cancel_subscription
-  has_many :lists, :dependent => :delete_all
-  has_many :tasks
+  has_many :lists, :dependent => :destroy
+  has_many :tasks, :through => :lists
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy

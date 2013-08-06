@@ -1,9 +1,3 @@
-<style type="text/css">
-    #error_mess {
-        display: none;
-    }
-</style>
-
 <div class="section clearfix">
   <div class="pull-left"><h1>Invite Anyone</h1></div>
   <div class="pull-right">
@@ -13,7 +7,6 @@
         LISTS</a></div>
     </div>
   </div>
-
 </div>
 <hr class="divider">
 <div class="section clearfix">
@@ -22,16 +15,23 @@
       <div class="divine30">
         <div class="signoption row-fluid">
           <div class="invitepanel">
+            <h3>Select a List</h3>
+            <select style="width: auto" id="lists-combobox">
+              <% @lists.each do |l| %>
+                  <option value="<%= l.id %>"><%= truncate(l.name, :length => 40) %></option>
+              <% end %>
+            </select>
             <h3>Find and Invite Anyone</h3>
-
             <div class="panel">
-              <%= form_tag invite_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
-                  <div class="alert alert-error" id="error_mess">
-                  </div>
-                  <div class="controls controls-row">
+              <%= form_tag invitation_multi_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
+                  <%= hidden_field_tag 'list_id', nil, :id => 'list-id-field' %>
+                  <div class="alert alert-error" id="error_mess" style="display: none;"></div>
+                  <div class="controls controls-row inline">
+
                     <%= text_field_tag 'user_name', nil, class: "span8", placeholder: "Username" %>
                     <span class="span4">or</span>
                   </div>
+
                   <div class="controls">
                     <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address" %>
                   </div>
@@ -39,7 +39,7 @@
                     <div id="loading" style="display: none;">
                       <%= image_tag 'loading.gif' %>
                     </div>
-                    <%= submit_tag 'Find & Invite', :class => 'btn btn-primary btnsearch' %>
+                    <input class="btn btn-primary btnsearch" name="commit" type="submit" value="Find &amp; Invite" id='btn-search-and-invite'>
                   </div>
               <% end %>
             </div>
@@ -48,6 +48,7 @@
           </div>
         </div>
       </div>
+
       <script>
           $("#user_email").keydown(function () {
               $("#user_name").val('');
@@ -55,13 +56,18 @@
           $("#user_name").keydown(function () {
               $("#user_email").val('');
           });
+          $('#lists-combobox').change(function () {
+              $('#list-id-field').val($(this).val());
+          });
+
       </script>
+
       <div class="myconnection pull-right">
         <h3 class="title-gray">My connections</h3>
 
         <div class="space"></div>
         <%= form_tag search_my_connect_path, :class => "searchmini clearfix", :remote => true do %>
-            <%= hidden_field_tag :list_id, @list.id %>
+            <%#= hidden_field_tag :list_id , @list.id %>
             <%= text_field_tag 'user_email_find', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
             <input type="submit" value="" class="submitbt">
         <% end %>
@@ -83,21 +89,23 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        // Check valid form
         $('#invitation_form').on('submit', function () {
-            var dat = $('#user_email').val();
-            if (dat === "" || dat === null) {
-                dat = $('#user_name').val();
-            }
-            if (dat === "" || dat === null) {
-                $('#error_mess').text("Please fill username or email!").fadeIn(300).delay(3000).fadeOut(300);
+            var email = $('#user_email').val().trim();
+            var username = $('#user_name').val().trim();
+            if (email === "" && username === "") {
+                $('#error_mess').text("Please fill username or email !").fadeIn(300).delay(1000).fadeOut(300);
                 return false;
             }
             return true;
         });
+        // Searching in progress
         $('#invitation_form').bind("ajax:beforeSend",function () {
             $("#loading").toggle();
+            $('#btn-search-and-invite').attr("disabled", true);
         }).bind("ajax:success", function (xhr, data, status) {
                     $("#loading").toggle();
+                    $('#btn-search-and-invite').removeAttr("disabled");
                 });
     });
 </script>

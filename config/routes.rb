@@ -9,6 +9,7 @@ Checklistpal::Application.routes.draw do
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get '/lists/:slug' => 'Lists#show', :as => :list_view
+  get '/inviting'=> 'home#inviting' , :as => :inviting
   resources :lists do
     resources :tasks 
   end

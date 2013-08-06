@@ -3,7 +3,6 @@ class HomeController < ApplicationController
   require 'securerandom'
 
   def index
-
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create({
@@ -39,6 +38,12 @@ class HomeController < ApplicationController
     end
   end
 
+  # Inviting page
+  def inviting
+   @lists = current_user.lists
+  end
+
+  # Call from ????
   def find_invite
     if !User.list_create(current_user.id, params[:list_id])
       redirect_to my_list_path
@@ -112,7 +117,6 @@ class HomeController < ApplicationController
 
   def invite_multi
     @success = false
-
     #invite by usename or email
     @invite_yourself = false
     invite_email = params[:user_email]
@@ -121,7 +125,6 @@ class HomeController < ApplicationController
       @invite_yourself = true
       return
     end
-
 
     condition = ""
     if !invite_email.blank? && !invite_name.blank?
@@ -144,9 +147,9 @@ class HomeController < ApplicationController
     if @users.length > 0
 
       @has_list_users = true
-      puts "@has_list_users = true"
+
     else
-      puts "@has_list_users = false"
+
       num_connect = User.number_connect(current_user)
       #if User.already_connect(current_user, @user)
       #if (!invite_email.blank?)
