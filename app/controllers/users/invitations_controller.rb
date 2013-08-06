@@ -26,15 +26,15 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
-    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]) # bad code !! need check params before use
-    @user_id = nil
+    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]) # !! need to check params before use
+    user_id = nil
     if list_team_members
-      list_team_members.each do |list_team_member|
-        list_team_member.update_attributes(:active => true)
-        @user_id = list_team_member.invited_id
+      list_team_members.each do |l|
+        l.update_attributes(:active => true)
+        user_id = l.invited_id
       end
     end
-    @user = User.find(@user_id)
+    @user = User.find(user_id)
     if @user.last_sign_in_at != nil
       @user.accept_invitation!
       sign_in(:user, @user)

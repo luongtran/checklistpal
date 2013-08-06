@@ -4,6 +4,7 @@ class InitializeEmailemplate < ActiveRecord::Migration
                          :body => "<h3> Your new subscription details are: </h3>",
                          :email_type => "Upgraded Email"
     )
+
     EmailTemplate.create(:title => "Your subscription has changed",
                          :body => "<h3> Your new subscription details are: </h3>",
                          :email_type => "Downgraded Email"
@@ -20,6 +21,7 @@ class InitializeEmailemplate < ActiveRecord::Migration
                          :body => "<h3> Welcome to Tudli.com </h3>",
                          :email_type => "Welcome Email"
     )
+    puts "Created Emails Template !"
   end
 
   def down

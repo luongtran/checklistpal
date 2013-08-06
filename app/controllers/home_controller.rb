@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   require 'securerandom'
 
   def index
+
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create({
@@ -197,10 +198,14 @@ class HomeController < ApplicationController
       redirect_to my_list_path
     end
     @success = false
+    @invite_yourself = false
     invite_email = params[:user_email]
     invite_name = params[:user_name]
     condition = ""
-
+    if invite_email == current_user.email
+      @invite_yourself = true
+      return
+    end
     if !invite_email.blank? && !invite_name.blank?
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
     else
