@@ -44,4 +44,6 @@ Checklistpal::Application.routes.draw do
     put 'update_card', :to => 'registrations#update_card'
     get 'my_account', :to => 'devise/registrations#edit' , :as => :my_account
   end
+  match '/404', :to => 'static_pages#not_found'
+  match '/500', :to => 'static_pages#server_error'
 end

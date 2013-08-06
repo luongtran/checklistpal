@@ -67,6 +67,7 @@ module Checklistpal
 
     # Config to using stripe.js
     config.stripe.publishable_key = "pk_test_HPXDBoB6Mpx2Rpkte2WoUad0"
-    # nothing
+    # Register the application responsible for showing error pages
+    config.exceptions_app = self.routes
   end
 end

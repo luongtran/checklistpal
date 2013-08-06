@@ -185,6 +185,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -268,6 +269,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     responders (0.9.3)
       railties (~> 3.1)
     rest-client (1.6.7)
@@ -306,6 +308,9 @@ GEM
     stripe_event (0.6.0)
       rails (>= 3.1)
       stripe (~> 1.6)
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -347,6 +352,7 @@ DEPENDENCIES
   devise
   devise_invitable
   email_spec (>= 1.4.0)
+  execjs
   factory_girl_rails (>= 4.2.0)
   fb_graph
   figaro (>= 0.6.3)
@@ -365,5 +371,6 @@ DEPENDENCIES
   simple_form (>= 2.1.0)
   stripe-rails
   stripe_event (>= 0.4.0)
+  therubyracer
   thin
   uglifier (>= 1.0.3)

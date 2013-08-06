@@ -49,4 +49,6 @@ gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 group :development do
   gem 'capistrano'
 end
+gem 'execjs'
+gem 'therubyracer'
 #gem 'therubyracer'

@@ -2,8 +2,6 @@
 <% if current_user %>
     <div class="section clearfix">
       <div class="pull-right">
-
-
         <div id="quickmenu">
           <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+
             New</a><%= link_to_function("PRINT", "javascript:print()", html_options={:class => "pull-left", :target => "_blank"}) %>
@@ -36,6 +34,5 @@
 <% end %>
 <div class="section clearfix">
   <h1> <%= @page.nil? ? "About Us" : @page.title %></h1>
-
   <p><%= raw (@page.nil? ? "" : @page.content) %></p>
 </div>
