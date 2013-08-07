@@ -28,6 +28,7 @@ Checklistpal::Application.routes.draw do
   match 'who_connection/:id' => "lists#who_connection" , :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy" , :as => :delete_list
   match '/invite_user/:list_id' => 'home#find_invite' ,:as => :find_invite
+
   match '/find_multi_invite' => 'home#find_multi_invite', :as => :find_invite_multi
   match '/pass_parametter' => 'home#pass_parametter', :as => :pass_parametter
 

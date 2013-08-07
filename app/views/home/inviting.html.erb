@@ -16,7 +16,7 @@
         <div class="signoption row-fluid">
           <div class="invitepanel">
             <h3>Select a List</h3>
-            <select style="width: auto" id="lists-combobox">
+            <select style="width: 200px" id="lists-combobox">
               <% @mylists.each do |l| %>
                   <option value="<%= l.id %>"><%= truncate(l.name, :length => 40) %></option>
               <% end %>
@@ -26,7 +26,7 @@
 
             <div class="panel">
               <%= form_tag find_and_invite_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
-                  <%= hidden_field_tag 'list_id', nil, :id => 'list-id-field' %>
+                  <%= hidden_field_tag 'list_id', @mylists.first.id, :id => 'list-id-field' %>
                   <div class="alert alert-error" id="error_mess" style="display: none;"></div>
                   <div class="controls controls-row inline">
 
@@ -35,7 +35,7 @@
                   </div>
 
                   <div class="controls">
-                    <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address" %>
+                    <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address", style: "width: 200px;" %>
                   </div>
                   <div class="controls">
                     <div id="loading" style="display: none;">
@@ -64,28 +64,8 @@
 
       </script>
 
-      <div class="myconnection pull-right">
-        <h3 class="title-gray">My connections</h3>
 
-        <div class="space"></div>
-        <%= form_tag search_my_connect_path, :class => "searchmini clearfix", :remote => true do %>
-            <%#= hidden_field_tag :list_id , @list.id %>
-            <%= text_field_tag 'user_email_find', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
-            <input type="submit" value="" class="submitbt">
-        <% end %>
-        <div class="panel">
-          <% if !@my_connects.blank? %>
-              <% @my_connects.each do |connect| %>
-                  <label class="checkbox">
-                    <input type="checkbox">
-                    <span class="name"><%= connect.email %></span>
-                  </label>
-              <% end %>
-          <% else %>
-              <span>The list doesn't have any connection</span>
-          <% end %>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

@@ -1,1 +1,31 @@
-alert("<%= @message %>");
+<% if false%>
+<% if @success %>
+$("#list_invites").html('<%= escape_javascript(render 'list_invites') %>')
+<% else %>
+$("#list_invites").empty();
+$("#list_invites").addClass("alert alert-success");
+$("#list_invites").text("<%= @message %>").fadeIn(300).delay(3000).fadeOut(300);
+<% end %>
+<% end %>
+
+
+<% if @invite_yourself %>
+$("#list_invites").addClass("alert alert-success");
+$("#list_invites").text("Can't invite yourself!").fadeIn(300).delay(1000).fadeOut(300);
+<% else %>
+<% if @has_list_users %>
+$("#list_invites").html('<%= escape_javascript(render 'list_invites') %>')
+<% else %>
+<% if @has_over_connect %>
+$("#list_invites").text("You have to upgrade account to invite more people.");
+$("#list_invites").addClass("alert alert-success");
+<% else %>
+<% if @success %>
+$("#list_invites").text("Invitation sent to <%= @user.email %> !");
+$("#list_invites").addClass("alert alert-success");
+<% else %>
+$("#list_invites").text("No result match");
+<% end %>
+<% end %>
+<% end %>
+<% end %>
