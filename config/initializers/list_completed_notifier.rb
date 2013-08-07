@@ -8,6 +8,6 @@ scheduler = Rufus::Scheduler.start_new
 #end
 
 # cron test
-scheduler.every("30s") do
+scheduler.every("24h") do
   List.completed_notifier
 end
