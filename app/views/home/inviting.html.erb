@@ -17,13 +17,15 @@
           <div class="invitepanel">
             <h3>Select a List</h3>
             <select style="width: auto" id="lists-combobox">
-              <% @lists.each do |l| %>
+              <% @mylists.each do |l| %>
                   <option value="<%= l.id %>"><%= truncate(l.name, :length => 40) %></option>
               <% end %>
             </select>
+
             <h3>Find and Invite Anyone</h3>
+
             <div class="panel">
-              <%= form_tag invitation_multi_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
+              <%= form_tag find_and_invite_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
                   <%= hidden_field_tag 'list_id', nil, :id => 'list-id-field' %>
                   <div class="alert alert-error" id="error_mess" style="display: none;"></div>
                   <div class="controls controls-row inline">
@@ -80,7 +82,7 @@
                   </label>
               <% end %>
           <% else %>
-              <span>You don't have any connection</span>
+              <span>The list doesn't have any connection</span>
           <% end %>
         </div>
       </div>
@@ -89,7 +91,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        // Check valid form
+        // Validate form
         $('#invitation_form').on('submit', function () {
             var email = $('#user_email').val().trim();
             var username = $('#user_name').val().trim();

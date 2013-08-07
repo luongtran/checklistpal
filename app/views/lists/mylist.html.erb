@@ -3,7 +3,7 @@
   <div class="pull-right">
     <div id="quickmenu">
       <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a>
-        <a href="<%= inviting_path%>" class="pull-left" >+ INVITE</a>
+        <a href="<%= inviting_path %>" class="pull-left">+ INVITE</a>
         <a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
     </div>
   </div>
@@ -45,6 +45,8 @@
                   <% end %>
               <% end %>
             </div>
+            <%= link_to 'Add unlimited Lists', my_account_path, :class => 'btn' if current_user.has_role? 'free' %>
+
           </div>
         </div>
       </div>
@@ -63,34 +65,34 @@
   </div>
 </div>
 <script>
-//    $('.btninvite').on("click", function () {
-//        var list_ids = new Array();
-//        $('input[name="listselects"]:checked').each(function () {
-//            list_ids.push($(this).val());
-//        });
-//        if (list_ids.length === 0) {
-//            $('input[name="listselects"]').each(function () {
-//                list_ids.push($(this).val());
-//            });
-//        }
-//        var datalist = JSON.stringify(list_ids);
-//        var url = $(this).data("url");
-//        $.ajax({
-//            type: "post",
-//            url: url,
-//            data: {'list': datalist},
-//            dataType: "json",
-//            success: function (data) {
-//                if (data.location) {
-//                    window.location.href = data.location;
-//                }
-//                if (data.flash && data.flash.notice) {
-//                    // Maybe display flash message, etc.
-//                }
-//            },
-//            error: function () {
-//                // If login fails, sending 422 error code sends you here.
-//            }
-//        });
-//    });
+    //    $('.btninvite').on("click", function () {
+    //        var list_ids = new Array();
+    //        $('input[name="listselects"]:checked').each(function () {
+    //            list_ids.push($(this).val());
+    //        });
+    //        if (list_ids.length === 0) {
+    //            $('input[name="listselects"]').each(function () {
+    //                list_ids.push($(this).val());
+    //            });
+    //        }
+    //        var datalist = JSON.stringify(list_ids);
+    //        var url = $(this).data("url");
+    //        $.ajax({
+    //            type: "post",
+    //            url: url,
+    //            data: {'list': datalist},
+    //            dataType: "json",
+    //            success: function (data) {
+    //                if (data.location) {
+    //                    window.location.href = data.location;
+    //                }
+    //                if (data.flash && data.flash.notice) {
+    //                    // Maybe display flash message, etc.
+    //                }
+    //            },
+    //            error: function () {
+    //                // If login fails, sending 422 error code sends you here.
+    //            }
+    //        });
+    //    });
 </script>

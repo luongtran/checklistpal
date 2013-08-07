@@ -30,8 +30,15 @@ Checklistpal::Application.routes.draw do
   match '/invite_user/:list_id' => 'home#find_invite' ,:as => :find_invite
   match '/find_multi_invite' => 'home#find_multi_invite', :as => :find_invite_multi
   match '/pass_parametter' => 'home#pass_parametter', :as => :pass_parametter
+
+
   match '/invite/:list_id' => 'home#invite' ,:as => :invite
+
+  match '/home/find_and_invite' => 'home#find_and_invite', :as => :find_and_invite
+
   match '/invite_multi' => 'home#invite_multi', :as => :invitation_multi
+
+
   match 'invite/(:list_id)/user' => "home#invite_user_by_id", :as => :invite_user
   match '/inviteuser' => 'home#invite_user_by_id_multi_list' ,:as => :invite_user_multi
   match 'task/:task_id/comment/create' => "comments#create" , :as => :add_comment

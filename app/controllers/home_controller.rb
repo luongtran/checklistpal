@@ -40,10 +40,79 @@ class HomeController < ApplicationController
 
   # Inviting page
   def inviting
-   @lists = current_user.lists
+    @mylists = current_user.lists
   end
 
-  # Call from ????
+  # Call from Ajax.
+  # Params : list id, username or email
+  # Find user in system by username or email, if email does not exist -> create new user and send an invite email
+  #
+  def find_and_invite
+    #if !User.list_create(current_user.id, params[:list_id])
+    #  redirect_to my_list_path and return
+    #end
+    @success = false
+    @invite_yourself = false
+    invite_email = params[:user_email]
+    invite_name = params[:user_name]
+
+    if invite_email == current_user.email
+      @invite_yourself = true
+      @message = "Can't invite your self!"
+      return
+    end
+    condition = ""
+    #like_s = invite_email.nil? ? invite_name : invite_email
+    #condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
+    if !invite_email.blank? && !invite_name.blank?
+      condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
+    else
+      if !invite_email.blank?
+        condition = ["email like ?", "%#{invite_email}%"]
+      else
+        if !invite_name.blank?
+          condition = ["name like ?", "%#{invite_name}%"]
+        end
+      end
+    end
+
+    @has_over_connect = false
+
+    @users = User.find(:all, :conditions => condition)
+    @users -= [current_user] #  Results searching
+    @list_id = params[:list_id]
+
+    if @users.count > 0
+      @has_list_users = true
+    else
+      num_connect = User.number_connect(current_user)
+      if num_connect < Role.find(current_user.roles.first.id).max_connections
+        if (!invite_email.blank?)
+          @user = User.new({:email => invite_email})
+          role = Role.where(name: 'free').first
+          @user.add_role(role.name)
+          #@user.save
+          @user.invite!(current_user)
+          if (!ListTeamMember.is_existed_in_connection(current_user.id, @list_id, @user.id))
+            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
+              @success = true
+            end
+          else
+            @success = false
+            @message = "The list already invited for #{@user.email}"
+          end
+        end
+      else
+        @has_over_connect = true
+      end
+      @has_list_users = false
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # Find and invite a selected list
   def find_invite
     if !User.list_create(current_user.id, params[:list_id])
       redirect_to my_list_path
@@ -95,6 +164,7 @@ class HomeController < ApplicationController
     @list_id = params[:list_id]
     @list = List.find(@list_id)
     @user_email = params[:user_email_find]
+    # users join to the list
     @list_team_members = current_user.list_team_members.find(:all, :conditions => ["list_id = ? AND active = ?", @list_id, true])
     user_ids = []
     if @list_team_members
@@ -104,9 +174,9 @@ class HomeController < ApplicationController
       if !user_ids.empty?
         @my_connects = User.where('id IN (?) AND email like ?', user_ids, @user_email)
         if @my_connects.length > 0
-          @success = true
+          @empty = false
         else
-          @success = false
+          @empty = true
         end
       end
     end
@@ -242,7 +312,7 @@ class HomeController < ApplicationController
             end
           else
             @success = false
-            @message = "The list already sharing for #{@user.email}"
+            @message = "The list already invited for #{@user.email}"
           end
         end
       else

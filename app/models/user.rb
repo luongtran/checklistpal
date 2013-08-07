@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
+
+
   def self.list_create(user_id, list_id)
     if user = User.find(user_id)
       if user.lists.length > 0
