@@ -25,10 +25,6 @@ class List < ActiveRecord::Base
         if l.finished?
           # !!! Check last mark a list to finished with last send email notify
           if l.last_sent_notify_email_at.nil? || l.last_completed_mark_at > l.last_sent_notify_email_at
-
-            if  l.last_completed_mark_at > l.last_sent_notify_email_at
-              puts "____List has changed\n"
-            end
             puts "____List [#{l.id} - #{l.name}] has completed\n"
             # Get all active members on the list
             members = ListTeamMember.where(list_id: l.id, active: true)
@@ -46,11 +42,8 @@ class List < ActiveRecord::Base
               puts "____sent to #{u.email}"
               l.update_attribute(:last_sent_notify_email_at, DateTime.now)
             end
-
           end
-
         end
-
       end
     end
   end
