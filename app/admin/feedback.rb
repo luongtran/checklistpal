@@ -1,8 +1,7 @@
 ActiveAdmin.register Feedback do
-  actions :all, :except => [:new, :edit]
+  actions :all, :except => [:new]
   config.batch_actions = true
   index do
-    selectable_column
     id_column
     column :email
     column :content
