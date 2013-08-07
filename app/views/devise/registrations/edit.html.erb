@@ -56,9 +56,12 @@
                   </div>
                   <%= f.button :submit, 'Update', :class => 'btn-primary' %>
               <% end %>
-              <h3>Cancel my account</h3>
 
-              <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-mini' %></p>
+
+              <p>Unhappy?
+                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button">Cancel my
+                  account</a></p>
+              <%#= link_to "Cancel my account", registration_path(resource_name), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => 'btn btn-danger btn-mini', :id => "delete-confirm" %>
             </div>
           </div>
         </div>
@@ -102,6 +105,41 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#delete-confirm').on('click', function () {
+            var content = $('#feedback-content').val().trim();
+            if (content.length > 0) {
+                var dataserialized = $('#feedback-form').serialize();
+                $.ajax({
+                    url: "users/feedback",
+                    type: "post",
+                    data: dataserialized,
+                });
+            }
+        });
+    })
+</script>
+
+<div id="cancel-account" class="modal" style="display: none;">
+  <div class="modal-header">
+    <h4> Please let us know the reason you wish to cancel your account</h4>
+  </div>
+
+  <div class="modal-body">
+    <form id="feedback-form">
+      <%#= hidden_field_tag :email, current_user.email %>
+      <%= text_area_tag :content, nil, :style => "width: 99%; border: 1; padding: 0; margin: 0;", :rows => 5, :id => 'feedback-content' %>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to "Cancel my account", registration_path(resource_name), :method => :delete, :class => 'btn btn-danger', id: "delete-confirm" %>
+    <a class="btn" data-dismiss="modal" href="#">Close</a>
+  </div>
+</div>
+
+
 <div id="card-data" class="modal" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">

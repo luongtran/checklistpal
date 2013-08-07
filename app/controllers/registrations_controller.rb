@@ -9,11 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+
+
   def create
     super
     session[:omniauth] = nil unless @user.new_record?
   end
-
 
   def update_plan
     @user = current_user
