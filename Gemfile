@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-
+gem 'rufus-scheduler'
 gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'nifty-generators'
@@ -48,6 +48,6 @@ group :development do
   gem 'capistrano'
 end
 gem 'execjs'
-gem 'therubyracer', require: "v8"
+gem 'therubyracer'
 #gem 'therubyracer'
 #gem 'therubyracer'

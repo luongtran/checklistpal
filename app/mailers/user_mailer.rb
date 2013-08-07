@@ -40,6 +40,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => @template.title)
   end
 
+  def list_completed(email_address, link_for_list=nil)
+    mail(:to => email_address, :subject => "List completed!")
+  end
 
   # Test mail
   def test_mail(dest_email)

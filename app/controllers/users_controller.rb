@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def feedback
     puts "\n\n\n___________#{params[:feedback]}"
 
-   Feedback.create(email: current_user.email, content: params[:content])
+    Feedback.create(email: current_user.email, content: params[:content])
   end
 
   def update
