@@ -18,7 +18,10 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-
+  # Check user can create a new list
+  def can_create_new_list?
+    lists.count < roles.first.max_savedlist ? true : false
+  end
 
   def self.list_create(user_id, list_id)
     if user = User.find(user_id)
@@ -104,7 +107,7 @@ class User < ActiveRecord::Base
       customer.save
     end
     self.last_4_digits = customer.cards.data.first["last4"] unless roles.first.name == 'free'
-    # self.last_4_digits = customer.active_card.last4 
+    # self.last_4_digits = customer.active_card.last4
     self.customer_id = customer.id
     self.stripe_token = nil
   rescue Stripe::StripeError => e

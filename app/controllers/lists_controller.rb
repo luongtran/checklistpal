@@ -3,29 +3,33 @@ class ListsController < ApplicationController
   respond_to :html, :xml, :js
 
   def show
-    @list = List.find(:first, :conditions => ["slug = ?", params[:slug]])
+    puts "\n___________________BUOC 2"
+    @list = List.where(slug: params[:slug]).first
     if !@list.blank?
+
       if current_user.present? # if user login
         if @list.user_id.present? # if list not have user_id < public list
           if current_user.id != @list.user_id # if current_user is not owner
-            if @list.list_team_members.present?
+            if @list.list_team_members.present? # check the list has been shared,  current_user  connect to the list
               @list_team_member = @list.list_team_members.find(:first, :conditions => ['invited_id = ? AND list_id =? ', current_user.id, @list.id])
               if !@list_team_member.blank?
                 @owner = User.find(@list.user_id)
                 flash[:notice] = "You are viewing list of #{@owner.email}"
                 return
+              else
+                flash[:alert] = "You have no permission to view this list !"
+                redirect_to my_list_url and return
               end
             else
-              flash[:alert] = "You have no permission to view this list !"
-              redirect_to my_list_path
+              redirect_to my_list_url and return
             end
-          else
-            return
           end
         else
           return
         end
+
       else #if user not login
+        puts "\n___________________BUOC 3"
         if @list.user_id.present? # if list  have user_id < Private list
           flash[:alert] = "You have no permission to view this list !"
           redirect_to root_path
@@ -77,10 +81,10 @@ class ListsController < ApplicationController
     end
   end
 
+  # Edited : 8/8/13
   def mylist
-    @user = current_user
-    @lists = List.find(:all, :conditions => ["user_id = ?", @user.id])
-    @list_team_members = ListTeamMember.find(:all, :conditions => ["invited_id = ? AND active = ?", @user.id, true])
+    @lists = current_user.lists
+    @list_team_members = ListTeamMember.where(invited_id: current_user.id, active: true)
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|
@@ -109,7 +113,9 @@ class ListsController < ApplicationController
     @is_not_connect = false
     @list_id = params[:list_id]
     @user_id = params[:user_id]
+
     @current_connect = ListTeamMember.find(:all, :conditions => ["list_id = ? and invited_id = ?", @list_id, @user_id])
+
     if @current_connect.empty?
       @success = false
     else

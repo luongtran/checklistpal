@@ -5,36 +5,37 @@ class HomeController < ApplicationController
   def index
     random_string = SecureRandom.urlsafe_base64
     if !current_user
-      @list = List.create({
-                              :name => "Name of List",
-                              :description => "To do list",
-                              :slug => random_string
-                          })
+      @list = List.create(
+          :name => "Name of List",
+          :description => "To do list",
+          :slug => random_string
+      )
       if @list.save
+        puts "\n___________________BUOC 1"
         redirect_to list_url(@list.slug)
       else
         flash[:error] = "Could not post list"
       end
+
     else
-      @user = current_user
-      num_list = !@user.lists.blank? ? @user.lists.count : 0
-      if num_list < Role.find(current_user.roles.first.id).max_savedlist
-        @list = List.create({
-                                :name => "Name of List",
-                                :description => "To do list",
-                                :user_id => @user.id,
-                                :slug => random_string
-                            })
-        if @list.save
-          redirect_to list_url(@list.slug)
+      puts "\n___User create new list __________________________"
+
+      if current_user.can_create_new_list?
+
+      end
+      if current_user.can_create_new_list?
+       list = current_user.lists.create(:name => "Name of List",:description => "To do list",:slug => random_string)
+        if list.save
+          redirect_to list_url(list.slug)
         else
           flash[:error] = "Can't create list !"
           return false
         end
       else
         flash[:notice] = %Q[Please <a href="/users/edit">upgrade</a> your plan to create more lists!].html_safe
-        redirect_to my_list_path
+        redirect_to my_list_url
       end
+
     end
   end
 
@@ -51,7 +52,7 @@ class HomeController < ApplicationController
   # Call from Ajax.
   # Params : list id, username or email
   # Find user in system by username or email, if email does not exist -> create new user and send an invite email
-  #
+  # Created 7/8/13
   #def find_and_invite
   #  #if !User.list_create(current_user.id, params[:list_id])
   #  #  redirect_to my_list_path and return
@@ -183,6 +184,7 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
   # Find and invite with a selected list
   def find_invite
     if !User.list_create(current_user.id, params[:list_id])

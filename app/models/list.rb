@@ -39,6 +39,7 @@ class List < ActiveRecord::Base
             puts "\n____will send : #{users.count} emails"
             users.each do |u|
               #   get link to the list
+
               UserMailer.list_completed(u.email,l).deliver
 
               puts "____sent to #{u.email}"
