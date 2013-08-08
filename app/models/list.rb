@@ -8,6 +8,7 @@ class List < ActiveRecord::Base
   validates_presence_of :name
 
   def finished?
+    return false if self.tasks.count == 0
     self.tasks.each do |task|
       if !task.completed
         return false
@@ -38,7 +39,8 @@ class List < ActiveRecord::Base
             puts "\n____will send : #{users.count} emails"
             users.each do |u|
               #   get link to the list
-              UserMailer.list_completed(u.email).deliver
+              UserMailer.list_completed(u.email,l).deliver
+
               puts "____sent to #{u.email}"
               l.update_attribute(:last_sent_notify_email_at, DateTime.now)
             end

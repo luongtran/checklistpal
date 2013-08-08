@@ -40,8 +40,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => @template.title)
   end
 
-  def list_completed(email_address, link_for_list=nil)
-    mail(:to => email_address, :subject => "List completed!")
+  def list_completed(email_address, list)
+    @link = "http://www.tudli.com/lists/#{list.slug}"
+    @date = list.last_completed_mark_at
+    mail(:to => email_address, :subject => "A list task has been completed!")
   end
 
   # Test mail
