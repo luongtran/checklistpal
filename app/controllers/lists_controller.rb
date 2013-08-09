@@ -3,18 +3,19 @@ class ListsController < ApplicationController
   respond_to :html, :xml, :js
 
   def show
-    puts "\n___________________BUOC 2"
+    puts "\n___________________BUOC XXXXXXXXX2222"
     @list = List.where(slug: params[:slug]).first
     if !@list.blank?
-
-      if current_user.present? # if user login
-        if @list.user_id.present? # if list not have user_id < public list
+      if current_user # if user login
+        if @list.user_id # if list not have user_id < public list
           if current_user.id != @list.user_id # if current_user is not owner
             if @list.list_team_members.present? # check the list has been shared,  current_user  connect to the list
-              @list_team_member = @list.list_team_members.find(:first, :conditions => ['invited_id = ? AND list_id =? ', current_user.id, @list.id])
-              if !@list_team_member.blank?
-                @owner = User.find(@list.user_id)
-                flash[:notice] = "You are viewing list of #{@owner.email}"
+                                                #list_team_member = @list.list_team_members.find(:first, :conditions => ['invited_id = ? AND list_id =? ', current_user.id, @list.id])
+              list_team_member = @list.list_team_members.where(invited_id: current_user.id, list_id: @list.id).first
+              # Check current user is connect to the list
+              if !list_team_member.blank?
+                owner = @list.user
+                flash[:notice] = "You are viewing list of #{owner.email}"
                 return
               else
                 flash[:alert] = "You have no permission to view this list !"
@@ -23,15 +24,15 @@ class ListsController < ApplicationController
             else
               redirect_to my_list_url and return
             end
+          else
+            return
           end
         else
           return
         end
-
       else #if user not login
-        puts "\n___________________BUOC 3"
         if @list.user_id.present? # if list  have user_id < Private list
-          flash[:alert] = "You have no permission to view this list !"
+          flash[:notice] = "You have no permission to view this list !"
           redirect_to root_path
         else # if list not have user_id < Public list
           return
@@ -39,9 +40,22 @@ class ListsController < ApplicationController
       end
     else
       flash[:notice] = "List not exists or deleted !"
-      redirect_to root_path
+      redirect_to "static_page/about"
     end
 
+  end
+
+  def download_pdf
+    require 'pdfkit'
+
+    list = List.find(params[:list])
+    if list
+      puts "\n___Download"
+      #kit.stylesheets << 'print.css'
+      kit = PDFKit.new("<h1>Hello</h1><p>This is PDF!!!</p>", :page_size => "A4")
+      file = kit.to_file("/public/my_file_name.pdf")
+      send_data(file, :filename => "#{list.name}.pdf", :type => "application/pdf")
+    end
   end
 
   def edit
@@ -140,5 +154,15 @@ class ListsController < ApplicationController
     response do |format|
       format.js
     end
+  end
+
+  private
+
+  def generate_pdf(client)
+    Prawn::Document.new do
+      text client.name, :align => :center
+      text "Address: #{client.address}"
+      text "Email: #{client.email}"
+    end.render
   end
 end

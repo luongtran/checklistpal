@@ -9,8 +9,10 @@ Checklistpal::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
+  get 'lists/download_pdf'
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
+
   post '/users/feedback'
   resources :lists do
     resources :tasks

@@ -17,6 +17,8 @@ end
 group :production do
   gem 'mysql2'
 end
+gem "pdfkit"
+gem 'wkhtmltopdf-binary'
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'
