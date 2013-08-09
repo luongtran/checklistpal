@@ -212,22 +212,22 @@ class HomeController < ApplicationController
     }
   end
 
-  def find_multi_invite
-    @list_ids = session[:list_ids]
-    @lists = List.where('id IN (?)', @list_ids)
-    user_ids = []
-    @lists.each do |list|
-      @list_team_members = current_user.list_team_members.find(:all, :conditions => ["list_id = ? AND active = ?", list.id, true])
-      if @list_team_members
-        @list_team_members.each do |member|
-          user_ids += [member.invited_id]
-        end
-      end
-    end
-    if !user_ids.empty?
-      @my_connects = User.where('id IN (?)', user_ids)
-    end
-  end
+  #def find_multi_invite
+  #  @list_ids = session[:list_ids]
+  #  @lists = List.where('id IN (?)', @list_ids)
+  #  user_ids = []
+  #  @lists.each do |list|
+  #    @list_team_members = current_user.list_team_members.find(:all, :conditions => ["list_id = ? AND active = ?", list.id, true])
+  #    if @list_team_members
+  #      @list_team_members.each do |member|
+  #        user_ids += [member.invited_id]
+  #      end
+  #    end
+  #  end
+  #  if !user_ids.empty?
+  #    @my_connects = User.where('id IN (?)', user_ids)
+  #  end
+  #end
 
   def search_my_connect
     if !User.list_create(current_user.id, params[:list_id])

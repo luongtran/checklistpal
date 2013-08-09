@@ -19,7 +19,7 @@
     <% end %>
   <% end %>
   <%= form_tag add_comment_path(task),:class =>"form_create_comment", :remote => true do %>
-    <%= text_area_tag :content , nil, :style => "width:775px;height:100px;" %>
+    <%= text_area_tag :content , nil, :style => "width:775px;height:100px;", :rows => 2 %>
     <%= submit_tag "Add comment" , :class => "add_comment_bt btn btn-small btn-warning" %>
     <%= button_tag "Close",:type => "button",:class => "close_comment_bt btn btn-small" %>
   <% end %>

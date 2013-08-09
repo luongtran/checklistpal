@@ -129,6 +129,7 @@ class ListsController < ApplicationController
     end
   end
 
+
   # Edited : 8/8/13
   def mylist
     @lists = current_user.lists
