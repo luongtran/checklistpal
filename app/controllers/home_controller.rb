@@ -23,7 +23,6 @@ class HomeController < ApplicationController
 
       end
       if current_user.can_create_new_list?
-        puts "\n___________________BUOC XXXXX1111"
         list = current_user.lists.create(:name => "Name of List", :description => "To do list", :slug => random_string)
         if list.save
           redirect_to list_url(list.slug)

@@ -19,7 +19,7 @@
   </div>
 </div>
 <div class="section clearfix">
-  <% if @user.roles.first.name == 'free' %>
+  <% if params[:plan] == 'free' %>
       <h3>Free Sign Up</h3>
   <% else %>
       <h3>Create Paid Account</h3>
@@ -56,7 +56,7 @@
                   <div class="controls">
                     <%= f.password_field :password_confirmation, :required => true, :placeholder => "Password again", :class => "span5", :required => true %>
                   </div>
-                  <% if @user.roles.first.name != 'free' %>
+                  <% if params[:plan] != 'free' %>
                       <% if @user.stripe_token %>
                           <p>Credit card acceptance is pending.</p>
                       <% else %>
@@ -85,7 +85,7 @@
       </div>
       <div class="divine50">
         <div class="signoption">
-          <% if @user.roles.first.name == "free" %>
+          <% if params[:plan] != 'free' %>
               <div class="signinpanel" style="margin-top : -55px;">
                 <h3 class="text-center">Sign In</h3>
 

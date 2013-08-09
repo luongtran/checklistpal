@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy, :mylist, :edit]
-  respond_to :html, :xml, :js
+  # after_filter :get_html, :only => [:show]
+  respond_to :html, :xml, :js, :pdf
 
   def show
-    puts "\n___________________BUOC XXXXXXXXX2222"
     @list = List.where(slug: params[:slug]).first
     if !@list.blank?
       if current_user # if user login
@@ -43,18 +43,52 @@ class ListsController < ApplicationController
       redirect_to "static_page/about"
     end
 
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.pdf do
+    #    puts "\n__________Voday"
+    #    render :pdf => "filename", :stylesheets => ["application"], :layout => "application"
+    #  end
+    #end
+  end
+
+  def to_pdf
+    list = List.find(params[:list])
   end
 
   def download_pdf
-    require 'pdfkit'
+    #require 'pdfcrowd'
+
+=begin
+<div class="checkbox">
+          <span class="mark" title="Mark completed">
+            <form accept-charset="UTF-8" action="/lists/714/tasks/69/complete" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Gjj5VBjrJQ/tBMlPJo6F73MmWzQhABWSG0HQcKKfWUg="></div>
+              <input class="checkbox mark_comp" data_target="714" id="mark_complete" name="mark_complete" type="checkbox" value="69">
+</form>          </span>
+          <span class="task-des" title="Task name">
+             <!-- Render task incompleted -->
+              <div class="item-title" id="item_title_69" data-url="/lists/714/tasks/69/edit">asdasd</div>
+                      </span>
+            <span class="due_date_show hidden">
+          </span>
+          <span class="number_comment hidden" id="number_comment_69"></span>
+        </div>
+=end
 
     list = List.find(params[:list])
     if list
       puts "\n___Download"
-      #kit.stylesheets << 'print.css'
-      kit = PDFKit.new("<h1>Hello</h1><p>This is PDF!!!</p>", :page_size => "A4")
-      file = kit.to_file("/public/my_file_name.pdf")
-      send_data(file, :filename => "#{list.name}.pdf", :type => "application/pdf")
+      @list = list
+
+      kit = PDFKit.new (_r)
+      kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
+
+
+      ## Get an inline PDF
+      #pdf = kit.to_pdf
+      # Save the PDF to a file
+      # file = kit.to_file('abc.pdf')
+      send_file(kit.to_file('abc.pdf'), :filename => "#{list.name}.pdf", :type => "application/pdf")
     end
   end
 
@@ -164,5 +198,14 @@ class ListsController < ApplicationController
       text "Address: #{client.address}"
       text "Email: #{client.email}"
     end.render
+  end
+
+  def get_html
+    kit = PDFKit.new response, :page_size => 'Letter'
+    pdf = kit.to_pdf
+    kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
+    # Save the PDF to a file
+    file = kit.to_file('abc.pdf')
+    send_file(file, :filename => "lht.pdf", :type => "application/pdf")
   end
 end

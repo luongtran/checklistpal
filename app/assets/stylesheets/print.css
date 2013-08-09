@@ -13,8 +13,9 @@
     .searchboxtodolist {
         visibility: hidden;
     }
-    .items{
-        width:1000px;
+
+    .items {
+        width: 1000px;
     }
 
     #logo {
@@ -88,5 +89,9 @@
     }
     .alert {
         visibility: hidden;
+    }
+
+    .headh1 {
+        font-family: 'Courier New';
     }
 }
