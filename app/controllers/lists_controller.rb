@@ -46,7 +46,6 @@ class ListsController < ApplicationController
     #respond_to do |format|
     #  format.html # show.html.erb
     #  format.pdf do
-    #    puts "\n__________Voday"
     #    render :pdf => "filename", :stylesheets => ["application"], :layout => "application"
     #  end
     #end

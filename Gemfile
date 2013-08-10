@@ -52,6 +52,4 @@ group :development do
   gem 'capistrano'
 end
 gem 'execjs'
-gem 'therubyracer'
-#gem 'therubyracer'
-#gem 'therubyracer'
+gem 'therubyracer' , :platforms => :ruby
