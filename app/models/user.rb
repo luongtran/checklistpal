@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     lists.count < roles.first.max_savedlist ? true : false
   end
 
+  def connection_count
+    ListTeamMember.where(user_id: self.id, active: true).count
+  end
+
   def self.list_create(user_id, list_id)
     if user = User.find(user_id)
       if user.lists.length > 0

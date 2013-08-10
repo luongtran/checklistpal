@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :only => [:find_invite, :invite, :invite_user_by_id, :search_my_connect]
+  before_filter :authenticate_user!, :only => [:find_invite, :invite, :invite_user_by_id, :search_my_connect, :dashboard]
   require 'securerandom'
 
   def index
@@ -35,6 +35,11 @@ class HomeController < ApplicationController
         redirect_to my_list_url
       end
     end
+  end
+
+
+  def dashboard
+
   end
 
   # Inviting page

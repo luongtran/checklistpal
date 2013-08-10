@@ -8,9 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to signup_options_path, :notice => 'Please select a subscription plan below.'
     end
   end
-
-
-
   def create
     super
     session[:omniauth] = nil unless @user.new_record?

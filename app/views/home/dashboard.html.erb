@@ -14,21 +14,20 @@
 
   </div>
   <div class="pull-left">
-    <h3>My Dashboard</h3>
-
     <div id="logo">
     </div>
   </div>
 </div>
-
 <div class="section clearfix">
+  <h3>Dashboard</h3>
+  <hr class="devider"/>
   <div id="signupfree">
     <div class="clearfix">
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
             <div class="panel">
-              <h3>Account's profile</h3>
+
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => 'form-vertical'}) do |f| %>
                   <%#= f.error_notification %>
                   <% if resource.errors.full_messages.present? %>
@@ -54,7 +53,7 @@
                   <div class="controls">
                     <%#= f.password_field :current_password, :required => true, :placeholder =>"Current password", :class =>"span5",:hint => "we need your current password to confirm your changes",:required => true %>
                   </div>
-                  <%= f.button :submit, 'Update', :class => 'btn-primary btn-small' %>
+                  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
               <% end %>
               <p>Unhappy?
                 <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button">Cancel my
@@ -62,20 +61,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
             <h3>Subscription Plan</h3>
-
             <p>
               Your current plan is <%= current_user.roles.first.name.titleize %>
 
-              <% if !@user.last_4_digits.blank? %>
-                  <% if @user.roles.first.name == 'free' %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Upgrade
+              <% if !current_user.last_4_digits.blank? %>
+                  <% if current_user.roles.first.name == 'free' %>
+                      <a data-toggle="modal" href="#change-plan" class="btn btn-primary" type="button">Upgrade
                         to
                         Paid</a>
                   <% else %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Downgrade
+                      <a data-toggle="modal" href="#change-plan" class="btn btn-primary" type="button">Downgrade
                         to
                         Free</a>
                   <% end %>
@@ -92,40 +92,10 @@
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#card-data" class="btn btn-primary btn-small" type="button">Change card</a>
+              <a data-toggle="modal" href="#change-card" class="btn btn-primary" type="button">Change card</a>
             </p>
           </div>
         </div>
-
-
-      </div>
-      <div class="divine50">
-        <div class="signoption row-fluid">
-
-          <div class="signuppanel">
-            <h3>Lists</h3>
-
-            <p>You currently
-              have
-              <a href="<%= my_list_path %>"><%= current_user.lists.count > 1 ? "#{current_user.lists.count} lists" : "list" %> </a>
-            </p>
-
-            <p>Incomplete: xxx </p>
-
-            <p>Completed: yyy</p>
-          </div>
-          <div class="signuppanel">
-            <h3>Connections</h3>
-
-            <p>You currently
-              have
-              <%= current_user.connection_count %>     connections
-            </p>
-
-          </div>
-
-        </div>
-
       </div>
     </div>
   </div>
@@ -165,7 +135,7 @@
 </div>
 
 
-<div id="card-data" class="modal fade" style="display: none;">
+<div id="change-card" class="modal fade" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>
@@ -198,7 +168,7 @@
       </div>
   <% end %>
 </div>
-<div id="plan-options" class="modal fade" style="display: none;">
+<div id="change-plan" class="modal fade" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_plan_path, :html => {:method => :put, :class => 'form-horizontal'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>
@@ -244,11 +214,11 @@
         </div>
 
         <%#= f.input :role_ids, :collection => Role.all.delete_if { |i| i.name == 'admin' || i.name == @user.roles.first.name}, :as => :radio_buttons, :label_method => lambda { |t| t.name.titleize }, :label => false, :item_wrapper_class => 'inline' %>
-        <%= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
+        <%= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', current_user.roles.first.name]).first.id %>
       </div>
       <div class="modal-footer">
 
-        <% if @user.roles.first.name == 'free' then
+        <% if current_user.roles.first.name == 'free' then
              button_text = 'Upgrade now!'
            else
              button_text = 'Downgrade now!'
