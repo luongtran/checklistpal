@@ -1,8 +1,8 @@
 Checklistpal::Application.routes.draw do
-  # constraints(:host => /tudli.com/) do
-  # root :to => redirect("http://www.tudli.com")
-  # match '/*path', :to => redirect { |params| "http://www.tudli.com/#{params[:path]}" }
-  # end
+  constraints(:host => /tudli.com/) do
+    # root :to => redirect("http://www.tudli.com")
+    match '/*path', :to => redirect { |params| "http://www.tudli.com/#{params[:path]}" }
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   match '/auth/:provider/callback' => 'authentications#create'
