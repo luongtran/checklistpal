@@ -256,11 +256,12 @@
 }
 
 .taskinfo .comment-add {
-    width: 100%
+    padding-top: 5px;
+    width: 100%;
 }
 
 .taskinfo .comment-add>div {
-    width: 100%
+    width: 100%;
 }
 
 .taskinfo .comment-add textarea {
@@ -412,6 +413,7 @@
 .container {
     width: auto !important;
 }
+
 #accountpanel .inline {
     border-right: 1px solid rgba(156, 155, 155, 0.44);
     padding-right: 5px;
@@ -421,10 +423,12 @@
     border-right: none;
 
 }
+
 #accountpanel .lastest {
-    border-right: 1px solid  rgba(56, 38, 38, 0.26)   ;
+    border-right: 1px solid rgba(56, 38, 38, 0.26);
 }
-#accountpanel .signin_email_field  {
+
+#accountpanel .signin_email_field {
     padding-left: 15px;
 }
 
@@ -449,6 +453,16 @@
     }
 
 }
-.checkbox{
-    width:100%;
+
+.checkbox {
+    width: 100%;
+}
+
+.avatar {
+    border-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+
 }

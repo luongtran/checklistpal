@@ -49,6 +49,19 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
 
+  def update_avatar(file)
+    #remove old avatar
+    require 'fileutils'
+    dirname = File.dirname('/tmp/tudli-avatars/')
+    unless File.directory?(dirname)
+      FileUtils.mkdir_p(dirname)
+    end
+    filename = sanitize_filename(file.original_filename)
+    path = File.join(dirname, "#{self.id}-#{filename}")
+    File.open(path, "wb") { |f| f.write(file.read) }
+    self.update_attribute(:avatar_url, "#{self.id}-#{filename}")
+  end
+
   # Check user can create a new list
   def can_create_new_list?
     lists.count < roles.first.max_savedlist ? true : false
@@ -296,5 +309,11 @@ class User < ActiveRecord::Base
 
   def to_s
     email
+  end
+
+  private
+  def sanitize_filename(file_name)
+    just_filename = File.basename(file_name)
+    just_filename.sub(/[^\w\.\-]/, '_')
   end
 end

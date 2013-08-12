@@ -18,6 +18,7 @@ Checklistpal::Application.routes.draw do
   get '/inviting' => 'home#inviting', :as => :inviting
   get '/dashboard' => 'home#dashboard'
   post '/users/feedback'
+  post '/users/upload_avatar'
   resources :lists do
     resources :tasks
   end
