@@ -164,6 +164,9 @@ $(function () {
 
                     });
                     $('.datepicker').datepicker({
+                        showOn: "button",
+                        buttonImage: "/assets/calendar-small.png",
+                        buttonImageOnly: true ,
                         dateFormat: "yy-mm-dd",
                         onSelect: function (dateText) {
                             $(this).val(dateText);
@@ -173,6 +176,7 @@ $(function () {
                             $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
                             $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
                         }
+
                     });
                 });
             }
@@ -268,15 +272,22 @@ $(function () {
         }
 
     });
+
+
+
     $('.datepicker').datepicker({
-        dateFormat: "yy-mm-dd",
-        onSelect: function (dateText) {
-            $(this).val(dateText);
-            $(this).change();
-            $(this).parent().trigger('submit.rails');
-            var form = '<span class="due_date_bt">Due ' + dateText + '</span>';
-            $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
-            $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
-        }
+            showOn: "button",
+            buttonImage: "/assets/calendar-small.png",
+            buttonImageOnly: true ,
+            dateFormat: "yy-mm-dd",
+            onSelect: function (dateText) {
+                $(this).val(dateText);
+                $(this).change();
+                $(this).parent().trigger('submit.rails');
+                var form = '<span class="due_date_bt">Due ' + dateText + '</span>';
+                $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
+                $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
+            }
+
     });
 });
