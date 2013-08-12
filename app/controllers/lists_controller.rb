@@ -33,7 +33,7 @@ class ListsController < ApplicationController
       else #if user not login
         if @list.user_id.present? # if list  have user_id < Private list
           flash[:notice] = "You have no permission to view this list !"
-          redirect_to root_path
+          redirect_to root_url
         else # if list not have user_id < Public list
           return
         end

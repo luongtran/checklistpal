@@ -11,7 +11,7 @@ class HomeController < ApplicationController
           :slug => random_string
       )
       if @list.save
-        redirect_to list_url(@list.slug)
+        redirect_to list_path(@list.slug)
       else
         flash[:error] = "Could not post list"
       end
@@ -25,7 +25,7 @@ class HomeController < ApplicationController
       if current_user.can_create_new_list?
         list = current_user.lists.create(:name => "Name of List", :description => "To do list", :slug => random_string)
         if list.save
-          redirect_to list_url(list.slug)
+          redirect_to list_path(list.slug)
         else
           flash[:error] = "Can't create list !"
           return false
