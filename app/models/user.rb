@@ -35,24 +35,20 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :invitable, :trackable
-  validate :custom_valid
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_create :update_stripe
   after_create :send_welcome_mail
   after_destroy :cancel_subscription
-  has_many :lists, :dependent => :destroy
+  has_many :lists, :dependent => :destroy #, :select => 'id,name,user_id'
+
   has_many :tasks, :through => :lists
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  def custom_valid
-    if self.email.contains 'lht'
-      errors.add :email, 'lht ? bye !'
-    end
-  end
+
   # Check user can create a new list
   def can_create_new_list?
     lists.count < roles.first.max_savedlist ? true : false
