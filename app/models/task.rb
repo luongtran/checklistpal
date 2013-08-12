@@ -21,6 +21,7 @@ class Task < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   scope :items, where("list_id is not null").order('position')
   scope :completed, where("completed = ?", true)
+  validates_presence_of :description
   validates_length_of :description, within: 1..140
 
   acts_as_list
