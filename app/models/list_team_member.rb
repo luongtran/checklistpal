@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: list_team_members
+#
+#  id               :integer          not null, primary key
+#  list_id          :integer
+#  user_id          :integer
+#  active           :boolean          default(FALSE), not null
+#  invitation_token :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  invited_id       :integer
+#
+
 class ListTeamMember < ActiveRecord::Base
   attr_accessible :active , :invitation_token, :list_id, :user_id, :invited_id
   belongs_to :invite, :class_name => "User"

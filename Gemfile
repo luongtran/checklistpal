@@ -50,6 +50,7 @@ gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 group :development do
   gem 'capistrano'
+  gem 'annotate', ">=2.5.0"
 end
 gem 'execjs'
 gem 'therubyracer' , :platforms => :ruby
