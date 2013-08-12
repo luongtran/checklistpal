@@ -25,7 +25,7 @@
   <div class="modal-header">
     <h4> Updating ... </h4>
   </div>
-  <% if false %>
+
       <div class="modal-body">
 
         <!-- Change the target of the form to the hidden iframe -->
@@ -39,19 +39,19 @@
         <!-- Just added to show the preview when the image is uploaded. -->
         <img id="preview" src="<%= "default_avatar.gif" %>"/>
         <script>
-            //        $(function () {
-            //            $("#avatar").change(function () {
-            //                $("#avatar_form").submit();  // Submits the form on change event, you consider this code as the start point of your request (to show loader)
-            //                $("#uploader_iframe").unbind().load(function () {  // This block of code will execute when the response is sent from the server.
-            //                    result = JSON.parse($(this).contents().text());  // Content of the iframe will be the response sent from the server. Parse the response as the JSON object
-            //                    $("#preview").attr("src", result.response.avatar_url);
-            //                });
-            //            });
-            //        });
+                    $(function () {
+                        $("#avatar").change(function () {
+                            $("#avatar_form").submit();  // Submits the form on change event, you consider this code as the start point of your request (to show loader)
+                            $("#uploader_iframe").unbind().load(function () {  // This block of code will execute when the response is sent from the server.
+                                result = JSON.parse($(this).contents().text());  // Content of the iframe will be the response sent from the server. Parse the response as the JSON object
+                                $("#preview").attr("src", result.response.avatar_url);
+                            });
+                        });
+                    });
         </script>
 
       </div>
-  <% end %>
+
   <div class="modal-footer">
 
     <a class="btn" data-dismiss="modal" href="#">Close</a>

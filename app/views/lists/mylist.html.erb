@@ -53,15 +53,12 @@
 
                   <br/>
                   <%= link_to 'Add unlimited Lists', my_dashboard_path, :class => 'btn' if current_user.has_role? 'free' %>
+                  <br/>
               <% end %>
-
-
             </div>
-            <hr class="divider">
+
             <h4>Archived Lists</h4>
-            <% if @lists.blank? %>
-                <h4>You don't have any list</h4>
-            <% else %>
+            <% if !@lists.blank? %>
                 <% @lists.each do |list| %>
                     <% if list.finished? %>
                         <label class="checkbox">
@@ -69,7 +66,7 @@
                           <span><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i>
                     </span>&nbsp;<%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btndeletelist') %>
                         </label>
-                        <% @connect_users = ListTeamMember.find(:all, :conditions => ["list_id = ? AND active = ?", list.id, true]) %>
+                        <% @connect_users = ListTeamMember.where(list_id: list.id, active: true) %>
                         <% uids = [] %>
                         <% if !@connect_users.blank? %>
                             <% @connect_users.each do |con| %>
@@ -84,9 +81,7 @@
                                 </ul>
                             <% end %>
                         <% end %>
-
                     <% end %>
-
                 <% end %>
             <% end %>
           </div>

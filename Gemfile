@@ -7,6 +7,7 @@ gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
+gem 'aws-sdk'
 #gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
 #gem "friendly_id", "~> 4.0.0"
 group :assets do

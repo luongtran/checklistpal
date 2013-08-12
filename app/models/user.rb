@@ -51,15 +51,8 @@ class User < ActiveRecord::Base
 
   def update_avatar(file)
     #remove old avatar
-    require 'fileutils'
-    dirname = File.dirname('/tmp/tudli-avatars/')
-    unless File.directory?(dirname)
-      FileUtils.mkdir_p(dirname)
-    end
     filename = sanitize_filename(file.original_filename)
-    path = File.join(dirname, "#{self.id}-#{filename}")
-    File.open(path, "wb") { |f| f.write(file.read) }
-    self.update_attribute(:avatar_url, "#{self.id}-#{filename}")
+    s3_uploader("#{self.id}-#{filename}", file.read, "Tudli-avatars")
   end
 
   # Check user can create a new list
@@ -315,5 +308,15 @@ class User < ActiveRecord::Base
   def sanitize_filename(file_name)
     just_filename = File.basename(file_name)
     just_filename.sub(/[^\w\.\-]/, '_')
+  end
+
+  def s3_uploader(filename, data, bucket_name)
+    s3 = AWS::S3.new
+    bucket = s3.buckets.create(bucket_name)
+    obj = bucket.objects[filename]
+    obj.write(data)
+
+    self.update_attribute(:avatar_url, obj.public_url(:secure => false))
+    puts "\n_________________________#{obj.public_url}"
   end
 end
