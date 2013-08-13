@@ -176,7 +176,7 @@
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#card-data" class="btn btn-primary btn-small" type="button">Change card</a>
+              <a data-toggle="modal" href="#change-card" class="btn btn-primary btn-small" type="button">Change card</a>
             </p>
           </div>
         </div>
@@ -249,7 +249,7 @@
 </div>
 
 
-<div id="card-data" class="modal fade" style="display: none;">
+<div id="change-card" class="modal fade" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>

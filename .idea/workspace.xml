@@ -67,11 +67,9 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/wicked_pdf/test/test_helper.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/wicked_pdf/test/unit/wicked_pdf_test.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/wicked_pdf/wicked_pdf.gemspec" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/print.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/print.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -191,10 +189,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="edit.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="39" selection-start="3319" selection-end="3319" vertical-scroll-proportion="-36.0">
+            <state line="251" column="20" selection-start="9535" selection-end="9535" vertical-scroll-proportion="0.6502947">
               <folding>
                 <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#!!top" expanded="true" />
@@ -220,10 +218,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_comment_task.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_comment_task.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="3" selection-start="79" selection-end="79" vertical-scroll-proportion="0.08126411">
+            <state line="2" column="3" selection-start="79" selection-end="79" vertical-scroll-proportion="-1.5">
               <folding>
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
               </folding>
@@ -234,36 +232,7 @@
       <file leaf-file-name="addonfix.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="488" column="0" selection-start="10444" selection-end="10444" vertical-scroll-proportion="-11.206897">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/comments/create.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="43" selection-start="334" selection-end="334" vertical-scroll-proportion="-3.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="49" selection-start="1850" selection-end="1850" vertical-scroll-proportion="-5.75">
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#2;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_items.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="43" selection-start="2795" selection-end="2795" vertical-scroll-proportion="-8.25">
+            <state line="488" column="0" selection-start="10444" selection-end="10444" vertical-scroll-proportion="-12.0">
               <folding />
             </state>
           </provider>
@@ -302,10 +271,12 @@
       <MyDateState />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/views/lists/show.html.erb" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" root2="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130813024458_add_avatar_url.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/lists.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
@@ -313,14 +284,15 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/authentications_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/comments/create.js.erb" />
-        <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
         <option value="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/print.css" />
+        <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
       </list>
     </option>
   </component>
@@ -530,7 +502,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="comments" />
+              <option name="myItemId" value="devise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="registrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -563,28 +561,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1118,10 +1094,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12126246" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12126246" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13732928" sideWeight="0.9430486" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18008785" sideWeight="0.87873757" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24524158" sideWeight="0.83388704" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16611296" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -1197,13 +1173,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/rubymine.jar!/resources/html5-schema/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="23" selection-start="4629" selection-end="4629" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="50" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
@@ -1229,31 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="43" selection-start="2795" selection-end="2795" vertical-scroll-proportion="-8.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="39" selection-start="3319" selection-end="3319" vertical-scroll-proportion="-36.0">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#2;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1289,22 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/comments/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="43" selection-start="334" selection-end="334" vertical-scroll-proportion="-3.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="49" selection-start="1850" selection-end="1850" vertical-scroll-proportion="-5.75">
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="317" column="57" selection-start="9537" selection-end="9537" vertical-scroll-proportion="0.0">
@@ -1312,18 +1240,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
+    <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="488" column="0" selection-start="10444" selection-end="10444" vertical-scroll-proportion="-11.206897">
+        <state line="2" column="3" selection-start="79" selection-end="79" vertical-scroll-proportion="-1.5">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="25" selection-start="3434" selection-end="3434" vertical-scroll-proportion="1.8837209">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/print.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="3" selection-start="79" selection-end="79" vertical-scroll-proportion="0.08126411">
+        <state line="16" column="27" selection-start="347" selection-end="347" vertical-scroll-proportion="-1.8643762">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="29" selection-start="1783" selection-end="1783" vertical-scroll-proportion="0.25775194">
           <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1376386381780" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/comments/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="43" selection-start="334" selection-end="334" vertical-scroll-proportion="0.13953489">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="488" column="0" selection-start="10444" selection-end="10444" vertical-scroll-proportion="-12.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="20" selection-start="9535" selection-end="9535" vertical-scroll-proportion="0.6502947">
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#2;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
