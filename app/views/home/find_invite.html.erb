@@ -73,7 +73,7 @@
                     <span class="name"><%= connect.email %></span>
                   </label>
               <% end %>
-              <%= link_to 'Add unlimited Invites', my_dashboard_path, :class => 'btn' if current_user.has_role? 'free' %>
+              <%= link_to 'Add unlimited Invites', my_dashboard_path(:action => 'upgrade'), :class => 'btn' if current_user.has_role? 'free' %>
           <% else %>
               <span>The list doesn't have any connection</span>
           <% end %>
