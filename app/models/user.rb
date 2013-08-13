@@ -309,7 +309,8 @@ class User < ActiveRecord::Base
 
   def get_avatar_url
     return nil if self.avatar_s3_url.nil?
-    if (!self.avatar_url_expires_at.nil?) && self.avatar_url_expires_at.past? # avatar_url has been expired.
+    return self.avatar_s3_url if self.avatar_url_expires_at.nil?
+    if self.avatar_url_expires_at.past? # avatar_url has been expired.
       s3 = AWS::S3.new
       bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
       obj = bucket.objects[self.avatar_file_name]

@@ -57,8 +57,9 @@
               <% end %>
             </div>
 
-            <h4>Archived Lists</h4>
+
             <% if !@lists.blank? %>
+                <h4>Archived Lists</h4>
                 <% @lists.each do |list| %>
                     <% if list.finished? %>
                         <label class="checkbox">
