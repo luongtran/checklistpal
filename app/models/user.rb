@@ -62,13 +62,18 @@ class User < ActiveRecord::Base
   end
 
   def get_avatar_url
-    # Facebook account ????
-    s3 = AWS::S3.new
-    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
-    obj = bucket.objects[self.avatar_file_name]
-    # Check nil for obj?
-    #url = obj.url_for(:read, :expires_in => 60*60*24*30).to_s
-    url = obj.url_for(:read).to_s
+
+    if self.avatar_s3_url # Facebook account
+      return self.avatar_s3_url
+    else
+      s3 = AWS::S3.new
+      bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+      obj = bucket.objects[self.avatar_file_name]
+      # Check nil for obj?
+      #url = obj.url_for(:read, :expires_in => 60*60*24*30).to_s
+      url = obj.url_for(:read).to_s
+    end
+
   rescue Exception => e
     return nil
   end
