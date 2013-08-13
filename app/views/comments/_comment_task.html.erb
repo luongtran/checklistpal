@@ -3,10 +3,11 @@
         <div class="accordion">
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle">
+              <div class="accordion-toggle">
                 <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.gif" %>" width="40" height="50"></img>
-                <%= User.find(comment.user_id).email %> <span class="text-info"> : <%= comment.content %> </span>
-              </a>
+                <%= User.find(comment.user_id).name %>
+                <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"> : <%= comment.content %> </span>
+              </div>
             </div>
           </div>
         </div>
@@ -14,7 +15,7 @@
 <% end %>
 <%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>
     <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 140 characters", :maxlength => "140" %>
-    <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-warning" %>
+    <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success" %>
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
 <% end %>
 <script>

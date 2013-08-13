@@ -315,8 +315,8 @@ class User < ActiveRecord::Base
       bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
       obj = bucket.objects[self.avatar_file_name]
       # Check nil for obj?
-      url = obj.url_for(:read, :expires_in => 60*60*24*365).to_s # expires in one year
-      self.update_attributes(:avatar_s3_url => url, :avatar_url_expires_at => DateTime.now + 360)
+      url = obj.url_for(:read, :expires_in => 60*60*24*30, :use_ssl => false).to_s # expires in one year
+      self.update_attributes(:avatar_s3_url => url, :avatar_url_expires_at => DateTime.now + 29.days)
     end
     self.avatar_s3_url
   rescue Exception => e
@@ -334,10 +334,10 @@ class User < ActiveRecord::Base
     bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
     obj = bucket.objects[filename]
     obj.write(data)
-    url = obj.url_for(:read, :expires_in => 60*60*24*365).to_s
+    url = obj.url_for(:read, :expires_in => 60*60*24*29).to_s
     self.update_attributes(:avatar_s3_url => url,
                            :avatar_file_name => filename,
-                           :avatar_url_expires_at => DateTime.now + 360
+                           :avatar_url_expires_at => DateTime.now + 29
     )
   end
 end

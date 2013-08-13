@@ -263,6 +263,9 @@
 .taskinfo .comment-add>div {
     width: 100%;
 }
+.items:hover{
+    background-color: #FFFFFF;
+}
 
 .taskinfo .comment-add textarea {
     display: block;

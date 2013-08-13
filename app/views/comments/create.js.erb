@@ -1,6 +1,7 @@
 <% if @success %>
 $("#comment_add_<%= @task.id %>").html('<%= j(render :partial => 'comments/comment_task', :locals => { :task => @task }) %>');
-$("#comment_add_<%= @task.id %>").parent('.items').children().children(".number_comment").html( "(" + <%= @task.comments.count %> + " Comments)");
+
+$("#comment_add_<%= @task.id %>").parent('.items').children().children(".number_comment").html("(" + <%= @task.comments.count %> +" Comments)");
 $("#comment_add_<%= @task.id %>").parent('.items').children().children(".number_comment").removeClass('hidden');
 <% else %>
 <% end %>

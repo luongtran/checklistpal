@@ -38,7 +38,7 @@
               <img src="/assets/comment-small.png"></img></a>
           <% end %>
           <%= form_tag(update_due_date_path(@list.id, task.id), :remote => true) do |f| %>
-              <input type="hidden" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-mm-dd" class="datepicker inputdate" id="due_date_<%= task.id %>" placeholder="Due date">
+              <input type="hidden" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-mm-dd" class="datepicker inputdate" id="due_date_<%= task.id %>" title="Due date">
             <% end %>
           <%= link_to image_tag('edit-small.png'), "javascript:;", :class => 'btn-edit', :style => "text-decoration: underline", :title => "Edit task name" %>
           <%= link_to image_tag('recycle-small.png'), delete_task_path(@list.id, task.id), :class => 'btn-delete', :style => "text-decoration: underline", :title => "Delete task", :remote => true %>
