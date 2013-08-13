@@ -1,16 +1,9 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
-        <div class="accordion">
-          <div class="accordion-group">
-            <div class="accordion-heading">
-              <div class="accordion-toggle">
-                <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.gif" %>" width="40" height="50"></img>
-                <%= User.find(comment.user_id).name %>
-                <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"> : <%= comment.content %> </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.gif" %>" width="40" height="50"></img>
+        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"><%= User.find(comment.user_id).name %>
+          : <%= comment.content %> </span>
+        <hr/>
     <% end %>
 <% end %>
 <%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>

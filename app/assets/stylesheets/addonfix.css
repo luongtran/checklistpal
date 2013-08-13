@@ -481,6 +481,13 @@
 .accordion-group{
     border: none;
 }
+.items {
+    padding-bottom: 16px;
+}
+
+.accordion-toggle {
+
+}
 /*.comment-add {*/
 /*width: 95%;*/
 /*}*/
