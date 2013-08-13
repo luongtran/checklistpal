@@ -257,7 +257,7 @@
 
 .taskinfo .comment-add {
     padding-top: 5px;
-    width: 100%;
+    width: 95%;
 }
 
 .taskinfo .comment-add>div {
@@ -466,3 +466,18 @@
     border-bottom-left-radius: 100px;
 
 }
+
+#change-avatar-dialog {
+    width: auto;
+}
+.form_create_comment {
+    padding-top: 10px;
+    width: 50%;
+    padding-left: 25px;
+}
+.accordion-group{
+    border: none;
+}
+/*.comment-add {*/
+/*width: 95%;*/
+/*}*/

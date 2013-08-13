@@ -30,13 +30,15 @@
 
 class User < ActiveRecord::Base
   rolify
+  @@AWS3_AVATARS_BUCKET = "Tudli-avatars"
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :invitable, :trackable
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type,
+                  :avatar_s3_url, :avatar_file_name, :avatar_url_expires_at
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_create :update_stripe
   after_create :send_welcome_mail
@@ -52,7 +54,7 @@ class User < ActiveRecord::Base
   def update_avatar(file)
     #remove old avatar
     filename = sanitize_filename(file.original_filename)
-    s3_uploader("#{self.id}-#{filename}", file.read, "Tudli-avatars")
+    avatar_uploader("#{self.id}-#{filename}", file.read)
   end
 
   # Check user can create a new list
@@ -304,19 +306,37 @@ class User < ActiveRecord::Base
     email
   end
 
+
+  def get_avatar_url
+    return nil if self.avatar_s3_url.nil?
+    if self.avatar_url_expires_at.past? # avatar_url has been expired.
+      s3 = AWS::S3.new
+      bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+      obj = bucket.objects[self.avatar_file_name]
+      # Check nil for obj?
+      url = obj.url_for(:read, :expires_in => 60*60*24*365).to_s # expires in one year
+      self.update_attributes(:avatar_s3_url => url, :avatar_url_expires_at => DateTime.now + 360)
+    end
+    self.avatar_s3_url
+  rescue Exception => e
+    return nil
+  end
+
   private
   def sanitize_filename(file_name)
     just_filename = File.basename(file_name)
     just_filename.sub(/[^\w\.\-]/, '_')
   end
 
-  def s3_uploader(filename, data, bucket_name)
+  def avatar_uploader(filename, data)
     s3 = AWS::S3.new
-    bucket = s3.buckets.create(bucket_name)
+    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
     obj = bucket.objects[filename]
     obj.write(data)
-
-    self.update_attribute(:avatar_url, obj.public_url(:secure => false))
-    puts "\n_________________________#{obj.public_url}"
+    url = obj.url_for(:read, :expires_in => 60*60*24*365).to_s
+    self.update_attributes(:avatar_s3_url => url,
+                           :avatar_file_name => filename,
+                           :avatar_url_expires_at => DateTime.now + 360
+    )
   end
 end

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
             status: 200,
             msg: "OK"
         },
-        response: {avatar_url: current_user.avatar_url}
+        response: {message: "Your avatar has been updated"}
     }.to_json
   end
 

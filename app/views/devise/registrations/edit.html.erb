@@ -21,44 +21,82 @@
   </div>
 </div>
 
-<div id="change-avatar" class="modal fade" style="display: none;">
+<div id="change-avatar-dialog" class="modal fade" style="display: none;">
   <div class="modal-header">
-    <h4> Updating ... </h4>
+    <h4> Browse your local machine and select the file </h4>
   </div>
 
-      <div class="modal-body">
+  <div class="modal-body">
 
-        <!-- Change the target of the form to the hidden iframe -->
-        <form id="avatar_form" action="/users/upload_avatar" method="post" enctype="multipart/form-data" target="uploader_iframe">
-          <input id="avatar" type="file" name="avatar" size="30"/>
-        </form>
+    <!-- Change the target of the form to the hidden iframe -->
+    <form id="avatar_form" action="/users/upload_avatar" method="post" enctype="multipart/form-data" target="uploader_iframe">
+      <input id="avatar_file_field" type="file" name="avatar" size="30"/>
+    </form>
 
-        <!-- Hidden iframe which will interact with the server, do not forget to give both name and id values same -->
-        <iframe id="uploader_iframe" name="uploader_iframe" style="display: none;"></iframe>
+    <!-- Hidden iframe which will interact with the server, do not forget to give both name and id values same -->
+    <iframe id="uploader_iframe" name="uploader_iframe" style="display: none;"></iframe>
+    <!-- Just added to show the preview when the image is uploaded. -->
 
-        <!-- Just added to show the preview when the image is uploaded. -->
-        <img id="preview" src="<%= "default_avatar.gif" %>"/>
-        <script>
-                    $(function () {
-                        $("#avatar").change(function () {
-                            $("#avatar_form").submit();  // Submits the form on change event, you consider this code as the start point of your request (to show loader)
-                            $("#uploader_iframe").unbind().load(function () {  // This block of code will execute when the response is sent from the server.
-                                result = JSON.parse($(this).contents().text());  // Content of the iframe will be the response sent from the server. Parse the response as the JSON object
-                                $("#preview").attr("src", result.response.avatar_url);
-                            });
+    <div class="error-upload hidden">
+      <h4 style="color: red;" class="error-message"> Invalid file, please select an image file !</h4>
+    </div>
+
+    <div class="uploading-indicator hidden" style="font-size: 120%;">
+      Uploading <img src="/assets/loading.gif" id="loading-indicator"></img>
+    </div>
+
+    <div class="success-indicator hidden" style="font-size: 120%;">
+      <h4 style="color: #006dcc;"> Your avatar has been updated ! </h4>
+    </div>
+
+    <script>
+        $(function () {
+            $("#avatar_file_field").change(function () {
+                var ext = $(this).val().split('.').pop().toLowerCase();
+                $('.error-upload').addClass('hidden');
+                if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                    // resize
+
+
+                    $('.uploading-indicator').addClass('hidden');
+                    $('.success-indicator').addClass('hidden');
+                    $('.error-upload').removeClass('hidden');
+                }
+                else {
+                    if (this.files[0].size > 1000141) {
+                        $('.error-upload').removeClass('hidden');
+                        $('.error-message').text('File size is too big');
+                    }
+                    else {
+                        $('.error-upload').addClass('hidden');
+                        $('.uploading-indicator').removeClass('hidden');
+                        $("#avatar_form").submit();
+                        $("#uploader_iframe").unbind().load(function () {
+                            result = JSON.parse($(this).contents().text());
+                            $('.uploading-indicator').addClass('hidden');
+                            $('.error-upload').addClass('hidden');
+                            $('.success-indicator').removeClass('hidden');
+                            $('#avatar_form').addClass('hidden');
+                            setTimeout(function () {
+                                window.location.replace("/my_dashboard");
+                            }, 2000);
+
                         });
-                    });
-        </script>
+                    }
 
-      </div>
+
+                }
+            });
+        });
+    </script>
+
+  </div>
 
   <div class="modal-footer">
 
     <a class="btn" data-dismiss="modal" href="#">Close</a>
   </div>
 </div>
-
-
 
 
 <div class="section clearfix">
@@ -71,8 +109,8 @@
               <h3>Account's profile</h3>
 
               <p>
-                <%= image_tag ("default_avatar.gif"), class: "avatar" %>
-                <a data-toggle="modal" href="#change-avatar" class="btn  btn-small" type="button">Change</a>
+                <%= image_tag avatar_url(current_user) || "default_avatar.gif", class: "avatar", :size => "40x50"%>
+                <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button">Change</a>
               </p>
               <br/>
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :multipart => true, :html => {:method => :put, :class => 'form-vertical'}) do |f| %>
@@ -84,13 +122,6 @@
                             <a class="close" data-dismiss="alert">x</a>
                           </div>
                       <% end %>
-                  <% end %>
-                  <% if false %>
-                      <div class="controls">
-                        <%= image_tag ("default_avatar.gif"), class: "avatar" %>
-                        <%= f.file_field :avatar_url %>
-                      </div>
-                      <br/>
                   <% end %>
                   <div class="controls">
                     <%= f.email_field :email, :autofocus => true, :placeholder => "Email address", :class => "span9", :required => true, :readonly => true %>

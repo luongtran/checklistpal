@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812085506) do
+ActiveRecord::Schema.define(:version => 20130813024458) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -177,7 +177,10 @@ ActiveRecord::Schema.define(:version => 20130812085506) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.string   "avatar_url"
+    t.string   "avatar_file_name"
+    t.text     "avatar_url"
+    t.text     "avatar_s3_url"
+    t.datetime "avatar_url_expires_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true, :length => {"email"=>191}
