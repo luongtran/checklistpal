@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  config.batch_actions = true
+ # config.batch_actions = true
   index do
     selectable_column
     id_column
