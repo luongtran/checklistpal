@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
     if resource.class == AdminUser
       admin_dashboard_path
     else
-      puts "\n+_+___+_+_+_+_+_+____+_+_+_+_+_+_+_+\n"
       if session[:let_save]
         session[:let_save] = nil
         if current_user.can_create_new_list?

@@ -18,13 +18,11 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Authentication successful."
       sign_in_and_redirect current_user
     else
-      omni.each do |key, value|
-        puts "\n#{key}: #{value}\n"
-      end
       user = User.new
       user.provider = omni.provider
       user.uid = omni.uid
       user.email = omni['extra']['raw_info'].email
+      user.avatar_s3_url = omni.info.image
       user.password = Devise.friendly_token[0, 20]
       user.apply_omniauth(omni)
       user.add_role("free")

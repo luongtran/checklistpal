@@ -109,7 +109,7 @@
               <h3>Account's profile</h3>
 
               <p>
-                <%= image_tag avatar_url(current_user) || "default_avatar.gif", class: "avatar", :size => "40x50"%>
+                <%= image_tag avatar_url(current_user) || "default_avatar.gif", class: "avatar", :size => "40x50" %>
                 <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button">Change</a>
               </p>
               <br/>
@@ -188,11 +188,15 @@
 
           <div class="signuppanel">
             <h3>Lists</h3>
+            <% if current_user.lists.count == 0 %>
+                <p>You don't have any list
+                </p>
+            <% else %>
+                <p>You currently have
+                  <a href="<%= my_list_path %>"><%= current_user.lists.count > 1 ? "#{current_user.lists.count} lists" : "list" %> </a>
+                </p>
+            <% end %>
 
-            <p>You currently
-              have
-              <a href="<%= my_list_path %>"><%= current_user.lists.count > 1 ? "#{current_user.lists.count} lists" : "list" %> </a>
-            </p>
           </div>
           <div class="signuppanel">
             <h3>Connections</h3>
