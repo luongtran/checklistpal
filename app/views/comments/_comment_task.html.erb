@@ -6,20 +6,8 @@
               <a class="accordion-toggle">
                 <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.gif"%>" width="40" height="50"></img>
                 <%= User.find(comment.user_id).email %> <span class="text-info"> : <%= comment.content %> </span>
-                <%#= auto_link(comment.content, :html => {:target => '_blank', :class => "comment_content"}) %>
               </a>
             </div>
-
-            <% if false %>
-                <div id="collapse_<%= comment.id %>" class="accordion-body collapse in">
-                  <div class="accordion-inner">
-                    <div class="comment-content">
-                      <%= auto_link(comment.content, :html => {:target => '_blank', :class => "comment_content"}) %>
-                    </div>
-                  </div>
-                </div>
-            <% end %>
-
           </div>
         </div>
     <% end %>
