@@ -2,6 +2,26 @@
 <% content_for :head do %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
+<script type="text/javascript">
+    function getURLParameter(name) {
+        return decodeURIComponent(
+                (RegExp(name + '=' + '(.+?)(&|$)', 'i').exec(location.search) || [, ""])[1]
+        );
+    }
+    $(window).ready(function () {
+                // alert(getURLParameter('action'));
+                if (getURLParameter('action') == 'upgrade') {
+                    $('#plan-options').modal('show');
+                }
+                if (getURLParameter('action') == 'update-card') {
+                    $('#update-card').modal('show');
+                }
+
+            }
+    );
+
+</script>
+
 <div class="section clearfix">
 
   <div class="pull-right">
@@ -176,7 +196,7 @@
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#change-card" class="btn btn-primary btn-small" type="button">Change card</a>
+              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button">Update card</a>
             </p>
           </div>
         </div>
@@ -249,7 +269,7 @@
 </div>
 
 
-<div id="change-card" class="modal fade" style="display: none;">
+<div id="update-card" class="modal fade" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>

@@ -52,7 +52,7 @@
                   <% end %>
 
                   <br/>
-                  <%= link_to 'Add unlimited Lists', my_dashboard_path, :class => 'btn' if current_user.has_role? 'free' %>
+                  <%= link_to 'Add unlimited Lists', my_dashboard_path(:action => 'upgrade'), :class => 'btn' if current_user.has_role? 'free' %>
                   <br/>
               <% end %>
             </div>
