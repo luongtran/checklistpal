@@ -40,55 +40,36 @@ class ListsController < ApplicationController
       end
     else
       flash[:notice] = "List not exists or deleted !"
-      redirect_to "static_page/about"
     end
 
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.pdf do
-    #    render :pdf => "filename", :stylesheets => ["application"], :layout => "application"
-    #  end
-    #end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.pdf do
+        render :template => 'lists/pdf',
+               :locals => {:current_list => @list}
+      end
+    end
+
   end
 
   def to_pdf
-    list = List.find(params[:list])
+
   end
 
   def download_pdf
-    #require 'pdfcrowd'
 
-=begin
-<div class="checkbox">
-          <span class="mark" title="Mark completed">
-            <form accept-charset="UTF-8" action="/lists/714/tasks/69/complete" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Gjj5VBjrJQ/tBMlPJo6F73MmWzQhABWSG0HQcKKfWUg="></div>
-              <input class="checkbox mark_comp" data_target="714" id="mark_complete" name="mark_complete" type="checkbox" value="69">
-</form>          </span>
-          <span class="task-des" title="Task name">
-             <!-- Render task incompleted -->
-              <div class="item-title" id="item_title_69" data-url="/lists/714/tasks/69/edit">asdasd</div>
-                      </span>
-            <span class="due_date_show hidden">
-          </span>
-          <span class="number_comment hidden" id="number_comment_69"></span>
-        </div>
-=end
+    @list = List.find(params[:lid])
+    session[:list_id] = @list.id
+    pdf = WickedPdf.new.pdf_from_string(
+        render_to_string('_pdf.html.erb'),
+        :layout => false
+    )
 
-    list = List.find(params[:list])
-    if list
-      puts "\n___Download"
-      @list = list
-
-      kit = PDFKit.new (_r)
-      kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
-
-
-      ## Get an inline PDF
-      #pdf = kit.to_pdf
-      # Save the PDF to a file
-      # file = kit.to_file('abc.pdf')
-      send_file(kit.to_file('abc.pdf'), :filename => "#{list.name}.pdf", :type => "application/pdf")
+    save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
+    File.open(save_path, 'wb') do |file|
+      file << pdf
     end
+    send_file save_path, :type => 'application/pdf'
   end
 
   def edit
