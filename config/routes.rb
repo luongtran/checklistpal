@@ -16,7 +16,7 @@ Checklistpal::Application.routes.draw do
   get 'lists/download_pdf'
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
-  get '/dashboard' => 'home#dashboard'
+  get '/dashboard' => 'home#dashboard', :as => :dashboard
   post '/users/feedback'
   post '/users/upload_avatar'
   resources :lists do
@@ -60,7 +60,8 @@ Checklistpal::Application.routes.draw do
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
-    get 'my_dashboard', :to => 'devise/registrations#edit', :as => :my_dashboard
+
+    get 'my_account', :to => 'devise/registrations#edit', :as => :my_account
   end
   match '/404', :to => 'static_pages#not_found'
   match '/500', :to => 'static_pages#server_error'

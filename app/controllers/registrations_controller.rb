@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
   def update_plan
     if current_user.last_4_digits.nil?
       flash.alert = "You need update credit card for upgrade your plan!"
-      redirect_to my_dashboard_path
+      redirect_to my_account_path
     else
       @user = current_user
       role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?

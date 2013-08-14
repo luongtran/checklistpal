@@ -1,4 +1,4 @@
-<% title "Dashboard" %>
+<% title "My Account" %>
 <% content_for :head do %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
@@ -98,7 +98,7 @@
                             $('.success-indicator').removeClass('hidden');
                             $('#avatar_form').addClass('hidden');
                             setTimeout(function () {
-                                window.location.replace("/my_dashboard");
+                                window.location.replace("/my_account");
                             }, 1000);
 
                         });
