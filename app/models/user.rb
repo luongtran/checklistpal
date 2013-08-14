@@ -54,9 +54,8 @@ class User < ActiveRecord::Base
   validates_length_of :name, :minimum => 3
 
   def update_avatar(file)
-    #remove old avatar
+    #need remove old avatar
     filename = sanitize_filename(file.original_filename)
-    # avatar_uploader("#{self.id}-#{filename}", file.read)
     s3 = AWS::S3.new
     bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
     obj = bucket.objects["#{self.id}-#{filename}"]
@@ -107,6 +106,7 @@ class User < ActiveRecord::Base
   end
 
   def update_plan(role)
+    old_role = self.roles.first
     self.role_ids = []
     self.add_role(role.name)
     unless customer_id.nil?
@@ -114,8 +114,12 @@ class User < ActiveRecord::Base
       customer.update_subscription(:plan => role.name)
       if role.name == 'free'
         UserMailer.downgraded(self).deliver
-      elsif role.name == 'paid'
-        UserMailer.upgraded(self).deliver
+      else
+        if old_role.name == 'paid' || old_role.name == 'paid2'
+          UserMailer.changeplan(self).deliver
+        else # free to paid or paid2
+          UserMailer.upgraded(self).deliver
+        end
       end
     end
     true

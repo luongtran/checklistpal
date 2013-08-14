@@ -1,16 +1,17 @@
-
 <div class="section clearfix">
   <div class="pull-right">
-    <div id="quickmenu">
-      <div class="clearfix"><a href="/" class="pull-left" title="Create new list" target="_blank">+
-        New</a><a class="pull-left" href="#" onclick="javascript:print(); return false;" target="_blank" title="Print this page">PRINT</a><a href="/invite_user/495" class="pull-left" title="Invite user to your list">+
-        INVITE</a><a href="/mylists" class="pull-left" title="My list and friend list">MY LISTS</a></div>
-    </div>
+    <% if false %>
+        <div id="quickmenu">
+          <div class="clearfix"><a href="/" class="pull-left" title="Create new list" target="_blank">+
+            New</a><a class="pull-left" href="#" onclick="javascript:print(); return false;" target="_blank" title="Print this page">PRINT</a><a href="/invite_user/495" class="pull-left" title="Invite user to your list">+
+            INVITE</a><a href="/mylists" class="pull-left" title="My list and friend list">MY LISTS</a></div>
+        </div>
+    <% end %>
+
   </div>
   <div class="pull-left">
-    <div id="logo">
-      <span class="list-name" data-url="/lists/495/edit">&nbsp;Dashboard</span>
-    </div>
+    <h3> Dashboard</h3>
+
   </div>
 </div>
 
@@ -23,27 +24,27 @@
 
         <div class="title">Start New List</div>
       </a>
-      <a class="dash-unit" href="#">
+      <a class="dash-unit" href="<%= my_list_path %>">
         <img src="assets/dash_2.png" alt=""/>
 
         <div class="title">My List</div>
       </a>
-      <a class="dash-unit" href="#">
+      <a class="dash-unit" href="<%= inviting_path %>">
         <img src="assets/dash_3.png" alt=""/>
 
         <div class="title">Invite Someone</div>
       </a>
-      <a class="dash-unit" href="<%= my_account_path%>">
+      <a class="dash-unit" href="<%= my_account_path %>">
         <img src="assets/dash_4.png" alt=""/>
 
         <div class="title">My Account</div>
       </a>
-      <a class="dash-unit" href="#">
+      <a class="dash-unit" href="<%= support_path %>">
         <img src="assets/dash_5.png" alt=""/>
 
         <div class="title">Support</div>
       </a>
-      <a class="dash-unit" href="#">
+      <a class="dash-unit" data-toggle="modal"  href="#cancel-account">
         <img src="assets/dash_6.png" alt=""/>
 
         <div class="title">Cancel My Account</div>
@@ -52,7 +53,23 @@
   </div>
 
 </div>
+<div id="cancel-account" class="modal fade" style="display: none;">
+  <div class="modal-header">
+    <h4> Please let us know the reason you wish to cancel your account</h4>
+  </div>
 
+  <div class="modal-body">
+    <form id="feedback-form">
+      <%#= hidden_field_tag :email, current_user.email %>
+      <%= text_area_tag :content, nil, :style => "width: 99%; border: 1; padding: 0; margin: 0;", :rows => 5, :id => 'feedback-content' %>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to "Cancel my account", registration_path(resource_name), :method => :delete, :class => 'btn btn-danger', id: "delete-confirm" %>
+    <a class="btn" data-dismiss="modal" href="#">Close</a>
+  </div>
+</div>
 
 <!-- Dash board -->
 

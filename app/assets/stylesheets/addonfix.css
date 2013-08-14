@@ -384,7 +384,6 @@
     }
 }
 
-
 #white-logo {
     margin: 0px;
 }
@@ -505,14 +504,17 @@
 #change-avatar-dialog {
     width: auto;
 }
+
 .form_create_comment {
     padding-top: 10px;
     width: 50%;
     padding-left: 25px;
 }
-.accordion-group{
+
+.accordion-group {
     border: none;
 }
+
 .items {
     padding-bottom: 16px;
 }
@@ -520,6 +522,7 @@
 .accordion-toggle {
 
 }
+
 /* line 122, /Users/rueta/DeskWork/git/checklistpal/app/assets/stylesheets/addonfix.less */
 .height50 {
     height: 50px;
@@ -548,4 +551,15 @@
     display: block;
     font-size: 18px;
     font-weight: 200;
+}
+
+.special {
+    width: 33%
+}
+
+@media (max-width:480px) {
+    .special {
+        float: none;
+        width: 80%
+    }
 }

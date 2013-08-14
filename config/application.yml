@@ -12,7 +12,7 @@ GMAIL_PASSWORD: "AkfugHWTu69yZyzJago4P4nGqjWSRExLBYmHtppa2PO+"
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: 1234qwer
-ROLES: [admin, free, paid]
+ROLES: [admin, free, paid, paid2]
 STRIPE_API_KEY: "sk_test_qUfVi1KXqTvYd6HkjMmjypGH"
 STRIPE_PUBLIC_KEY: "pk_test_HPXDBoB6Mpx2Rpkte2WoUad0"
 

@@ -19,6 +19,11 @@
 
             }
     );
+    //Checked f irst radio button in Update Plan Box
+    $(document).ready(function () {
+        myArray = document.getElementsByName("user[role_ids]");
+        $(myArray[0]).attr('checked',"checked");
+    });
 
 </script>
 
@@ -34,7 +39,7 @@
 
   </div>
   <div class="pull-left">
-    <h3>My Dashboard</h3>
+    <h3>My Account</h3>
 
     <div id="logo">
     </div>
@@ -122,6 +127,7 @@
 <div class="section clearfix">
   <div id="signupfree">
     <div class="clearfix">
+
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
@@ -166,22 +172,36 @@
             </div>
           </div>
         </div>
+
+
+      </div>
+
+
+      <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
             <h3>Subscription Plan</h3>
+            <% tempt = ''
+               if current_user.roles.first.name == 'free'
+                 tempt = 'Free'
+               elsif current_user.roles.first.name == 'paid'
+                 tempt = 'Paid (monthly)'
+               else
+                 tempt = 'Paid (yearly)'
 
+               end
+            %>
             <p>
-              Your current plan is <%= current_user.roles.first.name.titleize %>
+              Your current plan is <%= tempt %>
 
               <% if !@user.last_4_digits.blank? %>
                   <% if @user.roles.first.name == 'free' %>
                       <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Upgrade
-                        to
-                        Paid</a>
+                        Plan
+                      </a>
                   <% else %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Downgrade
-                        to
-                        Free</a>
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Change
+                        Plan</a>
                   <% end %>
               <% end %>
 
@@ -199,35 +219,6 @@
               <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button">Update card</a>
             </p>
           </div>
-        </div>
-
-
-      </div>
-      <div class="divine50">
-        <div class="signoption row-fluid">
-
-          <div class="signuppanel">
-            <h3>Lists</h3>
-            <% if current_user.lists.count == 0 %>
-                <p>You don't have any list
-                </p>
-            <% else %>
-                <p>You currently have
-                  <a href="<%= my_list_path %>"><%= current_user.lists.count > 1 ? "#{current_user.lists.count} lists" : "list" %> </a>
-                </p>
-            <% end %>
-
-          </div>
-          <div class="signuppanel">
-            <h3>Connections</h3>
-
-            <p>You currently
-              have
-              <%= current_user.connection_count %>     connections
-            </p>
-
-          </div>
-
         </div>
 
       </div>
@@ -306,59 +297,84 @@
   <%= simple_form_for resource, :as => resource_name, :url => update_plan_path, :html => {:method => :put, :class => 'form-horizontal'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>
-
-        <h4>Please confirm your selection</h4>
+        <h4>Please select a plan bellow: </h4>
         <% if resource.errors.full_messages.present? %>
             <%= resource.errors.full_messages %>
         <% end %>
       </div>
       <% free_plan = Role.where(name: 'free').first
       %>
-
       <div class="modal-body">
         <div class="clearfix">
-          <div class="divine50">
-            <div class="signoption text-center">
-              <h3><strong>Free</strong> account</h3>
-              <hr class="divider">
-              <ul class="unstyled">
-                <li>Create unlimited lists</li>
-                <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
-                <li>(<%= free_plan.max_connections %>) Connections</li>
-                <li>Comment on your lists</li>
-                <li>Print your lists</li>
-                <li>Share your lists</li>
-              </ul>
-            </div>
-          </div>
-          <div class="divine50">
-            <div class="signoption text-center">
-              <h3><strong>$4.95 /mo</strong> account</h3>
-              <hr class="divider">
-              <ul class="unstyled">
-                <li>Create unlimited lists</li>
-                <li><u><strong>Unlimited</strong></u> saved lists</li>
-                <li><u><strong>Unlimited</strong></u> connections</li>
-                <li>Comment on your lists</li>
-                <li>Print your lists</li>
-                <li>Share your lists</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <% unless current_user.roles.first.name == 'free' %>
+              <div class="divine50">
+                <div class="signoption text-center">
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_1" name="user[role_ids]" type="radio" value="1">
+                      Free
+                    </strong></h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
+                    <li>(<%= free_plan.max_connections %>) Connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
 
+          <% unless current_user.roles.first.name == 'paid' %>
+              <div class="divine50 ">
+                <div class="signoption text-center">
+
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_2" name="user[role_ids]" type="radio" value="2">
+                      $4.95 /mo</strong>
+                  </h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li><u><strong>Unlimited</strong></u> saved lists</li>
+                    <li><u><strong>Unlimited</strong></u> connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
+
+          <% unless current_user.roles.first.name == 'paid2' %>
+              <div class="divine50 ">
+                <div class="signoption text-center">
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_3" name="user[role_ids]" type="radio" value="3">
+                      $79.5
+                      /year</strong></h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li><u><strong>Unlimited</strong></u> saved lists</li>
+                    <li><u><strong>Unlimited</strong></u> connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
+
+        </div>
         <%#= f.input :role_ids, :collection => Role.all.delete_if { |i| i.name == 'admin' || i.name == @user.roles.first.name}, :as => :radio_buttons, :label_method => lambda { |t| t.name.titleize }, :label => false, :item_wrapper_class => 'inline' %>
-        <%= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
+
       </div>
       <div class="modal-footer">
-
-        <% if @user.roles.first.name == 'free' then
-             button_text = 'Upgrade now!'
-           else
-             button_text = 'Downgrade now!'
-           end %>
-
-        <%= f.submit button_text, :class => "btn btn-primary" %>
+        <%#= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin' || i.name == current_user.roles.first.name}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+        <%#= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
+        <%= f.submit 'Update', :class => "btn btn-primary", :id => "update-plan-btn" %>
         <a class="btn" data-dismiss="modal" href="#">Close</a>
       </div>
   <% end %>

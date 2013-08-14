@@ -24,9 +24,10 @@
   <div id="signupoptions">
     <div class="signupoptions-inner">
       <div class="clearfix">
-        <div class="divine50">
+
+        <div class="divine50 special">
           <div class="signoption text-center">
-            <h3><strong>Free</strong> account</h3>
+            <h3><strong>Free</strong></h3>
             <hr class="divider">
             <ul class="unstyled">
               <li>Create unlimited lists</li>
@@ -39,9 +40,10 @@
             <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'free'), :class => 'btn btn-small btn-primary  signup text-center' %></p>
           </div>
         </div>
-        <div class="divine50">
+
+        <div class="divine50 special">
           <div class="signoption text-center">
-            <h3><strong>$4.95 /mo</strong> account</h3>
+            <h3><strong>$4.95 /mo</strong></h3>
             <hr class="divider">
             <ul class="unstyled">
               <li>Create unlimited lists</li>
@@ -54,6 +56,23 @@
             <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'paid'), :class => 'btn btn-primary btn-medium signup text-center' %></p>
           </div>
         </div>
+        <div class="divine50 special">
+          <div class="signoption text-center">
+            <h3><strong>$59.9 /year</strong></h3>
+            <hr class="divider">
+            <ul class="unstyled">
+              <li>Create unlimited lists</li>
+              <li><u><strong>Unlimited</strong></u> saved lists</li>
+              <li><u><strong>Unlimited</strong></u> connections</li>
+              <li>Comment on your lists</li>
+              <li>Print your lists</li>
+              <li>Share your lists</li>
+            </ul>
+            <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'paid2'), :class => 'btn btn-primary btn-medium signup text-center' %></p>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>

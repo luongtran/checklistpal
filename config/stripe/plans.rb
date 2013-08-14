@@ -27,14 +27,20 @@
 #
 # This will export any new plans to stripe.com so that you can
 # begin using them in your API calls.
-Stripe.plan :free do |plan|
-  plan.name = 'Member'
-  plan.amount = 000 # $0.00
-  plan.interval = 'year'
-end
-
-Stripe.plan :paid do |plan|
-  plan.name = 'Paid member'
-  plan.amount = 495 # $4.95
-  plan.interval = 'month'
-end
+#Stripe.plan :free do |plan|
+#  plan.name = 'Member'
+#  plan.amount = 000 # $0.00
+#  plan.interval = 'year'
+#end
+#
+#Stripe.plan :paid do |plan|
+#  plan.name = 'Paid member'
+#  plan.amount = 495 # $4.95
+#  plan.interval = 'month'
+#end
+#
+#Stripe.plan :paid2 do |plan|
+#  plan.name = 'Paid member'
+#  plan.amount = 495 # $4.95
+#  plan.interval = 'year'
+#end

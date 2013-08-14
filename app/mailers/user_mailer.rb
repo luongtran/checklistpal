@@ -33,6 +33,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => @template.title)
   end
 
+  def changeplan(user)
+    @user = user
+    @template = EmailTemplate.where(email_type: "Change Plan Email").first
+    mail(:to => @user.email, :subject => @template.title)
+  end
+
   def downgraded(user)
     @user = user
 
