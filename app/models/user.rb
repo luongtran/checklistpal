@@ -50,6 +50,9 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
+  validates_presence_of :name
+  validates_length_of :name, :minimum => 3
+
   def update_avatar(file)
     #remove old avatar
     filename = sanitize_filename(file.original_filename)
@@ -61,19 +64,21 @@ class User < ActiveRecord::Base
     self.update_attribute(:avatar_file_name, "#{self.id}-#{filename}")
   end
 
-  def get_avatar_url
-
-    if self.avatar_s3_url # Facebook account
-      return self.avatar_s3_url
-    else
-      s3 = AWS::S3.new
-      bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
-      obj = bucket.objects[self.avatar_file_name]
-      # Check nil for obj?
-      #url = obj.url_for(:read, :expires_in => 60*60*24*30).to_s
-      url = obj.url_for(:read).to_s
+  def is_facebook_account?
+    if Authentication.where(user_id: self.id).count > 0
+      return true
     end
+    return false
+  end
 
+  def get_avatar_url
+    s3_log = Logger.new('log/s3.log')
+    s3 = AWS::S3.new
+    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+    obj = bucket.objects[self.avatar_file_name]
+    s3_log.error("#{obj.blank?}")
+    # Check nil for obj?
+    return obj.url_for(:read).to_s
   rescue Exception => e
     return nil
   end
