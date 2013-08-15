@@ -31,11 +31,7 @@
 
   <div class="pull-right">
 
-    <div id="quickmenu">
-      <div class="clearfix">
-        <a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY
-        LISTS</a></div>
-    </div>
+
 
   </div>
   <div class="pull-left">
@@ -81,8 +77,6 @@
                 $('.error-upload').addClass('hidden');
                 if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
                     // resize
-
-
                     $('.uploading-indicator').addClass('hidden');
                     $('.success-indicator').addClass('hidden');
                     $('.error-upload').removeClass('hidden');
@@ -167,7 +161,7 @@
                   <%= f.button :submit, 'Update', :class => 'btn-primary btn-small' %>
               <% end %>
               <p>Unhappy?
-                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button">Cancel my
+                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button" style="margin-left: 10px;">Cancel my
                   account</a></p>
             </div>
           </div>
@@ -196,11 +190,11 @@
 
               <% if !@user.last_4_digits.blank? %>
                   <% if @user.roles.first.name == 'free' %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Upgrade
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Upgrade
                         Plan
                       </a>
                   <% else %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Change
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Change
                         Plan</a>
                   <% end %>
               <% end %>
@@ -211,12 +205,13 @@
 
             <p>
               <% if current_user.last_4_digits.blank? %>
+
                   You need update card to upgrade your plan
               <% else %>
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button">Update card</a>
+              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Update card</a>
             </p>
           </div>
         </div>

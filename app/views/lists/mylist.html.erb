@@ -1,11 +1,7 @@
 <% title "Tudli | My lists" %>
 <div class="section clearfix">
   <div class="pull-right">
-    <div id="quickmenu">
-      <div class="clearfix"><a href="<%= root_path %>" class="pull-left">+ New</a>
-        <a href="<%= inviting_path %>" class="pull-left">+ INVITE</a>
-        <a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
-    </div>
+
   </div>
   <div class="pull-left">
     <h3>My Lists</h3>
@@ -52,7 +48,7 @@
                   <% end %>
 
                   <br/>
-                  <%= link_to 'Add unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn' if current_user.has_role? 'free' %>
+                  <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn' if current_user.has_role? 'free' %>
                   <br/>
               <% end %>
             </div>
@@ -89,9 +85,9 @@
         </div>
       </div>
       <div class="divine50">
-        <h3 style="margin-left: 10px;">Invited list</h3>
+        <h3 style="margin-left: 40px;">Invited list</h3>
         <% if !@friend_lists.blank? %>
-            <ul class="unstyled" style="margin-left: 15px;">
+            <ul class="unstyled" style="margin-left: 40px;">
               <% @friend_lists.each do |list| %>
                   <li><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
                     <span><i><%= "   "+list.created_at.to_time.strftime("%m/%d/%Y") %></i></span></li>
@@ -104,35 +100,3 @@
     </div>
   </div>
 </div>
-<script>
-    //    $('.btninvite').on("click", function () {
-    //        var list_ids = new Array();
-    //        $('input[name="listselects"]:checked').each(function () {
-    //            list_ids.push($(this).val());
-    //        });
-    //        if (list_ids.length === 0) {
-    //            $('input[name="listselects"]').each(function () {
-    //                list_ids.push($(this).val());
-    //            });
-    //        }
-    //        var datalist = JSON.stringify(list_ids);
-    //        var url = $(this).data("url");
-    //        $.ajax({
-    //            type: "post",
-    //            url: url,
-    //            data: {'list': datalist},
-    //            dataType: "json",
-    //            success: function (data) {
-    //                if (data.location) {
-    //                    window.location.href = data.location;
-    //                }
-    //                if (data.flash && data.flash.notice) {
-    //                    // Maybe display flash message, etc.
-    //                }
-    //            },
-    //            error: function () {
-    //                // If login fails, sending 422 error code sends you here.
-    //            }
-    //        });
-    //    });
-</script>

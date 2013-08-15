@@ -2,11 +2,7 @@
 <% if current_user %>
     <div class="section clearfix">
       <div class="pull-right">
-        <div id="quickmenu">
-          <div class="clearfix"><a href="<%= root_path %>" class="pull-left" target="_blank">+
-            New</a><%= link_to_function("PRINT", "javascript:print()", html_options={:class => "pull-left", :target => "_blank"}) %>
-            <a href="<%= my_list_path %>" class="pull-left">MY LISTS</a></div>
-        </div>
+
 
       </div>
       <div class="pull-left">

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
           flash[:notice] = "You can't save anymore list, please upgrade your plan !"
         end
       end
-      my_list_path
+      dashboard_path
     end
 
   end
