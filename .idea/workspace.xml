@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c7794d4-1a08-45a7-9079-3cea4780f334" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/signup_options.html.erb" afterPath="$PROJECT_DIR$/app/views/home/signup_options.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +48,7 @@
     <file path="/print.css" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376022282299" ignored="false" />
     <file path="/find_invite.html.erb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376551648456" ignored="false" />
     <file path="/registrations_controller.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376388005194" ignored="false" />
-    <file path="/signup_options.html.erb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376561294597" ignored="false" />
+    <file path="/signup_options.html.erb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376563016292" ignored="false" />
     <file path="/about.html.erb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1375412945075" ignored="false" />
     <file path="/*.regexp" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1375676296671" ignored="false" />
     <file path="/application_controller.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376549893889" ignored="false" />
@@ -159,9 +160,26 @@
       <file leaf-file-name="signup_options.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/signup_options.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="25" selection-start="1716" selection-end="1716" vertical-scroll-proportion="0.13610587">
+            <state line="57" column="93" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.536862">
               <folding>
+                <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#sup#0;n#strong#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#strong#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#sup#0;n#strong#0;n#h3#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mylist.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="99" column="53" selection-start="5107" selection-end="5129" vertical-scroll-proportion="-54.625">
+              <folding>
+                <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,7 +241,6 @@
         <option value="$PROJECT_DIR$/app/views/static_pages/support.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/find_invite.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
-        <option value="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/inviting.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
@@ -231,6 +248,7 @@
         <option value="$PROJECT_DIR$/app/helpers/users_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/dashboard.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/signup_options.html.erb" />
       </list>
     </option>
@@ -586,7 +604,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
+              <option name="myItemId" value="lists" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -608,7 +626,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -970,7 +988,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="24" width="1374" height="723" extended-state="7" />
+    <frame x="-4" y="24" width="1374" height="723" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -978,7 +996,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6710963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13732928" sideWeight="0.9430486" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12884334" sideWeight="0.32890365" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16617863" sideWeight="0.32890365" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16611296" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -1131,17 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="51" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.21747212">
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="76" column="46" selection-start="2942" selection-end="2958" vertical-scroll-proportion="0.0">
@@ -1163,11 +1170,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="53" selection-start="5107" selection-end="5129" vertical-scroll-proportion="-54.625">
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/signup_options.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="25" selection-start="1716" selection-end="1716" vertical-scroll-proportion="0.13610587">
+        <state line="57" column="93" selection-start="1809" selection-end="1809" vertical-scroll-proportion="0.536862">
           <folding>
+            <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#strong#0;n#h3#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#strong#0;n#h3#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#sup#0;n#strong#0;n#h3#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
