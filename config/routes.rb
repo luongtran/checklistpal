@@ -7,7 +7,7 @@ Checklistpal::Application.routes.draw do
   ActiveAdmin.routes(self)
   match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
-  # devise_for :users, controllers: {sessions: "sessions"}
+  devise_for :users, controllers: {sessions: "sessions"}
   devise_for :users, :path_names => {:sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]}, :sign_out_via => ["DELETE", "GET"], :controllers => {:registrations => 'registrations', :omniauth_callbacks => "authentications", :invitations => 'users/invitations'}
 
   ActiveAdmin.routes(self)
@@ -15,7 +15,7 @@ Checklistpal::Application.routes.draw do
 
 
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
-  get 'lists/download_pdf' => 'lists#download_pdf' , :as => :download_pdf
+  get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
   get '/dashboard' => 'home#dashboard', :as => :dashboard
