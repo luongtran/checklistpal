@@ -42,13 +42,13 @@ class ListsController < ApplicationController
       flash[:notice] = "List not exists or deleted !"
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.pdf do
-        render :template => 'lists/pdf',
-               :locals => {:current_list => @list}
-      end
-    end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.pdf do
+    #    render :template => 'lists/pdf',
+    #           :locals => {:current_list => @list}
+    #  end
+    #end
 
   end
 
