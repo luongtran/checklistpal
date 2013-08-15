@@ -1,3 +1,11 @@
+<style>
+    .del {
+        text-decoration: line-through;
+        color: darkgrey;
+    }
+</style>
+
+
 <% title "Sign up page" %>
 <div class="section clearfix">
   <div class="pull-right">
@@ -27,15 +35,17 @@
 
         <div class="divine50 special">
           <div class="signoption text-center">
+            <br/>
+
             <h3><strong>Free</strong></h3>
             <hr class="divider">
             <ul class="unstyled">
               <li>Create unlimited lists</li>
               <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
               <li>(<%= free_plan.max_connections %>) Connections</li>
-              <li>Comment on your lists</li>
-              <li>Print your lists</li>
-              <li>Share your lists</li>
+              <li class='del'>Comment on your lists</li>
+              <li class='del'>Print your lists</li>
+              <li class='del'>Share your lists</li>
             </ul>
             <p><%= link_to 'Sign Up', new_user_registration_path(:plan => 'free'), :class => 'btn btn-small btn-primary  signup text-center' %></p>
           </div>
@@ -43,7 +53,9 @@
 
         <div class="divine50 special">
           <div class="signoption text-center">
-            <h3><strong>$4.95 /mo</strong></h3>
+            <br/>
+
+            <h3><strong>$2/month</strong></h3>
             <hr class="divider">
             <ul class="unstyled">
               <li>Create unlimited lists</li>
@@ -58,7 +70,9 @@
         </div>
         <div class="divine50 special">
           <div class="signoption text-center">
-            <h3><strong>$59.9 /year</strong></h3>
+            <strong style="color: #aa1400">Save $1 per month</strong>
+
+            <h3><strong>$12 /year</strong></h3>
             <hr class="divider">
             <ul class="unstyled">
               <li>Create unlimited lists</li>
