@@ -25,7 +25,7 @@ $(function () {
         $('.edit_list_frm').on("submit", function () {
             var form = this;
             $("#list_name").val($("#list_name").val().trim());
-            if ($("#list_name").val()=== "") {
+            if ($("#list_name").val() === "") {
                 $(".editlb")._removeClass("hidden");
                 $(".editlb").html("List name can't be blank !").fadeIn(300).delay(3000).fadeOut(300);
             }
@@ -98,8 +98,8 @@ $(function () {
 //                    $(".btn-delete").on("click",(function(){
 //                    }));
 
-                    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />' +
-                        '<input type="submit" value="Update task name" class="btn btn-small" />' +
+                    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" style="width:auto;"/>' +
+                        '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
                         '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
                     $('.btn-edit').on("click", function () {
                         var obj_task_des = $(this).parent().parent(".items").children().children().children(".item-title");
@@ -164,6 +164,10 @@ $(function () {
 
                     });
                     $('.datepicker').datepicker({
+                        showOn: "button",
+                        buttonImage: "/assets/calendar-small.png",
+                        buttonImageOnly: true,
+                        minDate: 0,
                         dateFormat: "yy-mm-dd",
                         onSelect: function (dateText) {
                             $(this).val(dateText);
@@ -173,6 +177,7 @@ $(function () {
                             $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
                             $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
                         }
+
                     });
                 });
             }
@@ -203,8 +208,9 @@ $(function () {
         $('#list-items li').eq('task_<%= @task.id %>').remove();
     }));
 
-    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" />' +
-        '<input type="submit" value="Update task name" class="btn btn-small" />' +
+    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true">' +
+        '<input type="text" class="input-small" name="task[description]" id="task_description" style="width: auto;" maxlength="140"/>' +
+        '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
         '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
     $('.btn-edit').on("click", function () {
         var obj_task_des = $(this).parent().parent(".items").children().children().children(".item-title");
@@ -268,7 +274,13 @@ $(function () {
         }
 
     });
+
+
     $('.datepicker').datepicker({
+        showOn: "button",
+        buttonImage: "/assets/calendar-small.png",
+        buttonImageOnly: true,
+        minDate: 0,
         dateFormat: "yy-mm-dd",
         onSelect: function (dateText) {
             $(this).val(dateText);
@@ -278,5 +290,6 @@ $(function () {
             $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
             $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
         }
+
     });
 });

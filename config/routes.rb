@@ -1,19 +1,26 @@
 Checklistpal::Application.routes.draw do
+  #constraints(:host => /tudli.com/) do
+  #   root :to => redirect("http://www.tudli.com")
+  #  match '/*path', :to => redirect { |params| "http://www.tudli.com/#{params[:path]}" }
+  #end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
-  # devise_for :users, controllers: {sessions: "sessions"}
+  devise_for :users, controllers: {sessions: "sessions"}
   devise_for :users, :path_names => {:sign_up => "register", :sign_in => "login", :sign_out => "logout", :skip => [:registrations]}, :sign_out_via => ["DELETE", "GET"], :controllers => {:registrations => 'registrations', :omniauth_callbacks => "authentications", :invitations => 'users/invitations'}
 
   ActiveAdmin.routes(self)
   root :to => 'home#index'
+
+
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
-  get 'lists/download_pdf'
+  get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
-  get '/dashboard' => 'home#dashboard'
+  get '/dashboard' => 'home#dashboard', :as => :dashboard
   post '/users/feedback'
+  post '/users/upload_avatar'
   resources :lists do
     resources :tasks
   end
@@ -55,7 +62,8 @@ Checklistpal::Application.routes.draw do
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
-    get 'my_dashboard', :to => 'devise/registrations#edit', :as => :my_dashboard
+
+    get 'my_account', :to => 'devise/registrations#edit', :as => :my_account
   end
   match '/404', :to => 'static_pages#not_found'
   match '/500', :to => 'static_pages#server_error'

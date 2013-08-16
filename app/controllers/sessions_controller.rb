@@ -1,8 +1,5 @@
 class SessionsController < Devise::SessionsController
 
-  def new
-    super
-  end
 
   def create
     if params[:user][:list_save_id] # want to save

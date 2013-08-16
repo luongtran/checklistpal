@@ -16,6 +16,7 @@ role :app, "50.112.165.229" # This may be the same as your `Web` server
 role :db, "50.112.165.229", :primary => true # This is where Rails migrations will run
 desc "Restart Passenger app"
 task :restart do
-  run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
+  puts "Make restart.txt file ..."
+  run "touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
   puts "excute restart passenger .."
 end

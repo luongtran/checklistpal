@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: lists
+#
+#  id                        :integer          not null, primary key
+#  name                      :string(255)
+#  description               :string(255)
+#  user_id                   :integer
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
+#  slug                      :string(255)
+#  last_completed_mark_at    :datetime
+#  last_sent_notify_email_at :datetime
+#
+
 class List < ActiveRecord::Base
   include CanCan::Ability
   attr_accessible :name, :user_id, :description, :slug
@@ -24,7 +39,7 @@ class List < ActiveRecord::Base
       # Check not owner by user
       if !l.user_id.blank? && l.tasks.count > 0
         if l.finished?
-          # !!! Check last mark a list to finished with last send email notify
+          # !!! Check last mark a list to completed with last send email notify
           if l.last_sent_notify_email_at.nil? || l.last_completed_mark_at > l.last_sent_notify_email_at
             puts "____List [#{l.id} - #{l.name}] has completed\n"
             # Get all active members on the list

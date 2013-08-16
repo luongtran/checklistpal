@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-
+  skip_before_filter  :verify_authenticity_token
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
@@ -15,6 +15,18 @@ class UsersController < ApplicationController
 
     Feedback.create(email: current_user.email, content: params[:content])
   end
+
+  def upload_avatar
+    current_user.update_avatar(params[:avatar])
+    render text: {
+        meta: {
+            status: 200,
+            msg: "OK"
+        },
+        response: {message: "Your avatar has been updated"}
+    }.to_json
+  end
+
 
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'

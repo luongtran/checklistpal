@@ -7,6 +7,7 @@ gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
+gem 'aws-sdk'
 #gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
 #gem "friendly_id", "~> 4.0.0"
 group :assets do
@@ -17,9 +18,10 @@ end
 group :production do
   gem 'mysql2'
 end
-#gem 'wicked_pdf'
-gem 'pdfcrowd'
-gem "pdfkit"
+#gem 'prawn'
+gem 'wicked_pdf'
+#gem 'pdfcrowd'
+#gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"
 gem 'bootstrap-datepicker-rails'
@@ -50,6 +52,7 @@ gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
 gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 group :development do
   gem 'capistrano'
+  gem 'annotate', ">=2.5.0"
 end
 gem 'execjs'
 gem 'therubyracer' , :platforms => :ruby

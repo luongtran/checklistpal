@@ -1,31 +1,19 @@
-  <% if task.comments.length > 0 %>
-    <% task.comments.each do |comment|%>
-      <div class="accordion" id="accordion_<%= comment.id %>">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion_<%= comment.id %>" href="#collapse_<%= comment.id %>">
-              <%= User.find(comment.user_id).email %> <span class="text-info">SAID</span> on: <%= comment.created_at.to_time.strftime("%m/%d/%Y") %>
-            </a>
-          </div>
-          <div id="collapse_<%= comment.id %>" class="accordion-body collapse in">
-            <div class="accordion-inner">                            
-              <div class="comment-content">
-                <%= auto_link(comment.content , :html => { :target => '_blank',:class => "comment_content" })%> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<% if task.comments.length > 0 %>
+    <% task.comments.each do |comment| %>
+        <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.png" %>" width="40" height="50"></img>
+        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"><%= User.find(comment.user_id).name %>
+          : <%= comment.content %> </span>
+        <hr/>
     <% end %>
-  <% end %>
-  <%= form_tag add_comment_path(task),:class =>"form_create_comment", :remote => true do %>
-    <%= text_area_tag :content , nil, :style => "width:775px;height:100px;", :rows => 2 %>
-    <%= submit_tag "Add comment" , :class => "add_comment_bt btn btn-small btn-warning" %>
-    <%= button_tag "Close",:type => "button",:class => "close_comment_bt btn btn-small" %>
-  <% end %>
+<% end %>
+<%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>
+    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 140 characters", :maxlength => "140" %>
+    <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success" %>
+    <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
+<% end %>
 <script>
-  $(".close_comment_bt").on("click", function(){
-    $(this).parent().children("#content").val("");
-    $(this).parent().parent('.comment-add').fadeOut(300);
-  });
+    $(".close_comment_bt").on("click", function () {
+        $(this).parent().children("#content").val("");
+        $(this).parent().parent('.comment-add').fadeOut(300);
+    });
 </script>

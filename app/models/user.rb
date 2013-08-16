@@ -1,21 +1,86 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default("")
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  name                   :string(255)
+#  customer_id            :string(255)
+#  last_4_digits          :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  invitation_token       :string(60)
+#  invitation_sent_at     :datetime
+#  invitation_accepted_at :datetime
+#  invitation_limit       :integer
+#  invited_by_id          :integer
+#  invited_by_type        :string(255)
+#
+
 class User < ActiveRecord::Base
   rolify
+  @@AWS3_AVATARS_BUCKET = "Tudli"
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :invitable, :trackable
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type,
+                  :avatar_s3_url, :avatar_file_name, :avatar_url_expires_at
   attr_accessor :stripe_token, :coupon, :skip_stripe_update
   before_create :update_stripe
   after_create :send_welcome_mail
   after_destroy :cancel_subscription
-  has_many :lists, :dependent => :destroy
+  has_many :lists, :dependent => :destroy #, :select => 'id,name,user_id'
+
   has_many :tasks, :through => :lists
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+
+  validates_presence_of :name
+  validates_length_of :name, :minimum => 3
+
+  def update_avatar(file)
+    #need remove old avatar
+    filename = sanitize_filename(file.original_filename)
+    s3 = AWS::S3.new
+    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+    obj = bucket.objects["#{self.id}-#{filename}"]
+    obj.write(file.read)
+    self.update_attribute(:avatar_file_name, "#{self.id}-#{filename}")
+  end
+
+  def is_facebook_account?
+    if Authentication.where(user_id: self.id).count > 0
+      return true
+    end
+    return false
+  end
+
+  def get_avatar_url
+    s3_log = Logger.new('log/s3.log')
+    s3 = AWS::S3.new
+    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+    obj = bucket.objects[self.avatar_file_name]
+    s3_log.error("#{obj.blank?}")
+    # Check nil for obj?
+    return obj.url_for(:read).to_s
+  rescue Exception => e
+    return nil
+  end
 
   # Check user can create a new list
   def can_create_new_list?
@@ -41,6 +106,7 @@ class User < ActiveRecord::Base
   end
 
   def update_plan(role)
+    old_role = self.roles.first
     self.role_ids = []
     self.add_role(role.name)
     unless customer_id.nil?
@@ -48,8 +114,12 @@ class User < ActiveRecord::Base
       customer.update_subscription(:plan => role.name)
       if role.name == 'free'
         UserMailer.downgraded(self).deliver
-      elsif role.name == 'paid'
-        UserMailer.upgraded(self).deliver
+      else
+        if old_role.name == 'paid' || old_role.name == 'paid2'
+          UserMailer.changeplan(self).deliver
+        else # free to paid or paid2
+          UserMailer.upgraded(self).deliver
+        end
       end
     end
     true
@@ -143,6 +213,7 @@ class User < ActiveRecord::Base
         end
       end
     end
+      # nothing
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to cancel your subscription. #{e.message}."
@@ -264,5 +335,20 @@ class User < ActiveRecord::Base
 
   def to_s
     email
+  end
+
+
+  private
+  def sanitize_filename(file_name)
+    just_filename = File.basename(file_name)
+    just_filename.sub(/[^\w\.\-]/, '_')
+  end
+
+  def avatar_uploader(filename, data)
+    s3 = AWS::S3.new
+    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+    obj = bucket.objects[filename]
+    obj.write(data)
+    self.update_attribute(:avatar_file_name, filename)
   end
 end

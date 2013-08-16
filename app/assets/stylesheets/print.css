@@ -13,7 +13,9 @@
     .searchboxtodolist {
         visibility: hidden;
     }
-
+    .completed-notify-area {
+        visibility: hidden;
+    }
     .items {
         width: 1000px;
     }

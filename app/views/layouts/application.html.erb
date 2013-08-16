@@ -84,7 +84,7 @@
           <div id="white-logo">
             <div class="clearfix">
                 <span class="inline">
-                  <%= link_to image_tag("white_logo.png", :border => 0, :alt => '', :title => ''), my_list_path %>
+                  <%= link_to image_tag("white_logo.png", :border => 0, :alt => '', :title => ''), dashboard_path %>
                 </span>
             </div>
           </div>
@@ -93,7 +93,7 @@
           <div id="accountpanel">
             <div class="clearfix">
                 <span class="inline lastest">
-                  <%= link_to "My Dashboard", my_dashboard_path, :style => "color:white !important;" %>
+                  <%= link_to "My Dashboard", dashboard_path, :style => "color:white !important;" %>
                 </span>
                 <span class="inline last">&nbsp;&nbsp;
                   <%= link_to "Logout", destroy_user_session_path, :style => "color:white !important;" %>
@@ -143,7 +143,6 @@
                 'position': 'right',
                 'numPreferredServices': 4
             },
-            'whatsnext': {}
         });
     </script>
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

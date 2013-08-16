@@ -2,6 +2,7 @@ class AuthenticationsController < ApplicationController
   def index
     @authentications = Authentication.all
   end
+
   def facebook
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
@@ -21,7 +22,8 @@ class AuthenticationsController < ApplicationController
       user.provider = omni.provider
       user.uid = omni.uid
       user.email = omni['extra']['raw_info'].email
-      user.password = Devise.friendly_token[0,20]
+      user.avatar_s3_url = omni.info.image
+      user.password = Devise.friendly_token[0, 20]
       user.apply_omniauth(omni)
       user.add_role("free")
       if user.save
@@ -36,6 +38,7 @@ class AuthenticationsController < ApplicationController
       end
     end
   end
+
   def create
     @authentication = Authentication.new(params[:authentication])
     if @authentication.save

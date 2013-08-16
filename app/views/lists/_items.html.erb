@@ -1,54 +1,57 @@
 <% if @list.tasks.length %>
-  <% @list.tasks.items.each do |task| 
-    index = 0 %>
-    <div class="taskinfo handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
-    <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
-      <div id="delete_error" class="text-error hide">You have no permission to delete this task</div>
-      <div class="items">
-        <div class="checkbox">
+    <% @list.tasks.items.each do |task|
+      index = 0 %>
+        <div class="taskinfo handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
+          <li class="handle <%= index == (@list.tasks.items.length - 1) ? 'last' : '' %>" id="task_<%= task.id %>">
+            <div id="delete_error" class="text-error hide">You have no permission to delete this task</div>
+            <div class="items">
+              <div class="checkbox">
           <span class="mark" title="Mark completed">
             <%= form_tag(complete_task_path(@list.id, task.id), :remote => true) do |f| %>
-              <%= check_box_tag 'mark_complete', task.id , task.completed , :class => 'checkbox mark_comp' ,:data_target => @list.id %>
+              <%= check_box_tag 'mark_complete', task.id, task.completed, :class => 'checkbox mark_comp', :data_target => @list.id %>
             <% end %>
           </span>
           <span class="task-des" title="Task name">
             <% if !task.completed %> <!-- Render task incompleted -->
-              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%= auto_link(task.description, :html => { :target => '_blank',:class => "task_name" }) %></div>
+              <div class="item-title" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name"}) %></div>
             <% else %>                <!-- Render task completed -->
-              <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>" ><%=  auto_link(task.description, :html => { :target => '_blank',:class => "task_name item-completed" }) %></div>
+              <div class="item-title item-completed" id="item_title_<%= task.id %>" data-url="<%= edit_task_path(@list.id, task.id) %>"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name item-completed"}) %></div>
             <% end %>
           </span>
-          <% if task.hasduedate && task.due_date != nil %>
+                <% if task.hasduedate && task.due_date != nil %>
           <span class="due_date_show">
             <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%Y-%m-%d") %></span>
           </span>
-          <% else %>
+                <% else %>
             <span class="due_date_show hidden">
           </span>
-          <% end %>
-          <% if task.comments.count > 0 %>
-          <span class="number_comment" id="number_comment_<%= task.id %>">(<%= task.comments.count %> Comments)</span>
-          <% else %>
-          <span class="number_comment hidden" id="number_comment_<%= task.id %>"></span>
-          <% end %>
-        </div>
+                <% end %>
+                <% if task.comments.count > 0 %>
+                    <span class="number_comment" id="number_comment_<%= task.id %>">(<%= task.comments.count %>
+                      Comments)</span>
+                <% else %>
+                    <span class="number_comment hidden" id="number_comment_<%= task.id %>"></span>
+                <% end %>
+              </div>
         <span class="action">
-          <% if current_user %><a href="javascript:;" class="show_comment_bt" title="Hide/Show comment">Comment</a><% end %>
-            <%= form_tag(update_due_date_path(@list.id, task.id) , :remote => true) do |f| %>
-              <input type="text" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-mm-dd" class="datepicker inputdate" id="due_date_<%= task.id %>" placeholder="Due date">
+          <% if current_user %><a href="javascript:;" class="show_comment_bt" title="Hide/Show comment">
+              <img src="/assets/comment-small.png"></img></a>
+          <% end %>
+          <%= form_tag(update_due_date_path(@list.id, task.id), :remote => true) do |f| %>
+              <input type="hidden" name="due_date_value" value="<%= task.due_date %>" data-date-format="yyyy-mm-dd" class="datepicker inputdate" id="due_date_<%= task.id %>" title="Due date">
             <% end %>
-          <%= link_to "Edit", "javascript:;",:class => 'btn-edit' ,:style => "text-decoration: underline" ,:title => "Edit task name"%>
-          <%= link_to "Delete", delete_task_path(@list.id,task.id),:class => 'btn-delete' ,:style => "text-decoration: underline",:title => "Delete task", :remote => true %>
+          <%= link_to image_tag('edit-small.png'), "javascript:;", :class => 'btn-edit', :style => "text-decoration: underline", :title => "Edit task name" %>
+          <%= link_to image_tag('recycle-small.png'), delete_task_path(@list.id, task.id), :class => 'btn-delete', :style => "text-decoration: underline", :title => "Delete task", :remote => true %>
         </span>
-        <% if current_user %>          
-        <span class="comment-add" id ="comment_add_<%= task.id %>">
+              <% if current_user %>
+        <span class="comment-add" id="comment_add_<%= task.id %>">
             <%= render :partial => "comments/comment_task", :locals => {:task => task} %>
-          </span> 
-        <% end %>
-      </div>
-    </li>
-    </div>
-    <% 
-    index +=1
-    end %>
+          </span>
+              <% end %>
+            </div>
+          </li>
+        </div>
+    <%
+       index +=1
+       end %>
 <% end %>

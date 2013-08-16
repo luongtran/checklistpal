@@ -1,35 +1,139 @@
-<% title "Dashboard" %>
+<% title "My Account" %>
 <% content_for :head do %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
+<script type="text/javascript">
+    function getURLParameter(name) {
+        return decodeURIComponent(
+                (RegExp(name + '=' + '(.+?)(&|$)', 'i').exec(location.search) || [, ""])[1]
+        );
+    }
+    $(window).ready(function () {
+                // alert(getURLParameter('action'));
+                if (getURLParameter('action') == 'upgrade') {
+                    $('#plan-options').modal('show');
+                }
+                if (getURLParameter('action') == 'update-card') {
+                    $('#update-card').modal('show');
+                }
+
+            }
+    );
+    //Checked f irst radio button in Update Plan Box
+    $(document).ready(function () {
+        myArray = document.getElementsByName("user[role_ids]");
+        $(myArray[0]).attr('checked',"checked");
+    });
+
+</script>
+
 <div class="section clearfix">
 
   <div class="pull-right">
 
-    <div id="quickmenu">
-      <div class="clearfix">
-        <a href="<%= root_path %>" class="pull-left">+ New</a><a href="<%= my_list_path %>" class="pull-left">MY
-        LISTS</a></div>
-    </div>
+
 
   </div>
   <div class="pull-left">
-    <h3>My Dashboard</h3>
+    <h3>My Account</h3>
 
     <div id="logo">
     </div>
   </div>
 </div>
 
+<div id="change-avatar-dialog" class="modal fade" style="display: none;">
+  <div class="modal-header">
+    <h4> Browse your local machine and select the file </h4>
+  </div>
+
+  <div class="modal-body">
+
+    <!-- Change the target of the form to the hidden iframe -->
+    <form id="avatar_form" action="/users/upload_avatar" method="post" enctype="multipart/form-data" target="uploader_iframe">
+      <input id="avatar_file_field" type="file" name="avatar" size="30"/>
+    </form>
+
+    <!-- Hidden iframe which will interact with the server, do not forget to give both name and id values same -->
+    <iframe id="uploader_iframe" name="uploader_iframe" style="display: none;"></iframe>
+    <!-- Just added to show the preview when the image is uploaded. -->
+
+    <div class="error-upload hidden">
+      <h4 style="color: red;" class="error-message"> Invalid file, please select an image file !</h4>
+    </div>
+
+    <div class="uploading-indicator hidden" style="font-size: 120%;">
+      Uploading <img src="/assets/loading.gif" id="loading-indicator"></img>
+    </div>
+
+    <div class="success-indicator hidden" style="font-size: 120%;">
+      <h4 style="color: #006dcc;"> Your avatar has been updated ! </h4>
+    </div>
+
+    <script>
+        $(function () {
+            $("#avatar_file_field").change(function () {
+                var ext = $(this).val().split('.').pop().toLowerCase();
+                $('.error-upload').addClass('hidden');
+                if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                    // resize
+                    $('.uploading-indicator').addClass('hidden');
+                    $('.success-indicator').addClass('hidden');
+                    $('.error-upload').removeClass('hidden');
+                }
+                else {
+                    if (this.files[0].size > 1000141) {
+                        $('.error-upload').removeClass('hidden');
+                        $('.error-message').text('File size is too big');
+                    }
+                    else {
+                        $('.error-upload').addClass('hidden');
+                        $('.uploading-indicator').removeClass('hidden');
+                        $("#avatar_form").submit();
+                        $("#uploader_iframe").unbind().load(function () {
+                            result = JSON.parse($(this).contents().text());
+                            $('.uploading-indicator').addClass('hidden');
+                            $('.error-upload').addClass('hidden');
+                            $('.success-indicator').removeClass('hidden');
+                            $('#avatar_form').addClass('hidden');
+                            setTimeout(function () {
+                                window.location.replace("/my_account");
+                            }, 1000);
+
+                        });
+                    }
+
+
+                }
+            });
+        });
+    </script>
+
+  </div>
+
+  <div class="modal-footer">
+
+    <a class="btn" data-dismiss="modal" href="#">Close</a>
+  </div>
+</div>
+
+
 <div class="section clearfix">
   <div id="signupfree">
     <div class="clearfix">
+
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
             <div class="panel">
               <h3>Account's profile</h3>
-              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => 'form-vertical'}) do |f| %>
+
+              <p>
+                <%= image_tag avatar_url(current_user) || "default_avatar.png", class: "avatar", :size => "40x50" %>
+                <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button">Change</a>
+              </p>
+              <br/>
+              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :multipart => true, :html => {:method => :put, :class => 'form-vertical'}) do |f| %>
                   <%#= f.error_notification %>
                   <% if resource.errors.full_messages.present? %>
                       <% resource.errors.full_messages.each do |message| %>
@@ -57,27 +161,41 @@
                   <%= f.button :submit, 'Update', :class => 'btn-primary btn-small' %>
               <% end %>
               <p>Unhappy?
-                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button">Cancel my
+                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button" style="margin-left: 10px;">Cancel my
                   account</a></p>
             </div>
           </div>
         </div>
+
+
+      </div>
+
+
+      <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
             <h3>Subscription Plan</h3>
+            <% tempt = ''
+               if current_user.roles.first.name == 'free'
+                 tempt = 'Free'
+               elsif current_user.roles.first.name == 'paid'
+                 tempt = 'Paid (monthly)'
+               else
+                 tempt = 'Paid (yearly)'
 
+               end
+            %>
             <p>
-              Your current plan is <%= current_user.roles.first.name.titleize %>
+              Your current plan is <%= tempt %>
 
               <% if !@user.last_4_digits.blank? %>
                   <% if @user.roles.first.name == 'free' %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Upgrade
-                        to
-                        Paid</a>
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Upgrade
+                        Plan
+                      </a>
                   <% else %>
-                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button">Downgrade
-                        to
-                        Free</a>
+                      <a data-toggle="modal" href="#plan-options" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Change
+                        Plan</a>
                   <% end %>
               <% end %>
 
@@ -87,43 +205,15 @@
 
             <p>
               <% if current_user.last_4_digits.blank? %>
+
                   You need update card to upgrade your plan
               <% else %>
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#card-data" class="btn btn-primary btn-small" type="button">Change card</a>
+              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Update card</a>
             </p>
           </div>
-        </div>
-
-
-      </div>
-      <div class="divine50">
-        <div class="signoption row-fluid">
-
-          <div class="signuppanel">
-            <h3>Lists</h3>
-
-            <p>You currently
-              have
-              <a href="<%= my_list_path %>"><%= current_user.lists.count > 1 ? "#{current_user.lists.count} lists" : "list" %> </a>
-            </p>
-
-            <p>Incomplete: xxx </p>
-
-            <p>Completed: yyy</p>
-          </div>
-          <div class="signuppanel">
-            <h3>Connections</h3>
-
-            <p>You currently
-              have
-              <%= current_user.connection_count %>     connections
-            </p>
-
-          </div>
-
         </div>
 
       </div>
@@ -165,7 +255,7 @@
 </div>
 
 
-<div id="card-data" class="modal fade" style="display: none;">
+<div id="update-card" class="modal fade" style="display: none;">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>
@@ -202,59 +292,84 @@
   <%= simple_form_for resource, :as => resource_name, :url => update_plan_path, :html => {:method => :put, :class => 'form-horizontal'} do |f| %>
       <div class="modal-header">
         <a class="close" data-dismiss="modal">&#215;</a>
-
-        <h4>Please confirm your selection</h4>
+        <h4>Please select a plan bellow: </h4>
         <% if resource.errors.full_messages.present? %>
             <%= resource.errors.full_messages %>
         <% end %>
       </div>
       <% free_plan = Role.where(name: 'free').first
       %>
-
       <div class="modal-body">
         <div class="clearfix">
-          <div class="divine50">
-            <div class="signoption text-center">
-              <h3><strong>Free</strong> account</h3>
-              <hr class="divider">
-              <ul class="unstyled">
-                <li>Create unlimited lists</li>
-                <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
-                <li>(<%= free_plan.max_connections %>) Connections</li>
-                <li>Comment on your lists</li>
-                <li>Print your lists</li>
-                <li>Share your lists</li>
-              </ul>
-            </div>
-          </div>
-          <div class="divine50">
-            <div class="signoption text-center">
-              <h3><strong>$4.95 /mo</strong> account</h3>
-              <hr class="divider">
-              <ul class="unstyled">
-                <li>Create unlimited lists</li>
-                <li><u><strong>Unlimited</strong></u> saved lists</li>
-                <li><u><strong>Unlimited</strong></u> connections</li>
-                <li>Comment on your lists</li>
-                <li>Print your lists</li>
-                <li>Share your lists</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <% unless current_user.roles.first.name == 'free' %>
+              <div class="divine50">
+                <div class="signoption text-center">
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_1" name="user[role_ids]" type="radio" value="1">
+                      Free
+                    </strong></h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li>(<%= free_plan.max_savedlist %>) Saved lists</li>
+                    <li>(<%= free_plan.max_connections %>) Connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
 
+          <% unless current_user.roles.first.name == 'paid' %>
+              <div class="divine50 ">
+                <div class="signoption text-center">
+
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_2" name="user[role_ids]" type="radio" value="2">
+                      $4.95 /mo</strong>
+                  </h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li><u><strong>Unlimited</strong></u> saved lists</li>
+                    <li><u><strong>Unlimited</strong></u> connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
+
+          <% unless current_user.roles.first.name == 'paid2' %>
+              <div class="divine50 ">
+                <div class="signoption text-center">
+                  <h3>
+                    <strong><input class='select plan' id="user_role_ids_3" name="user[role_ids]" type="radio" value="3">
+                      $79.5
+                      /year</strong></h3>
+                  <hr class="divider">
+                  <ul class="unstyled">
+                    <li>Create unlimited lists</li>
+                    <li><u><strong>Unlimited</strong></u> saved lists</li>
+                    <li><u><strong>Unlimited</strong></u> connections</li>
+                    <li>Comment on your lists</li>
+                    <li>Print your lists</li>
+                    <li>Share your lists</li>
+                  </ul>
+                </div>
+              </div>
+          <% end %>
+
+        </div>
         <%#= f.input :role_ids, :collection => Role.all.delete_if { |i| i.name == 'admin' || i.name == @user.roles.first.name}, :as => :radio_buttons, :label_method => lambda { |t| t.name.titleize }, :label => false, :item_wrapper_class => 'inline' %>
-        <%= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
+
       </div>
       <div class="modal-footer">
-
-        <% if @user.roles.first.name == 'free' then
-             button_text = 'Upgrade now!'
-           else
-             button_text = 'Downgrade now!'
-           end %>
-
-        <%= f.submit button_text, :class => "btn btn-primary" %>
+        <%#= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin' || i.name == current_user.roles.first.name}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+        <%#= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
+        <%= f.submit 'Update', :class => "btn btn-primary", :id => "update-plan-btn" %>
         <a class="btn" data-dismiss="modal" href="#">Close</a>
       </div>
   <% end %>

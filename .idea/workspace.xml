@@ -2,9 +2,160 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c7794d4-1a08-45a7-9079-3cea4780f334" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/19-avataarrrr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/calendar-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/comment-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/dash_6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/default_avatar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/edit-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/recycle-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130812085506_add_avatar_for_user.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130813015305_change_avatar_column_from_users_table.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130813024458_add_avatar_url.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130814070815_add_new_plan.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130814072337_add_change_plan_email.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/lists/_pdf.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/aws_s3.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/changeplan.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/dash.html" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\abc.pdf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\config\initializers\pdfkit.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\config\initializers\wicked_pdf.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\public\my_file_name.pdf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\Gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\MIT-LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\Rakefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\2.3.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\3.0.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\3.1.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\3.2.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\4.0.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\gemfiles\rails_edge.gemfile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\generators\wicked_pdf\templates\wicked_pdf.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\generators\wicked_pdf\wicked_pdf_generator.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\init.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\generators\wicked_pdf_generator.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\pdf_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf_middleware.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf_railtie.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf_tempfile.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\lib\wicked_pdf_version.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\README.rdoc" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\Rakefile" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\assets\javascripts\application.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\assets\stylesheets\application.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\controllers\application_controller.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\helpers\application_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\mailers\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\models\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\app\views\layouts\application.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config.ru" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\application.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\boot.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\database.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\environment.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\environments\development.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\environments\production.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\environments\test.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\backtrace_silencers.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\inflections.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\mime_types.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\secret_token.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\session_store.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\initializers\wrap_parameters.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\locales\en.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\config\routes.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\db\test.sqlite3" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\lib\assets\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\log\.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\log\development.log" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\public\404.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\public\422.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\public\500.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\public\favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\dummy\script\rails" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\fixtures\document_with_long_line.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\fixtures\wicked.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\functional\pdf_helper_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\functional\wicked_pdf_helper_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\test_helper.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\test\unit\wicked_pdf_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="C:\Sites\checklistpal\vendor\plugins\wicked_pdf\wicked_pdf.gemspec" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/blue_logo.png" afterPath="$PROJECT_DIR$/app/assets/images/blue_logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/white_logo.png" afterPath="$PROJECT_DIR$/app/assets/images/white_logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/_items.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/about.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/about.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/active_admin.rb" afterPath="$PROJECT_DIR$/config/initializers/active_admin.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.less" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/admin_user.rb" afterPath="$PROJECT_DIR$/app/models/admin_user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/admin_user_spec.rb" afterPath="$PROJECT_DIR$/spec/models/admin_user_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.yml" afterPath="$PROJECT_DIR$/config/application.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/authentication.rb" afterPath="$PROJECT_DIR$/app/models/authentication.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/authentication_spec.rb" afterPath="$PROJECT_DIR$/spec/models/authentication_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/fixtures/authentications.yml" afterPath="$PROJECT_DIR$/spec/fixtures/authentications.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/authentications_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/authentications_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/comment_spec.rb" afterPath="$PROJECT_DIR$/spec/models/comment_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/create.js.erb" afterPath="$PROJECT_DIR$/app/views/comments/create.js.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/home/dashboard.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy.rb" afterPath="$PROJECT_DIR$/config/deploy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/email_template.rb" afterPath="$PROJECT_DIR$/app/models/email_template.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/email_template_spec.rb" afterPath="$PROJECT_DIR$/spec/models/email_template_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/feedback.rb" afterPath="$PROJECT_DIR$/app/admin/feedback.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/feedback.rb" afterPath="$PROJECT_DIR$/app/models/feedback.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/feedback_spec.rb" afterPath="$PROJECT_DIR$/spec/models/feedback_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/find_invite.html.erb" afterPath="$PROJECT_DIR$/app/views/home/find_invite.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/inviting.html.erb" afterPath="$PROJECT_DIR$/app/views/home/inviting.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/list.rb" afterPath="$PROJECT_DIR$/app/models/list.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/list_spec.rb" afterPath="$PROJECT_DIR$/spec/models/list_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/list_team_member.rb" afterPath="$PROJECT_DIR$/app/models/list_team_member.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/list_team_member_spec.rb" afterPath="$PROJECT_DIR$/spec/models/list_team_member_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/stripe/plans.rb" afterPath="$PROJECT_DIR$/config/stripe/plans.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/print.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/print.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/role.rb" afterPath="$PROJECT_DIR$/app/models/role.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/signup_options.html.erb" afterPath="$PROJECT_DIR$/app/views/home/signup_options.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/static_page.rb" afterPath="$PROJECT_DIR$/app/models/static_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/static_page_spec.rb" afterPath="$PROJECT_DIR$/spec/models/static_page_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/stripe.rb" afterPath="$PROJECT_DIR$/config/initializers/stripe.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/support.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/support.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/task.rb" afterPath="$PROJECT_DIR$/app/models/task.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/task_spec.rb" afterPath="$PROJECT_DIR$/spec/models/task_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/users.rb" afterPath="$PROJECT_DIR$/app/admin/users.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/users_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/users_helper.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
@@ -17,7 +168,7 @@
     <file path="/lists_controller.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376035905776" ignored="false" />
     <file path="/invitations_controller.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1375787536370" ignored="false" />
     <file path="/home_controller.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376153453763" ignored="false" />
-    <file path="/user.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376156316790" ignored="false" />
+    <file path="/user.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376615511968" ignored="false" />
     <file path="/production.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1375862107282" ignored="false" />
     <file path="/application.yml" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1375158099317" ignored="false" />
     <file path="/development.rb" changelist="7c7794d4-1a08-45a7-9079-3cea4780f334" time="1376036652085" ignored="false" />
@@ -123,7 +274,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="27" selection-start="2916" selection-end="2920" vertical-scroll-proportion="0.0">
+            <state line="89" column="27" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -132,7 +283,7 @@
       <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="63" selection-start="4360" selection-end="4360" vertical-scroll-proportion="0.0">
+            <state line="94" column="63" selection-start="4298" selection-end="4298" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,7 +292,7 @@
       <file leaf-file-name="mylist.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="35" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.0">
+            <state line="55" column="35" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,7 +301,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="37" selection-start="901" selection-end="901" vertical-scroll-proportion="0.0">
+            <state line="20" column="37" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,7 +310,7 @@
       <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="66" selection-start="4771" selection-end="4771" vertical-scroll-proportion="0.0">
+            <state line="219" column="66" selection-start="8540" selection-end="8540" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -168,10 +319,10 @@
       <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="68" selection-start="1140" selection-end="1140" vertical-scroll-proportion="-1.7146283">
+            <state line="215" column="15" selection-start="6992" selection-end="6992" vertical-scroll-proportion="0.60911274">
               <folding>
-                <element signature="e#2070#3968#0" expanded="false" />
-                <element signature="e#3972#4423#0" expanded="false" />
+                <element signature="e#4329#6227#0" expanded="false" />
+                <element signature="e#6231#6682#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -180,7 +331,7 @@
       <file leaf-file-name="find_invite.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="68" selection-start="2852" selection-end="2869" vertical-scroll-proportion="0.0">
+            <state line="71" column="68" selection-start="2633" selection-end="2633" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -189,7 +340,7 @@
       <file leaf-file-name="registrations_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+            <state line="11" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -207,7 +358,7 @@
       <file leaf-file-name="dashboard.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="56" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
+            <state line="17" column="56" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -426,6 +577,20 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -576,20 +741,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -610,6 +761,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checklistpal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1082,21 +1255,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="68" selection-start="2852" selection-end="2869" vertical-scroll-proportion="0.0">
+        <state line="71" column="68" selection-start="2633" selection-end="2633" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="63" selection-start="4360" selection-end="4360" vertical-scroll-proportion="0.0">
+        <state line="94" column="63" selection-start="4298" selection-end="4298" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="35" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.0">
+        <state line="55" column="35" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1125,28 +1298,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="37" selection-start="901" selection-end="901" vertical-scroll-proportion="0.0">
+        <state line="20" column="37" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="27" selection-start="2916" selection-end="2920" vertical-scroll-proportion="0.0">
+        <state line="89" column="27" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="56" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
+        <state line="17" column="56" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/registrations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0">
+        <state line="11" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1158,17 +1331,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="66" selection-start="4771" selection-end="4771" vertical-scroll-proportion="0.0">
+        <state line="219" column="66" selection-start="8540" selection-end="8540" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="68" selection-start="1140" selection-end="1140" vertical-scroll-proportion="-1.7146283">
+        <state line="215" column="15" selection-start="6992" selection-end="6992" vertical-scroll-proportion="0.60911274">
           <folding>
-            <element signature="e#2070#3968#0" expanded="false" />
-            <element signature="e#3972#4423#0" expanded="false" />
+            <element signature="e#4329#6227#0" expanded="false" />
+            <element signature="e#6231#6682#0" expanded="false" />
           </folding>
         </state>
       </provider>

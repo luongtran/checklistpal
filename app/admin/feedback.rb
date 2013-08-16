@@ -1,5 +1,5 @@
 ActiveAdmin.register Feedback do
-  actions :all, :except => [:new]
+  #actions :all, :except => [:new]
   config.batch_actions = true
   index do
     id_column

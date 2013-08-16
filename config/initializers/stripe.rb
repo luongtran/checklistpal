@@ -6,16 +6,20 @@ StripeEvent.setup do
     user = User.find_by_customer_id(event.data.object.customer)
     user.expire
   end
-  subscribe 'customer.subscription.updated' do |event|
-    user = User.find_by_customer_id(event.data.object.customer)
-    role = Role.where(name: event.data.object.plan.id).first
-    user.add_role(role.name)
-    if role.name == 'free'
-        UserMailer.downgraded(user).deliver
-      elsif role.name == 'paid'
-        UserMailer.upgraded(user).deliver
-      end
-  end
+  #subscribe 'customer.subscription.updated' do |event|
+  #  user = User.find_by_customer_id(event.data.object.customer)
+  #  role = Role.where(name: event.data.object.plan.id).first
+  #  user.add_role(role.name)
+  #  if role.name == 'free'
+  #    UserMailer.downgraded(user).deliver
+  #  end
+  #  if role.name == 'paid'
+  #    UserMailer.upgraded(user).deliver
+  #  end
+  #  if role.name == 'paid2'
+  #    UserMailer.upgraded(user).deliver
+  #  end
+  #end
   subscribe 'customer.deleted' do |event|
     user = User.find_by_customer_id(event.data.object.subscription.customer)
     user.deleted

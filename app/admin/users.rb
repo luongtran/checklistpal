@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  config.batch_actions = true
+ # config.batch_actions = true
   index do
     selectable_column
     id_column
@@ -14,7 +14,7 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :last_sign_in_at
     column :sign_in_count
-    default_actions
+    #default_actions
   end
   filter :email
   filter :roles
