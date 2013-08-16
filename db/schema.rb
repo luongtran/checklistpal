@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20130814072337) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true, :length => {"email"=>191}
-  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true, :length => {"reset_password_token"=>191}
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "assets", :force => true do |t|
     t.string   "storage_uid"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20130814072337) do
     t.datetime "last_sent_notify_email_at"
   end
 
-  add_index "lists", ["slug"], :name => "index_lists_on_slug", :unique => true, :length => {"slug"=>191}
+  add_index "lists", ["slug"], :name => "index_lists_on_slug", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -178,15 +178,14 @@ ActiveRecord::Schema.define(:version => 20130814072337) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.string   "avatar_file_name"
-    t.text     "avatar_url"
     t.text     "avatar_s3_url"
     t.datetime "avatar_url_expires_at"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true, :length => {"email"=>191}
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true, :length => {"reset_password_token"=>191}
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"
