@@ -14,7 +14,7 @@
  */
 .handle:hover{
     cursor: move;
-    background-color : rgb(252, 249, 208);    
+    /*background-color : rgb(252, 249, 208);    */
     /*line-height: 10px;*/
 }
 .handle{
