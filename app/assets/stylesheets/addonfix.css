@@ -569,3 +569,6 @@
     padding-top: 6px;
     padding-bottom: 5px;
 }
+.btn-circle {
+    border-radius: 100px;
+}

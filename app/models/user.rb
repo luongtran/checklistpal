@@ -87,6 +87,13 @@ class User < ActiveRecord::Base
     lists.count < roles.first.max_savedlist ? true : false
   end
 
+  def completed_lists
+    completed_l = []
+    self.lists.each do |l|
+      completed_l << l if l.finished?
+    end
+  end
+
   def connection_count
     ListTeamMember.where(user_id: self.id, active: true).count
   end
