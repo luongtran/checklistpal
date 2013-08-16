@@ -32,9 +32,11 @@ class List < ActiveRecord::Base
     return true
   end
 
+
+
+
   def self.completed_notifier
     # Check every 15 minutes
-    puts "\n\n______________________________Completed List Checking__________________________\n"
     all.each do |l|
       # Check not owner by user
       if !l.user_id.blank? && l.tasks.count > 0
