@@ -11,17 +11,16 @@ class HomeController < ApplicationController
           :slug => random_string
       )
       if @list.save
+        #session[:new_list] ||= []
+        #session[:new_list] << @list.id
+        #puts "\n\n___number lists in session : #{session[:new_list].count}"
+        #
+
         redirect_to list_path(@list.slug)
       else
         flash[:error] = "Could not post list"
       end
-
-    else
-      puts "\n___User create new list __________________________"
-
-      if current_user.can_create_new_list?
-
-      end
+    else # logged in
       if current_user.can_create_new_list?
         list = current_user.lists.create(:name => "Name of List", :description => "To do list", :slug => random_string)
         if list.save
