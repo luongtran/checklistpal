@@ -11,10 +11,8 @@ class HomeController < ApplicationController
           :slug => random_string
       )
       if @list.save
-        #session[:new_list] ||= []
-        #session[:new_list] << @list.id
-        #puts "\n\n___number lists in session : #{session[:new_list].count}"
-        #
+        session[:new_lists] ||= []
+        session[:new_lists] << @list.id
 
         redirect_to list_path(@list.slug)
       else
@@ -413,7 +411,7 @@ class HomeController < ApplicationController
         if (!ListTeamMember.is_existed_in_connection(current_user.id, list.id, @user.id))
           if current_user.list_team_members.new({:invited_id => @user.id, :list_id => list.id, :active => false, :invitation_token => @user.invitation_token}).save
             @success = true
-            @message = "Invitation sent to #{@user.email} !"
+            @message = "Invitation sent to #{@user.email}"
           end
         else
           @message = "The list already sharing for #{@user.email}"
@@ -447,7 +445,7 @@ class HomeController < ApplicationController
             @user.invite!(current_user)
             if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
               @success = true
-              @message = "Invitation sent to #{@user.email} !"
+              @message = "Invitation sent to #{@user.email}"
             end
           else
             @message = "The user #{@user.email} already existed in your connections"

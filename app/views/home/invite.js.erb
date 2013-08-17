@@ -10,7 +10,7 @@ $("#list_invites").text("You have to upgrade account to invite more people.");
 $("#list_invites").addClass("alert alert-success");
 <% else %>
 <% if @success %>
-$("#list_invites").text("Invitation sent to <%= @user.email %> !");
+$("#list_invites").text("Invitation sent to <%= @user.email %>");
 $("#list_invites").addClass("alert alert-success");
 <% else %>
 $("#list_invites").text("No result match");
