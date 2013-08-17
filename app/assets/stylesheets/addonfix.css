@@ -514,11 +514,13 @@
 
 .items {
     padding-bottom: 16px;
+    padding-top: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.accordion-toggle {
 
-}
+
+/*line-height: 25px;*/
 
 /* line 122, /Users/rueta/DeskWork/git/checklistpal/app/assets/stylesheets/addonfix.less */
 .height50 {
@@ -561,11 +563,12 @@
     }
 }
 
-.btn-primary{
+.btn-primary {
     text-align: center;
     padding-top: 6px;
     padding-bottom: 5px;
 }
+
 .btn-circle {
     border-radius: 100px;
 }
