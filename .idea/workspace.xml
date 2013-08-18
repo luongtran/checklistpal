@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c7794d4-1a08-45a7-9079-3cea4780f334" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/find_invite.html.erb" afterPath="$PROJECT_DIR$/app/views/home/find_invite.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/inviting.html.erb" afterPath="$PROJECT_DIR$/app/views/home/inviting.html.erb" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -151,10 +150,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="find_invite.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="find_invite.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="65" selection-start="540" selection-end="540" vertical-scroll-proportion="0.4040747">
+            <state line="23" column="65" selection-start="540" selection-end="540" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inviting.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/home/inviting.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="115" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.6926995">
               <folding />
             </state>
           </provider>
@@ -208,7 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/app/models/list.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
@@ -224,6 +231,7 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
         <option value="$PROJECT_DIR$/app/views/home/find_invite.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/home/inviting.html.erb" />
       </list>
     </option>
   </component>
@@ -997,11 +1005,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="33" selection-start="7003" selection-end="7014" vertical-scroll-proportion="0.027868852" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -1100,7 +1103,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/find_invite.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="65" selection-start="540" selection-end="540" vertical-scroll-proportion="0.4040747">
+        <state line="23" column="65" selection-start="540" selection-end="540" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/inviting.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="115" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.6926995">
           <folding />
         </state>
       </provider>
