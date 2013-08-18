@@ -371,7 +371,6 @@ DEPENDENCIES
   omniauth-facebook
   pg
   quiet_assets (>= 1.0.2)
-  rack-ssl
   rails (= 3.2.13)
   rails_autolink
   rolify (>= 3.2.0)

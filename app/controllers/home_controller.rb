@@ -28,7 +28,7 @@ class HomeController < ApplicationController
           return false
         end
       else
-        flash[:notice] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists!].html_safe
+        flash[:error] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists].html_safe
         redirect_to my_list_url
       end
     end
