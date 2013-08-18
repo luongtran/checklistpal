@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: e6721d61f99aa924c7f348168d1ce81c46345a77
+  revision: f0ad6b2afdd30b275937d8d31727e66d67f5766c
   specs:
     activeadmin (0.6.0)
       arbre (>= 1.0.1)
@@ -130,7 +130,7 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
-    devise (3.0.2)
+    devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -320,7 +320,7 @@ GEM
       rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
@@ -371,6 +371,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   quiet_assets (>= 1.0.2)
+  rack-ssl
   rails (= 3.2.13)
   rails_autolink
   rolify (>= 3.2.0)
