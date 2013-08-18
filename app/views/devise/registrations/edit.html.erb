@@ -22,7 +22,7 @@
     //Checked f irst radio button in Update Plan Box
     $(document).ready(function () {
         myArray = document.getElementsByName("user[role_ids]");
-        $(myArray[0]).attr('checked',"checked");
+        $(myArray[0]).attr('checked', "checked");
     });
 
 </script>
@@ -30,7 +30,6 @@
 <div class="section clearfix">
 
   <div class="pull-right">
-
 
 
   </div>
@@ -161,7 +160,8 @@
                   <%= f.button :submit, 'Update', :class => 'btn-primary btn-small' %>
               <% end %>
               <p>Unhappy?
-                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button" style="margin-left: 10px;">Cancel my
+                <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button" style="margin-left: 10px;">Cancel
+                  my
                   account</a></p>
             </div>
           </div>
@@ -211,7 +211,8 @@
                   Using card ending with <%= current_user.last_4_digits %>
               <% end %>
 
-              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Update card</a>
+              <a data-toggle="modal" href="#update-card" class="btn btn-primary btn-small" type="button" style="margin-left: 10px;">Update
+                card</a>
             </p>
           </div>
         </div>
@@ -298,6 +299,8 @@
         <% end %>
       </div>
       <% free_plan = Role.where(name: 'free').first
+         paid_month_plan = Role.where(name: 'paid').first
+         paid_year_plan = Role.where(name: 'paid2').first
       %>
       <div class="modal-body">
         <div class="clearfix">
@@ -305,7 +308,7 @@
               <div class="divine50">
                 <div class="signoption text-center">
                   <h3>
-                    <strong><input class='select plan' id="user_role_ids_1" name="user[role_ids]" type="radio" value="1">
+                    <strong><input class='select plan' id="user_role_ids_<%= free_plan.id %>" name="user[role_ids]" type="radio" value="<%= free_plan.id %>">
                       Free
                     </strong></h3>
                   <hr class="divider">
@@ -326,7 +329,7 @@
                 <div class="signoption text-center">
 
                   <h3>
-                    <strong><input class='select plan' id="user_role_ids_2" name="user[role_ids]" type="radio" value="2">
+                    <strong><input class='select plan' id="user_role_ids_<%= paid_month_plan.id %>" name="user[role_ids]" type="radio" value="<%= paid_month_plan.id %>">
                       $2 /month</strong>
                   </h3>
                   <hr class="divider">
@@ -346,7 +349,7 @@
               <div class="divine50 ">
                 <div class="signoption text-center">
                   <h3>
-                    <strong><input class='select plan' id="user_role_ids_3" name="user[role_ids]" type="radio" value="3">
+                    <strong><input class='select plan' id="user_role_ids_<%= paid_year_plan.id %>" name="user[role_ids]" type="radio" value="<%= paid_year_plan.id %>">
                       $12 /year</strong></h3>
                   <hr class="divider">
                   <ul class="unstyled">
