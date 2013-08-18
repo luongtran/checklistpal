@@ -178,7 +178,9 @@
 .taskinfo .items .action {
     position: absolute;
     top: 0;
-    right: 0
+    right: 0 ;
+    padding-top: 10px;
+    padding-right: 10px;
 }
 
 .taskinfo .items .checkbox {
@@ -513,7 +515,7 @@
 }
 
 .items {
-    padding-bottom: 16px;
+    padding-bottom: 10px;
     padding-top: 10px;
     border-bottom: 1px solid #eee;
 }

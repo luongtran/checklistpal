@@ -32,10 +32,13 @@
                     <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address" %>
                   </div>
                   <div class="controls">
-                    <div id="loading" style="display: none;">
-                      <%= image_tag 'loading.gif' %>
-                    </div>
-                    <%= submit_tag 'Find & Invite', :class => 'btn btn-primary btnsearch' %>
+
+                    <%= submit_tag 'Find & Invite', :class => 'btn btn-primary btnsearch', :id => "find_invite_btn" %>
+                  </div>
+                  <br/>
+
+                  <div id="loading" style="display: none;padding-top: 15px;" class="alert alert-success">
+                    <p> Processing your request   <%= image_tag 'loading.gif', :style => "margin-left: 15px;" %>  </p>
                   </div>
               <% end %>
             </div>
@@ -55,12 +58,13 @@
       </script>
       <div class="myconnection pull-right">
         <h3 class="title-gray">My connections</h3>
-
-        <div class="space"></div>
-        <%= form_tag search_my_connect_path, :class => "searchmini clearfix", :remote => true do %>
-            <%= hidden_field_tag :list_id, @list.id %>
-            <%= text_field_tag 'user_email_find', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
-            <input type="submit" value="" class="submitbt">
+        <% if false %>
+            <div class="space"></div>
+            <%= form_tag search_my_connect_path, :class => "searchmini clearfix", :remote => true do %>
+                <%= hidden_field_tag :list_id, @list.id %>
+                <%= text_field_tag 'user_email_find', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
+                <input type="submit" value="" class="submitbt">
+            <% end %>
         <% end %>
         <div class="panel">
           <% if !@my_connects.blank? %>
@@ -93,9 +97,11 @@
             return true;
         });
         $('#invitation_form').bind("ajax:beforeSend",function () {
+//            $('#find_invite_btn').hide();
             $("#loading").toggle();
         }).bind("ajax:success", function (xhr, data, status) {
                     $("#loading").toggle();
+//                    $('#find_invite_btn').show();
                 });
     });
 </script>

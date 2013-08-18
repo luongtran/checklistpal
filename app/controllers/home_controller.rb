@@ -448,7 +448,7 @@ class HomeController < ApplicationController
               @message = "Invitation sent to #{@user.email}"
             end
           else
-            @message = "The user #{@user.email} already existed in your connections"
+            @message = "This user already existed in your connections"
           end
         else
           @message = "User not found"

@@ -12,7 +12,7 @@
         <div class="signoption row-fluid">
           <div class="invitepanel">
             <h3>Select a List</h3>
-            <select style="width: 200px" id="lists-combobox">
+            <select style="width:  270px;" id="lists-combobox">
               <% @mylists.each do |l| %>
                   <option value="<%= l.id %>"><%= truncate(l.name, :length => 40) %></option>
               <% end %>
@@ -31,13 +31,15 @@
                   </div>
 
                   <div class="controls">
-                    <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address"%>
+                    <%= email_field_tag 'user_email', nil, class: "input-block-level", placeholder: "Email address" %>
                   </div>
                   <div class="controls">
-                    <div id="loading" style="display: none;">
-                      <%= image_tag 'loading.gif' %>
-                    </div>
                     <input class="btn btn-primary btnsearch" name="commit" type="submit" value="Find &amp; Invite" id='btn-search-and-invite'>
+                  </div>
+                  <br />
+
+                  <div id="loading" style="display: none;" class="alert alert-success">
+                    <p> Processing your request   <%= image_tag 'loading.gif' %>  </p>
                   </div>
               <% end %>
             </div>
@@ -59,7 +61,6 @@
           });
 
       </script>
-
 
 
     </div>

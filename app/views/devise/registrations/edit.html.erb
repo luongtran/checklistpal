@@ -174,7 +174,7 @@
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="signuppanel">
-            <h3>Subscription Plan</h3>
+            <h3 style="margin-bottom: 0px;">Subscription Plan</h3>
             <% tempt = ''
                if current_user.roles.first.name == 'free'
                  tempt = 'Free'
@@ -201,7 +201,7 @@
 
             </p>
 
-            <h3>Card</h3>
+            <h3 style="margin-bottom: 0px;">Card</h3>
 
             <p>
               <% if current_user.last_4_digits.blank? %>
