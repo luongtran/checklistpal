@@ -1,12 +1,10 @@
 class SessionsController < Devise::SessionsController
 
   def new
-    puts "\n\n_____________Step 2 : New"
     super
   end
 
   def create
-    puts "\n\n_____________Step 1 : Create"
     if params[:list_save_id] # user want to save
       puts "\n\n_____________user want save list id : #{params[:list_save_id]}"
       temp =  params[:list_save_id].to_i

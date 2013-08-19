@@ -150,7 +150,6 @@ class HomeController < ApplicationController
         end
       end
     end
-
     @has_over_connect = false
     @users = User.find(:all, :conditions => condition)
     @users -= [current_user]
@@ -375,7 +374,7 @@ class HomeController < ApplicationController
       num_connect = User.number_connect(current_user)
       if num_connect < Role.find(current_user.roles.first.id).max_connections
         if (!invite_email.blank?)
-          @user = User.new({:email => invite_email})
+          @user = User.new(:email => invite_email)
           role = Role.where(name: 'free').first
           @user.add_role(role.name)
           #@user.save

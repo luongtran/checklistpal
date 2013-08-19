@@ -1,16 +1,16 @@
 class Users::InvitationsController < Devise::InvitationsController
-
   skip_before_filter :require_no_authentication, :only => :edit
 
   def new
+    puts "\n_____________InvitationControllers New"
     build_resource
     render :new
   end
 
   # POST /resource/invitation
   def create
+    puts "\n______________InvitationControllers create"
     self.resource = resource_class.invite!(resource_params, current_user)
-
     if resource.sign_in_count = 0
       role = Role.where(name: 'free').first
       resource.add_role(role.name)
@@ -39,16 +39,26 @@ class Users::InvitationsController < Devise::InvitationsController
       @user.accept_invitation!
       sign_in(:user, @user)
       redirect_to my_list_path
-    else
+    else # new user
       render :edit
     end
   end
 
   # PUT /resource/invitation
   def update
+    # validate invitation_token
+
 
     super
   end
+
+  #def update
+  #  if this
+  #    redirect_to root_path
+  #  else
+  #    super
+  #  end
+  #end
 
   # GET /resource/invitation/remove?invitation_token=abcdef
   def destroy
@@ -77,15 +87,16 @@ class Users::InvitationsController < Devise::InvitationsController
     end
   end
 
-  #  def after_accept_path_for(resource)
-  #    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
-  #    if list_team_member
-  #      @list = List.find(list_team_member.list_id)
-  #      redirect_to list_path(@list)
-  #    else
-  #      redirect_to my_list_path
-  #    end    
-  #  end  
+  def after_accept_path_for(resource)
+    list_team_member = ListTeamMember.find(:first, :conditions => ['invitation_token = ?', params[:user][:invitation_token]])
+    if list_team_member
+      @list = List.find(list_team_member.list_id)
+      list_path(@list)
+    else
+      my_list_path
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:invitation_token, :password, :password_confirmation)

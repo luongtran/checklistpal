@@ -15,8 +15,8 @@ Checklistpal::Application.routes.draw do
              :sign_out_via => ["DELETE", "GET"],
              :controllers => {:registrations => 'registrations',
                               :omniauth_callbacks => "authentications",
-                              :invitations => 'users/invitations',
-                              :sessions => "sessions"
+                              sessions: "sessions",
+                              :invitations => 'users/invitations'
              }
   # devise_for :users, controllers: {sessions: "sessions"}
 

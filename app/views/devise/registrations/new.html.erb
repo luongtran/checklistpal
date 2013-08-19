@@ -1,4 +1,4 @@
-<% title "Tudli Register Page" %>
+<% title "Tudli - Register Page" %>
 <% content_for :head do %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
@@ -45,23 +45,23 @@
                   <% end %>
 
                   <div class="controls">
-                    <%= f.email_field :email, :placeholder => "Email address", :class => "span9", :required => true %>
+                    <%= f.email_field :email, :placeholder => "Email address", :class => "span7", :required => true %>
                   </div>
                   <div class="controls">
-                    <%= f.text_field :name, :autofocus => true, :placeholder => "Username", :class => "span5", :required => true %>
+                    <%= f.text_field :name, :autofocus => true, :placeholder => "Username", :class => "span7", :required => true %>
                   </div>
                   <div class="controls">
-                    <%= f.password_field :password, :required => true, :placeholder => "Password", :class => "span5", :required => true %>
+                    <%= f.password_field :password, :required => true, :placeholder => "Password", :class => "span7", :required => true %>
                   </div>
                   <div class="controls">
-                    <%= f.password_field :password_confirmation, :required => true, :placeholder => "Password again", :class => "span5", :required => true %>
+                    <%= f.password_field :password_confirmation, :required => true, :placeholder => "Password again", :class => "span7", :required => true %>
                   </div>
                   <% if params[:plan] != 'free' %>
                       <% if @user.stripe_token %>
                           <p>Credit card acceptance is pending.</p>
                       <% else %>
                           <div class="field">
-                            <%= number_field_tag :card_number, nil, name: nil, :placeholder => "Credit Card Number", class: "span5" %>
+                            <%= number_field_tag :card_number, nil, name: nil, :placeholder => "Credit Card Number", class: "span7" %>
                           </div>
                           <div class="field">
                             <%= number_field_tag :card_code, nil, name: nil, :placeholder => "Card Security Code (CVV)", class: "span5" %>
@@ -91,7 +91,6 @@
 
                 <div class="social-account">
                   <!--<p class="text-center">Sign in with Your Facebook Account</p>-->
-
                   <p class="text-center">
                     <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary facebookbt" do %>
                         <%= content_tag(:i, "", :class => "icon-facebook") %>  Connect with Facebook
@@ -103,11 +102,14 @@
                   <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'row-fluid'}) do |f| %>
                       <div class="controls">
                         <% label_tag :email, "Email" %>
-                        <%= f.email_field :email, :placeholder => "Email address", :class => "input-block-level", :autofocus => true %>
+                        <%= f.email_field :email, :placeholder => "Email address", :class => "span9", :autofocus => true %>
                       </div>
                       <div class="controls controls-row">
-                        <%= f.password_field :password, :placeholder => "Password", :class => "span7" %>
-                        <span class="span5"><%= link_to "Forgot password?", new_password_path(resource_name), :class => "forgotpass" %></span>
+                        <%= f.password_field :password, :placeholder => "Password", :class => "span9" %>
+
+                      </div>
+                      <div class="controls">
+                        <%= link_to "Forgot password?", new_password_path(resource_name), :class => "forgotpass" %>
                       </div>
                       <div class="controls">
                         <input type="submit" value="Sign in" class="btn btn-primary">

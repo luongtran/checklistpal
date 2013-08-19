@@ -91,12 +91,14 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
-    if current_user.id == @list.user_id
-      @list.destroy
-      redirect_to my_list_url notice: "List Deleted"
-    else
-      redirect_to root_path alert: "Can't delete list"
-    end
+    current_user.lists.find(params[:id]).destroy
+    flash[:notice] = "A list has been successfully deleted"
+    redirect_to my_list_url
+  rescue RecordNotFound => e
+    flash[:notice] = "An error has occurred, your request is invalid"
+    redirect_to my_list_url
+
+
   end
 
   def update
