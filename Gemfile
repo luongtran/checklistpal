@@ -19,9 +19,9 @@ group :development do
   gem 'pg'
 end
 
-group :production do
-  gem 'mysql2'
-end
+#group :production do
+#  gem 'mysql2'
+#end
 #gem 'prawn'
 gem 'wicked_pdf'
 #gem 'pdfcrowd'
@@ -59,4 +59,4 @@ group :development do
   gem 'annotate', ">=2.5.0"
 end
 gem 'execjs'
-gem 'therubyracer' , :platforms => :ruby
+gem 'therubyracer', :platforms => :ruby

@@ -6,7 +6,7 @@
 </style>
 <script>
     $(document).ready(function () {
-      $('.error').addClass('padd');
+        $('.error').addClass('padd');
     });
 </script>
 <div class="section clearfix">
@@ -22,6 +22,7 @@
 <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :put} do |f| %>
     <%#= devise_error_messages! %>
     <%= f.hidden_field :invitation_token %>
+    <%= f.input :name, :require => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation %>
     <%= f.submit "Save My Password", :class => "btn btn-primary" %>

@@ -99,6 +99,7 @@ class User < ActiveRecord::Base
   end
 
   def self.list_create(user_id, list_id)
+
     if user = User.find(user_id)
       if user.lists.length > 0
         if !user.lists.where(id: list_id).empty?
@@ -107,9 +108,13 @@ class User < ActiveRecord::Base
       else
         return false
       end
+
     else
+
       return false
+
     end
+
   end
 
   def update_plan(role)
