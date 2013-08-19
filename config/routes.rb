@@ -19,7 +19,7 @@ Checklistpal::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => 'home#index'
 
-  match 'list/public' => 'lists/new', :as => create_new_list
+  #match 'list/public' => 'lists/new', :as => :create_new_list
 
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf

@@ -115,7 +115,7 @@ class ListsController < ApplicationController
   # Edited : 8/8/13
   def mylist
     @lists = current_user.lists
-    @list_team_members = ListTeamMember.where(invited_id: current_user.id, active: true)
+    @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|
