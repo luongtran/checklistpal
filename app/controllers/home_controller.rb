@@ -9,7 +9,6 @@ class HomeController < ApplicationController
     # user logged in create new
 
 
-
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create(
