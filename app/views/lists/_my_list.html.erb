@@ -1,9 +1,0 @@
-<% @lists.each do |list| %>
-<tr id ="list_<%= list.id %>">
-      <td><%= link_to list.name, list %></td>
-      <td><%= list.tasks.completed.count %></td>
-      <td><%= list.tasks.count %></td>
-      <td><%= link_to("Delete List", list_path(list), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini btn-danger deletelistbt') %></td>
-      <td><%= link_to("View connect",who_connect_path(list),:class => 'btn btn-mini btn-success') %>
-    </tr>
-<% end %>

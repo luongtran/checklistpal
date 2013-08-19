@@ -142,9 +142,7 @@ class ListsController < ApplicationController
     @is_not_connect = false
     @list_id = params[:list_id]
     @user_id = params[:user_id]
-
     @current_connect = ListTeamMember.find(:all, :conditions => ["list_id = ? and invited_id = ?", @list_id, @user_id])
-
     if @current_connect.empty?
       @success = false
     else
@@ -157,18 +155,15 @@ class ListsController < ApplicationController
     end
   end
 
+  # Rewrite  19/8/13
   def search_my_list
-    @user = current_user
-    @list_name = params[:list_name]
-    @lists = List.find(:all, :conditions => ["user_id = ? AND name like ?", @user.id, "%#{@list_name}%"])
-    if @lists.length > 0
-      @success = true
-    else
-      @success = false
-    end
+    #if params[:list_name].length != 0
+    keyword = "%#{params[:list_name]}%"
+    @lists = current_user.lists.where("lower(name) like ?", keyword.downcase)
     response do |format|
       format.js
     end
+
   end
 
   private

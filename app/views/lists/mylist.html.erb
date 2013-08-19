@@ -7,25 +7,26 @@
     <h3>My Lists</h3>
   </div>
 </div>
+
+
 <div class="section clearfix">
   <div id="mylist">
     <div class="clearfix">
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="mylist">
+            <%= form_tag search_my_list_path, :class => "searchmini clearfix", :id => "mylist_search_form" do %>
+                <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ....", :id => "mylist_keyword_search", :required => true, :autocomplete => :off %>
+                <%= image_tag "loading.gif", :id => "search_loading", :style => "display: none;padding-left: 7px;" %>
+            <% end %>
+            <div class="panel" id="my_list_seach_result" style="display: none;">
+            </div>
 
-            <div class="panel">
+            <div class="panel" id="my_lists">
               <% if @lists.blank? %>
                   <h4>You don't have any list</h4>
               <% else %>
-
                   <!--Rebuild-->
-                  <% if false %>
-                  <%= form_tag search_my_list_path, :class => "searchmini clearfix", :remote => true do %>
-                      <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ....", :required => true %>
-                      <input type="submit" value="" class="submitbt">
-                  <% end %>
-                  <% end %>
                   <table class="table table-hover">
                     <% @lists.each do |list| %>
                         <tr>
@@ -63,6 +64,7 @@
                   <br/>
               <% end %>
             </div>
+
             <br/>
 
             <div class="panel">

@@ -1,5 +1,1 @@
-<% if @success %>
-$(".panel").html("<%= escape_javascript render('lists/search_result') %>");
-<% else %>
-$(".panel").html('<p>No result match !</p><br/><%= link_to "Back to my list" , my_list_path , :class => "btn btn-small btn-info" %>');
-<% end %>
+$("#my_list_seach_result").html("<%= escape_javascript render('lists/search_my_list_result') %>");

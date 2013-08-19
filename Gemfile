@@ -59,4 +59,4 @@ group :development do
   gem 'annotate', ">=2.5.0"
 end
 gem 'execjs'
-gem 'therubyracer' , :platforms => :ruby
+gem 'therubyracer', :platforms => :ruby
