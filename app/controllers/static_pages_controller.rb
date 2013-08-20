@@ -7,6 +7,10 @@ class StaticPagesController < ApplicationController
     @page = StaticPage.where(page_name: 'Support Page').first
   end
 
+  def paid_support
+    @page = StaticPage.where(page_name: 'PAID Support Page').first
+  end
+
   def not_found
     @page = StaticPage.where(page_name: '404 Page').first
     render :status => 404, :formats => [:html]

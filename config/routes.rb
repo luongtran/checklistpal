@@ -66,6 +66,8 @@ Checklistpal::Application.routes.draw do
   match '/search_my_connect' => 'home#search_my_connect', :as => :search_my_connect
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support
+  match '/psupport' => 'static_pages#paid_support', :as => :paid_support
+
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'

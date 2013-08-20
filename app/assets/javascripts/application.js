@@ -294,8 +294,7 @@ $(function () {
     });
 
     $("#mylist_keyword_search").bind("keyup", function (e) {
-//        var keyword = $('#mylist_keyword_search').val();
-//        if (e.keyCode == 0 && keyword.length == 1) {
+//        if (e.keyCode == 0 && keyword.length == 1) {      // key code = 0 => Space
 //            // Enter pressed... do anything here...
 //        }
         if ($('#mylist_keyword_search').val().trim() !== "") {
