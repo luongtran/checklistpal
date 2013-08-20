@@ -34,6 +34,8 @@ Checklistpal::Application.routes.draw do
   resources :tasks do
     resources :comments
   end
+
+  match "/download_pdf(.:format)" => "lists#index_pdf", :method => :get, :as => :index_pdf
   match '/signup_options' => 'home#signup_options', :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit", :as => :edit_task

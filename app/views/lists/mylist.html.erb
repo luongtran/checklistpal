@@ -3,9 +3,7 @@
   <div class="pull-right">
 
   </div>
-  <div class="pull-left">
-    <h3>My Lists</h3>
-  </div>
+
 </div>
 
 
@@ -15,7 +13,7 @@
       <div class="divine50">
         <div class="signoption row-fluid">
           <div class="mylist">
-
+            <h3>My Lists</h3>
             <% if !@lists.blank? %>
                 <%= form_tag search_my_list_path, :class => "searchmini clearfix", :id => "mylist_search_form" do %>
                     <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ....", :id => "mylist_keyword_search", :required => true, :autocomplete => :off %>
@@ -26,6 +24,7 @@
             <% end %>
 
             <div class="panel" id="my_lists">
+
               <% if @lists.blank? %>
                   <h4>You don't have any list</h4>
               <% else %>
