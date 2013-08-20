@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:paid_support]
+
   def about
     @page = StaticPage.where(page_name: 'About Page').first
   end
@@ -8,6 +10,9 @@ class StaticPagesController < ApplicationController
   end
 
   def paid_support
+    if current_user.roles.first.name == 'free'
+      redirect_to my_list_url
+    end
     @page = StaticPage.where(page_name: 'PAID Support Page').first
   end
 
