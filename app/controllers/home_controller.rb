@@ -5,8 +5,7 @@ class HomeController < ApplicationController
   def index
     random_string = SecureRandom.urlsafe_base64
     if !current_user
-
-      @list = List.create(:name => "Name of List", :description => "To do list", :slug => random_string)
+      @list = List.new(:name => "Name of List",:description => "To do list",:slug => random_string)
       if @list.save
         session[:new_lists] ||= []
         session[:new_lists] << @list.id
