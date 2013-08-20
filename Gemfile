@@ -19,9 +19,9 @@ group :development do
   gem 'pg'
 end
 
-#group :production do
-#  gem 'mysql2'
-#end
+group :production do
+  gem 'mysql2'
+end
 #gem 'prawn'
 #gem 'wicked_pdf'
 #gem 'pdfcrowd'

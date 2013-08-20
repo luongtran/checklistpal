@@ -59,7 +59,7 @@ class ListsController < ApplicationController
   def download_pdf
     @list = List.find(params[:lid])
     # Check the list belongs to current_user
-    puts "Yes, i known _________"
+
     #pdf = WickedPdf.new.pdf_from_string(
     #    render_to_string('_pdf.html.erb'),
     #    :layout => false
