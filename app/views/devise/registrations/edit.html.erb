@@ -25,13 +25,19 @@
         $(myArray[0]).attr('checked', "checked");
     });
 
+    $(document).ready(function () {
+        $('.account_edit_field').keydown(function () {
+         $('#submit_update_account_btn').removeAttr('disabled');
+            $(this).removeClass('account_edit_field');
+        });
+
+
+    });
+
 </script>
 
 <div class="section clearfix">
-
   <div class="pull-right">
-
-
   </div>
   <div class="pull-left">
     <h3>My Account</h3>
@@ -58,7 +64,7 @@
     <!-- Just added to show the preview when the image is uploaded. -->
 
     <div class="error-upload hidden">
-      <h4 style="color: red;" class="error-message"> Invalid file, please select an image file !</h4>
+      <h5 style="color: red;" class="error-message"> Invalid file, please select an image file !</h5>
     </div>
 
     <div class="uploading-indicator hidden" style="font-size: 120%;">
@@ -81,9 +87,9 @@
                     $('.error-upload').removeClass('hidden');
                 }
                 else {
-                    if (this.files[0].size > 1000141) {
+                    if (this.files[0].size > 100 * 1024) {   // Unit = bytes , limit 100KB
                         $('.error-upload').removeClass('hidden');
-                        $('.error-message').text('File size is too big');
+                        $('.error-message').text('File size is too big, please select another ');
                     }
                     else {
                         $('.error-upload').addClass('hidden');
@@ -146,18 +152,18 @@
                     <%= f.email_field :email, :autofocus => true, :placeholder => "Email address", :class => "span6", :required => true, :readonly => true %>
                   </div>
                   <div class="controls">
-                    <%= f.text_field :name, :placeholder => "User name", :class => "span6", :required => true %>
+                    <%= f.text_field :name, :placeholder => "Username", :class => "span6 account_edit_field", :required => true %>
                   </div>
                   <div class="controls">
-                    <%= f.password_field :password, :placeholder => "Password", :class => "span6", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+                    <%= f.password_field :password, :placeholder => "Password", :class => "span6 account_edit_field", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
                   </div>
                   <div class="controls">
-                    <%= f.password_field :password_confirmation, :required => false, :placeholder => "Password again", :class => "span6" %>
+                    <%= f.password_field :password_confirmation, :required => false, :placeholder => "Password again", :class => "span6 account_edit_field" %>
                   </div>
                   <div class="controls">
                     <%#= f.password_field :current_password, :required => true, :placeholder =>"Current password", :class =>"span5",:hint => "we need your current password to confirm your changes",:required => true %>
                   </div>
-                  <%= f.button :submit, 'Update', :class => 'btn-primary btn-small' %>
+                  <%= f.button :submit, 'Update', :class => 'btn-primary btn-small', :id => "submit_update_account_btn", :disabled => "disabled" %>
               <% end %>
               <p>Unhappy?
                 <a data-toggle="modal" href="#cancel-account" class="btn btn-danger btn-mini" type="button" style="margin-left: 10px;">Cancel
