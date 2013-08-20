@@ -39,7 +39,7 @@
 
         <div class="title">My Account</div>
       </a>
-      <a class="dash-unit" href="<%= support_path %>">
+      <a class="dash-unit" href="<%= current_user.roles.first.name == 'free' ? support_path : paid_support_path%>">
         <img src="assets/dash_5.png" alt=""/>
 
         <div class="title">Support</div>
