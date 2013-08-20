@@ -1,13 +1,16 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
         <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.png" %>" width="40" height="50"></img>
-        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"><%= User.find(comment.user_id).name %>
-          : <%= comment.content %> </span>
+
+        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: #da3222;" %>">
+          <span style="font-weight: bold" > <%= User.find(comment.user_id).name %> - </span>
+          <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
+        </span>
         <hr/>
     <% end %>
 <% end %>
 <%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>
-    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 140 characters", :maxlength => "140" %>
+    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 160 characters", :maxlength => "160" %>
     <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success" %>
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
 <% end %>

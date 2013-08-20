@@ -45,31 +45,44 @@ class ListsController < ApplicationController
     #respond_to do |format|
     #  format.html # show.html.erb
     #  format.pdf do
-    #    render :template => 'lists/pdf',
-    #           :locals => {:current_list => @list}
+    #    puts "\n\n_____OK format PDF"
+    #    #render :template => 'lists/pdf',
+    #    #       :locals => {:current_list => @list}
     #  end
     #end
 
   end
 
-  def to_pdf
 
+  def index_pdf
+    render :pdf => "my_pdf",
+           :layout => false,
+           :template => "/lists/index_pdf",
+           :footer => {:center => "Center",
+                       :left => "Left",
+                       :right => "Right"}
   end
 
   def download_pdf
-
     @list = List.find(params[:lid])
     session[:list_id] = @list.id
-    pdf = WickedPdf.new.pdf_from_string(
-        render_to_string('_pdf.html.erb'),
-        :layout => false
-    )
 
-    save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end
-    send_file save_path, :type => 'application/pdf'
+    kit = PDFKit.new('http://www.google.com.vn')
+    #kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
+
+
+    #pdf = WickedPdf.new.pdf_from_string(
+    #    render_to_string('_pdf.html.erb'),
+    #    :layout => 'application'
+    #)
+    #
+    #save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
+    #File.open(save_path, 'wb') do |file|
+    #  file << pdf
+    #end
+    send_file kit.to_pdf,
+              :type => 'application/pdf',
+              :filename => 'test_pdfkit.pdf'
   end
 
   def edit
@@ -115,7 +128,7 @@ class ListsController < ApplicationController
   # Edited : 8/8/13
   def mylist
     @lists = current_user.lists
-    @list_team_members = ListTeamMember.where(invited_id: current_user.id, active: true)
+    @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members
       @list_team_members.each do |member|

@@ -117,7 +117,11 @@
       <div class="pull-left">© Tudli, LLC</div>
       <div class="pull-right">
         <ul class="unstyled footermenu">
-          <li><a href="<%= support_path %>" target="_blank">SUPPORT</a></li>
+          <% if current_user && current_user.roles.first.name != 'free' %>
+              <li><a href="<%= paid_support_path %>" target="_blank">SUPPORT</a></li>
+          <% else %>
+              <li><a href="<%= support_path %>" target="_blank">SUPPORT</a></li>
+          <% end %>
           <li><a href="<%= about_path %>" target="_blank">About</a></li>
         </ul>
       </div>

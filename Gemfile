@@ -20,12 +20,12 @@ group :development do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '0.2.6'
 end
 #gem 'prawn'
 gem 'wicked_pdf'
 #gem 'pdfcrowd'
-#gem "pdfkit"
+gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"
 gem 'bootstrap-datepicker-rails'

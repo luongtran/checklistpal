@@ -1,0 +1,1 @@
+WickedPdf.config = {:exe_path => 'C:\wkhtmltopdf\wkhtmltopdf.exe'} if Rails.env == 'development'

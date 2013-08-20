@@ -1,6 +1,9 @@
+
+<%= wicked_pdf_stylesheet_link_tag "documents" %>
 <% current_list = List.find(session[:list_id])
    session[:list_id] = nil
 %>
+
 <div class="section clearfix">
   <div class="todolist">
     <div class="row-fluid">
@@ -8,36 +11,30 @@
               <div class="notice" id="notice">
               </div>
               <ul class="unstyled" id="list-items">
-
                 <% current_list.tasks.items.each do |task| %>
                     <div class="taskinfo handle">
                       <li class="handle">
                         <div class="items">
                           <div class="checkbox">
-          <span class="mark" title="Mark completed">
-              <%= check_box_tag 'mark_complete', task.id, task.completed, :class => 'checkbox mark_comp', :data_target => current_list.id %>
-          </span>
-          <span class="task-des" title="Task name">
-            <% if !task.completed %> <!-- Render task incompleted -->
-              <div class="item-title hidden"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name"}) %></div>
-            <% else %>                <!-- Render task completed -->
-              <div class="item-title item-completed hidden"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name item-completed"}) %></div>
-            <% end %>
-          </span>
+                          <span class="mark" title="Mark completed">
+                              <%= check_box_tag 'mark_complete', task.id, task.completed, :class => 'checkbox mark_comp', :data_target => current_list.id %>
+                          </span>
+                          <span class="task-des" title="Task name">
+                            <% if !task.completed %> <!-- Render task incompleted -->
+                              <div class="item-title hidden"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name"}) %></div>
+                            <% else %>                <!-- Render task completed -->
+                              <div class="item-title item-completed hidden"><%= auto_link(task.description, :html => {:target => '_blank', :class => "task_name item-completed"}) %></div>
+                            <% end %>
+                          </span>
                             <% if task.hasduedate && task.due_date != nil %>
-          <span class="due_date_show">
-            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%Y-%m-%d") %></span>
-          </span>
+                          <span class="due_date_show">
+                            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%Y-%m-%d") %></span>
+                          </span>
                             <% else %>
-            <span class="due_date_show hidden">
-          </span>
+                            <span class="due_date_show hidden">
+                          </span>
                             <% end %>
-                            <% if task.comments.count > 0 %>
-                    <span class="number_comment" id="number_comment_<%= task.id %>">(<%= task.comments.count %>
-                      Comments)</span>
-                            <% else %>
-                                <span class="number_comment hidden" id="number_comment_<%= task.id %>"></span>
-                            <% end %>
+
                           </div>
 
 

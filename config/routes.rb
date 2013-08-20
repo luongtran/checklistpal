@@ -19,7 +19,7 @@ Checklistpal::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => 'home#index'
 
-  match 'list/public' => 'lists/new', :as => create_new_list
+  #match 'list/public' => 'lists/new', :as => :create_new_list
 
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf
@@ -34,6 +34,8 @@ Checklistpal::Application.routes.draw do
   resources :tasks do
     resources :comments
   end
+
+  match "/download_pdf(.:format)" => "lists#index_pdf", :method => :get, :as => :index_pdf
   match '/signup_options' => 'home#signup_options', :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit", :as => :edit_task
@@ -66,6 +68,8 @@ Checklistpal::Application.routes.draw do
   match '/search_my_connect' => 'home#search_my_connect', :as => :search_my_connect
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support
+  match '/psupport' => 'static_pages#paid_support', :as => :paid_support
+
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
     put 'update_card', :to => 'registrations#update_card'
