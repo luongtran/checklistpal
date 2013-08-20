@@ -193,16 +193,6 @@ class HomeController < ApplicationController
   # Find and invite with a selected list
   def find_invite
     current_user.lists.find(params[:list_id])
-    list_team_members = current_user.list_team_members.find(:all, :conditions => ["list_id = ? AND active = ?", params[:list_id], true])
-    user_ids = []
-    if list_team_members
-      list_team_members.each do |member|
-        user_ids += [member.invited_id]
-      end
-      if !user_ids.empty?
-        @my_connects = User.where('id IN (?)', user_ids)
-      end
-    end
   rescue ActiveRecord::RecordNotFound => e
     redirect_to my_list_url
   end

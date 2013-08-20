@@ -56,22 +56,6 @@
               $("#user_email").val('');
           });
       </script>
-      <div class="myconnection pull-right">
-        <h3 class="title-gray">My connections</h3>
-        <div class="panel">
-          <% if !@my_connects.blank? %>
-              <% @my_connects.each do |connect| %>
-                  <label class="checkbox">
-                    <span class="name"><%= connect.email %></span>
-                  </label>
-              <% end %>
-              <%= link_to 'Add Unlimited Invites', my_account_path(:action => 'upgrade'), :class => 'btn' if current_user.has_role? 'free' %>
-          <% else %>
-              <span>The list doesn't have any connection</span>
-          <% end %>
-
-        </div>
-      </div>
     </div>
   </div>
 </div>
