@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10c783a3-de5d-4bb4-bd4c-bc89d2e54380" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/home/dashboard.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
@@ -71,10 +68,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_comment_task.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_comment_task.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="117" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-11.115385">
+            <state line="17" column="117" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.49066213">
               <folding>
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
               </folding>
@@ -85,16 +82,25 @@
       <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="25" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+            <state line="24" column="26" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.57894737">
+            <state line="28" column="0" selection-start="1347" selection-end="1347" vertical-scroll-proportion="-13.115385">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="10" selection-start="1090" selection-end="1090" vertical-scroll-proportion="-18.307692">
               <folding />
             </state>
           </provider>
@@ -129,15 +135,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="48" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -160,7 +157,6 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/dashboard.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/lists.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
@@ -172,6 +168,7 @@
         <option value="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/home/dashboard.html.erb" />
       </list>
     </option>
   </component>
@@ -608,13 +605,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/lists.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="35" selection-start="334" selection-end="340" vertical-scroll-proportion="0.20955315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0">
@@ -696,15 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="117" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-11.115385">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="38" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.0">
@@ -714,17 +695,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="25" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="1347" selection-end="1347" vertical-scroll-proportion="-13.115385">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/dashboard.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.57894737">
+        <state line="31" column="10" selection-start="1090" selection-end="1090" vertical-scroll-proportion="-18.307692">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="26" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="117" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.49066213">
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
