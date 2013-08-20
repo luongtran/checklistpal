@@ -71,11 +71,9 @@ class User < ActiveRecord::Base
   end
 
   def get_avatar_url
-    s3_log = Logger.new('log/s3.log')
     s3 = AWS::S3.new
     bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
     obj = bucket.objects[self.avatar_file_name]
-    s3_log.error("#{obj.blank?}")
     # Check nil for obj?
     return obj.url_for(:read).to_s
   rescue Exception => e
