@@ -23,7 +23,7 @@ group :production do
   gem 'mysql2', '0.2.6'
 end
 #gem 'prawn'
-gem 'wicked_pdf'
+#gem 'wicked_pdf'
 #gem 'pdfcrowd'
 gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit

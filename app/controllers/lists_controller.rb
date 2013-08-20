@@ -53,16 +53,6 @@ class ListsController < ApplicationController
 
   end
 
-
-  def index_pdf
-    render :pdf => "my_pdf",
-           :layout => false,
-           :template => "/lists/index_pdf",
-           :footer => {:center => "Center",
-                       :left => "Left",
-                       :right => "Right"}
-  end
-
   def download_pdf
     @list = List.find(params[:lid])
     session[:list_id] = @list.id
