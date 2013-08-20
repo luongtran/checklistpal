@@ -7,6 +7,6 @@
   </div>
 </div>
 <div class="section clearfix">
-  <h1> <%= @page.nil? ? "The page you were looking for doesn't exist" : @page.title %></h1>
+
   <p><%= raw (@page.nil? ? "The page you were looking for doesn't exist" : @page.content) %></p>
 </div>
