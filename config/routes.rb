@@ -11,15 +11,13 @@ Checklistpal::Application.routes.draw do
              :sign_out_via => ["DELETE", "GET"],
              :controllers => {:registrations => 'registrations',
                               :omniauth_callbacks => "authentications",
-                              sessions: "sessions",
+                              :sessions => "sessions",
                               :invitations => 'users/invitations'
              }
   # devise_for :users, controllers: {sessions: "sessions"}
 
   ActiveAdmin.routes(self)
   root :to => 'home#index'
-
-  #match 'list/public' => 'lists/new', :as => :create_new_list
 
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf

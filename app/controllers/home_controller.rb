@@ -3,17 +3,9 @@ class HomeController < ApplicationController
   require 'securerandom'
 
   def index
-    # 4 cases
-    # guess user create new
-    # guess view existing list
-    # user logged in create new
     random_string = SecureRandom.urlsafe_base64
     if !current_user
-      @list = List.create(
-          :name => "Name of List",
-          :description => "To do list",
-          :slug => random_string
-      )
+      @list = List.create(:name => "Name of List", :description => "To do list", :slug => random_string)
       if @list.save
         session[:new_lists] ||= []
         session[:new_lists] << @list.id
@@ -34,10 +26,7 @@ class HomeController < ApplicationController
         flash[:error] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists].html_safe
         redirect_to my_list_url
       end
-
     end
-
-
   end
 
   def dashboard
