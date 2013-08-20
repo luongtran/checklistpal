@@ -293,8 +293,12 @@ $(function () {
 
     });
 
-    $("#mylist_keyword_search").bind("keyup", function () {
-//        if ($('#mylist_keyword_search').val().trim() !== "") {
+    $("#mylist_keyword_search").bind("keyup", function (e) {
+//        var keyword = $('#mylist_keyword_search').val();
+//        if (e.keyCode == 0 && keyword.length == 1) {
+//            // Enter pressed... do anything here...
+//        }
+        if ($('#mylist_keyword_search').val().trim() !== "") {
             $("#search_loading").show();
             var form = $("#mylist_search_form");
             $('#my_lists').hide();
@@ -304,12 +308,12 @@ $(function () {
                 $("#search_loading").hide();
                 $('#my_list_seach_result').show();
             });
-//        }
-//        else {
-//            $('#mylist_keyword_search').val('');
-//            $('#my_lists').show();
-//            $('#my_list_seach_result').hide();
-//        }
+        }
+        else {
+            $('#mylist_keyword_search').val('');
+            $('#my_lists').show();
+            $('#my_list_seach_result').hide();
+        }
     });
 
 });
