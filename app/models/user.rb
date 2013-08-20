@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
   validates_presence_of :name
-  validates_length_of :name, :minimum => 3
+  #validates_length_of :name, :minimum => 3
 
   def update_avatar(file)
     #need remove old avatar
