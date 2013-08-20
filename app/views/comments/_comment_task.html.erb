@@ -1,8 +1,11 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
         <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.png" %>" width="40" height="50"></img>
-        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>"><%= User.find(comment.user_id).name %>
-          : <%= comment.content %> </span>
+
+        <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: darkred;" %>">
+          <span style="font-weight: bold" > <%= User.find(comment.user_id).name %> - </span>
+          <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
+        </span>
         <hr/>
     <% end %>
 <% end %>
