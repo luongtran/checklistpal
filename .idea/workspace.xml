@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75e3ac58-1144-4525-82c2-c3624f600985" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="75e3ac58-1144-4525-82c2-c3624f600985" time="1376907528623" ignored="false" />
+    <file path="/Dummy.txt" changelist="75e3ac58-1144-4525-82c2-c3624f600985" time="1376987902469" ignored="false" />
     <file path="/invitations_controller.rb" changelist="75e3ac58-1144-4525-82c2-c3624f600985" time="1376903314300" ignored="false" />
     <file path="/*.regexp" changelist="75e3ac58-1144-4525-82c2-c3624f600985" time="1376903877946" ignored="false" />
     <file path="/edit.html.erb" changelist="75e3ac58-1144-4525-82c2-c3624f600985" time="1376902905828" ignored="false" />
@@ -42,9 +40,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="14" column="136" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#5974#6484#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,7 +48,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="35" selection-start="220" selection-end="220" vertical-scroll-proportion="0.113144755">
+            <state line="9" column="1" selection-start="407" selection-end="407" vertical-scroll-proportion="0.2545757">
               <folding />
             </state>
           </provider>
@@ -135,7 +131,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,7 +318,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -512,7 +508,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22547585" sideWeight="0.8819777" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22913617" sideWeight="0.8819777" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32854864" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -635,9 +631,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="9" selection-start="3561" selection-end="3561" vertical-scroll-proportion="0.45326278">
-          <folding />
-        </state>
+        <state line="104" column="9" selection-start="3561" selection-end="3561" vertical-scroll-proportion="0.45326278" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/invitations/edit.html.erb">
@@ -665,15 +659,13 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="136" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#5974#6484#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="35" selection-start="220" selection-end="220" vertical-scroll-proportion="0.113144755">
+        <state line="9" column="1" selection-start="407" selection-end="407" vertical-scroll-proportion="0.2545757">
           <folding />
         </state>
       </provider>
