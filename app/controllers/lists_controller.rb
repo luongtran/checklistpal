@@ -57,19 +57,18 @@ class ListsController < ApplicationController
   end
 
   def download_pdf
-
     @list = List.find(params[:lid])
-    session[:list_id] = @list.id
-    pdf = WickedPdf.new.pdf_from_string(
-        render_to_string('_pdf.html.erb'),
-        :layout => false
-    )
-
-    save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end
-    send_file save_path, :type => 'application/pdf'
+    # Check the list belongs to current_user
+    puts "Yes, i known _________"
+    #pdf = WickedPdf.new.pdf_from_string(
+    #    render_to_string('_pdf.html.erb'),
+    #    :layout => false
+    #)
+    #save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
+    #File.open(save_path, 'wb') do |file|
+    #  file << pdf
+    #end
+    #send_file save_path, :type => 'application/pdf'
   end
 
   def edit

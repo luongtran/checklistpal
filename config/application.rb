@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+require 'pdfkit'
 #require 'wicked_pdf'
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -18,7 +19,7 @@ module Checklistpal
   class Application < Rails::Application
 
    # config.force_ssl = true
-  #  config.middleware.use "PDFKit::Middleware"
+    config.middleware.use "PDFKit::Middleware", :print_media_type => true
 
   #  config.middleware.use WickedPdf::Middleware
     # Settings in config/environments/* take precedence over those specified here.
