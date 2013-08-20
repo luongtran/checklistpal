@@ -21,7 +21,7 @@ module Checklistpal
 
     # config.force_ssl = true
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
-    config.threadsafe!
+   # config.threadsafe!
 
     #  config.middleware.use WickedPdf::Middleware
     # Settings in config/environments/* take precedence over those specified here.
