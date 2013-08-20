@@ -20,7 +20,7 @@ group :development do
 end
 
 group :production do
-  gem 'mysql2', '0.2.6'
+  gem 'mysql2'
 end
 #gem 'prawn'
 #gem 'wicked_pdf'

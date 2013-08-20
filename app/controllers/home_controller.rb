@@ -7,8 +7,6 @@ class HomeController < ApplicationController
     # guess user create new
     # guess view existing list
     # user logged in create new
-
-
     random_string = SecureRandom.urlsafe_base64
     if !current_user
       @list = List.create(
@@ -36,11 +34,11 @@ class HomeController < ApplicationController
         flash[:error] = %Q[Please <a href="#{my_account_path(:action => 'upgrade')}">upgrade</a> your plan to create more lists].html_safe
         redirect_to my_list_url
       end
+
     end
 
 
   end
-
 
   def dashboard
 

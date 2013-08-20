@@ -3,7 +3,7 @@
         <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.png" %>" width="40" height="50"></img>
 
         <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: #da3222;" %>">
-          <span style="font-weight: bold" > <%= User.find(comment.user_id).name %> - </span>
+           <%= User.find(comment.user_id).name %> -
           <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
         </span>
         <hr/>

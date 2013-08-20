@@ -54,25 +54,25 @@ class ListsController < ApplicationController
   end
 
   def download_pdf
-    @list = List.find(params[:lid])
-    session[:list_id] = @list.id
-
-    kit = PDFKit.new('http://www.google.com.vn')
-    #kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
-
-
-    #pdf = WickedPdf.new.pdf_from_string(
-    #    render_to_string('_pdf.html.erb'),
-    #    :layout => 'application'
-    #)
+    #@list = List.find(params[:lid])
+    #session[:list_id] = @list.id
     #
-    #save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
-    #File.open(save_path, 'wb') do |file|
-    #  file << pdf
-    #end
-    send_file kit.to_pdf,
-              :type => 'application/pdf',
-              :filename => 'test_pdfkit.pdf'
+    #kit = PDFKit.new('http://www.google.com.vn')
+    ##kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
+    #
+    #
+    ##pdf = WickedPdf.new.pdf_from_string(
+    ##    render_to_string('_pdf.html.erb'),
+    ##    :layout => 'application'
+    ##)
+    ##
+    ##save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
+    ##File.open(save_path, 'wb') do |file|
+    ##  file << pdf
+    ##end
+    #send_file kit.to_pdf,
+    #          :type => 'application/pdf',
+    #          :filename => 'test_pdfkit.pdf'
   end
 
   def edit
