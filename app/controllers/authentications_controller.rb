@@ -1,9 +1,15 @@
 class AuthenticationsController < ApplicationController
+
+  before_filter :logging
+
   def index
     @authentications = Authentication.all
   end
 
   def facebook
+    logger = Logger.new('log/facebook.log')
+    logger.info('facebook function')
+
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
     if authentication
@@ -52,5 +58,11 @@ class AuthenticationsController < ApplicationController
     @authentication = Authentication.find(params[:id])
     @authentication.destroy
     redirect_to authentications_url, :notice => "Successfully destroyed authentication."
+  end
+
+  private
+  def logging
+    logger = Logger.new('log/facebook.log')
+    logger.info('\n ------ AuthenticationsController : \n')
   end
 end
