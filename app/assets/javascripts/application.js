@@ -13,7 +13,8 @@
 
 $(function () {
     $(".logo-editbt").on("click", function () {
-        var html_form = '<form action="#" class="edit_list_frm" remote="true"><input type="text" class="input-small" name="list[name]" id="list_name" />' +
+        var html_form = '<form action="#" class="edit_list_frm" remote="true">' +
+            '<input type="text" class="input-small" name="list[name]" id="list_name" maxlength="140" />' +
             '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
             '<input type="button" value="Cancel" class="btn btn-small canceleditlistbt" /></form>';
         var obj = $(this).parent("#logo").children(".list-name");
