@@ -296,16 +296,33 @@ $(function () {
         }
     });
 
-    $("#mylist_keyword_search").bind("keyup", function (e) {
-//        if (e.keyCode == 0 && keyword.length == 1) {      // key code = 0 => Space
-//            // Enter pressed... do anything here...
+//    $("#mylist_keyword_search").bind("keyup", function (e) {
+//        if ($('#mylist_keyword_search').val().trim() !== "") {
+//            $("#search_loading").show();
+//            var form = $("#mylist_search_form");
+//            $('#my_lists_panel').hide();
+//            var url = "/mylists/search";
+//            var formData = form.serialize();
+//            $.get(url, formData, function () {
+//                $("#search_loading").hide();
+//                $('#my_list_seach_result').show();
+//            });
 //        }
+//        else {
+//            $('#mylist_keyword_search').val('');
+//            $('#my_lists_panel').show();
+//            $('#my_list_seach_result').hide();
+//        }
+//    });
+    $("#mylist_keyword_search").bind("keyup", function (e) {
         if ($('#mylist_keyword_search').val().trim() !== "") {
             $("#search_loading").show();
+
             var form = $("#mylist_search_form");
             $('#my_lists_panel').hide();
             var url = "/mylists/search";
             var formData = form.serialize();
+
             $.get(url, formData, function () {
                 $("#search_loading").hide();
                 $('#my_list_seach_result').show();
