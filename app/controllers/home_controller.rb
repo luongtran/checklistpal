@@ -132,6 +132,7 @@ class HomeController < ApplicationController
       @invite_yourself = true
       return
     end
+
     if !invite_email.blank? && !invite_name.blank?
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
     else
@@ -143,8 +144,10 @@ class HomeController < ApplicationController
         end
       end
     end
+
     @has_over_connect = false
-    @users = User.find(:all, :conditions => condition)
+   # @users = User.find(:all, :conditions => condition)
+    @users = User.where(condition)
     @users -= [current_user]
     @list_id = params[:list_id]
     if @users.length > 0

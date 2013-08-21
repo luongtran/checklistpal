@@ -290,6 +290,8 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    logger = Logger.new('log/facebook.log')
+    logger.info('\n find_for_facebook_oauth function in User Model : \n')
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.create(provider: auth.provider,
@@ -297,6 +299,8 @@ class User < ActiveRecord::Base
                          email: auth.info.email,
                          password: Devise.friendly_token[0, 20]
       )
+      user.add_role('free')
+
     end
     user
   end

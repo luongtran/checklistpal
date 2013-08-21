@@ -9,7 +9,6 @@ class AuthenticationsController < ApplicationController
   def facebook
     logger = Logger.new('log/facebook.log')
     logger.info('facebook function')
-
     omni = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
     if authentication
