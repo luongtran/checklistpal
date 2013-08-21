@@ -13,8 +13,9 @@
 
 $(function () {
     $(".logo-editbt").on("click", function () {
+        $(this).hide();
         var html_form = '<form action="#" class="edit_list_frm" remote="true">' +
-            '<input type="text" class="input-small" name="list[name]" id="list_name" maxlength="140" />' +
+            '<input type="text" class="input-small" name="list[name]" id="list_name" maxlength="50" placeholder="maximum 50 characters"/>' +
             '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
             '<input type="button" value="Cancel" class="btn btn-small canceleditlistbt" /></form>';
         var obj = $(this).parent("#logo").children(".list-name");
@@ -24,6 +25,7 @@ $(function () {
         obj.children().children("#list_name").val(list_cur_name);
         obj.children(".edit_list_frm").attr("action", url);
         $('.edit_list_frm').on("submit", function () {
+            $(".logo-editbt").show();
             var form = this;
             $("#list_name").val($("#list_name").val().trim());
             if ($("#list_name").val() === "") {
@@ -57,6 +59,7 @@ $(function () {
         });
         $('.canceleditlistbt').on("click", function () {
             $('.edit_list_frm').parent(".list-name").html(list_cur_name);
+            $(".logo-editbt").show();
         });
 
     });
