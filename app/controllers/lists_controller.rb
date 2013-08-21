@@ -109,12 +109,12 @@ class ListsController < ApplicationController
     if @list.update_attributes(params[:list])
       respond_with(@list, :location => list_url(@list))
     else
-      flash[:error] = 'Something is Awry :('
+      flash[:error] = 'Sory, something was wrong.'
       redirect_to edit_list_path(@list)
     end
   end
 
-  def see_more
+  def see_more_my_list
     current = params[:p]
     @more_lists = current_user.lists.limit(5).offset(current.to_i)
     @end_of_lists = false
@@ -124,6 +124,11 @@ class ListsController < ApplicationController
     response do |format|
       format.js
     end
+  end
+
+  def see_more_archived_list
+
+
   end
 
   # Edited : 21/8/13
