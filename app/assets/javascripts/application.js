@@ -294,7 +294,6 @@ $(function () {
             $(this).parent().parent().parent('.items').children().children('.due_date_show').html(form);
             $(this).parent().parent().parent('.items').children().children('.due_date_show').removeClass('hidden');
         }
-
     });
 
     $("#mylist_keyword_search").bind("keyup", function (e) {
@@ -318,11 +317,6 @@ $(function () {
             $('#my_list_seach_result').hide();
         }
     });
-    $(".see_more_my_lists_btn").on('click', function () {
-        total = $('.my_lists').length;
-        var url = "/mylists/see_more?p=" + total;
-        $.get(url, function () {
-        });
-    });
+
 
 });

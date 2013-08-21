@@ -116,10 +116,9 @@ class ListsController < ApplicationController
 
   def see_more
     current = params[:p]
-
     @more_lists = current_user.lists.limit(5).offset(current.to_i)
     @end_of_lists = false
-    if  @more_lists.count <= 5
+    if @more_lists.count < 5
       @end_of_lists = true
     end
     response do |format|
@@ -130,6 +129,10 @@ class ListsController < ApplicationController
   # Edited : 21/8/13
   def mylist
     @lists = current_user.lists.limit(5)
+    @more_btn = false
+    if current_user.lists.count > @lists.count
+      @more_btn = true
+    end
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members

@@ -1,6 +1,6 @@
 $('.see_more_my_lists').append("<%= escape_javascript render('lists/more_lists') %>");
 <% if @end_of_lists %>
-
-
+$('.see_more_my_lists_btn').hide();
+$('.see_less_my_lists_btn').show();
 <% end %>
 
