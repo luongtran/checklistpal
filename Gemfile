@@ -26,7 +26,6 @@ end
 #gem 'wicked_pdf'
 #gem 'pdfcrowd'
 
-gem 'will_paginate', '~> 3.0'
 gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"

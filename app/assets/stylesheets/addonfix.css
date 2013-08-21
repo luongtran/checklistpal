@@ -586,3 +586,9 @@
     line-height: 22px;
     font-size: 13px;
 }
+#see_more_my_lists_btn {
+    text-align:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -7,8 +7,6 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
 require 'pdfkit'
-require 'will_paginate'
-require 'will_paginate/active_record'
 #require 'wicked_pdf'
 
 if defined?(Bundler)
