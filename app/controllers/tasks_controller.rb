@@ -49,6 +49,7 @@ class TasksController < ApplicationController
 
   def hasduedate
     @task = @list.tasks.find(params[:id])
+
     if @task != nil?
       @task.update_attributes(:hasduedate => params[:hasduedate])
       @success = 1
@@ -61,8 +62,10 @@ class TasksController < ApplicationController
 
   def update_due_date
     @task = @list.tasks.find(params[:id])
+    # 08-26-2013
+    temp = Date.strptime(params[:due_date_value], '%m-%d-%Y').to_s
     if @task != nil?
-      @task.update_attributes({:hasduedate => true, :due_date => params[:due_date_value]})
+      @task.update_attributes({:hasduedate => true, :due_date => temp})
       @success = 1
     else
       @suceess = 0

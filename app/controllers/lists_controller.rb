@@ -114,6 +114,9 @@ class ListsController < ApplicationController
     end
   end
 
+  #def get_next_5_records
+  #  @lists
+  #end
 
   # Edited : 21/8/13
   def mylist

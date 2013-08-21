@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   before_create :update_stripe
   after_create :send_welcome_mail
   after_destroy :cancel_subscription
-  has_many :lists, :dependent => :destroy #, :select => 'id,name,user_id'
+  has_many :lists, :order => 'created_at desc', :dependent => :destroy #, :select => 'id,name,user_id'
 
   has_many :tasks, :through => :lists
   has_many :list_team_members

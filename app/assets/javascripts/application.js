@@ -172,7 +172,7 @@ $(function () {
                         buttonImage: "/assets/calendar-small.png",
                         buttonImageOnly: true,
                         minDate: 0,
-                        dateFormat: "yy-mm-dd",
+                        dateFormat: "mm-dd-yy",
                         onSelect: function (dateText) {
                             $(this).val(dateText);
                             $(this).change();
@@ -285,7 +285,7 @@ $(function () {
         buttonImage: "/assets/calendar-small.png",
         buttonImageOnly: true,
         minDate: 0,
-        dateFormat: "yy-mm-dd",
+        dateFormat: "mm-dd-yy",
         onSelect: function (dateText) {
             $(this).val(dateText);
             $(this).change();
