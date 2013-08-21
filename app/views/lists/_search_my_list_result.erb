@@ -1,33 +1,32 @@
 <% if @lists.count > 0 %>
-    <table class="table table-hover">
-      <% @lists.each do |list| %>
-          <tr>
-            <% unless list.finished? %>
-                <td class="checkbox"><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                  <% @connect_users = ListTeamMember.where(list_id: list.id, active: true) %>
-                  <% uids = [] %>
-                  <% if !@connect_users.blank? %>
-                      <% @connect_users.each do |con| %>
-                          <% uids += [con.invited_id] %>
-                      <% end %>
-                      <% @connects = User.where("id in (?)", uids) %>
-                      <% @connects.each do |connect| %>
-                          <ul class="unstyled" style="padding-top: 10px;">
-                            <li class="connect-email"><%= "#{connect.name} <#{connect.email}> " %>
-                              <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
-                            </li>
-                          </ul>
-                      <% end %>
 
+    <% @lists.each do |list| %>
+        <% unless list.finished? %>
+            <div class="one_my_list">
+              <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+              <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+              <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+              <% members = list.actived_members %>
+              <% uids = [] %>
+              <% if !members.blank? %>
+                  <% members.each do |con| %>
+                      <% uids += [con.invited_id] %>
                   <% end %>
-                </td>
-                <td><span><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;</td>
-                <td> <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %></td>
-            <% end %>
-          </tr>
-      <% end %>
+                  <% members = User.where("id in (?)", uids) %>
+                  <% members.each do |connect| %>
+                      <ul class="unstyled" style="padding-top: 5px;">
+                        <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                          <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                        </li>
+                      </ul>
+                  <% end %>
+              <% end %>
+            </div>
+        <% end %>
 
-    </table>
+
+    <% end %>
+
 <% else %>
     <p style="color: #cd4c4a; font-weight: bold;"> Not found !</p>
 <% end %>
