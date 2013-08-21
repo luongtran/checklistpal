@@ -138,6 +138,7 @@ class ListsController < ApplicationController
     if current_user.lists.count > @lists.count
       @disabled_more_btn = true
     end
+
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members
