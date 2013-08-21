@@ -30,7 +30,6 @@
 
               <% if @lists.blank? %>
                   <h4>You don't have any list</h4>
-
               <% else %>
                   <!--Rebuild-->
                   <table class="table table-hover">
@@ -38,14 +37,14 @@
                         <tr>
                           <% unless list.finished? %>
                               <td class="checkbox"><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                                <% @connect_users = ListTeamMember.where(list_id: list.id, active: true) %>
+                                <% members = list.actived_members %>
                                 <% uids = [] %>
-                                <% if !@connect_users.blank? %>
-                                    <% @connect_users.each do |con| %>
+                                <% if !members.blank? %>
+                                    <% members.each do |con| %>
                                         <% uids += [con.invited_id] %>
                                     <% end %>
-                                    <% @connects = User.where("id in (?)", uids) %>
-                                    <% @connects.each do |connect| %>
+                                    <% members = User.where("id in (?)", uids) %>
+                                    <% members.each do |connect| %>
                                         <ul class="unstyled" style="padding-top: 10px;">
                                           <li class="connect-email"><%= "#{connect.name} <#{connect.email}> " %>
                                             <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
@@ -64,7 +63,6 @@
                     <% end %>
 
                   </table>
-
                   <br/>
                   <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle' if current_user.roles.first.name ='free' %>
                   <br/>
@@ -83,14 +81,14 @@
 
                               <td class="checkbox"><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
 
-                                <% @connect_users = ListTeamMember.where(list_id: list.id, active: true) %>
+                                <% members = list.actived_members %>
                                 <% uids = [] %>
-                                <% if !@connect_users.blank? %>
-                                    <% @connect_users.each do |con| %>
+                                <% if !members.blank? %>
+                                    <% members.each do |con| %>
                                         <% uids += [con.invited_id] %>
                                     <% end %>
-                                    <% @connects = User.where("id in (?)", uids) %>
-                                    <% @connects.each do |connect| %>
+                                    <% members = User.where("id in (?)", uids) %>
+                                    <% members.each do |connect| %>
                                         <ul class="unstyled" style="padding-top: 10px;">
                                           <li class="connect-email"><%= "#{connect.name} <#{connect.email}> " %>
                                             <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
@@ -120,9 +118,9 @@
       </div>
       <div class="divine50">
         <h3 style="margin-left: 40px;">Invited list</h3>
-        <% if !@friend_lists.blank? %>
+        <% if !@invited_lists.blank? %>
             <ul class="unstyled" style="margin-left: 40px;">
-              <% @friend_lists.each do |list| %>
+              <% @invited_lists.each do |list| %>
                   <li><%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
                     <span><i><%= "   "+list.created_at.to_time.strftime("%m/%d/%Y") %></i></span></li>
               <% end %>

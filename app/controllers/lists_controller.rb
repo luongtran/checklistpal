@@ -115,7 +115,7 @@ class ListsController < ApplicationController
   end
 
 
-  # Edited : 8/8/13
+  # Edited : 21/8/13
   def mylist
     @lists = current_user.lists
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
@@ -125,17 +125,7 @@ class ListsController < ApplicationController
         list_ids += [member.list_id]
       end
       if !list_ids.empty?
-        @friend_lists = List.where('id IN (?)', list_ids)
-      end
-    end
-    @list_team_members2 = current_user.list_team_members.find(:all, :conditions => ["active = ?", true])
-    user_ids = []
-    if @list_team_members2
-      @list_team_members2.each do |member|
-        user_ids += [member.invited_id]
-      end
-      if !user_ids.empty?
-        @my_connects = User.where('id IN (?)', user_ids)
+        @invited_lists = List.where('id IN (?)', list_ids)
       end
     end
     response do |format|

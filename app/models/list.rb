@@ -33,6 +33,10 @@ class List < ActiveRecord::Base
     return true
   end
 
+  def actived_members
+   self.list_team_members.where(:active => true)
+  end
+
   def self.completed_notifier
     # Check every 15 minutes
     all.each do |l|
