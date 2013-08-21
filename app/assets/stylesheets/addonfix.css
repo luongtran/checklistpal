@@ -444,7 +444,8 @@
 }
 
 .btndeletelist {
-    /*float:right;*/
+    float: right;
+    margin-right: 30px;
 }
 
 .container {
@@ -586,9 +587,17 @@
     line-height: 22px;
     font-size: 13px;
 }
-#see_more_my_lists_btn {
-    text-align:center;
+
+.see_more_my_lists_btn {
+    text-align: center;
+    padding-top: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.my_lists, .archived_lists {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }

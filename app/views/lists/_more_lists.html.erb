@@ -1,0 +1,22 @@
+<% @more_lists.each do |list| %>
+    <div class="my_lists">
+      <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+      <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+      <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+      <% members = list.actived_members %>
+      <% uids = [] %>
+      <% if !members.blank? %>
+          <% members.each do |con| %>
+              <% uids += [con.invited_id] %>
+          <% end %>
+          <% members = User.where("id in (?)", uids) %>
+          <% members.each do |connect| %>
+              <ul class="unstyled" style="padding-top: 5px;">
+                <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                  <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                </li>
+              </ul>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>

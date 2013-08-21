@@ -47,13 +47,13 @@ class RegistrationsController < Devise::RegistrationsController
     @user.stripe_token = params[:user][:stripe_token]
     if @user.update_credit_card
       @user.save
-      flash.notice = "Your card has been updated!"
+      flash.notice = "Your card has been updated"
     else
       #else
       flash.alert = "The card has been declined!"
       #  render :edit
     end
-    redirect_to edit_user_registration_path
+    redirect_to my_account_path
     #end
   end
 

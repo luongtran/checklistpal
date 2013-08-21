@@ -23,7 +23,7 @@
           </span>
                 <% if task.hasduedate && task.due_date != nil %>
           <span class="due_date_show">
-            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%d-%m-%Y") %></span>
+            <span class="due_date_bt">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
           </span>
                 <% else %>
             <span class="due_date_show hidden">

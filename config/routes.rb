@@ -61,6 +61,7 @@ Checklistpal::Application.routes.draw do
   match 'task/:task_id/comment/create' => "comments#create", :as => :add_comment
   match '/lists/:list_id/task/:id/show' => "tasks#show", :as => :view_task
   match '/mylists/search' => 'lists#search_my_list', :as => :search_my_list
+  match '/mylists/see_more' => 'lists#see_more'
   match '/search_my_connect' => 'home#search_my_connect', :as => :search_my_connect
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support

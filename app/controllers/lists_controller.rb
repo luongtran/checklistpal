@@ -114,13 +114,22 @@ class ListsController < ApplicationController
     end
   end
 
-  #def get_next_5_records
-  #  @lists
-  #end
+  def see_more
+    current = params[:p]
+
+    @more_lists = current_user.lists.limit(5).offset(current.to_i)
+    @end_of_lists = false
+    if  @more_lists.count <= 5
+      @end_of_lists = true
+    end
+    response do |format|
+      format.js
+    end
+  end
 
   # Edited : 21/8/13
   def mylist
-    @lists = current_user.lists
+    @lists = current_user.lists.limit(5)
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members
