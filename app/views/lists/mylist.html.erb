@@ -15,10 +15,10 @@
               <div class="mylist">
                 <h3>My Lists
                   <% if !@my_lists.blank? %>
-                      <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ...", :id => "mylist_keyword_search", :style => "float: right;", :autocomplete => :off %>
+                      <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ...", :id => "mylist_search_field", :style => "float: right;", :autocomplete => :off %>
                       </h3>
                   <% end %>
-                  <%= image_tag "dot_loading.gif", :id => "search_loading", :class => "see_more_area", :style => "display: none;padding-left: 7px;" %>
+                  <%= image_tag "dot_loading.gif", :id => "search_loading", :class => "see_more_area", :style => "display: none;" %>
                   <div class="panel" id="my_list_seach_result" style="display: none;">
 
                   </div>

@@ -297,36 +297,18 @@ $(function () {
         }
     });
 
-//    $("#mylist_keyword_search").bind("keyup", function (e) {
-//        if ($('#mylist_keyword_search').val().trim() !== "") {
-//            $("#search_loading").show();
-//            var form = $("#mylist_search_form");
-//            $('#my_lists_panel').hide();
-//            var url = "/mylists/search";
-//            var formData = form.serialize();
-//            $.get(url, formData, function () {
-//                $("#search_loading").hide();
-//                $('#my_list_seach_result').show();
-//            });
-//        }
-//        else {
-//            $('#mylist_keyword_search').val('');
-//            $('#my_lists_panel').show();
-//            $('#my_list_seach_result').hide();
-//        }
-//    });
-    $("#mylist_keyword_search").bind("keyup", function (e) {
-        if ($('#mylist_keyword_search').val().trim() !== "") {
+    $("#mylist_search_field").bind("keyup", function (e) {
+        if ($('#mylist_search_field').val().trim() !== "") {
             $("#search_loading").show();
             $('#my_lists_panel').hide();
-            var url = "/mylists/search?keyword=" + $('#mylist_keyword_search').val();
+            var url = "/mylists/search?keyword=" + $('#mylist_search_field').val();
             $.get(url, function () {
                 $("#search_loading").hide();
                 $('#my_list_seach_result').show();
             });
         }
         else {
-            $('#mylist_keyword_search').val('');
+            $('#mylist_search_field').val('');
             $('#my_lists_panel').show();
             $('#my_list_seach_result').hide();
         }
