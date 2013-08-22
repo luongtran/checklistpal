@@ -14,7 +14,7 @@
             <div class="signuppanel">
               <div class="mylist">
                 <h3>My Lists</h3>
-                <% if !@lists.blank? %>
+                <% if !@my_lists.blank? %>
                     <%= form_tag search_my_list_path, :class => "searchmini clearfix", :id => "mylist_search_form" do %>
                         <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ....", :id => "mylist_keyword_search", :required => true, :autocomplete => :off %>
                         <%= image_tag "loading.gif", :id => "search_loading", :style => "display: none;padding-left: 7px;" %>
@@ -23,39 +23,36 @@
                     </div>
                 <% end %>
                 <div class="panel" id="my_lists_panel">
-                  <% if @lists.blank? %>
-                      <h4>You don't have any list</h4>
+                  <% if @my_lists.blank? %>
+                      <a href="<%= root_path %>" class="btn btn-primary btn-small btn-circle">+ New</a>
                   <% else %>
                       <!--Rebuild-->
-                      <% @lists.each do |list| %>
-                          <% unless list.finished? %>
-                              <div class="one_my_list">
-                                <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                                <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
-                                <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
-                                <% members = list.actived_members %>
-                                <% uids = [] %>
-                                <% if !members.blank? %>
-                                    <% members.each do |con| %>
-                                        <% uids += [con.invited_id] %>
-                                    <% end %>
-                                    <% members = User.where("id in (?)", uids) %>
-                                    <% members.each do |connect| %>
-                                        <ul class="unstyled" style="padding-top: 5px;">
-                                          <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
-                                            <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
-                                          </li>
-                                        </ul>
-                                    <% end %>
+                      <% @my_lists.each do |list| %>
+                          <div class="one_my_list">
+                            <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                            <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+                            <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+                            <% members = list.actived_members %>
+                            <% uids = [] %>
+                            <% if !members.blank? %>
+                                <% members.each do |con| %>
+                                    <% uids += [con.invited_id] %>
                                 <% end %>
-                              </div>
-                          <% end %>
-
+                                <% members = User.where("id in (?)", uids) %>
+                                <% members.each do |connect| %>
+                                    <ul class="unstyled" style="padding-top: 5px;">
+                                      <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                                        <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                                      </li>
+                                    </ul>
+                                <% end %>
+                            <% end %>
+                          </div>
                       <% end %>
                       <div class="see_more_my_lists">
 
                       </div>
-                      <% if @disabled_more_btn %>
+                      <% if @disabled_more_my_lists_btn %>
                           <a href="javascript:void(0);" class="see_more_my_lists_btn"><i class="icon-chevron-down"></i>
                             See
                             more</a>
@@ -69,44 +66,42 @@
                 </div>
                 <!--Archived lists-->
                 <div class="panel">
-                  <% if current_user.completed_lists %>
-                      <h3>Archived Lists</h3>
-                      <% @lists.each do |list| %>
-                          <% if list.finished? %>
-                              <div class="one_archived_list">
-                                <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                                <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
-                                <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
-                                <% members = list.actived_members %>
-                                <% uids = [] %>
-                                <% if !members.blank? %>
-                                    <% members.each do |con| %>
-                                        <% uids += [con.invited_id] %>
-                                    <% end %>
-                                    <% members = User.where("id in (?)", uids) %>
-                                    <% members.each do |connect| %>
-                                        <ul class="unstyled" style="padding-top: 5px;">
-                                          <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
-                                            <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
-                                          </li>
-                                        </ul>
-                                    <% end %>
-                                <% end %>
-                              </div>
-                          <% end %>
-                      <% end %>
-                      <% if false %>
+                  <h3>Archived Lists</h3>
+                  <% @archived_lists.each do |list| %>
+                      <div class="one_archived_list">
+                        <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                        <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+                        <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+                        <% members = list.actived_members %>
+                        <% uids = [] %>
+                        <% if !members.blank? %>
+                            <% members.each do |con| %>
+                                <% uids += [con.invited_id] %>
+                            <% end %>
+                            <% members = User.where("id in (?)", uids) %>
+                            <% members.each do |connect| %>
+                                <ul class="unstyled" style="padding-top: 5px;">
+                                  <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                                    <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                                  </li>
+                                </ul>
+                            <% end %>
+                        <% end %>
+                      </div>
+
+                  <% end %>
+
                       <div class="see_more_archived_lists">
 
                       </div>
-                      <% if @more_btn %>
+                      <% if @disabled_more_archived_lists_btn %>
                           <a href="javascript:void(0);" class="see_more_archived_lists_btn"><i class="icon-chevron-down"></i>
                             See
                             more</a>
                       <% end %>
                       <a href="javascript:void(0);" class="see_less_archived_lists_btn" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
-                      <% end %>
-                  <% end %>
+
+
                 </div>
               </div>
             </div>

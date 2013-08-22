@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     end
     @task.position = 1
     if @task.save
+      @list.update_attribute(:completed, false)
       @message = "Task create"
       @success = true
     else
@@ -35,9 +36,16 @@ class TasksController < ApplicationController
     if @task != nil?
       @task.update_attributes({completed: params[:completed]})
       # Check the list completed
-      l = @task.list
-      if @task.list.finished?
-        l.update_attribute(:last_completed_mark_at, DateTime.now)
+      list_completed = true
+      @list.tasks.each do |task|
+        if !task.completed
+          list_completed = false
+          @list.update_attributes(:completed => false)
+          break
+        end
+      end
+      if list_completed
+        @list.update_attributes(:completed => true,:last_completed_mark_at => DateTime.now)
       end
       @success = 1
     else
@@ -45,6 +53,7 @@ class TasksController < ApplicationController
     end
     respond_with @task, @success
   end
+
   def hasduedate
     @task = @list.tasks.find(params[:id])
 

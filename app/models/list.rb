@@ -15,7 +15,7 @@
 
 class List < ActiveRecord::Base
   include CanCan::Ability
-  attr_accessible :name, :user_id, :description, :slug
+  attr_accessible :name, :user_id, :description, :slug, :completed, :last_completed_mark_at
   belongs_to :user
   has_many :tasks, :dependent => :delete_all
   has_many :list_team_members, :dependent => :delete_all # ????

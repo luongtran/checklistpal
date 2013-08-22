@@ -100,8 +100,6 @@ class ListsController < ApplicationController
   rescue RecordNotFound => e
     flash[:notice] = "An error has occurred, your request is invalid"
     redirect_to my_list_url
-
-
   end
 
   def update
@@ -115,8 +113,13 @@ class ListsController < ApplicationController
   end
 
   def see_more_my_list
-    current = params[:p]
-    @more_lists = current_user.lists.limit(5).offset(current.to_i)
+    current = params[:p] # current number of lists on my lists
+    all_incompleted_lists = current_user.lists.where(:completed => false)
+    @more_lists = all_incompleted_lists.limit(5).offset(current.to_i)
+    for list in @more_lists do
+      @more_lists -= [list] if list.finished?
+    end
+
     @end_of_lists = false
     if @more_lists.count < 5
       @end_of_lists = true
@@ -133,12 +136,24 @@ class ListsController < ApplicationController
 
   # Edited : 21/8/13
   def mylist
-    @lists = current_user.lists.limit(5)
-    @disabled_more_btn = false
-    if current_user.lists.count > @lists.count
-      @disabled_more_btn = true
+    # my lists
+    all_incompleted_lists = current_user.lists.where(:completed => false)
+    @my_lists = all_incompleted_lists.limit(5)
+    @disabled_more_my_lists_btn = false
+    if all_incompleted_lists.count > @my_lists.count
+      @disabled_more_my_lists_btn = true
     end
 
+    # archived lists
+    all_archived_lists = current_user.lists.where(:completed => true)
+    @archived_lists = all_archived_lists.limit(5)
+    @disabled_more_archived_lists_btn = false
+    if all_archived_lists.count > @archived_lists.count
+      @disabled_more_archived_lists_btn = true
+    end
+
+
+    # invited lists
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
     if @list_team_members
@@ -149,6 +164,8 @@ class ListsController < ApplicationController
         @invited_lists = List.where('id IN (?)', list_ids)
       end
     end
+
+
     response do |format|
       format.html
     end

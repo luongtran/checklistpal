@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820015313) do
+ActiveRecord::Schema.define(:version => 20130822031923) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -109,11 +109,12 @@ ActiveRecord::Schema.define(:version => 20130820015313) do
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "slug"
     t.datetime "last_completed_mark_at"
     t.datetime "last_sent_notify_email_at"
+    t.boolean  "completed",                 :default => false
   end
 
   add_index "lists", ["slug"], :name => "index_lists_on_slug", :unique => true
