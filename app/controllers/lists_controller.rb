@@ -116,10 +116,6 @@ class ListsController < ApplicationController
     current = params[:p] # current number of lists on my lists
     all_incompleted_lists = current_user.lists.where(:completed => false)
     @more_lists = all_incompleted_lists.limit(5).offset(current.to_i)
-    for list in @more_lists do
-      @more_lists -= [list] if list.finished?
-    end
-
     @end_of_lists = false
     if @more_lists.count < 5
       @end_of_lists = true
@@ -130,8 +126,18 @@ class ListsController < ApplicationController
   end
 
   def see_more_archived_list
+    current = params[:p] # current number of lists on archived lists
+    all_archived_lists = current_user.lists.where(:completed => true)
+    @more_archived_lists = all_archived_lists.limit(5).offset(current.to_i)
 
+    @end_of_archived_lists = false
+    if @more_archived_lists.count < 5
+      @end_of_archived_lists = true
+    end
 
+    response do |format|
+      format.js
+    end
   end
 
   # Edited : 21/8/13
@@ -152,7 +158,6 @@ class ListsController < ApplicationController
       @disabled_more_archived_lists_btn = true
     end
 
-
     # invited lists
     @list_team_members = ListTeamMember.where(:invited_id => current_user.id, active: true)
     list_ids = []
@@ -164,7 +169,6 @@ class ListsController < ApplicationController
         @invited_lists = List.where('id IN (?)', list_ids)
       end
     end
-
 
     response do |format|
       format.html

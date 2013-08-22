@@ -22,7 +22,7 @@ class List < ActiveRecord::Base
   validates_uniqueness_of :slug
   validates_presence_of :name
   validates_length_of :name, :within => 3..50
-
+  # remove laster
   def finished?
     return false if self.tasks.count == 0
     self.tasks.each do |task|

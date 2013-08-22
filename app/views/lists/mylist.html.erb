@@ -91,15 +91,15 @@
 
                   <% end %>
 
-                      <div class="see_more_archived_lists">
+                  <div class="see_more_archived_lists">
 
-                      </div>
-                      <% if @disabled_more_archived_lists_btn %>
-                          <a href="javascript:void(0);" class="see_more_archived_lists_btn"><i class="icon-chevron-down"></i>
-                            See
-                            more</a>
-                      <% end %>
-                      <a href="javascript:void(0);" class="see_less_archived_lists_btn" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
+                  </div>
+                  <% if @disabled_more_archived_lists_btn %>
+                      <a href="javascript:void(0);" class="see_more_archived_lists_btn"><i class="icon-chevron-down"></i>
+                        See
+                        more</a>
+                  <% end %>
+                  <a href="javascript:void(0);" class="see_less_archived_lists_btn" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
 
 
                 </div>
@@ -131,6 +131,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        //============ start more/less my lists
         $(".see_more_my_lists_btn").on('click', function () {
             old_total = $('.one_my_list').length;
             var url = "/mylists/see_more_my_list?p=" + old_total;
@@ -151,6 +152,29 @@
             $(".see_more_my_lists_btn").show();
             $("html, body").animate({ scrollTop: 0 }, "slow");
         });
+        //============= end more/less my lists
+
+        //============ start more/less archived lists
+        $(".see_more_archived_lists_btn").on('click', function () {
+            old_total = $('.one_archived_list').length;
+            var url = "/mylists/see_more_archived_list?p=" + old_total;
+            $.get(url,function () {
+            }).done(function () {
+                        // Effect
+                        var new_list = $('.one_archived_list');
+                        for (i = new_list.length - 1; i >= old_total; --i) {
+                            $(new_list[i]).fadeIn(1000);
+                        }
+                    });
+        });
+        // Effect
+        $(".see_less_archived_lists_btn").on('click', function () {
+            $(this).hide();
+            $('.see_more_archived_lists').children().fadeOut(500);
+            $('.see_more_archived_lists').html('');
+            $(".see_more_archived_lists_btn").show();
+        });
+        //============ end more/less archived lists
 
 
     });

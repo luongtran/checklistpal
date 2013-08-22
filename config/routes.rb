@@ -63,7 +63,7 @@ Checklistpal::Application.routes.draw do
   match '/mylists/search' => 'lists#search_my_list', :as => :search_my_list
 
   match '/mylists/see_more_my_list' => 'lists#see_more_my_list'
-
+  match '/mylists/see_more_archived_list' => 'lists#see_more_archived_list'
   match '/search_my_connect' => 'home#search_my_connect', :as => :search_my_connect
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support
