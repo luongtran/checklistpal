@@ -50,7 +50,9 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  validates_presence_of :name
+
+
+  #validates_presence_of :name
   #validates_length_of :name, :minimum => 3
 
   def update_avatar(file)
@@ -297,6 +299,7 @@ class User < ActiveRecord::Base
       user = User.create(provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
+                         name: auth,
                          password: Devise.friendly_token[0, 20]
       )
       user.add_role('free')

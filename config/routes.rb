@@ -10,7 +10,7 @@ Checklistpal::Application.routes.draw do
                                      :skip => [:registrations]},
              :sign_out_via => ["DELETE", "GET"],
              :controllers => {:registrations => 'registrations',
-                              :omniauth_callbacks => "omniauth_callbacks",
+                              :omniauth_callbacks => "authentications",
                               :sessions => "sessions",
                               :invitations => 'users/invitations'
              }

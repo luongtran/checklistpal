@@ -3,7 +3,7 @@
   <component name="DataSourceManagerImpl" format="xml" hash="3180130837">
     <data-source source="LOCAL" name="Rails checklistpal: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="c397bc29-b7fe-4bfb-8010-f35db82cf13d">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/checklistpal_production</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1/checklistpal_production</jdbc-url>
       <user-name>root</user-name>
       <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries>
