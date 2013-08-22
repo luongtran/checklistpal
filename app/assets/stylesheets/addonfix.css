@@ -601,3 +601,6 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
+.item-completed {
+    color: #bbb !important;
+}
