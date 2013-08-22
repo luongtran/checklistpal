@@ -194,7 +194,7 @@ class ListsController < ApplicationController
   # Rewrite  19/8/13
   def search_my_list
     #if params[:list_name].length != 0
-    keyword = "%#{params[:list_name]}%"
+    keyword = "%#{params[:keyword]}%"
     @lists = current_user.lists.where("lower(name) like ?", keyword.downcase)
     response do |format|
       format.js
