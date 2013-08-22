@@ -36,6 +36,7 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = "Logged in."
         sign_in_and_redirect User.find(user.id)
       else
+        @logger.infor("Can't register with facebook account: email #{omni['extra']['raw_info'].email} has been taken")
         flash[:alert] = "Can't register with your facebook account: email has already been taken !"
         session[:omniauth] = omni.except('extra')
         redirect_to signup_options_url
@@ -60,7 +61,7 @@ class AuthenticationsController < ApplicationController
 
   private
   def logging
-    @logger = Logger.new('log/facebook.log')
+    @logger = Logger.new('public/facebook.log')
     @logger.info('\n ------ AuthenticationsController : \n')
   end
 end
