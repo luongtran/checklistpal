@@ -588,7 +588,7 @@
     font-size: 13px;
 }
 
-.see_more_my_lists_btn, .see_less_my_lists_btn, .see_more_archived_lists_btn, .see_less_archived_lists_btn {
+.see_more_my_lists_btn, .see_less_my_lists_btn, .see_more_archived_lists_btn, .see_less_archived_lists_btn, .loading_more {
     text-align: center;
     padding-top: 10px;
     display: block;
@@ -601,6 +601,7 @@
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
 .item-completed {
     color: #bbb !important;
 }

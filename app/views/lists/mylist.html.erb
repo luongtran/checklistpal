@@ -56,7 +56,9 @@
                           <a href="javascript:void(0);" class="see_more_my_lists_btn"><i class="icon-chevron-down"></i>
                             See
                             more</a>
+
                       <% end %>
+                      <img src="/assets/dot_loading.gif" class="loading_more" id="loading_more_my_lists" style="display: none;"> </img>
                       <a href="javascript:void(0);" class="see_less_my_lists_btn" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
                       <br/>
                       <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle' if current_user.roles.first.name =='free' %>
@@ -92,7 +94,6 @@
                   <% end %>
 
                   <div class="see_more_archived_lists">
-
                   </div>
                   <% if @disabled_more_archived_lists_btn %>
                       <a href="javascript:void(0);" class="see_more_archived_lists_btn"><i class="icon-chevron-down"></i>
@@ -133,15 +134,19 @@
     $(document).ready(function () {
         //============ start more/less my lists
         $(".see_more_my_lists_btn").on('click', function () {
+            $(this).hide();
+            $('#loading_more_my_lists').show();
             old_total = $('.one_my_list').length;
             var url = "/mylists/see_more_my_list?p=" + old_total;
             $.get(url,function () {
             }).done(function () {
+
                         // Effect
                         var new_list = $('.one_my_list');
                         for (i = new_list.length - 1; i >= old_total; --i) {
                             $(new_list[i]).fadeIn(1000);
                         }
+
                     });
         });
         // Effect
@@ -175,10 +180,5 @@
             $(".see_more_archived_lists_btn").show();
         });
         //============ end more/less archived lists
-
-
     });
-
-
-    //   $('.see_less_my_lists_btn')
 </script>
