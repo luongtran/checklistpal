@@ -596,7 +596,8 @@
     margin-right: auto;
 }
 
-.one_my_list, .one_archived_list {
+.one_my_list, .one_archived_list, .one_invited_list {
+    margin-left: 7px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     padding-top: 10px;
