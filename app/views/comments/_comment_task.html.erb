@@ -1,10 +1,14 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
-        <img class="avatar" src="<%= User.find(comment.user_id).get_avatar_url || "/assets/default_avatar.png" %>" width="40" height="50"></img>
+        <span class="span12" style="display: inline;">
+         <span class="span1">
+          <img class="avatar" src="<%= User.find(comment.user_id).get_avatar_url || "/assets/default_avatar.png" %>" width="40" height="50"> </img>
+         </span>
         <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: #da3222;" %>">
-           <%= User.find(comment.user_id).name %> -
-          <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
+           <%= User.find(comment.user_id).name %> - <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
         </span>
+        </span>
+
         <hr/>
     <% end %>
 <% end %>
@@ -15,8 +19,6 @@
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
     <img src="/assets/dot_loading.gif" style="display: none;margin-left: 15px;" class="submit_comment_loading"> </img>
 <% end %>
-
-
 <script>
     $(".close_comment_bt").on("click", function () {
         $(this).parent().children("#content").val("");
@@ -40,9 +42,4 @@
             $(this).parent().children(".add_comment_bt").attr("disabled", "disabled");
         }
     });
-//    $(".not_click").on("click", function () {
-//        (this).parent.children('.add_comment_bt').show();
-//        (this).parent.children('.add_comment_bt').show();
-//    });
-
 </script>

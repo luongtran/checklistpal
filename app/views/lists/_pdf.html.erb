@@ -1,9 +1,7 @@
-
 <%= wicked_pdf_stylesheet_link_tag "documents" %>
 <% current_list = List.find(session[:list_id])
    session[:list_id] = nil
 %>
-
 <div class="section clearfix">
   <div class="todolist">
     <div class="row-fluid">
@@ -34,10 +32,7 @@
                             <span class="due_date_show hidden">
                           </span>
                             <% end %>
-
                           </div>
-
-
                         </div>
                       </li>
                     </div>

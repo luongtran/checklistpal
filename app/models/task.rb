@@ -1,5 +1,4 @@
 # == Schema Information
-#
 # Table name: tasks
 #
 #  id          :integer          not null, primary key
@@ -13,7 +12,6 @@
 #  hasduedate  :boolean          default(FALSE)
 #  user_id     :integer
 #
-
 class Task < ActiveRecord::Base
   attr_accessible :description, :due_date, :completed, :list_id, :position, :hasduedate, :due_date, :user_id
   belongs_to :list
