@@ -117,7 +117,7 @@ class ListsController < ApplicationController
     all_incompleted_lists = current_user.lists.where(:completed => false)
     @more_lists = all_incompleted_lists.limit(5).offset(current.to_i)
     @end_of_lists = false
-    if @more_lists.count < 5
+    if all_incompleted_lists.limit(5).offset(current.to_i + @more_lists.count).count == 0 # no more
       @end_of_lists = true
     end
     response do |format|
@@ -130,7 +130,7 @@ class ListsController < ApplicationController
     all_archived_lists = current_user.lists.where(:completed => true)
     @more_archived_lists = all_archived_lists.limit(5).offset(current.to_i)
     @end_of_archived_lists = false
-    if @more_archived_lists.count < 5
+    if all_archived_lists.limit(5).offset(current.to_i + @more_archived_lists.count).count == 0 # no more
       @end_of_archived_lists = true
     end
 
