@@ -131,11 +131,13 @@
           <div class="signuppanel">
             <div class="panel">
               <h3>Account's profile</h3>
-
+              <% if !current_user.is_facebook_account? %>
               <p>
                 <%= image_tag current_user.get_avatar_url || "default_avatar.png", class: "avatar", :size => "40x50" %>
                 <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button" style="margin-left: 10px;">Change</a>
               </p>
+              <% end %>
+
               <br/>
               <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :multipart => true, :html => {:method => :put, :class => 'form-vertical'}) do |f| %>
                   <%#= f.error_notification %>
