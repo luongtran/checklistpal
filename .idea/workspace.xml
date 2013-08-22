@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\tasks\show.html.erb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/_items.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/create.js.erb" afterPath="$PROJECT_DIR$/app/views/comments/create.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/users_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/users_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,11 +44,11 @@
     <file path="/20130822031923_add_completed_column_to_list.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377141587394" ignored="false" />
     <file path="/_more_archived_lists.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377145439453" ignored="false" />
     <file path="/see_more_my_list.js.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377145957706" ignored="false" />
-    <file path="/_comment_task.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377166738085" ignored="false" />
+    <file path="/_comment_task.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377167476646" ignored="false" />
     <file path="/a.html" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377159561040" ignored="false" />
     <file path="/a.rxml" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377159587389" ignored="false" />
     <file path="/comments_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377164010993" ignored="false" />
-    <file path="/create.js.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377164588628" ignored="false" />
+    <file path="/create.js.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377167013790" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +80,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="task.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/task.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="51" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="comments_controller.rb" pinned="true" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="34" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
+            <state line="49" column="17" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +101,16 @@
       <file leaf-file-name="create.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/comments/create.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="77" selection-start="95" selection-end="95" vertical-scroll-proportion="-0.65384614">
+            <state line="1" column="81" selection-start="99" selection-end="99" vertical-scroll-proportion="-0.65384614">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_comment_task.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="117" selection-start="756" selection-end="756" vertical-scroll-proportion="0.08022388">
               <folding />
             </state>
           </provider>
@@ -110,7 +119,7 @@
       <file leaf-file-name="comment.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="42" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -125,10 +134,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_items.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_items.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="3364" selection-end="3364" vertical-scroll-proportion="0.6947935">
+            <state line="53" column="0" selection-start="3364" selection-end="3364" vertical-scroll-proportion="-14.884615">
               <folding />
             </state>
           </provider>
@@ -178,10 +187,10 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
         <option value="$PROJECT_DIR$/app/views/comments/create.js.erb" />
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
         <option value="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
       </list>
     </option>
   </component>
@@ -591,7 +600,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -599,7 +608,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19614148" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16983895" sideWeight="0.8038585" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11713031" sideWeight="0.8038585" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -714,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="46" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/railties-3.2.13/guides/code/getting_started/app/controllers/comments_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="6" selection-start="143" selection-end="143" vertical-scroll-proportion="0.08557047">
@@ -735,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="34" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="300" column="44" selection-start="14784" selection-end="14797" vertical-scroll-proportion="0.30427048">
@@ -749,6 +744,34 @@
             <marker date="1377163558126" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1377163558126" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="3364" selection-end="3364" vertical-scroll-proportion="-14.884615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="46" selection-start="2986" selection-end="2986" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="17" selection-start="1224" selection-end="1224" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -762,33 +785,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/task.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="42" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
+        <state line="24" column="51" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/comments/create.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="77" selection-start="95" selection-end="95" vertical-scroll-proportion="-0.65384614">
+        <state line="1" column="81" selection-start="99" selection-end="99" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="87" selection-start="510" selection-end="510" vertical-scroll-proportion="0.25373134">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/_items.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="3364" selection-end="3364" vertical-scroll-proportion="0.6947935">
+        <state line="12" column="117" selection-start="756" selection-end="756" vertical-scroll-proportion="0.08022388">
           <folding />
         </state>
       </provider>

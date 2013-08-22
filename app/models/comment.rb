@@ -17,5 +17,4 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
   validates_length_of :content, within:  5..160
-      
 end
