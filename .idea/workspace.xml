@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb" afterPath="$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb" afterPath="$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/list.rb" afterPath="$PROJECT_DIR$/app/models/list.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377134314204" ignored="false" />
     <file path="/user.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377134910523" ignored="false" />
-    <file path="/show.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377079024272" ignored="false" />
+    <file path="/show.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377149357872" ignored="false" />
     <file path="/Gemfile" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1376990789859" ignored="false" />
     <file path="/wickedpdf.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1376990781481" ignored="false" />
     <file path="/deploy.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377055463277" ignored="false" />
@@ -25,7 +26,7 @@
     <file path="/omniauth_callbacks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377051200748" ignored="false" />
     <file path="/index.html" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377055164626" ignored="false" />
     <file path="/lists_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377145491784" ignored="false" />
-    <file path="/list.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377144875587" ignored="false" />
+    <file path="/list.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377149385974" ignored="false" />
     <file path="/_items.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377073939815" ignored="false" />
     <file path="/tasks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377143288693" ignored="false" />
     <file path="/production.log" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377067183356" ignored="false" />
@@ -81,7 +82,7 @@
       <file leaf-file-name="mylist.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="23" selection-start="7841" selection-end="7841" vertical-scroll-proportion="-3.4705882">
+            <state line="147" column="34" selection-start="7762" selection-end="7762" vertical-scroll-proportion="-51.576923">
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -102,15 +103,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addonfix.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="590" column="14" selection-start="13790" selection-end="13803" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="see_more_my_list.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,7 +115,25 @@
       <file leaf-file-name="_more_lists.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/lists/_more_lists.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="67" selection-start="348" selection-end="348" vertical-scroll-proportion="0.12686567">
+            <state line="4" column="67" selection-start="348" selection-end="348" vertical-scroll-proportion="0.18133333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_search_my_list_result.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-12.423077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="44" selection-start="3214" selection-end="3214" vertical-scroll-proportion="-8.384615">
               <folding />
             </state>
           </provider>
@@ -177,15 +187,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/database.yml" />
-        <option value="$PROJECT_DIR$/app/controllers/authentications_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/passwords_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130822031923_add_completed_column_to_list.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tasks_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/list.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/lists/see_more_archived_list.js.erb" />
@@ -193,6 +200,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/addonfix.css" />
         <option value="$PROJECT_DIR$/app/views/lists/mylist.html.erb" />
         <option value="$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb" />
+        <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/list.rb" />
       </list>
     </option>
   </component>
@@ -414,28 +424,6 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -584,10 +572,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17684887" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25884244" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21669106" sideWeight="0.8231511" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19912152" sideWeight="0.74115753" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -662,16 +650,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/omniauth_callbacks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#100#522#0" expanded="false" />
-            <element signature="e#558#1181#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/authentications_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="16" selection-start="1378" selection-end="1379" vertical-scroll-proportion="0.0">
@@ -699,22 +677,6 @@
           <folding>
             <element signature="e#510#779#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/list.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="53" selection-start="893" selection-end="893" vertical-scroll-proportion="0.57550335">
-          <folding>
-            <element signature="e#1134#2157#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="23" selection-start="82" selection-end="82" vertical-scroll-proportion="0.091561936">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -759,16 +721,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="69" selection-start="69" selection-end="69" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/addonfix.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="590" column="14" selection-start="13790" selection-end="13803" vertical-scroll-proportion="0.0">
+        <state line="590" column="14" selection-start="13790" selection-end="13803" vertical-scroll-proportion="0.38608697">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/mylist.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="23" selection-start="7841" selection-end="7841" vertical-scroll-proportion="-3.4705882">
+        <state line="147" column="34" selection-start="7762" selection-end="7762" vertical-scroll-proportion="-51.576923">
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -788,16 +757,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/see_more_my_list.js.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/lists/_search_my_list_result.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="69" selection-start="69" selection-end="69" vertical-scroll-proportion="-0.0">
+        <state line="23" column="0" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-12.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="44" selection-start="3214" selection-end="3214" vertical-scroll-proportion="-8.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/list.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="22" selection-start="1313" selection-end="1313" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/lists/_more_lists.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="67" selection-start="348" selection-end="348" vertical-scroll-proportion="0.12686567">
+        <state line="4" column="67" selection-start="348" selection-end="348" vertical-scroll-proportion="0.18133333">
           <folding />
         </state>
       </provider>

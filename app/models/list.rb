@@ -42,7 +42,7 @@ class List < ActiveRecord::Base
     all.each do |l|
       # Check not owner by user
       if !l.user_id.blank? && l.tasks.count > 0
-        if l.finished?
+        if l.completed
           # !!! Check last mark a list to completed with last send email notify
           if l.last_sent_notify_email_at.nil? || l.last_completed_mark_at > l.last_sent_notify_email_at
             # Get all active members on the list
