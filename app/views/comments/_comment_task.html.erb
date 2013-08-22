@@ -1,6 +1,6 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
-        <img class="avatar" src="<%= avatar_url(User.find(comment.user_id)) || "/assets/default_avatar.png" %>" width="40" height="50"></img>
+        <img class="avatar" src="<%= User.find(comment.user_id).get_avatar_url || "/assets/default_avatar.png" %>" width="40" height="50"></img>
 
         <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: #da3222;" %>">
            <%= User.find(comment.user_id).name %> -

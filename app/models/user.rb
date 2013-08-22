@@ -51,7 +51,6 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
 
-
   #validates_presence_of :name
   #validates_length_of :name, :minimum => 3
 
@@ -73,11 +72,18 @@ class User < ActiveRecord::Base
   end
 
   def get_avatar_url
-    s3 = AWS::S3.new
-    bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
-    obj = bucket.objects[self.avatar_file_name]
-    # Check nil for obj?
-    return obj.url_for(:read).to_s
+    if self.is_facebook_account?
+      return avatar_s3_url
+    else
+      if self.avatar_file_name.nil? # never upload avatar
+        return nil
+      else
+        s3 = AWS::S3.new
+        bucket = s3.buckets.create(@@AWS3_AVATARS_BUCKET)
+        obj = bucket.objects[self.avatar_file_name]
+        return obj.url_for(:read).to_s
+      end
+    end
   rescue Exception => e
     return nil
   end
