@@ -12,7 +12,8 @@ Checklistpal::Application.routes.draw do
              :controllers => {:registrations => 'registrations',
                               :omniauth_callbacks => "authentications",
                               :sessions => "sessions",
-                              :invitations => 'users/invitations'
+                              :invitations => 'users/invitations',
+                              :passwords => "passwords"
              }
   # devise_for :users, controllers: {sessions: "sessions"}
 
