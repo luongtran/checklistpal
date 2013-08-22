@@ -27,7 +27,7 @@
 
     $(document).ready(function () {
         $('.account_edit_field').keydown(function () {
-         $('#submit_update_account_btn').removeAttr('disabled');
+            $('#submit_update_account_btn').removeAttr('disabled');
             $(this).removeClass('account_edit_field');
         });
 
@@ -153,13 +153,16 @@
                   <div class="controls">
                     <%= f.text_field :name, :placeholder => "Username", :class => "span6 account_edit_field", :required => true %>
                   </div>
+                  <% if !current_user.is_facebook_account? %>
+                      <div class="controls">
+                        <%= f.password_field :password, :placeholder => "Password", :class => "span6 account_edit_field", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+                      </div>
+                      <div class="controls">
+                        <%= f.password_field :password_confirmation, :required => false, :placeholder => "Password again", :class => "span6 account_edit_field" %>
+                      </div>
+                  <% end %>
                   <div class="controls">
-                    <%= f.password_field :password, :placeholder => "Password", :class => "span6 account_edit_field", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-                  </div>
-                  <div class="controls">
-                    <%= f.password_field :password_confirmation, :required => false, :placeholder => "Password again", :class => "span6 account_edit_field" %>
-                  </div>
-                  <div class="controls">
+
                     <%#= f.password_field :current_password, :required => true, :placeholder =>"Current password", :class =>"span5",:hint => "we need your current password to confirm your changes",:required => true %>
                   </div>
                   <%= f.button :submit, 'Update', :class => 'btn-primary btn-small', :id => "submit_update_account_btn", :disabled => "disabled" %>

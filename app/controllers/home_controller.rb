@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_filter :authenticate_user!, :only => [:find_invite, :invite, :invite_user_by_id, :search_my_connect, :dashboard]
   require 'securerandom'
+  before_filter :logging
 
   def index
     random_string = SecureRandom.urlsafe_base64
@@ -280,5 +281,11 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  private
+  def logging
+    @log = Logger.new('public/home.log')
+    @log.info("Process action: #{self.action_name} - #{Time.now}")
   end
 end

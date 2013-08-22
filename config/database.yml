@@ -35,7 +35,7 @@ development:
 # abc
 
 production:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: checklistpal_production

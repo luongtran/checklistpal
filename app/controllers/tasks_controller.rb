@@ -39,14 +39,12 @@ class TasksController < ApplicationController
       if @task.list.finished?
         l.update_attribute(:last_completed_mark_at, DateTime.now)
       end
-
       @success = 1
     else
       @success = 0
     end
     respond_with @task, @success
   end
-
   def hasduedate
     @task = @list.tasks.find(params[:id])
 
