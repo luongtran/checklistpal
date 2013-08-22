@@ -53,13 +53,13 @@
 
                       </div>
                       <% if @disabled_more_my_lists_btn %>
-                          <a href="javascript:void(0);" class="see_more_my_lists_btn"><i class="icon-chevron-down"></i>
+                          <a href="javascript:void(0);" class="see_more_area" id="see_more_my_lists_btn"><i class="icon-chevron-down"></i>
                             See
                             more</a>
 
                       <% end %>
-                      <img src="/assets/dot_loading.gif" class="loading_more" id="loading_more_my_lists" style="display: none;"> </img>
-                      <a href="javascript:void(0);" class="see_less_my_lists_btn" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
+                      <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
+                      <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area"  style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
                       <br/>
                       <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle' if current_user.roles.first.name =='free' %>
                       <br/>
@@ -133,7 +133,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //============ start more/less my lists
-        $(".see_more_my_lists_btn").on('click', function () {
+        $("#see_more_my_lists_btn").on('click', function () {
             $(this).hide();
             $('#loading_more_my_lists').show();
             old_total = $('.one_my_list').length;
@@ -150,11 +150,11 @@
                     });
         });
         // Effect
-        $(".see_less_my_lists_btn").on('click', function () {
+        $("#see_less_my_lists_btn").on('click', function () {
             $(this).hide();
             $('.see_more_my_lists').children().fadeOut(500);
             $('.see_more_my_lists').html('');
-            $(".see_more_my_lists_btn").show();
+            $("#see_more_my_lists_btn").show();
             $("html, body").animate({ scrollTop: 0 }, "slow");
         });
         //============= end more/less my lists
