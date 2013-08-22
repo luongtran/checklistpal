@@ -102,7 +102,8 @@ $(function () {
 //                    $(".btn-delete").on("click",(function(){
 //                    }));
 
-                    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true"><input type="text" class="input-small" name="task[description]" id="task_description" style="width:auto;"/>' +
+                    var html_form_edit = '<form action="#" class="edit_task_frm" remote="true">' +
+                        '<input type="text" class="input-small" name="task[description]" id="task_description" style="width:auto;"/>' +
                         '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
                         '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
                     $('.btn-edit').on("click", function () {
