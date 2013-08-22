@@ -16,96 +16,95 @@
                 <h3>My Lists
                   <% if !@my_lists.blank? %>
                       <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ...", :id => "mylist_search_field", :style => "float: right;", :autocomplete => :off %>
-                      </h3>
                   <% end %>
-                  <%= image_tag "dot_loading.gif", :id => "search_loading", :class => "see_more_area", :style => "display: none;" %>
-                  <div class="panel" id="my_list_seach_result" style="display: none;">
-
-                  </div>
-                  <div class="panel" id="my_lists_panel">
-                    <% if @my_lists.blank? %>
-                        <a href="<%= root_path %>" class="btn btn-success btn-small btn-circle">+ New</a>
-                    <% else %>
-                        <% @my_lists.each do |list| %>
-                            <div class="one_my_list">
-                              <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                              <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
-                              <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
-                              <% members = list.actived_members %>
-                              <% uids = [] %>
-                              <% if !members.blank? %>
-                                  <% members.each do |con| %>
-                                      <% uids += [con.invited_id] %>
-                                  <% end %>
-                                  <% members = User.where("id in (?)", uids) %>
-                                  <% members.each do |connect| %>
-                                      <ul class="unstyled" style="padding-top: 5px;">
-                                        <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
-                                          <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
-                                        </li>
-                                      </ul>
-                                  <% end %>
-                              <% end %>
-                            </div>
+                </h3>
+                <% if @my_lists.blank? %>
+                    <p> There is not any list </p>
+                <% end %>
+                <%= image_tag "dot_loading.gif", :id => "search_loading", :class => "see_more_area", :style => "display: none;" %>
+                <div class="panel" id="my_list_seach_result" style="display: none;">
+                </div>
+                <div class="panel" id="my_lists_panel">
+                  <% @my_lists.each do |list| %>
+                      <div class="one_my_list">
+                        <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                        <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+                        <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+                        <% members = list.actived_members %>
+                        <% uids = [] %>
+                        <% if !members.blank? %>
+                            <% members.each do |con| %>
+                                <% uids += [con.invited_id] %>
+                            <% end %>
+                            <% members = User.where("id in (?)", uids) %>
+                            <% members.each do |connect| %>
+                                <ul class="unstyled" style="padding-top: 5px;">
+                                  <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                                    <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                                  </li>
+                                </ul>
+                            <% end %>
                         <% end %>
-                        <div class="see_more_my_lists">
+                      </div>
+                  <% end %>
+                  <div class="see_more_my_lists">
 
-                        </div>
-                        <% if @disabled_more_my_lists_btn %>
-                            <a href="javascript:void(0);" class="see_more_area" id="see_more_my_lists_btn"><i class="icon-chevron-down"></i>
-                              See
-                              more</a>
+                  </div>
+                  <% if @disabled_more_my_lists_btn %>
+                      <a href="javascript:void(0);" class="see_more_area" id="see_more_my_lists_btn"><i class="icon-chevron-down"> </i>
+                        See more</a>
+                  <% end %>
+                  <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
+                  <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
+                  <a href="<%= root_path %>" style="margin-top: 10px;" class="btn btn-success btn-small btn-circle" title="Create new list">+
+                    New</a>
+                  <br/>
+                  <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle' if !current_user.can_create_new_list? %>
 
+                  <br/>
+
+                  <!-- End of mylists-->
+                </div>
+                <!--Archived lists-->
+                <div class="panel">
+                  <h3>Archived Lists</h3>
+                  <% @archived_lists.each do |list| %>
+                      <div class="one_archived_list">
+                        <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                        <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
+                        <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
+                        <% members = list.actived_members %>
+                        <% uids = [] %>
+                        <% if !members.blank? %>
+                            <% members.each do |con| %>
+                                <% uids += [con.invited_id] %>
+                            <% end %>
+                            <% members = User.where("id in (?)", uids) %>
+                            <% members.each do |connect| %>
+                                <ul class="unstyled" style="padding-top: 5px;">
+                                  <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
+                                    <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
+                                  </li>
+                                </ul>
+                            <% end %>
                         <% end %>
-                        <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
-                        <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
-                        <br/>
-                        <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle' if current_user.roles.first.name =='free' %>
-                        <br/>
-                        <br/>
-                    <% end %>
-                    <!-- End of mylists-->
+                      </div>
+
+                  <% end %>
+
+                  <div class="see_more_archived_lists">
                   </div>
-                  <!--Archived lists-->
-                  <div class="panel">
-                    <h3>Archived Lists</h3>
-                    <% @archived_lists.each do |list| %>
-                        <div class="one_archived_list">
-                          <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                          <span style="padding-left: 20px;"><i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i></span>&nbsp;
-                          <%= link_to("Delete", list_path(list), :data => {:confirm => "Delete this list?"}, :method => :delete, :class => 'btn btn-mini btn-danger btn-circle btndeletelist') %>
-                          <% members = list.actived_members %>
-                          <% uids = [] %>
-                          <% if !members.blank? %>
-                              <% members.each do |con| %>
-                                  <% uids += [con.invited_id] %>
-                              <% end %>
-                              <% members = User.where("id in (?)", uids) %>
-                              <% members.each do |connect| %>
-                                  <ul class="unstyled" style="padding-top: 5px;">
-                                    <li class="connect-email"><%= "#{connect.name}<#{connect.email}>" %>
-                                      <%= link_to (image_tag "remove.png"), remove_connect_path(list.id, connect.id), :data => {:confirm => "Are you sure we should remove this user?"} %>
-                                    </li>
-                                  </ul>
-                              <% end %>
-                          <% end %>
-                        </div>
-
-                    <% end %>
-
-                    <div class="see_more_archived_lists">
-                    </div>
-                    <% if @disabled_more_archived_lists_btn %>
-                        <a href="javascript:void(0);" id="see_more_archived_lists_btn" class="see_more_area"><i class="icon-chevron-down"></i>
-                          See
-                          more</a>
-                    <% end %>
-                    <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_archived_lists" style="display: none;"> </img>
-                    <a href="javascript:void(0);" id="see_less_archived_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
+                  <% if @disabled_more_archived_lists_btn %>
+                      <a href="javascript:void(0);" id="see_more_archived_lists_btn" class="see_more_area"><i class="icon-chevron-down"></i>
+                        See
+                        more</a>
+                  <% end %>
+                  <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_archived_lists" style="display: none;"> </img>
+                  <a href="javascript:void(0);" id="see_less_archived_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
 
 
-                  </div>
-                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
