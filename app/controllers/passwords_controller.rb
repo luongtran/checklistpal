@@ -6,7 +6,11 @@ class PasswordsController < Devise::PasswordsController
         flash[:error] = "Can't reset password for this email."
         redirect_to new_user_password_url and return
       end
+      super
+    else
+      flash[:error] = "Email not found."
+      redirect_to new_user_password_url and return
     end
-    super
+
   end
 end
