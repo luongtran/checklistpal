@@ -1,7 +1,6 @@
 <% if task.comments.length > 0 %>
     <% task.comments.each do |comment| %>
         <img class="avatar" src="<%= User.find(comment.user_id).get_avatar_url || "/assets/default_avatar.png" %>" width="40" height="50"></img>
-
         <span class="text-info" style="<%= comment.user_id == comment.task.list.user_id ? "" : "color: #da3222;" %>">
            <%= User.find(comment.user_id).name %> -
           <%= auto_link(comment.content, :html => {:target => '_blank'}) %>
@@ -9,14 +8,37 @@
         <hr/>
     <% end %>
 <% end %>
+<!--Leave comment here-->
 <%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>
-    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 160 characters", :maxlength => "160" %>
-    <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success" %>
+    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 160 characters", :class => "comment_content", :maxlength => "160", :minlength => "5" %>
+    <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success", :disabled => "disabled" %>
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
+    <img src="/assets/dot_loading.gif" style="display: none;margin-left: 15px;" class="submit_comment_loading"> </img>
 <% end %>
+
+
 <script>
     $(".close_comment_bt").on("click", function () {
         $(this).parent().children("#content").val("");
         $(this).parent().parent('.comment-add').fadeOut(300);
     });
+    $(".add_comment_bt").on("click", function () {
+        if ($(this).parent().children("#content").val().trim().length == 0) {
+            return false;
+        }
+        else {
+            $(this).parent().children('.close_comment_bt').hide();
+            $(this).hide();
+            $(this).parent().children('.submit_comment_loading').show();
+        }
+    });
+    $(".comment_content").bind('input propertychange', function () {
+        if ($(this).val().trim().length >= 5) {
+            $(this).parent().children(".add_comment_bt").removeAttr("disabled");
+        }
+        else {
+            $(this).parent().children(".add_comment_bt").attr("disabled", "disabled");
+        }
+    });
+
 </script>

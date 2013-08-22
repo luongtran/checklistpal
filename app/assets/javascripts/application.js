@@ -147,9 +147,9 @@ $(function () {
                     $('.show_comment_bt').on("click", function () {
                         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
                     });
-                    $('.number_comment').on("click", function () {
-                        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
-                    });
+//                    $('.number_comment').on("click", function () {
+//                        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+//                    });
 
                     $(".task-hasduedate").bind('change', function () {
                         var list_id = $(this).attr('data_target');
@@ -239,7 +239,7 @@ $(function () {
                             var urlRegEx = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-]*)?\??(?:[\-\+=&;%@\.\w]*)#?(?:[\.\!\/\\\w]*))?)/g;
                             $(form).parent(".item-title").html(task.description.replace(urlRegEx, "<a href='$1' target='_blank'>$1</a>"));
                         });
-                        console.log(task.description.html())
+
 //                        $(form).parent(".item-title").html(task.description);
                     } else {
                         form.append('<span class="error">Cannot be saved</span>');
@@ -259,9 +259,9 @@ $(function () {
     $('.show_comment_bt').on("click", function () {
         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
     });
-    $('.number_comment').on("click", function () {
-        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
-    });
+//    $('.number_comment').on("click", function () {
+//        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+//    });
     $(".task-hasduedate").bind('change', function () {
         var list_id = $(this).attr('data_target');
         url = null;

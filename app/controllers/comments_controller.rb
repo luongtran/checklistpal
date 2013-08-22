@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
- 
+
   def show
     @task = Task.find(params[:task_id])
-      @comments = @task.comments.all
+    @comments = @task.comments.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @comment }
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @task = Task.find(params[:task_id])
-    @comment =  @task.comments.find(params[:id])
+    @comment = @task.comments.find(params[:id])
     if @comment.update_attributes(params[:comment])
       @success = true
     else
@@ -41,14 +41,11 @@ class CommentsController < ApplicationController
   def create
     @success = false
     @task = Task.find(params[:task_id])
-    if (params[:content] != "")
-      if @task.comments.new(:user_id => current_user.id ,:task_id => @task.id,:content => params[:content]).save
+    if @task.comments.new(:user_id => current_user.id, :task_id => @task.id, :content => params[:content]).save
       @success = true
-      end
     else
       @success =false
     end
-    
     respond_to do |format|
       format.js
     end

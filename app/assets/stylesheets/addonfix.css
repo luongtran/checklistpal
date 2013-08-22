@@ -221,7 +221,8 @@
 }
 
 .taskinfo .items .checkbox .number_comment {
-    color: #79c0ff
+    color: #79c0ff;
+    line-height: 25px;
 }
 
 .taskinfo .items .action {
@@ -579,7 +580,7 @@
 }
 
 .items .item-title {
-    line-height: 22px;
+    line-height: 25px;
     font-size: 15px;
 }
 
