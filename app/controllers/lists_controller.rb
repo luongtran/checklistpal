@@ -129,7 +129,6 @@ class ListsController < ApplicationController
     current = params[:p] # current number of lists on archived lists
     all_archived_lists = current_user.lists.where(:completed => true)
     @more_archived_lists = all_archived_lists.limit(5).offset(current.to_i)
-
     @end_of_archived_lists = false
     if @more_archived_lists.count < 5
       @end_of_archived_lists = true

@@ -1,5 +1,9 @@
 $('.see_more_archived_lists').append("<%= escape_javascript render('lists/more_archived_lists') %>");
 <% if @end_of_archived_lists %>
-$('.see_more_archived_lists_btn').hide();
-$('.see_less_archived_lists_btn').show();
+$('#see_more_archived_lists_btn').hide();
+$('#see_less_archived_lists_btn').show();
+<% else %>
+$('#see_more_archived_lists_btn').show();
+$('#see_less_archived_lists_btn').hide();
 <% end %>
+$('#loading_more_archived_lists').hide();
