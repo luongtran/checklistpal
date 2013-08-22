@@ -29,7 +29,7 @@ class AuthenticationsController < ApplicationController
       user.email = omni['extra']['raw_info'].email
       user.name = omni.info.nickname
       logger = Logger.new('log/facebook.log')
-      logger.info("create fb account: info.nickname = #{omni.info.nickname} | omi.extra.username = #{omni['extra']['raw_info'].username} ")
+      logger.info("New user -> create: info.nickname = #{omni.info.nickname} | omi.extra.username = #{omni['extra']['raw_info'].username} ")
       user.avatar_s3_url = omni.info.image
       user.password = Devise.friendly_token[0, 20]
       user.apply_omniauth(omni)
