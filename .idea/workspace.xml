@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/pdf.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/pdf.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/lists/pdf.html.erb" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\views\lists\_pdf.html.erb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/_items.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/_items.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.min.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/combine.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/combine.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/pdfkit.rb" afterPath="$PROJECT_DIR$/config/initializers/pdfkit.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -118,7 +102,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="15" selection-start="572" selection-end="572" vertical-scroll-proportion="0.5026087">
+            <state line="36" column="17" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.8278261">
               <folding />
             </state>
           </provider>
@@ -807,7 +791,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="15" selection-start="572" selection-end="572" vertical-scroll-proportion="0.5026087">
+        <state line="36" column="17" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.8278261">
           <folding />
         </state>
       </provider>
