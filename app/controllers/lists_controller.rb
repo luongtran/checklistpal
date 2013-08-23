@@ -2,7 +2,6 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy, :mylist, :edit, :pdf]
   # after_filter :get_html, :only => [:show]
   respond_to :html, :xml, :js, :pdf
-
   after_filter :get_html, :only => [:pdf]
   layout false, :only => [:pdf]
 
@@ -200,13 +199,13 @@ class ListsController < ApplicationController
   private
   def get_html
     if @valid
-      kit = PDFKit.new response.body ,:page_size => 'SRA4'
+      kit = PDFKit.new response.body, :page_size => 'A4'
       kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
       begin
-        name = "#{@list.id}.pdf"
-        save_path = File.join("tmp", "#{@list.id}.pdf")
-        file = kit.to_file(save_path)
-        send_file(save_path, :filename => name, :type => "pdf")
+      name = "#{@list.id}.pdf"
+      save_path = File.join("tmp", "#{@list.id}.pdf")
+      file = kit.to_file(save_path)
+      send_file(save_path, :filename => name, :type => "pdf")
       rescue Exception => e
         send_file(save_path, :filename => name, :type => "pdf")
       end
