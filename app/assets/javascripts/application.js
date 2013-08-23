@@ -147,9 +147,9 @@ $(function () {
                     $('.show_comment_bt').on("click", function () {
                         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
                     });
-//                    $('.number_comment').on("click", function () {
-//                        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
-//                    });
+                    $('.number_comment').on("click", function () {
+                        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+                    });
 
                     $(".task-hasduedate").bind('change', function () {
                         var list_id = $(this).attr('data_target');
@@ -259,9 +259,9 @@ $(function () {
     $('.show_comment_bt').on("click", function () {
         $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
     });
-//    $('.number_comment').on("click", function () {
-//        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
-//    });
+    $('.number_comment').on("click", function () {
+        $(this).parent().parent('.items').children(".comment-add").slideToggle("slow");
+    });
     $(".task-hasduedate").bind('change', function () {
         var list_id = $(this).attr('data_target');
         url = null;
