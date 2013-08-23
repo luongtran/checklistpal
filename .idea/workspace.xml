@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/authentications_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/authentications_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,7 +22,7 @@
     <file path="/dashboard.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377048856223" ignored="false" />
     <file path="/omniauth_callbacks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377051200748" ignored="false" />
     <file path="/index.html" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377055164626" ignored="false" />
-    <file path="/lists_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377247990296" ignored="false" />
+    <file path="/lists_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377248567332" ignored="false" />
     <file path="/list.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377149385974" ignored="false" />
     <file path="/_items.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377073939815" ignored="false" />
     <file path="/tasks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377143288693" ignored="false" />
@@ -75,7 +73,7 @@
       <file leaf-file-name="lists_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="213" column="53" selection-start="6643" selection-end="6643" vertical-scroll-proportion="0.70434785">
+            <state line="205" column="8" selection-start="6329" selection-end="6329" vertical-scroll-proportion="0.4973913">
               <folding>
                 <element signature="e#284#2006#0" expanded="false" />
               </folding>
@@ -809,7 +807,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="53" selection-start="6643" selection-end="6643" vertical-scroll-proportion="0.70434785">
+        <state line="205" column="8" selection-start="6329" selection-end="6329" vertical-scroll-proportion="0.4973913">
           <folding>
             <element signature="e#284#2006#0" expanded="false" />
           </folding>
