@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tudli</title>
+  <%= stylesheet_link_tag "bootstrap.min", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min", :media => "all" %>
+  <%= stylesheet_link_tag "combine", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/proximanova/font", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/OpenSan/font", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/awesome/css/font-awesome.min", :media => "all" %>
+  <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min", :media => "all" %>
+  <%= stylesheet_link_tag "addonfix", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+</head>
+<body>
+<div>
+  <div class="webpage" style="min-height: 600px;">
+    <div class="webpage-inner">
+      <div class="section clearfix">
+        <div class="pull-left">
+          <div id="logo">
+            <span class="list-name" data-url="">&nbsp;<%= @list.name %></span>
+          </div>
+        </div>
+      </div>
+      <div class="section clearfix">
+        <% if @list.completed %>
+            <div class="completed-notify-area">
+              <p style="color: #094d95;font-size: 15px;padding-left: 7px;">Completed
+                at <%= @list.last_completed_mark_at.strftime("%H:%M, %a %m-%d-%Y") %></p>
+            </div>
+        <% end %>
+        <div class="todolist">
+          <div class="row-fluid">
+            <span class="span12">
+              <div class="notice" id="notice">
+              </div>
+              <ul class="unstyled" id="list-items">
+                <% @list.tasks.items.each do |task|
+                  index = 0 %>
+                    <div class="taskinfo">
+                      <div class="items">
+                        <div class="checkbox">
+                              <span class="mark" title="Mark completed">
+                                  <%= check_box_tag 'mark_complete', task.id, task.completed, :class => 'checkbox mark_comp', :data_target => @list.id %>
+                              </span>
+                              <span class="task-des handle" title="Task name">
+                                <% if !task.completed %> <!-- Render task incompleted -->
+                                  <div class="item-title" style="min-width: 700px;">
+                                    <%= task.description %>
+                                  </div>
+                                    <% if task.hasduedate && task.due_date != nil %>
+                                        <span class="due_date_bt" style="font-size: small;">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
+                                    <% end %>
+                                <% else %>
+                                    <div class="item-title item-completed" style="min-width: 700px;">
+                                      <%= task.description %>
+                                    </div>
+                                    <% if task.hasduedate && task.due_date != nil %>
+                                          <span class="due_date_bt" style="font-size: small;">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
+                                      <% end %>
+                                <% end %>
+                              </span>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

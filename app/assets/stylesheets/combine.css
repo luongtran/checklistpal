@@ -25,7 +25,7 @@ body label, body input, body button, body select, body textarea {
 }
 
 body .container {
-    max-width: 960px;    
+    max-width: 960px;
 }
 
 body input[type="text"] {

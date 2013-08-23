@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tudli</title>
+  <%= stylesheet_link_tag "bootstrap.min", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min", :media => "all" %>
+  <%= stylesheet_link_tag "combine", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/proximanova/font", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/OpenSan/font", :media => "all" %>
+  <%= stylesheet_link_tag "fontkit/awesome/css/font-awesome.min", :media => "all" %>
+  <%= stylesheet_link_tag "jquery-ui-1.10.3.custom.min", :media => "all" %>
+  <%= stylesheet_link_tag "addonfix", :media => "all" %>
+</head>
+<body>
+<div class="container" id="container">
+  <div class="webpage">
+    <div class="webpage-inner">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+</body>
+</html>

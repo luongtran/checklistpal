@@ -24,6 +24,7 @@ Checklistpal::Application.routes.draw do
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
   get '/dashboard' => 'home#dashboard', :as => :dashboard
+
   post '/users/feedback'
   post '/users/upload_avatar'
   resources :lists do
@@ -32,6 +33,7 @@ Checklistpal::Application.routes.draw do
   resources :tasks do
     resources :comments
   end
+  get '/pdf_version' => 'lists#pdf' , :as => :pdf_version
   match '/signup_options' => 'home#signup_options', :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit", :as => :edit_task

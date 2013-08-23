@@ -1,7 +1,10 @@
 class ListsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:destroy, :mylist, :edit]
+  before_filter :authenticate_user!, :only => [:destroy, :mylist, :edit, :pdf]
   # after_filter :get_html, :only => [:show]
   respond_to :html, :xml, :js, :pdf
+
+  after_filter :get_html, :only => [:pdf]
+  layout false, :only => [:pdf]
 
   def show
     @list = List.where(slug: params[:slug]).first
@@ -42,37 +45,29 @@ class ListsController < ApplicationController
       flash[:notice] = "List not exists or deleted !"
     end
 
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.pdf do
-    #    puts "\n\n_____OK format PDF"
-    #    #render :template => 'lists/pdf',
-    #    #       :locals => {:current_list => @list}
-    #  end
-    #end
-
+    respond_to do |format|
+      format.html # show.html.erb
+      format.pdf do
+      end
+    end
   end
 
-  def download_pdf
-    #@list = List.find(params[:lid])
-    #session[:list_id] = @list.id
-    #
-    #kit = PDFKit.new('http://www.google.com.vn')
-    ##kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
-    #
-    #
-    ##pdf = WickedPdf.new.pdf_from_string(
-    ##    render_to_string('_pdf.html.erb'),
-    ##    :layout => 'application'
-    ##)
-    ##
-    ##save_path = Rails.root.join('tmp', "#{@list.id}.pdf")
-    ##File.open(save_path, 'wb') do |file|
-    ##  file << pdf
-    ##end
-    #send_file kit.to_pdf,
-    #          :type => 'application/pdf',
-    #          :filename => 'test_pdfkit.pdf'
+  def pdf
+    @valid = true
+    @list = current_user.lists.where(:id => params[:lid]).first
+    if @list.nil?
+      if ListTeamMember.where(:invited_id => current_user.id, active: true, :list_id => params[:lid]).first.nil?
+        @valid = false
+        flash[:error] = "Invalid request !"
+        redirect_to root_url and return
+      else
+        @list = List.find(params[:lid])
+      end
+
+    end
+    respond_to do |f|
+      f.html
+    end
   end
 
   def edit
@@ -203,21 +198,20 @@ class ListsController < ApplicationController
   end
 
   private
-
-  def generate_pdf(client)
-    Prawn::Document.new do
-      text client.name, :align => :center
-      text "Address: #{client.address}"
-      text "Email: #{client.email}"
-    end.render
-  end
-
   def get_html
-    kit = PDFKit.new response, :page_size => 'Letter'
-    pdf = kit.to_pdf
-    kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
-    # Save the PDF to a file
-    file = kit.to_file('abc.pdf')
-    send_file(file, :filename => "lht.pdf", :type => "application/pdf")
+    if @valid
+      kit = PDFKit.new response.body, :page_size => 'Letter'
+      kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
+      #file =  kit.to_pdf("tmp/#{@list.id}.pdf")
+      begin
+        file_name = "#{@list.id}-#{@list.name}.pdf"
+        file = kit.to_file("tmp/file_name")
+        send_file(file, :filename => file_name, :type => "pdf")
+      rescue Exception => e
+        send_file("tmp/file_name", :filename => "file_name", :type => "pdf")
+      end
+    end
+
   end
+
 end
