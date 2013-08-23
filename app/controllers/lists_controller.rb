@@ -203,7 +203,7 @@ class ListsController < ApplicationController
       kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
       begin
       name = "#{@list.id}.pdf"
-      save_path = File.join("#{Rails.root.to_s}/tmp", "#{@list.id}.pdf")
+      save_path = File.join("tmp", "#{@list.id}.pdf")
       if File.exist?(save_path)
         require 'FileUtils'
         FileUtils.rm(save_path)
@@ -211,7 +211,7 @@ class ListsController < ApplicationController
       file = kit.to_file(save_path)
       send_file(save_path, :filename => name, :type => "pdf")
       rescue Exception => e
-        send_file(save_path, :filename => name, :type => "pdf")
+        send_file(save_path, :filename => name, :type => "pdf") if File.exist?(save_path)
       end
     end
   end

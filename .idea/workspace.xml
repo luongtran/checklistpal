@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/lists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/lists_controller.rb" />
     </list>
     <ignored path="checklistpal.iws" />
@@ -23,7 +22,7 @@
     <file path="/dashboard.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377048856223" ignored="false" />
     <file path="/omniauth_callbacks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377051200748" ignored="false" />
     <file path="/index.html" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377055164626" ignored="false" />
-    <file path="/lists_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377257217441" ignored="false" />
+    <file path="/lists_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377258488979" ignored="false" />
     <file path="/list.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377149385974" ignored="false" />
     <file path="/_items.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377073939815" ignored="false" />
     <file path="/tasks_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377143288693" ignored="false" />
@@ -75,7 +74,7 @@
       <file leaf-file-name="lists_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="48" selection-start="6196" selection-end="6196" vertical-scroll-proportion="0.34395972">
+            <state line="213" column="67" selection-start="6674" selection-end="6674" vertical-scroll-proportion="0.6862416">
               <folding>
                 <element signature="e#283#2005#0" expanded="false" />
               </folding>
@@ -706,7 +705,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/lists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="48" selection-start="6196" selection-end="6196" vertical-scroll-proportion="0.34395972">
+        <state line="213" column="67" selection-start="6674" selection-end="6674" vertical-scroll-proportion="0.6862416">
           <folding>
             <element signature="e#283#2005#0" expanded="false" />
           </folding>
