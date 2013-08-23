@@ -173,7 +173,7 @@ class ListsController < ApplicationController
     @is_not_connect = false
     @list_id = params[:list_id]
     @user_id = params[:user_id]
-    @current_connect = ListTeamMember.find(:all, :conditions => ["list_id = ? and invited_id = ?", @list_id, @user_id])
+    @current_connect = ListTeamMember.where("list_id = ? and invited_id = ?", @list_id, @user_id)
     if @current_connect.empty?
       @success = false
     else
@@ -200,7 +200,7 @@ class ListsController < ApplicationController
   private
   def get_html
     if @valid
-      kit = PDFKit.new response.body
+      kit = PDFKit.new response.body ,:page_size => 'SRA4'
       kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
       begin
         name = "#{@list.id}.pdf"

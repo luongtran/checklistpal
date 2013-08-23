@@ -21,10 +21,6 @@ end
 group :production do
   gem 'mysql2'
 end
-#gem 'prawn'
-#gem 'wicked_pdf'
-#gem 'pdfcrowd'
-
 gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"
