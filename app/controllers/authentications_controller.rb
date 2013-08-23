@@ -32,6 +32,7 @@ class AuthenticationsController < ApplicationController
       user.password = Devise.friendly_token[0, 20]
       user.apply_omniauth(omni)
       user.add_role("free")
+
       if user.save
         flash[:notice] = "Logged in."
         sign_in_and_redirect User.find(user.id)

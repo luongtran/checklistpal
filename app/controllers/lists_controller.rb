@@ -204,11 +204,11 @@ class ListsController < ApplicationController
       kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
       #file =  kit.to_pdf("tmp/#{@list.id}.pdf")
       begin
-        file_name = "#{@list.id}-#{@list.name}.pdf"
-        file = kit.to_file("tmp/file_name")
+        file_name = "#{@list.id}.pdf"
+        file = kit.to_file("tmp/#{file_name}")
         send_file(file, :filename => file_name, :type => "pdf")
       rescue Exception => e
-        send_file("tmp/file_name", :filename => "file_name", :type => "pdf")
+        send_file("tmp/#{file_name}", :filename => file_name, :type => "pdf")
       end
     end
 
