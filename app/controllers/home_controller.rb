@@ -247,7 +247,7 @@ class HomeController < ApplicationController
     end
   end
 
-
+  # Call after invite a existing user
   def invite_user_by_id
     @message = ""
     if !User.list_create(current_user.id, params[:list_id])
