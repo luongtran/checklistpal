@@ -46,14 +46,14 @@
                               </span>
                               <span class="task-des handle" title="Task name">
                                 <% if !task.completed %> <!-- Render task incompleted -->
-                                  <div class="item-title" style="min-width: 700px;">
+                                  <div class="item-title" style="min-width: 550px;">
                                     <%= task.description %>
                                   </div>
                                     <% if task.hasduedate && task.due_date != nil %>
                                         <span class="due_date_bt" style="font-size: small;">Due <%= task.due_date.to_time.strftime("%m-%d-%Y") %></span>
                                     <% end %>
                                 <% else %>
-                                    <div class="item-title item-completed" style="min-width: 700px;">
+                                    <div class="item-title item-completed" style="min-width: 550px;">
                                       <%= task.description %>
                                     </div>
                                     <% if task.hasduedate && task.due_date != nil %>

@@ -200,7 +200,7 @@ class ListsController < ApplicationController
   private
   def get_html
     if @valid
-      kit = PDFKit.new response.body, :page_size => 'Letter'
+      kit = PDFKit.new response.body
       kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/pdf.css"
       begin
         name = "#{@list.id}.pdf"
@@ -211,7 +211,5 @@ class ListsController < ApplicationController
         send_file(save_path, :filename => name, :type => "pdf")
       end
     end
-
   end
-
 end
