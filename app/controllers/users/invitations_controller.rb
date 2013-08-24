@@ -26,13 +26,24 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
-    list_team_members = ListTeamMember.where(invitation_token: params[:invitation_token]) # !! need to check params before use
-    user_id = nil
-    if list_team_members
-      list_team_members.each do |l|
-        l.update_attributes(:active => true)
-        user_id = l.invited_id
+    list_team_member = ListTeamMember.where(invitation_token: params[:invitation_token]).first # !! need to check params before use
+
+    owner_id = list_team_member.user_id
+    owner_user = User.find(owner_id)
+    if owner_user.has_role 'free'
+      # Check limit perlist
+      # members_active_on_list
+      if ListTeamMember.where(:list_id => list_team_member.list_id, :active => true).count >= Role.where(:name => 'free').first.max_connections
+        flash[:error] = "Sorry, the page doesn't exist"
+        redirect_to '404'
+        return
       end
+    else
+    end
+    user_id = nil
+    if list_team_member
+      list_team_member.update_attributes(:active => true)
+      user_id = list_team_member.invited_id
     end
     @user = User.find(user_id)
     if @user.last_sign_in_at != nil
@@ -47,8 +58,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # PUT /resource/invitation
   def update
     # validate invitation_token
-
-
+    puts "\n\n__________Chap nhan invite va tao mk"
     super
   end
 

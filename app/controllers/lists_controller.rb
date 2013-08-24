@@ -211,6 +211,7 @@ class ListsController < ApplicationController
       file = kit.to_file(save_path)
       send_file(save_path, :filename => name, :type => "pdf")
       rescue Exception => e
+        # In some case, wkhtmltopdf throw an error but pdf file still create
         send_file(save_path, :filename => name, :type => "pdf") if File.exist?(save_path)
       end
     end

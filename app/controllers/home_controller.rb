@@ -133,7 +133,6 @@ class HomeController < ApplicationController
       @invite_yourself = true
       return
     end
-
     if !invite_email.blank? && !invite_name.blank?
       condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
     else
@@ -145,7 +144,6 @@ class HomeController < ApplicationController
         end
       end
     end
-
     @has_over_connect = false
     # @users = User.find(:all, :conditions => condition)
     @users = User.where(condition)
@@ -212,7 +210,6 @@ class HomeController < ApplicationController
         end
       end
     end
-
     @has_over_connect = false
     @users = User.find(:all, :conditions => condition)
     @users -= [current_user]
@@ -224,8 +221,7 @@ class HomeController < ApplicationController
       if num_connect < Role.find(current_user.roles.first.id).max_connections
         if (!invite_email.blank?)
           @user = User.new(:email => invite_email)
-          role = Role.where(name: 'free').first
-          @user.add_role(role.name)
+          @user.add_role('free')
           #@user.save
           @user.invite!(current_user)
           if (!ListTeamMember.is_existed_in_connection(current_user.id, @list_id, @user.id))

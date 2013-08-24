@@ -1,4 +1,6 @@
 Checklistpal::Application.routes.draw do
+  #match '*path', :to => 'static_pages#not_found'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   match '/auth/:provider/callback' => 'authentications#create'
@@ -33,7 +35,7 @@ Checklistpal::Application.routes.draw do
   resources :tasks do
     resources :comments
   end
-  get '/pdf_version' => 'lists#pdf' , :as => :pdf_version
+  get '/pdf_version' => 'lists#pdf', :as => :pdf_version
   match '/signup_options' => 'home#signup_options', :as => :signup_options
   match 'lists/:list_id/tasks/:id/complete' => 'tasks#complete', :as => :complete_task
   match 'lists/:list_id/tasks/:id/edit' => "tasks#edit", :as => :edit_task
