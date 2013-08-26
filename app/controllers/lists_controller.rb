@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy, :mylist, :edit, :pdf]
-  # after_filter :get_html, :only => [:show]
-  respond_to :html, :xml, :js, :pdf
+
+  respond_to :html, :xml, :js
   after_filter :get_html, :only => [:pdf]
   layout false, :only => [:pdf]
 

@@ -44,6 +44,7 @@ Checklistpal::Application.routes.draw do
   match 'lists/:list_id/tasks/:id/hasduedate' => "tasks#hasduedate", :as => :has_due_date
   match 'lists/:list_id/tasks/:id/update_due_date' => 'tasks#update_due_date', :as => :update_due_date
   match 'mylists' => "lists#mylist", :as => :my_list
+  match 'create_new_list' => "home#index" , :as => :create_new_list
   match 'remove_connect/:list_id/:user_id' => 'lists#remove_connect', :as => :remove_connect
   match 'who_connection/:id' => "lists#who_connection", :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy", :as => :delete_list

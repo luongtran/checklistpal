@@ -57,7 +57,7 @@
                   <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
                   <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
                   <% if current_user.can_create_new_list? %>
-                      <a href="<%= root_path %>" style="margin-top: 10px;" class="btn btn-success btn-small btn-circle" title="Create new list">+
+                      <a href="<%= create_new_list_path %>" style="margin-top: 10px;" class="btn btn-success btn-small btn-circle" title="Create new list">+
                         New</a>
                       <br/>
                   <% else %>
