@@ -19,7 +19,7 @@ Checklistpal::Application.routes.draw do
              }
   # devise_for :users, controllers: {sessions: "sessions"}
 
-  ActiveAdmin.routes(self)
+ # ActiveAdmin.routes(self)
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf

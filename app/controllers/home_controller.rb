@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, :only => [:find_invite, :invite, :invite_user_by_id, :search_my_connect, :dashboard]
   require 'securerandom'
 
-
   def index
     random_string = SecureRandom.urlsafe_base64
     if current_user.nil?
@@ -15,7 +14,7 @@ class HomeController < ApplicationController
         flash[:error] = "Could not post list"
       end
     else # logged in
-      if request.fullpath.end_with? 'create_new_list'
+      if request.fullpath.end_with? 'create_new_list'    # request from logged user
         if current_user.can_create_new_list?
           list = current_user.lists.create(:name => "Name of List", :description => "To do list", :slug => random_string)
           redirect_to list_url(list.slug)
@@ -25,7 +24,7 @@ class HomeController < ApplicationController
           return
         end
       else
-        redirect_to my_list_url
+        redirect_to my_list_url     # When user already logged in, redirect from root_path ro my_lists_path
       end
     end
   end
