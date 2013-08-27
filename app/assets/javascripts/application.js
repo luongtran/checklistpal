@@ -48,7 +48,7 @@ $(function () {
                             form.append("Can't be saved");
                         }
                     } else {
-                        alert("You have no permission to edit this list!");
+                        alert("You can't edit name of on invited list!");
                         $('.edit_list_frm').parent(".list-name").html(list_cur_name);
                     }
                 }, error: function () {
