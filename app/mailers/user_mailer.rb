@@ -46,6 +46,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => @template.title)
   end
 
+  def invitations_email(user, token, des_email)
+    @token = token
+    @user = user
+    mail(:to => des_email, :subject => "You've been invited to Tudli.com")
+  end
+
   def list_completed(email_address, list)
     @link = "http://www.tudli.com/lists/#{list.slug}"
     @date = list.last_completed_mark_at

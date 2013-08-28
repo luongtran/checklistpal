@@ -39,21 +39,20 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :stripe_token, :coupon, :provider, :uid, :invitation_token, :invitation_sent_at, :invitation_accepted_at, :invitation_limit, :invited_by_id, :invited_by_type,
                   :avatar_s3_url, :avatar_file_name, :avatar_url_expires_at
-  attr_accessor :stripe_token, :coupon, :skip_stripe_update
+  attr_accessor :stripe_token, :coupon, :skip_stripe_update, :is_invited_user
   before_create :update_stripe
   after_create :send_welcome_mail
-
-
   after_destroy :cancel_subscription
   has_many :lists, :order => 'created_at desc', :dependent => :destroy #, :select => 'id,name,user_id'
+  has_many :lists_id, :class_name => 'List', :select => 'id'
   has_many :tasks, :through => :lists
   has_many :list_team_members
   has_many :authentications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
 
- #validates_presence_of :name
- #validates_length_of :name, :minimum => 3
+  #validates_presence_of :name
+  #validates_length_of :name, :minimum => 3
 
   def update_avatar(file)
     #need remove old avatar
@@ -94,10 +93,6 @@ class User < ActiveRecord::Base
     lists.count < roles.first.max_savedlist ? true : false
   end
 
-  def connection_count
-    ListTeamMember.where(user_id: self.id, active: true).count
-  end
-
   def self.list_create(user_id, list_id)
     if user = User.find(user_id)
       if user.lists.length > 0
@@ -136,7 +131,18 @@ class User < ActiveRecord::Base
     false
   end
 
+  def update_stripe_for_invited_user
+    customer = Stripe::Customer.create(
+        :email => email,
+        :description => name,
+        :plan => roles.first.name
+    )
+    self.customer_id = customer.id
+    save
+  end
+
   def update_stripe
+    return if is_invited_user
     return if skip_stripe_update
     return if email.include?(ENV['ADMIN_EMAIL'])
     return if email.include?('@example.com') and not Rails.env.production?
@@ -227,8 +233,13 @@ class User < ActiveRecord::Base
     false
   end
 
+  def send_invitation_email token, des_email
+    UserMailer.invitations_email(self, token, des_email).deliver
+  end
+
   def send_welcome_mail
-      UserMailer.welcome_email(self).deliver
+    return if self.is_invited_user
+    UserMailer.welcome_email(self) #.deliver
   end
 
   def expire
@@ -303,6 +314,20 @@ class User < ActiveRecord::Base
     user
   end
 
+# created 27/08/13
+  def connection_count
+    ListTeamMember.where(:user_id => self.id, active: true).select('distinct invited_id').count
+  end
+
+  def connections
+    members = ListTeamMember.where(:user_id => self.id, active: true).select('distinct invited_id')
+    u_ids = []
+    members.each do |m|
+      u_ids += [m.invited_id]
+    end
+    u_ids
+  end
+
   def self.number_connect(resource)
     listconnect = resource.list_team_members.find(:all, :conditions => ["active = ? ", true])
     @user_ids = []
@@ -313,7 +338,6 @@ class User < ActiveRecord::Base
   end
 
   def self.already_connect(user, invite_user)
-
     if user.list_team_members.find(:first, :conditions => ["active = ? AND invited_id = ?", true, invite_user.id])
       return true
     else

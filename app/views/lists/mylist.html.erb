@@ -1,7 +1,13 @@
 <% title "Tudli - My Lists" %>
 <div class="section clearfix">
   <div class="pull-right">
-
+    <div id="quickmenu">
+      <div class="clearfix ">
+        <% if Rails.env == "development" %>
+            <a href="<%= inviting_path %>" class="pull-left" title="My lists">INVITING</a>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 </div>

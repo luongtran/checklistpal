@@ -37,9 +37,11 @@
                     <input class="btn btn-primary btnsearch" name="commit" type="submit" value="Find &amp; Invite" id='btn-search-and-invite'>
                   </div>
                   <br/>
+                  <div id="loading" style="display: none;" class="">
+                    <p> <strong>Processing your request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
+                  </div>
+                  <div id="inviting_notice_area" style="display: none;">
 
-                  <div id="loading" style="display: none;" class="alert alert-success">
-                    <p> Processing your request   <%= image_tag 'loading.gif', :style => "margin-left: 15px;" %>  </p>
                   </div>
               <% end %>
             </div>

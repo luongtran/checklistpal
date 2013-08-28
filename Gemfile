@@ -17,6 +17,8 @@ end
 
 group :development do
   gem 'pg'
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :production do

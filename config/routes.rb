@@ -19,7 +19,7 @@ Checklistpal::Application.routes.draw do
              }
   # devise_for :users, controllers: {sessions: "sessions"}
 
- # ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf
@@ -44,7 +44,7 @@ Checklistpal::Application.routes.draw do
   match 'lists/:list_id/tasks/:id/hasduedate' => "tasks#hasduedate", :as => :has_due_date
   match 'lists/:list_id/tasks/:id/update_due_date' => 'tasks#update_due_date', :as => :update_due_date
   match 'mylists' => "lists#mylist", :as => :my_list
-  match 'create_new_list' => "home#index" , :as => :create_new_list
+  match 'create_new_list' => "home#index", :as => :create_new_list
   match 'remove_connect/:list_id/:user_id' => 'lists#remove_connect', :as => :remove_connect
   match 'who_connection/:id' => "lists#who_connection", :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy", :as => :delete_list
@@ -73,6 +73,8 @@ Checklistpal::Application.routes.draw do
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support
   match '/psupport' => 'static_pages#paid_support', :as => :paid_support
+
+ # get '/accept_invition' => 'home#accept_invitation', :as => :accept_invitation
 
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
