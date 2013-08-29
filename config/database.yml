@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: checklistpal_development
+  pool: 5
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: Htlu@n2605

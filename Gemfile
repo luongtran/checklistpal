@@ -15,13 +15,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :development do
-<<<<<<< HEAD
+
   gem 'pg'
   gem 'hirb'
   gem 'hirb-unicode'
-=======
   gem 'sqlite3'
->>>>>>> 94fb71478b0cc82ce7a98e841f28264a3e413044
+
 end
 
 group :production do

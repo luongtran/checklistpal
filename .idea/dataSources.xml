@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3180130837">
+  <component name="DataSourceManagerImpl" format="xml" hash="2880142030">
     <data-source source="LOCAL" name="Rails checklistpal: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="c397bc29-b7fe-4bfb-8010-f35db82cf13d">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/checklistpal_production</jdbc-url>
@@ -15,8 +15,7 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Rails checklistpal: development" product="PostgreSQL" version="9.2.4" jdbc-version="3.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.1 JDBC3 (build 901)" uuid="26d1b9ce-ec2f-4858-a901-079b3e2b6609">
-      <identifier-quote-string>&quot;</identifier-quote-string>
+    <data-source source="LOCAL" name="Rails checklistpal: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="8897ff13-debd-4c29-a0f7-55112747a059">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/checklistpal_development</jdbc-url>
       <user-name>postgres</user-name>
