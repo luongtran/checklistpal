@@ -1,0 +1,196 @@
+(function() {
+  (function($) {
+    $.fn.modal = function(options) {
+      var $overlay;
+      $overlay = $("#lean_overlay");
+      if ($overlay.length === 0) {
+        $overlay = $("<div/>").attr({
+          id: 'modal-overlay'
+        }).appendTo("body");
+      }
+      return this.each(function() {
+        var $content, height, width;
+        $content = $(this).appendTo("body");
+        $overlay.show();
+        height = $content.outerHeight();
+        width = $content.outerWidth();
+        $content.css({
+          display: 'block',
+          position: 'fixed',
+          zIndex: 1200,
+          left: '50%',
+          top: 140,
+          marginLeft: -width * 0.5
+        }).show();
+        return $content.on('click', '[data-modal=close]', function() {
+          $overlay.hide();
+          return $content.hide().remove();
+        });
+      });
+    };
+    $.fn.activeAdminWysihtml5 = function(options) {
+      return this.each(function() {
+        var $button, $editor, $textarea, $toolbar, editor;
+        $editor = $(this);
+        if ($editor.data('activeadmin-wysihtml5')) {
+          return;
+        }
+        $editor.data('activeadmin-wysihtml5', true);
+        $toolbar = $editor.find('.toolbar');
+        $textarea = $editor.find('textarea');
+        editor = new wysihtml5.Editor($textarea.attr('id'), {
+          toolbar: $toolbar.attr('id'),
+          stylesheets: "/assets/activeadmin-wysihtml5/wysiwyg.css",
+          parserRules: wysihtml5ParserRules
+        });
+        $button = $toolbar.find('a[data-wysihtml5-command=createLink]').click(function() {
+          var $field, $modal, $tab_contents, $tab_handles, activeButton;
+          $modal = $editor.find(".modal-link").clone();
+          $field = $modal.find("input");
+          $tab_contents = $modal.find("[data-tab]").hide();
+          $tab_handles = $modal.find("[data-tab-handle]").click(function() {
+            $tab_contents.hide();
+            $tab_contents.filter($(this).attr("href")).show();
+            $tab_handles.removeClass("active");
+            $(this).addClass("active");
+            return false;
+          });
+          activeButton = $(this).hasClass("wysihtml5-command-active");
+          if (!activeButton) {
+            $modal.modal();
+            $tab_contents.find("[name=text]").val(editor.composer.selection.getText());
+            $tab_handles.eq(0).click();
+            $modal.find("[data-action=save]").click(function() {
+              var $content, el;
+              $content = $tab_contents.filter(":visible");
+              el = (function() {
+                switch ($content.attr("id")) {
+                  case "modal-link-url":
+                    return {
+                      href: $content.find("[name=url]").val(),
+                      text: $content.find("[name=text]").val(),
+                      rel: $content.find("[name=rel]").val(),
+                      title: $content.find("[name=title]").val(),
+                      target: ($content.find("[name=blank]").is(":checked") ? "_blank" : "")
+                    };
+                  case "modal-link-email":
+                    return {
+                      href: "mailto:" + $content.find("[name=email]").val(),
+                      text: $content.find("[name=text]").val()
+                    };
+                  case "modal-link-anchor":
+                    return {
+                      id: $content.find("[name=anchor]").val(),
+                      text: $content.find("[name=text]").val()
+                    };
+                }
+              })();
+              editor.currentView.element.focus();
+              return editor.composer.commands.exec("createLink", el);
+            });
+            return false;
+          } else {
+            return true;
+          }
+        });
+        return $toolbar.find('a[data-wysihtml5-command=insertImage]').click(function() {
+          var $gallery, $modal, $scaler, $tab_contents, $tab_handles, $uploader, $url, activeButton, initUploader, refreshAssets, selectedAsset;
+          $modal = $editor.find(".modal-image").clone();
+          $uploader = $modal.find('.asset-uploader');
+          $gallery = $modal.find('.assets-container ul');
+          $url = $modal.find('[name=url]');
+          $scaler = $modal.find('.input.radio');
+          selectedAsset = null;
+          $tab_contents = $modal.find("[data-tab]").hide();
+          $tab_handles = $modal.find("[data-tab-handle]").click(function() {
+            $tab_contents.hide();
+            $tab_contents.filter($(this).attr("href")).show();
+            $tab_handles.removeClass("active");
+            $(this).addClass("active");
+            return false;
+          });
+          refreshAssets = function() {
+            $gallery.empty();
+            return $.getJSON('/admin/assets.json', function(data) {
+              return $.each(data, function(i, asset) {
+                var $a, $img;
+                $img = $("<img/>");
+                $img.attr({
+                  title: "" + asset.dimensions.width + "x" + asset.dimensions.height + "px",
+                  src: asset.thumb_url
+                });
+                $a = $("<a/>").attr({
+                  href: "#"
+                }).append($img);
+                $a.click(function() {
+                  $gallery.find("a").removeClass("selected");
+                  $a.addClass("selected");
+                  selectedAsset = asset;
+                  return false;
+                });
+                return $gallery.append($("<li/>").append($a));
+              });
+            });
+          };
+          initUploader = function() {
+            var uploader;
+            return uploader = new qq.FileUploader({
+              element: $uploader.get(0),
+              action: '/admin/assets.json',
+              onComplete: function() {
+                refreshAssets();
+                return $tab_handles.eq(1).click();
+              }
+            });
+          };
+          $modal.find('[data-action=save]').click(function() {
+            var $content, el, scale;
+            $content = $tab_contents.filter(":visible");
+            el = (function() {
+              switch ($content.attr("id")) {
+                case "modal-image-url":
+                  return {
+                    src: $content.find("[name=url]").val(),
+                    "class": $content.find("[name=alignment]").val(),
+                    alt: $content.find("[name=alt]").val(),
+                    title: $content.find("[name=title]").val()
+                  };
+                case "modal-image-gallery":
+                  scale = $content.find("[name=scale]:checked").val();
+                  return {
+                    src: selectedAsset.source_url[scale],
+                    "class": $content.find("[name=alignment]").val(),
+                    title: $content.find("[name=title]").val(),
+                    alt: $content.find("[name=alt]").val()
+                  };
+              }
+            })();
+            if (el) {
+              editor.currentView.element.focus();
+              return editor.composer.commands.exec("insertImage", el);
+            }
+          });
+          activeButton = $(this).hasClass("wysihtml5-command-active");
+          if (!activeButton) {
+            $modal.modal();
+            $tab_handles.eq(0).click();
+            refreshAssets();
+            initUploader();
+            return false;
+          } else {
+            return true;
+          }
+        });
+      });
+    };
+    return $(function() {
+      $('.activeadmin-wysihtml5:visible').activeAdminWysihtml5();
+      return $("a").bind("click", function() {
+        return setTimeout(function() {
+          return $('.activeadmin-wysihtml5:visible').activeAdminWysihtml5();
+        }, 50);
+      });
+    });
+  })(jQuery);
+
+}).call(this);

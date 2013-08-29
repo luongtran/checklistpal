@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+ * require_tree .
+
+ */
+
+.handle:hover{
+    cursor: move;
+    background-color : rgb(252, 249, 208);    
+    /*line-height: 10px;*/
+}
+.handle{
+    /*line-height: 10px;*/
+}
+.checkbox{
+    /*min-height : 10px;*/
+}
+.action {
+    float:right;
+}
+
+.comment-add {
+    float:right;
+    display:none;    
+}
+
+.small-text {
+    height:18px;
+}
+.item-completed {
+    text-decoration: line-through; 
+    color: rgb(153, 153, 153);
+}
+form.edit_list_frm{
+    display: inline; 
+    width: 500px
+}
+form.edit_list_frm input[type="text"]{
+    display: inline;
+    height: 14px;        
+    width: 300px;
+}
+form.edit_list_frm input.btn{
+    display: inline;
+    width: 80px;
+}
+.comment-show{
+    height:auto !important;
+}
+.accordion-body{
+    background-color:#eeeeee;
+}
+.path_top_login{
+    background-color:#106FB1;
+    margin-bottom: 25px;
+}

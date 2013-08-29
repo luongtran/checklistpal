@@ -1,0 +1,57 @@
+/*
+    Document   : print
+    Created on : Jul 4, 2013, 9:13:17 AM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .webpage-inner, .webpage-inner * {
+        visibility: visible;
+    }
+
+    .items {
+        width: 1000px;
+    }
+
+    a:link:after {
+        content: "";
+    }
+
+    .comment-togger.show-comment {
+        visibility: hidden;
+    }
+
+    #quickmenu .clearfix  {
+        visibility: hidden;
+    }
+    .pull-left {
+        padding-bottom: 75px;
+    }
+    .todolist {
+        position: absolute;
+        left: 50px;
+        top: 120px;
+    }
+
+    #logo {
+        position: absolute;
+        left: 40px;
+        top: 45px;
+
+    }
+
+    .searchbox * {
+        visibility: hidden;
+    }
+
+    .alert {
+        visibility: hidden;
+    }
+}

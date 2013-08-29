@@ -1,0 +1,100 @@
+/* 
+    Document   : print
+    Created on : Jul 4, 2013, 9:13:17 AM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+@media print {
+    /*    body * {
+            visibility: hidden;
+        }*/
+    .searchboxtodolist {
+        visibility: hidden;
+    }
+    .completed-notify-area {
+        visibility: hidden;
+    }
+    .items {
+        width: 1000px;
+    }
+
+    #logo {
+        visibility: hidden;
+    }
+
+    #quickmenu .clearfix .pull-left {
+        visibility: hidden;
+    }
+
+    .footer .clearfix .pull-left {
+        position: absolute;
+        left: 10px;
+        bottom: 20px;
+    }
+
+    .footer .clearfix .pull-right {
+        visibility: hidden;
+    }
+
+    /*    .row-fluid input{
+            visibility: hidden;
+        }*/
+    .path_top_login {
+        visibility: hidden;
+    }
+
+    .todolist, .todolist *, .list-name {
+        visibility: visible;
+    }
+
+    #logo {
+        position: absolute;
+        left: 40px;
+        top: 30px;
+        color: red;
+    }
+
+    .todolist {
+        position: absolute;
+        left: 50px;
+        top: 80px;
+    }
+
+    a:link:after {
+        content: "";
+    }
+
+    .searchbox * {
+        visibility: hidden;
+    }
+
+    .comment-togger.show-comment {
+        visibility: hidden;
+    }
+
+    .list-name {
+        font-family: bold;
+        font-size: 26px;
+    }
+
+    #logo span {
+        font-family: 'Open Sans';
+        padding: 10px;
+    }
+
+    @media (max-width:900px) {
+        .checkbox {
+            width: 100%;
+        }
+    }
+    .alert {
+        visibility: hidden;
+    }
+
+    .headh1 {
+        font-family: 'Courier New';
+    }
+}

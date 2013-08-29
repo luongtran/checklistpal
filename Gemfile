@@ -7,18 +7,21 @@ gem 'nifty-generators'
 gem 'ancestry'
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
 gem 'aws-sdk'
+#gem 'ckeditor', :git => 'git://github.com/pshoukry/ckeditor.git'
+#gem "friendly_id", "~> 4.0.0"
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-
-
 group :development do
+<<<<<<< HEAD
   gem 'pg'
   gem 'hirb'
   gem 'hirb-unicode'
+=======
+  gem 'sqlite3'
+>>>>>>> 94fb71478b0cc82ce7a98e841f28264a3e413044
 end
 
 group :production do
