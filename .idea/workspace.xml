@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\check_lists.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\comments.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\connections.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\content.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\devise\registrations.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\home.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\hook.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\registrations.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\static_pages.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\subcription.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\subscriptions.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\task.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\users.css.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\Sites\checklistpal\app\assets\stylesheets\users\invitations.css.scss" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/checklistpal.iml" afterPath="$PROJECT_DIR$/.idea/checklistpal.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="" />
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377739610639" ignored="false" />
