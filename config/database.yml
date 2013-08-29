@@ -9,7 +9,7 @@ development:
   username: postgres
   password: Htlu@n2605
 
-development:
+production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
@@ -18,4 +18,4 @@ development:
   host: 127.0.0.1
   port: 3306
   username: root
-  password: 123456
+  password: '123456'

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a739b79-e231-468b-8407-7946bce3c501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lists/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lists/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/task.rb" afterPath="$PROJECT_DIR$/app/models/task.rb" />
     </list>
     <ignored path="checklistpal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +35,7 @@
     <file path="/registrations_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377072634278" ignored="false" />
     <file path="/combine.css" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377081217298" ignored="false" />
     <file path="/see_more_archived_list.js.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377149809337" ignored="false" />
-    <file path="/database.yml" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377743127897" ignored="false" />
+    <file path="/database.yml" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377744377670" ignored="false" />
     <file path="/authentications_controller.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377253950216" ignored="false" />
     <file path="/users_helper.rb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377136129457" ignored="false" />
     <file path="/edit.html.erb" changelist="0a739b79-e231-468b-8407-7946bce3c501" time="1377685254600" ignored="false" />
@@ -99,25 +96,16 @@
       <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="299" column="34" selection-start="9155" selection-end="9178" vertical-scroll-proportion="0.0">
+            <state line="310" column="60" selection-start="9692" selection-end="9692" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="58" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.005964215">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="26" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0">
+            <state line="18" column="51" selection-start="336" selection-end="336" vertical-scroll-proportion="0.6083499">
               <folding />
             </state>
           </provider>
@@ -156,12 +144,12 @@
         <option value="$PROJECT_DIR$/app/views/home/signup_options.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/app/models/task.rb" />
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
         <option value="$PROJECT_DIR$/app/views/comments/_comment_task.html.erb" />
         <option value="$PROJECT_DIR$/app/views/lists/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
       </list>
     </option>
   </component>
@@ -401,28 +389,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="checklistpal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -713,31 +679,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/comments/_comment_task.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="119" selection-start="815" selection-end="815" vertical-scroll-proportion="-3.0769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="99" selection-start="596" selection-end="596" vertical-scroll-proportion="0.19203748">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1377744231628" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1377744231628" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lists/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="105" selection-start="3809" selection-end="3809" vertical-scroll-proportion="0.28428927">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130822031923_add_completed_column_to_list.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="33" selection-start="94" selection-end="103" vertical-scroll-proportion="0.07727273">
@@ -796,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="58" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.005964215">
+        <state line="37" column="52" selection-start="1694" selection-end="1694" vertical-scroll-proportion="0.44532803">
           <folding />
         </state>
       </provider>
@@ -825,6 +766,27 @@
     <entry file="file://$PROJECT_DIR$/app/views/users/invitations/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="59" selection-start="357" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="26" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="310" column="60" selection-start="9692" selection-end="9692" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="51" selection-start="336" selection-end="336" vertical-scroll-proportion="0.6083499">
           <folding />
         </state>
       </provider>
