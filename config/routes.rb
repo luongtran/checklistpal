@@ -3,7 +3,7 @@ Checklistpal::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  match '/auth/:provider/callback' => 'authentications#create'
+ # match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
 
   devise_for :users, :path_names => {:sign_up => "register",
@@ -12,14 +12,11 @@ Checklistpal::Application.routes.draw do
                                      :skip => [:registrations]},
              :sign_out_via => ["DELETE", "GET"],
              :controllers => {:registrations => 'registrations',
-                              :omniauth_callbacks => "authentications",
+                              :omniauth_callbacks => "users/omniauth_callbacks",
                               :sessions => "sessions",
                               :invitations => 'users/invitations',
                               :passwords => "passwords"
              }
-  # devise_for :users, controllers: {sessions: "sessions"}
-
-  # ActiveAdmin.routes(self)
   root :to => 'home#index'
   match '/tasks/sort', :controller => 'tasks', :action => 'sort', :as => 'sort_tasks'
   get 'lists/download_pdf' => 'lists#download_pdf', :as => :download_pdf
