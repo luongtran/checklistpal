@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
   attr_accessor :stripe_token, :coupon, :skip_stripe_update, :is_invited_user
   before_create :update_stripe
   after_create :send_welcome_mail
-  after_destroy :cancel_subscription
+  after_destroy :cancel_subscription, :remove_on_list_team_members
+
   has_many :lists, :order => 'created_at desc', :dependent => :destroy #, :select => 'id,name,user_id'
   has_many :lists_id, :class_name => 'List', :select => 'id'
   has_many :tasks, :through => :lists
@@ -233,6 +234,10 @@ class User < ActiveRecord::Base
     false
   end
 
+  def remove_on_list_team_members
+    ListTeamMember.where(:invited_id => self.id).destroy_all
+  end
+
   def send_invitation_email token, des_email
     UserMailer.invitations_email(self, token, des_email).deliver
   end
@@ -309,7 +314,6 @@ class User < ActiveRecord::Base
                          password: Devise.friendly_token[0, 20]
       )
       user.add_role('free')
-
     end
     user
   end

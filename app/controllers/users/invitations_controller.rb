@@ -65,13 +65,7 @@ class Users::InvitationsController < Devise::InvitationsController
   def update
     # validate invitation_token
     list_team_member = ListTeamMember.where(invitation_token: params[:user][:invitation_token], :active => false).first
-    # list_team_member.update_attributes(:active => true)
-    if params[:user][:password].blank? || (params[:user][:password] != params[:user][:password_confirmation])
-      flash[:notice] = "Password doesn't match"
-      @token = params[:user][:invitation_token]
-      @user = User.find(list_team_member.invited_id)
-      render :edit
-    else
+    if !params[:user][:password].blank? && (params[:user][:password] == params[:user][:password_confirmation]) && params[:user][:password].length >=6
       @user = User.find(list_team_member.invited_id)
       @user.name = params[:user][:name]
       @user.is_invited_user = true
@@ -85,20 +79,26 @@ class Users::InvitationsController < Devise::InvitationsController
       @user.save(:validate => false)
       @user.update_stripe_for_invited_user
       list_team_member.update_attributes(:active => true)
-      flash[:notice] = 'Welcome to Tudli.com !'
+      flash[:notice] = "Welcome to Tudli.com ! Your account has been created."
       sign_in(:user, @user)
       redirect_to my_list_url
+    else
+      if params[:user][:password].blank?
+        flash[:error] = "Please fill your password"
+      else
+        if params[:user][:password] != params[:user][:password_confirmation]
+          flash[:error] = "Password doesn't match"
+        else
+          if  params[:user][:password].length < 6
+            flash[:error] = "Password must be at least 6 characters"
+          end
+        end
+      end
+      @token = params[:user][:invitation_token]
+      @user = User.find(list_team_member.invited_id)
+      render :edit
     end
-    #  super
   end
-
-  #def update
-  #  if this
-  #    redirect_to root_path
-  #  else
-  #    super
-  #  end
-  #end
 
   # GET /resource/invitation/remove?invitation_token=abcdef
   def destroy
