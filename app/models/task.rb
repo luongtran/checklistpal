@@ -20,7 +20,7 @@ class Task < ActiveRecord::Base
   scope :items, where("list_id is not null").order('position')
   scope :completed, where("completed = ?", true)
   validates_presence_of :description
-  validates_length_of :description, within: 1..160
+  validates_length_of :description, within: 1..50
 
   acts_as_list
 
