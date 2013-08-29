@@ -3,7 +3,7 @@ Checklistpal::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
- # match '/auth/:provider/callback' => 'authentications#create'
+  # match '/auth/:provider/callback' => 'authentications#create'
   mount StripeEvent::Engine => '/stripe'
 
   devise_for :users, :path_names => {:sign_up => "register",
@@ -23,6 +23,8 @@ Checklistpal::Application.routes.draw do
   get '/lists/:slug' => 'Lists#show', :as => :list_view
   get '/inviting' => 'home#inviting', :as => :inviting
   get '/dashboard' => 'home#dashboard', :as => :dashboard
+
+  get '/invite_user_by_id' => 'home#invite_user_by_id'
 
   post '/users/feedback'
   post '/users/upload_avatar'
@@ -71,7 +73,7 @@ Checklistpal::Application.routes.draw do
   match '/support' => 'static_pages#support', :as => :support
   match '/psupport' => 'static_pages#paid_support', :as => :paid_support
 
- # get '/accept_invition' => 'home#accept_invitation', :as => :accept_invitation
+  # get '/accept_invition' => 'home#accept_invitation', :as => :accept_invitation
 
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'

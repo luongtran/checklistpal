@@ -62,6 +62,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # PUT /resource/invitation
+  # update  29/08/13
   def update
     # validate invitation_token
     list_team_member = ListTeamMember.where(invitation_token: params[:user][:invitation_token], :active => false).first

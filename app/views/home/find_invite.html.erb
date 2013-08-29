@@ -20,6 +20,7 @@
           <div class="invitepanel">
 
             <h3>Find and Invite Anyone</h3>
+
             <div class="alert alert-error" id="error_mess">
             </div>
             <div class="panel">
@@ -38,14 +39,16 @@
                   </div>
                   <br/>
 
-                  <div id="loading" style="display: none;padding-top: 15px;" class="alert alert-success">
-                    <p> Processing your request   <%= image_tag 'loading.gif', :style => "margin-left: 15px;" %>  </p>
+                  <div id="loading" style="display: none;">
+                    <p> <strong>Processing your request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
+                  </div>
+                  <div id="inviting_notice_area" style="display: none;">
+
                   </div>
               <% end %>
             </div>
             <div class="panel" id="list_invites">
             </div>
-
           </div>
         </div>
       </div>
@@ -74,11 +77,9 @@
             return true;
         });
         $('#invitation_form').bind("ajax:beforeSend",function () {
-//            $('#find_invite_btn').hide();
             $("#loading").toggle();
         }).bind("ajax:success", function (xhr, data, status) {
                     $("#loading").toggle();
-//                    $('#find_invite_btn').show();
                 });
     });
 </script>
