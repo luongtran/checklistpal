@@ -108,10 +108,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_role(role_name)
+    ActiveRecord::Base.connection().execute("DELETE from users_roles where user_id=#{self.id}")
+    self.add_role(role_name)
+  end
+
   def update_plan(role)
     old_role = self.roles.first
-    self.role_ids = []
-    self.add_role(role.name)
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
       customer.update_subscription(:plan => role.name)
@@ -126,6 +129,7 @@ class User < ActiveRecord::Base
       end
     end
     true
+    set_role role.name
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to update your subscription. #{e.message}."

@@ -10,11 +10,9 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # POST /resource/invitation
   def create
-    puts "\n______________InvitationControllers create"
     self.resource = resource_class.invite!(resource_params, current_user)
     if resource.sign_in_count = 0
-      role = Role.where(name: 'free').first
-      resource.add_role(role.name)
+      resource.add_role('free')
       resource.invitation_limit = role.max_connections
     end
     if resource.errors.empty?
