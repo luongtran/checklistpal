@@ -28,7 +28,7 @@ class Users::InvitationsController < Devise::InvitationsController
     list_team_member = ListTeamMember.where(invitation_token: params[:invitation_token], :active => false).first
     if list_team_member # list exist and inactive
       owner_user = User.find(list_team_member.user_id)
-      if owner_user.has_role 'free'
+      if owner_user.roles.first.name == 'free'
         if owner_user.connection_count >= Role.where(:name => 'free').first.max_connections
           flash[:error] = "Sorry, the page doesn't exist"
           redirect_to '/404'
