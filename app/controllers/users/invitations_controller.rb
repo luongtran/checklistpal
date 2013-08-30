@@ -9,6 +9,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # POST /resource/invitation
+  # unused
   def create
     self.resource = resource_class.invite!(resource_params, current_user)
     if resource.sign_in_count = 0
