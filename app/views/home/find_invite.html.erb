@@ -24,10 +24,11 @@
             <div class="alert alert-error" id="error_mess">
             </div>
             <div class="panel">
-              <%= form_tag invite_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
+              <%= form_tag find_and_invite_path, :id => 'invitation_form', :class => "row-fluid", :remote => true do %>
 
                   <div class="controls controls-row">
                     <%= text_field_tag 'user_name', nil, class: "input-block-level", placeholder: "Username" %>
+                    <%= hidden_field_tag 'list_id', @invite_list.id %>
                     <span class="span4">or</span>
                   </div>
                   <div class="controls">
@@ -35,12 +36,13 @@
                   </div>
                   <div class="controls">
 
-                    <%= submit_tag 'Find & Invite', :class => 'btn btn-primary btnsearch', :id => "find_invite_btn" %>
+                    <%= submit_tag 'Find & Invite', :class => 'btn btn-primary btnsearch', :id => "btn-search-and-invite" %>
                   </div>
                   <br/>
 
                   <div id="loading" style="display: none;">
-                    <p> <strong>Processing your request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
+                    <p><strong>Processing your
+                      request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
                   </div>
                   <div id="inviting_notice_area" style="display: none;">
 
@@ -77,9 +79,11 @@
             return true;
         });
         $('#invitation_form').bind("ajax:beforeSend",function () {
+
             $("#loading").toggle();
         }).bind("ajax:success", function (xhr, data, status) {
                     $("#loading").toggle();
+
                 });
     });
 </script>

@@ -63,7 +63,8 @@ class HomeController < ApplicationController
               return
             end
           else
-            if !current_user.connections.include? user.id
+            @limited = false
+            if (current_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!current_user.connections.include? user.id)
               @limited = true
               return
             end
@@ -115,8 +116,8 @@ class HomeController < ApplicationController
 
   # Find and invite with a selected list
   def find_invite
-    invite_list = List.where(:id => params[:list_id]).first
-    if invite_list.nil? || !invite_list.belong_to?(current_user) # verify
+    @invite_list = List.where(:id => params[:list_id]).first
+    if @invite_list.nil? || !@invite_list.belong_to?(current_user) # verify
       flash[:error] = "Request is invalid."
       redirect_to my_list_url
     end
@@ -187,24 +188,19 @@ class HomeController < ApplicationController
     @request_valid = false
     @list = current_user.lists.where(:id => params[:lid]).first
     @user = User.where(:id => params[:uid]).first
-    @invite_user_name = @user.name
+    @invite_email = @user.email
     if !@list.nil? && !@user.nil? && (@list.user_id == current_user.id)
       @request_valid = true
-      puts "\n==-=-=-=-=- VALID"
+      @limited = false
       if current_user.has_role? 'free'
-        if (current_user.connection_count <= Role.where(:name => 'free').first.max_connections) && (current_user.connections.include? @user.id)
-        @limited = true
+        if (current_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!current_user.connections.include? @user.id)
+          @limited = true
           return
-        else
-          if !current_user.connections.include? @user.id # not connected with current user
-            @limited = true
-            return
-          end
         end
       end
       require 'digest/md5'
       @already_connection_on_list = false
-      if !ListTeamMember.where(:list_id => params[:list_id], :invited_id => @user.id, :active => true).first.nil?
+      if !ListTeamMember.where(:list_id => @list.id, :invited_id => @user.id, :active => true).first.nil?
         @already_connection_on_list = true
         return
       else

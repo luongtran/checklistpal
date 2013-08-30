@@ -1,5 +1,3 @@
-
-
 <h3>Results</h3>
 <ul class="unstyled">
   </div>
@@ -33,6 +31,9 @@
 <script>
     $(document).ready(function () {
         $('.btninvite').on("click", function () {
+
+            $('#btn-search-and-invite').attr('disabled', 'disabled');
+
             $("#loading").toggle();
             $('#list_invites').empty();
             $('.btninvite').css({ display: "none" });
@@ -43,6 +44,7 @@
             $.get(url,function () {
             }).done(function () {
                         $("#loading").toggle();
+                        $('#btn-search-and-invite').removeAttr('disabled');
                     });
 
         });
