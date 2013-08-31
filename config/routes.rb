@@ -24,8 +24,6 @@ Checklistpal::Application.routes.draw do
   get '/inviting' => 'home#inviting', :as => :inviting
   get '/dashboard' => 'home#dashboard', :as => :dashboard
 
-  get '/invite_user_by_id' => 'home#invite_user_by_id'
-
   post '/users/feedback'
   post '/users/upload_avatar'
   resources :lists do
@@ -45,25 +43,14 @@ Checklistpal::Application.routes.draw do
   match 'mylists' => "lists#mylist", :as => :my_list
   match 'create_new_list' => "home#index", :as => :create_new_list
   match 'remove_connect/:list_id/:user_id' => 'lists#remove_connect', :as => :remove_connect
-  match 'who_connection/:id' => "lists#who_connection", :as => :who_connect
   match 'mylists/:id/delete' => "lists#destroy", :as => :delete_list
+
   match '/invite_user/:list_id' => 'home#find_invite', :as => :find_invite
-
-  match '/find_multi_invite' => 'home#find_multi_invite', :as => :find_invite_multi
-  match '/pass_parametter' => 'home#pass_parametter', :as => :pass_parametter
-
-
   match '/invite/:list_id' => 'home#invite', :as => :invite
-
   match '/invite_user_by_email' => 'home#invite_user_by_email', :as => :invite_user_by_email
   match '/find_users_for_invite' => "home#find_users_for_invite", :as => :find_users_for_invite
   match '/home/find_and_invite' => 'home#find_and_invite', :as => :find_and_invite
 
-  match '/invite_multi' => 'home#invite_multi', :as => :invitation_multi
-
-
-  match 'invite/(:list_id)/user' => "home#invite_user_by_id", :as => :invite_user
-  match '/inviteuser' => 'home#invite_user_by_id_multi_list', :as => :invite_user_multi
   match 'task/:task_id/comment/create' => "comments#create", :as => :add_comment
   match '/lists/:list_id/task/:id/show' => "tasks#show", :as => :view_task
   match '/mylists/search' => 'lists#search_my_list', :as => :search_my_list
@@ -74,8 +61,6 @@ Checklistpal::Application.routes.draw do
   match '/about' => 'static_pages#about', :as => :about
   match '/support' => 'static_pages#support', :as => :support
   match '/psupport' => 'static_pages#paid_support', :as => :paid_support
-
-  # get '/accept_invition' => 'home#accept_invitation', :as => :accept_invitation
 
   devise_scope :user do
     put 'update_plan', :to => 'registrations#update_plan'
