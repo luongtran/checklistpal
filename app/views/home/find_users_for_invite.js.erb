@@ -1,0 +1,9 @@
+$("#inviting_notice_area").empty();
+<% if !@users.empty? %>
+$("#list_invites").empty();
+$("#inviting_notice_area").addClass("alert alert-success");
+$("#list_invites").html('<%= escape_javascript(render 'list_invites') %>')
+<% else %>
+$("#inviting_notice_area").addClass("alert alert-error");
+$("#inviting_notice_area").text("No result match.").fadeIn(300).delay(3000).fadeOut(300);
+<% end %>

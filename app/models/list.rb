@@ -17,12 +17,18 @@ class List < ActiveRecord::Base
   include CanCan::Ability
   attr_accessible :name, :user_id, :description, :slug, :completed, :last_completed_mark_at
   belongs_to :user
+  #delegate :name, :email, :to => :user, :prefix => true
   has_many :tasks, :dependent => :delete_all
   has_many :list_team_members, :dependent => :delete_all # ????
   validates_uniqueness_of :slug
   validates_presence_of :name
   validates_length_of :name, :within => 3..50
-  # remove laster
+
+
+  def belong_to? user
+    self.user_id == user.id ? true : false
+  end
+                                                         # remove laster
   def finished?
     return false if self.tasks.count == 0
     self.tasks.each do |task|

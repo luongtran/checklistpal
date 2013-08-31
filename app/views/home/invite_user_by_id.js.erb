@@ -1,7 +1,25 @@
-<% if @message != nil || @message != "" %>
-$("#list_invites").text("<%= @message %>").fadeIn(300).delay(10000).fadeOut(300);
-$("#list_invites").addClass("alert alert-success");
+<% if @request_valid %>
+    <% if !@limited %>
+        <% if !@already_connection_on_list %>
+            <% if @success %>
+                $("#inviting_notice_area").addClass("alert alert-success");
+                $("#inviting_notice_area").text("Invitation sent to <%= @invite_email %>").fadeIn(300).delay(3000).fadeOut(300);
+            <% else %>
+                $("#inviting_notice_area").empty();
+                $("#inviting_notice_area").addClass("alert alert-danger");
+                $("#inviting_notice_area").text("Sorry, sent invitation failed.").fadeIn(300).delay(3000).fadeOut(300);
+            <% end %>
+        <% else %>
+            $("#inviting_notice_area").addClass("alert alert-success");
+            $("#inviting_notice_area").text("<%= "The list already invited to #{@invite_email.nil? ? @invite_user_name : @invite_email }" %>").fadeIn(300).delay(3000).fadeOut(300);
+        <% end %>
+    <% else %>
+        $("#inviting_notice_area").addClass("alert alert-success");
+        $("#inviting_notice_area").text("You have to upgrade account to invite more people.").fadeIn(300).delay(4000).fadeOut(300);
+    <% end%>
 <% else %>
-$("#list_invites").text("Error .Please try again !").fadeIn(300).delay(10000).fadeOut(300);
-$("#list_invites").addClass("alert alert-error");
+    $("#inviting_notice_area").addClass("alert alert-danger");
+    $("#inviting_notice_area").text("Request is invalid.").fadeIn(300).delay(2000).fadeOut(300);
 <% end %>
+
+

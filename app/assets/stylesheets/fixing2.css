@@ -75,3 +75,14 @@ input[type="checkbox"] {
 #logo span {
   font-weight: 400;
 }
+/* line 64, /Users/rueta/DeskWork/git/checklistpal/app/assets/stylesheets/fixing2.less */
+#update-card {
+  padding: 15px;
+}
+@media (max-width: 480px) {
+  /* line 70, /Users/rueta/DeskWork/git/checklistpal/app/assets/stylesheets/fixing2.less */
+  .navbar-static-top > .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

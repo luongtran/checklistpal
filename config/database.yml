@@ -1,0 +1,21 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: checklistpal_development
+  pool: 5
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: '123456'
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: checklistpal_production
+  pool: 5
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: '123456'

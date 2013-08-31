@@ -11,7 +11,7 @@
 <% end %>
 <!--Leave comment here-->
 <%= form_tag add_comment_path(task), :class => "form_create_comment", :remote => true do %>
-    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 160 characters", :class => "comment_content", :maxlength => "160", :minlength => "5" %>
+    <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 50 characters", :class => "comment_content", :maxlength => "50", :minlength => "5" %>
     <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success", :disabled => "disabled" %>
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
     <img src="/assets/dot_loading.gif" style="display: none;margin-left: 15px;" class="submit_comment_loading"> </img>

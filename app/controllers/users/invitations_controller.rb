@@ -1,5 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   skip_before_filter :require_no_authentication, :only => :edit
+  skip_before_filter :resource_from_invitation_token, :only => [:edit, :update]
 
   def new
     puts "\n_____________InvitationControllers New"
@@ -8,12 +9,11 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   # POST /resource/invitation
+  # unused
   def create
-    puts "\n______________InvitationControllers create"
     self.resource = resource_class.invite!(resource_params, current_user)
     if resource.sign_in_count = 0
-      role = Role.where(name: 'free').first
-      resource.add_role(role.name)
+      resource.add_role('free')
       resource.invitation_limit = role.max_connections
     end
     if resource.errors.empty?
@@ -26,49 +26,79 @@ class Users::InvitationsController < Devise::InvitationsController
 
   # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
-    list_team_member = ListTeamMember.where(invitation_token: params[:invitation_token]).first # !! need to check params before use
-
-    owner_id = list_team_member.user_id
-    owner_user = User.find(owner_id)
-    if owner_user.has_role 'free'
-      # Check limit perlist
-      # members_active_on_list
-      if ListTeamMember.where(:list_id => list_team_member.list_id, :active => true).count >= Role.where(:name => 'free').first.max_connections
-        flash[:error] = "Sorry, the page doesn't exist"
-        redirect_to '404'
-        return
+    list_team_member = ListTeamMember.where(invitation_token: params[:invitation_token], :active => false).first
+    if list_team_member # list exist and inactive
+      owner_user = User.find(list_team_member.user_id)
+      if owner_user.roles.first.name == 'free'
+        if (owner_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!owner_user.connections.include? list_team_member.invited_id)
+          flash[:error] = "Sorry, the page doesn't exist"
+          redirect_to '/404'
+          return
+        end
       end
-    else
-    end
-    user_id = nil
-    if list_team_member
-      list_team_member.update_attributes(:active => true)
+      list = List.find(list_team_member.list_id)
       user_id = list_team_member.invited_id
-    end
-    @user = User.find(user_id)
-    if @user.last_sign_in_at != nil
-      @user.accept_invitation!
-      sign_in(:user, @user)
-      redirect_to my_list_path
-    else # new user
-      render :edit
+      @user = User.find(user_id)
+      if @user.last_sign_in_at != nil
+        if !current_user
+          list_team_member.update_attributes(:active => true)
+          sign_in(:user, @user)
+        end
+        flash[:notice] = %Q[You has been accepted the invitation from <strong>#{owner_user.name.nil? ? owner_user.email : owner_user.name}</strong>, click <a href="#{list_url(list.slug)}">here</a> to view the list.].html_safe
+        redirect_to my_list_path
+      else # new user
+        @token = params[:invitation_token]
+        render :edit
+      end
+    else #token is not exist or actived
+      if current_user
+        flash[:error] = "Sorry, the page doesn't exist"
+        redirect_to my_list_url
+      else
+        redirect_to root_url
+      end
     end
   end
 
   # PUT /resource/invitation
+  # update  29/08/13
   def update
     # validate invitation_token
-    puts "\n\n__________Chap nhan invite va tao mk"
-    super
+    list_team_member = ListTeamMember.where(invitation_token: params[:user][:invitation_token], :active => false).first
+    if !params[:user][:password].blank? && (params[:user][:password] == params[:user][:password_confirmation]) && params[:user][:password].length >=6
+      @user = User.find(list_team_member.invited_id)
+      @user.name = params[:user][:name]
+      @user.is_invited_user = true
+      @user.skip_stripe_update = true
+      @user.save(:validate => false)
+      @user.add_role 'free'
+      @user.password = params[:user][:password]
+      @user.encrypted_password = @user.encrypted_password
+      @user.is_invited_user = false
+      @user.skip_stripe_update = false
+      @user.save(:validate => false)
+      @user.update_stripe_for_invited_user
+      list_team_member.update_attributes(:active => true)
+      flash[:notice] = "Welcome to Tudli.com ! Your account has been created."
+      sign_in(:user, @user)
+      redirect_to my_list_url
+    else
+      if params[:user][:password].blank?
+        flash[:error] = "Please fill your password"
+      else
+        if params[:user][:password] != params[:user][:password_confirmation]
+          flash[:error] = "Password doesn't match"
+        else
+          if  params[:user][:password].length < 6
+            flash[:error] = "Password must be at least 6 characters"
+          end
+        end
+      end
+      @token = params[:user][:invitation_token]
+      @user = User.find(list_team_member.invited_id)
+      render :edit
+    end
   end
-
-  #def update
-  #  if this
-  #    redirect_to root_path
-  #  else
-  #    super
-  #  end
-  #end
 
   # GET /resource/invitation/remove?invitation_token=abcdef
   def destroy
@@ -111,4 +141,5 @@ class Users::InvitationsController < Devise::InvitationsController
   def user_params
     params.require(:user).permit(:invitation_token, :password, :password_confirmation)
   end
+
 end

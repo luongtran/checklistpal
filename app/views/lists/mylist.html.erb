@@ -1,7 +1,13 @@
 <% title "Tudli - My Lists" %>
 <div class="section clearfix">
   <div class="pull-right">
-
+    <div id="quickmenu">
+      <div class="clearfix ">
+        <% if Rails.env == "development" %>
+            <a href="<%= inviting_path %>" class="pull-left" title="My lists">INVITING</a>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -9,8 +15,7 @@
   <div id="signupfree">
     <div id="mylist">
       <div class="clearfix">
-        <div class="divine50">
-          <div class="signoption row-fluid">
+        <div class="signoption row-fluid">
             <div class="signuppanel">
               <div class="mylist">
                 <h3>My Lists
@@ -109,9 +114,7 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="divine50">
           <div class="signoption row-fluid">
             <div class="signuppanel">
               <h3>Invited list</h3>
@@ -134,7 +137,6 @@
               <% end %>
             </div>
           </div>
-        </div>
 
 
       </div>

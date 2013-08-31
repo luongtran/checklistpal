@@ -1,0 +1,13 @@
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+
+/public/system/*
+/coverage/
+/spec/tmp/*
+/.idea
+
+
+/nbproject/private/
+db/development.sqlite3
