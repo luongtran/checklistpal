@@ -13,7 +13,7 @@
         <tr>
           <td><%= truncate(user.name, :length => 20) %> </td>
           <td><%= truncate(user.email, :length => 20) %></td>
-          <td> <%= form_tag invite_user_path(@list_id), :class => "invite-user" do %>
+          <td> <%= form_tag find_and_invite_path, :class => "invite-user" do %>
                 <%= hidden_field_tag :list_id, @list_id, :class => 'list_id' %>
                 <%= hidden_field_tag :user_email, user.email, :class => 'user_email' %>
                 <a href="javascript:void(0);" class="btn btn-success btn-small btninvite">

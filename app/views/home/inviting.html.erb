@@ -37,16 +37,18 @@
                     <input class="btn btn-primary btnsearch" name="commit" type="submit" value="Find &amp; Invite" id='btn-search-and-invite'>
                   </div>
                   <br/>
+
                   <div class="alert alert-error" id="error_mess" style="display: none;"></div>
                   <div id="loading" style="display: none;" class="">
-                    <p> <strong>Processing your request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
+                    <p><strong>Processing your
+                      request</strong>  <%= image_tag 'dot_loading.gif', :style => "margin-left: 15px;" %>  </p>
                   </div>
                   <div id="inviting_notice_area" style="display: none;">
 
                   </div>
               <% end %>
             </div>
-            <div class="panel" id="list_invites">
+            <div class="panel" id="list_invites" style=" width: 340px;height: 500px;overflow: auto;">
             </div>
           </div>
         </div>
@@ -63,7 +65,7 @@
           });
           $('#lists-combobox').change(function () {
               $('#list-id-field').val($(this).val());
-               $('#list_invites').empty();
+              $('#list_invites').empty();
           });
       </script>
     </div>

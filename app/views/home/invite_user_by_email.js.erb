@@ -1,3 +1,4 @@
+$("#inviting_notice_area").empty();
 <% if @request_valid %>
 <% if !@limited %>
 <% if !@already_connection_on_list %>
@@ -5,7 +6,6 @@
 $("#inviting_notice_area").addClass("alert alert-success");
 $("#inviting_notice_area").text("Invitation sent to <%= @invite_email %>").fadeIn(300).delay(3000).fadeOut(300);
 <% else %>
-$("#inviting_notice_area").empty();
 $("#inviting_notice_area").addClass("alert alert-danger");
 $("#inviting_notice_area").text("Sorry, sent invitation failed.").fadeIn(300).delay(3000).fadeOut(300);
 <% end %>
