@@ -46,7 +46,7 @@ class HomeController < ApplicationController
   def find_users_for_invite
     @user_name = params[:user_name]
     @list_id = params[:list_id]
-    @users = User.where('name like ? AND id != ?', "%#{@user_name}%", current_user.id).select("id,name,email")
+    @users = User.where('name like ? AND id != ?', "%#{@user_name.downcase}%", current_user.id).select("id,name,email")
     respond_to do |format|
       format.js
     end
