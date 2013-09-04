@@ -25,9 +25,11 @@ class AuthenticationsController < ApplicationController
       user.avatar_s3_url = omni.info.image
       user.password = Devise.friendly_token[0, 20]
       user.apply_omniauth(omni)
-      user.add_role("free")
       user.fb_account = true
+      user.skip_stripe_update = true
       if user.save
+        user.update_stripe_for_invited_user
+        user.add_role("free")
         @logger.info('facebook function')
         @logger.info('new user was saved')
         flash[:notice] = "Logged in."
