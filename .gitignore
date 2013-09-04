@@ -6,9 +6,9 @@
 /public/system/*
 /coverage/
 /spec/tmp/*
-/.idea
+.idea
 
 
 /nbproject/private/
 db/development.sqlite3
-.idea/workspace.xml
+.idea
