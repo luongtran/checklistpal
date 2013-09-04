@@ -86,3 +86,10 @@ input[type="checkbox"] {
     padding-right: 10px;
   }
 }
+@media (max-width: 480px) {
+  /* line 78, /Users/rueta/DeskWork/git/checklistpal/app/assets/stylesheets/fixing2.less */
+  .path_top_login {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
