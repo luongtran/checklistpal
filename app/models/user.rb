@@ -248,7 +248,7 @@ class User < ActiveRecord::Base
 
   def send_welcome_mail
     return if self.is_invited_user
-    UserMailer.welcome_email(self) #.deliver
+    UserMailer.welcome_email(self).deliver
   end
 
   def expire

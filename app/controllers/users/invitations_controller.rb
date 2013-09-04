@@ -30,7 +30,7 @@ class Users::InvitationsController < Devise::InvitationsController
     if list_team_member # list exist and inactive
       owner_user = User.find(list_team_member.user_id)
       if owner_user.roles.first.name == 'free'
-        if owner_user.connection_count >= Role.where(:name => 'free').first.max_connections
+        if (owner_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!owner_user.connections.include? list_team_member.invited_id)
           flash[:error] = "Sorry, the page doesn't exist"
           redirect_to '/404'
           return

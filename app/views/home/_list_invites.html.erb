@@ -13,9 +13,9 @@
         <tr>
           <td><%= truncate(user.name, :length => 20) %> </td>
           <td><%= truncate(user.email, :length => 20) %></td>
-          <td> <%= form_tag invite_user_path(@list_id), :class => "invite-user" do %>
+          <td> <%= form_tag find_and_invite_path, :class => "invite-user" do %>
                 <%= hidden_field_tag :list_id, @list_id, :class => 'list_id' %>
-                <%= hidden_field_tag :user_id, user.id, :class => 'user_id' %>
+                <%= hidden_field_tag :user_email, user.email, :class => 'user_email' %>
                 <a href="javascript:void(0);" class="btn btn-success btn-small btninvite">
                   &nbsp;Invite
                 </a>
@@ -31,16 +31,13 @@
 <script>
     $(document).ready(function () {
         $('.btninvite').on("click", function () {
-
             $('#btn-search-and-invite').attr('disabled', 'disabled');
-
             $("#loading").toggle();
             $('#list_invites').empty();
             $('.btninvite').css({ display: "none" });
             var lid = $(this).parent().children('.list_id').val();
-            var uid = $(this).parent().children('.user_id').val();
-            console.log(uid);
-            var url = '/invite_user_by_id?lid=' + lid + '&uid=' + uid;
+            var user_email = $(this).parent().children('.user_email').val();
+            var url = '/invite_user_by_email?list_id=' + lid + '&user_email=' + user_email;
             $.get(url,function () {
             }).done(function () {
                         $("#loading").toggle();
@@ -48,7 +45,5 @@
                     });
 
         });
-
-
     });
 </script>

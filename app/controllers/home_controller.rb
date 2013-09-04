@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :only => [:find_invite, :invite, :invite_user_by_id, :search_my_connect, :dashboard, :inviting]
+  before_filter :authenticate_user!, :only => [:find_invite, :dashboard, :inviting]
   require 'securerandom'
   respond_to :html, :js
 
@@ -43,181 +43,82 @@ class HomeController < ApplicationController
     end
   end
 
-  # Edit  27/08/13
-  def find_and_invite
-    invite_list = List.where(:id => params[:list_id]).first
+  def find_users_for_invite
+    @user_name = params[:user_name]
     @list_id = params[:list_id]
-    @request_valid = true
-    # verify
-    if (!invite_list.nil?) && (invite_list.belong_to? current_user) && (params[:user_email] != current_user.email)
-      # check request is find by email or username
-      if !params[:user_email].blank? # invite by email
-        @invite_email = params[:user_email]
-        user = User.where(:email => @invite_email).first
-        @limited = false
-        #==== Start == Check limit connection for free user
-        if current_user.has_role? 'free'
-          if user.nil?
-            if current_user.connection_count >= Role.where(:name => 'free').first.max_connections
-              @limited = true
-              return
-            end
-          else
-            @limited = false
-            if (current_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!current_user.connections.include? user.id)
-              @limited = true
-              return
-            end
-          end
-        end
-        #==== End == Check limit connection for free user
-        require 'digest/md5'
-        @already_connection_on_list = false
-        if !user.nil? # invite a exist user
-                      # check already connected to the list
-          if !ListTeamMember.where(:list_id => params[:list_id], :invited_id => user.id, :active => true).first.nil?
-            @already_connection_on_list = true
-            return
-          else
-            invitation_token = Digest::MD5.hexdigest("#{Time.now}...#{user.email}")
-            create_listteammember current_user, params[:list_id], user, invitation_token
-            current_user.send_invitation_email invitation_token, user.email
-            @success = true
-            return
-          end
-        else
-          @new_user = User.new(:email => @invite_email, :name => @invite_email[0, @invite_email.index('@')])
-          @new_user.is_invited_user = true
-          @new_user.skip_stripe_update = true
-          @new_user.save(:validate => false)
-          invitation_token = Digest::MD5.hexdigest("#{Time.now}...#{@new_user.email}")
-          create_listteammember current_user, params[:list_id], @new_user, invitation_token
-          current_user.send_invitation_email invitation_token, @new_user.email
-          @success = true
-          return
-        end
-      else # invite by username
-        @user_name = params[:user_name]
-        @users = User.where('name like ?', "%#{@user_name}%").limit(5)
-      end
-    else
-      @request_valid = false
-    end
-    respond_to do |format|
-      format.js do
-        if !@invite_email.nil?
-          render :template => "home/find_and_invite"
-        else
-          render :template => "home/find_and_invite_by_username"
-        end
-      end
-    end
-  end
-
-  # Find and invite with a selected list
-  def find_invite
-    @invite_list = List.where(:id => params[:list_id]).first
-    if @invite_list.nil? || !@invite_list.belong_to?(current_user) # verify
-      flash[:error] = "Request is invalid."
-      redirect_to my_list_url
-    end
-  end
-
-  def invite
-    #if current_user.lists.find(params[:list_id]).empty?
-    #
-    #else
-    #
-    #end
-    @success = false
-    @invite_yourself = false
-    invite_email = params[:user_email]
-    invite_name = params[:user_name]
-    condition = ""
-    if invite_email == current_user.email
-      @invite_yourself = true
-      return
-    end
-    if !invite_email.blank? && !invite_name.blank?
-      condition = ["email like ? OR name like ?", "%#{invite_email}%", "%#{invite_name}%"]
-    else
-      if !invite_email.blank?
-        condition = ["email like ?", "%#{invite_email}%"]
-      else
-        if !invite_name.blank?
-          condition = ["name like ?", "%#{invite_name}%"]
-        end
-      end
-    end
-    @has_over_connect = false
-    @users = User.find(:all, :conditions => condition)
-    @users -= [current_user]
-    @list_id = params[:list_id]
-    if @users.length > 0
-      @has_list_users = true
-    else
-      num_connect = User.number_connect(current_user)
-      if num_connect < Role.find(current_user.roles.first.id).max_connections
-        if (!invite_email.blank?)
-          @user = User.new(:email => invite_email)
-          @user.add_role('free')
-          #@user.save
-          @user.invite!(current_user)
-          if (!ListTeamMember.is_existed_in_connection(current_user.id, @list_id, @user.id))
-            if current_user.list_team_members.new({:invited_id => @user.id, :list_id => params[:list_id], :active => false, :invitation_token => @user.invitation_token}).save
-              @success = true
-            end
-          else
-            @success = false
-            @message = "The list already invited for #{@user.email}"
-          end
-        end
-      else
-        @has_over_connect = true
-      end
-      @has_list_users = false
-    end
+    @users = User.where('name like ? AND id != ?', "%#{@user_name.downcase}%", current_user.id).select("id,name,email")
     respond_to do |format|
       format.js
     end
-
   end
 
-  # Call after invite a existing user
-  def invite_user_by_id
-    @request_valid = false
-    @list = current_user.lists.where(:id => params[:lid]).first
-    @user = User.where(:id => params[:uid]).first
-    @invite_email = @user.email
-    if !@list.nil? && !@user.nil? && (@list.user_id == current_user.id)
-      @request_valid = true
+  def invite_user_by_email
+    @invite_email = params[:user_email]
+    invite_list = List.where(:id => params[:list_id]).first
+    @request_valid = true
+    if current_user.email == @invite_email
+      @request_valid = false
+      return
+    end
+    if (!invite_list.nil?) && (invite_list.user_id == current_user.id)
+      user = User.where(:email => @invite_email).first
       @limited = false
+      #==== Start == Check limit connection for free user
       if current_user.has_role? 'free'
-        if (current_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!current_user.connections.include? @user.id)
-          @limited = true
-          return
+        if user.nil?
+          if current_user.connection_count >= Role.where(:name => 'free').first.max_connections
+            @limited = true
+            return
+          end
+        else
+          @limited = false
+          if (current_user.connection_count >= Role.where(:name => 'free').first.max_connections) && (!current_user.connections.include? user.id)
+            @limited = true
+            return
+          end
         end
       end
+      #==== End == Check limit connection for free user
       require 'digest/md5'
-      @already_connection_on_list = false
-      if !ListTeamMember.where(:list_id => @list.id, :invited_id => @user.id, :active => true).first.nil?
-        @already_connection_on_list = true
-        return
+      if !user.nil? # invite a exist user
+                    # check already connected to the list
+        if !ListTeamMember.where(:list_id => params[:list_id], :invited_id => user.id, :active => true).first.nil?
+          @already_connection_on_list = true
+          return
+        else
+          invitation_token = Digest::MD5.hexdigest("#{Time.now}...#{user.email}")
+          create_listteammember current_user, params[:list_id], user, invitation_token
+          current_user.send_invitation_email invitation_token, user.email
+          @success = true
+          return
+        end
       else
-        invitation_token = Digest::MD5.hexdigest("#{Time.now}...#{@user.email}")
-        create_listteammember current_user, params[:lid], @user, invitation_token
-        current_user.send_invitation_email invitation_token, @user.email
+        @new_user = User.new(:email => @invite_email, :name => @invite_email[0, @invite_email.index('@')])
+        @new_user.is_invited_user = true
+        @new_user.skip_stripe_update = true
+        @new_user.save(:validate => false)
+        invitation_token = Digest::MD5.hexdigest("#{Time.now}...#{@new_user.email}")
+        create_listteammember current_user, params[:list_id], @new_user, invitation_token
+        current_user.send_invitation_email invitation_token, @new_user.email
         @success = true
         return
       end
     else
       @request_valid = false
-      return
     end
-    #rescue ActiveRecord::RecordNotFound => e
-    #  @request_valid = false
+
     respond_to do |format|
       format.js
+    end
+
+  end
+
+# Find and invite with a selected list
+  def find_invite
+    @invite_list = List.where(:id => params[:list_id]).first
+    if @invite_list.nil? || !@invite_list.belong_to?(current_user) # verify
+      flash[:error] = "Request is invalid."
+      redirect_to my_list_url
     end
   end
 
@@ -231,4 +132,5 @@ class HomeController < ApplicationController
                           :active => false,
                           :invitation_token => invitation_token)
   end
+
 end

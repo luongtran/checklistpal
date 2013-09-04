@@ -49,7 +49,7 @@
                   </div>
               <% end %>
             </div>
-            <div class="panel" id="list_invites">
+            <div class="panel" id="list_invites" style=" width: 340px;height: 500px;overflow: auto;">
             </div>
           </div>
         </div>
@@ -57,9 +57,13 @@
       <script>
           $("#user_email").keydown(function () {
               $("#user_name").val('');
+//              $('#invitation_form').attr('action', '/home/find_and_invite');
+              $('#invitation_form').get(0).setAttribute('action', '/invite_user_by_email');
           });
           $("#user_name").keydown(function () {
               $("#user_email").val('');
+//              $('#invitation_form').attr('action', '/find_users_for_invite');
+              $('#invitation_form').get(0).setAttribute('action', '/find_users_for_invite');
           });
       </script>
     </div>
@@ -81,9 +85,11 @@
         $('#invitation_form').bind("ajax:beforeSend",function () {
 
             $("#loading").toggle();
+            $('#list_invites').empty() ;
+            $('#btn-search-and-invite').attr("disabled", true);
         }).bind("ajax:success", function (xhr, data, status) {
                     $("#loading").toggle();
-
+                    $('#btn-search-and-invite').removeAttr("disabled");
                 });
     });
 </script>

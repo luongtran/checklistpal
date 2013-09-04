@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2880142030">
+  <component name="DataSourceManagerImpl" format="xml" hash="98064600">
     <data-source source="LOCAL" name="Rails checklistpal: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="c397bc29-b7fe-4bfb-8010-f35db82cf13d">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1/checklistpal_production</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/checklistpal_production</jdbc-url>
       <user-name>root</user-name>
       <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries>
@@ -15,17 +15,17 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Rails checklistpal: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="8897ff13-debd-4c29-a0f7-55112747a059">
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:3306/checklistpal_development</jdbc-url>
+    <data-source source="LOCAL" name="Rails checklistpal: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="813f2f1e-e276-4d85-95b6-05a20a12e8ec">
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/checklistpal_development</jdbc-url>
       <user-name>root</user-name>
       <user-password>dfe2dfdedfc6dfdfdfeadfc4df98df9cdf9adf9f</user-password>
       <libraries>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
         </library>
         <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.18-bin.jar</url>
         </library>
       </libraries>
     </data-source>

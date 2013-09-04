@@ -15,17 +15,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :development do
-
   gem 'pg'
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'sqlite3'
-
 end
-
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
 gem "pdfkit"
 gem 'wkhtmltopdf-binary' #for wicked_pdf and Pdfkit
 gem "acts_as_list", :git => "git://github.com/swanandp/acts_as_list.git"
