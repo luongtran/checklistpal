@@ -14,9 +14,26 @@
     <%= text_area_tag :content, nil, :rows => 3, :placeholder => "maximum 140 characters", :class => "comment_content", :maxlength => "140", :minlength => "5" %>
     <%= submit_tag "Submit", :class => "add_comment_bt btn btn-small btn-success", :disabled => "disabled" %>
     <%= button_tag "Close", :type => "button", :class => "close_comment_bt btn btn-small" %>
+    <p class="character-counter" style="display:inline; margin-bottom: -20px:display:none">140 left</p>
     <img src="/assets/dot_loading.gif" style="display: none;margin-left: 15px;" class="submit_comment_loading"> </img>
+
 <% end %>
 <script>
+
+    $('.comment_content').keyup(function () {
+        if($(this).val().trim().length == 0) {
+            $(this).val('');
+        }
+        $(this).parent().children('.character-counter').html(140 - $(this).val().trim().length +' left');
+    });
+    $('.comment_content').focus(function() {
+        $(this).parent().children('.character-counter').html(140 - $(this).val().trim().length +' left');
+        $(this).parent().children('.character-counter').show();
+    });
+    $('.comment_content').focusout(function() {
+        $(this).parent().children('.character-counter').hide();
+    });
+
     $(".close_comment_bt").on("click", function () {
         $(this).parent().children("#content").val("");
         $(this).parent().parent('.comment-add').fadeOut(300);

@@ -386,12 +386,8 @@
           <% end %>
 
         </div>
-        <%#= f.input :role_ids, :collection => Role.all.delete_if { |i| i.name == 'admin' || i.name == @user.roles.first.name}, :as => :radio_buttons, :label_method => lambda { |t| t.name.titleize }, :label => false, :item_wrapper_class => 'inline' %>
-
       </div>
       <div class="modal-footer">
-        <%#= f.input :role_ids, :collection => Role.all.delete_if {|i| i.name == 'admin' || i.name == current_user.roles.first.name}, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
-        <%#= f.hidden_field :role_ids, :value => Role.find(:all, :conditions => ['name != ?', @user.roles.first.name]).first.id %>
         <%= f.submit 'Update', :class => "btn btn-primary", :id => "update-plan-btn" %>
         <a class="btn" data-dismiss="modal" href="#">Close</a>
       </div>

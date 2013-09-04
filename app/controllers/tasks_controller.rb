@@ -36,22 +36,22 @@ class TasksController < ApplicationController
     if @task != nil?
       @task.update_attributes({completed: params[:completed]})
       # Check the list completed
-      list_completed = true
+      @list_completed = true
       @list.tasks.each do |task|
         if !task.completed
-          list_completed = false
+          @list_completed = false
           @list.update_attributes(:completed => false)
           break
         end
       end
-      if list_completed
+      if @list_completed
         @list.update_attributes(:completed => true,:last_completed_mark_at => DateTime.now)
       end
       @success = 1
     else
       @success = 0
     end
-    respond_with @task, @success
+    #respond_with @task, @success
   end
 
   def hasduedate
