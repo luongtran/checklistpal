@@ -14,13 +14,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Logged in Successfully"
       @user = User.find(authentication.user_id)
       @user.add_role("free")
-      sign_in_and_redirect @user #User.find(authentication.user_id)
-    elsif current_user
-      token = omni['credentials'].token
-      token_secret = ""
-      current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
-      flash[:notice] = "Authentication successful."
-      sign_in_and_redirect current_user
+      sign_in_and_redirect @user
     else
       @logger.info("New user -> create: info.nickname = #{omni.info.nickname} | omi.extra.username = #{omni['extra']['raw_info'].username} ")
       user = User.new
@@ -34,9 +28,12 @@ class AuthenticationsController < ApplicationController
       user.add_role("free")
       user.fb_account = true
       if user.save
+        @logger.info('facebook function')
+        @logger.info('new user was saved')
         flash[:notice] = "Logged in."
         sign_in_and_redirect User.find(user.id)
       else
+        @logger.info('new user cant saved')
         @logger.infor("Can't register with facebook account: email #{omni['extra']['raw_info'].email} has been taken")
         flash[:alert] = "Can't register with your facebook account: email has already been taken !"
         session[:omniauth] = omni.except('extra')
