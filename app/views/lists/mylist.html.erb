@@ -1,13 +1,15 @@
 <% title "Tudli - My Lists" %>
 <div class="section clearfix">
+  <div class="pull-left">
+    <h1>Lists
+    </h1>
+  </div>
+
   <div class="pull-right">
-    <div id="quickmenu">
-      <div class="clearfix ">
-        <% if Rails.env == "development" %>
-            <a href="<%= inviting_path %>" class="pull-left" title="My lists">INVITING</a>
-        <% end %>
-      </div>
-    </div>
+    <% if !@my_lists.blank? %>
+        <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ...", :id => "mylist_search_field", :style => "margin-top: 25px;", :autocomplete => :off %>
+    <% end %>
+
   </div>
 
 </div>
@@ -15,13 +17,10 @@
   <div id="signupfree">
     <div id="mylist">
       <div class="clearfix">
-        <div class="signoption row-fluid">
-          <div class="signuppanel">
+        <div class="row-fluid">
+          <div class="signuppanel mylists">
             <div class="mylist">
               <h3>My Lists
-                <% if !@my_lists.blank? %>
-                    <%= text_field_tag 'list_name', nil, class: "textinput input-medium", placeholder: "Search ...", :id => "mylist_search_field", :style => "float: right;", :autocomplete => :off %>
-                <% end %>
               </h3>
               <% if @my_lists.blank? %>
                   <p style="margin-left: 15px;margin-top: 15px;"> There is not any list </p>
@@ -52,33 +51,62 @@
                       <% end %>
                     </div>
                 <% end %>
+
+
                 <div class="see_more_my_lists">
 
                 </div>
-                <% if @disabled_more_my_lists_btn %>
-                    <a href="javascript:void(0);" class="see_more_area" id="see_more_my_lists_btn"><i class="icon-chevron-down"> </i>
-                      See more</a>
-                <% end %>
-                <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
-                <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
-                <% if current_user.can_create_new_list? %>
-                    <a href="<%= create_new_list_path %>" style="margin-top: 10px;" class="btn btn-success btn-small btn-circle" title="Create new list">+
-                      New</a>
-                    <br/>
-                <% else %>
-                    <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle', :style => "margin-top: 10px;" %>
-                <% end %>
-                <br/>
+                <br />
+                <div class="more_less_area" style="display: inline">
 
+                  <% if current_user.can_create_new_list? %>
+                      <a href="<%= create_new_list_path %>"  class="btn btn-success btn-small btn-circle" title="Create new list">+
+                        New</a>
+
+                  <% else %>
+                      <%= link_to 'Add Unlimited Lists', my_account_path(:action => 'upgrade'), :class => 'btn btn-primary btn-small btn-circle', :style => "margin-top: 10px;" %>
+                  <% end %>
+
+
+                    <% if @disabled_more_my_lists_btn %>
+                        <a href="javascript:void(0);" class="see_more_area" id="see_more_my_lists_btn"><i class="icon-chevron-down"> </i>
+                          See more</a>
+                    <% end %>
+                    <img src="/assets/dot_loading.gif" class="see_more_area" id="loading_more_my_lists" style="display: none;"> </img>
+                  <a href="javascript:void(0);" id="see_less_my_lists_btn" class="see_more_area" style="display: none;" title="Minimize"><i class="icon-chevron-up"></i></a>
+
+                </div>
+                <br/>
                 <!-- End of mylists-->
               </div>
 
             </div>
           </div>
         </div>
+        <div class="row-fluid">
+          <div class="signuppanel mylists">
+            <h3>Invited list</h3>
+            <% if !@invited_lists.blank? %>
+                <% @invited_lists.each do |list| %>
+                    <div class="one_my_list">
 
-        <div class="signoption row-fluid">
-          <div class="signuppanel">
+                      <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
+                      <span style="padding-left: 20px;">
+                            <i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i>
+                          </span>
+                      <a href="javascript:void(0);" title="Leave the list" style="padding-left: 15px"><img src="/assets/leave_list.png"></img></a>
+                    </div>
+                <% end %>
+
+
+            <% else %>
+
+                <p style="margin-left: 15px;">Sorry, nobody needs your input or help.</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="signuppanel mylists">
             <!--Archived lists-->
             <div class="panel">
               <h3>Archived Lists</h3>
@@ -108,6 +136,7 @@
 
               <div class="see_more_archived_lists">
               </div>
+              <br />
               <% if @disabled_more_archived_lists_btn %>
                   <a href="javascript:void(0);" id="see_more_archived_lists_btn" class="see_more_area"><i class="icon-chevron-down"></i>
                     See
@@ -120,28 +149,7 @@
             </div>
           </div>
         </div>
-        <div class="signoption row-fluid">
-          <div class="signuppanel">
-            <h3>Invited list</h3>
-            <% if !@invited_lists.blank? %>
-                <% @invited_lists.each do |list| %>
-                    <div class="one_my_list">
 
-                      <%= link_to truncate(list.name, :length => 40), list_view_path(list.slug) %>
-                      <span style="padding-left: 20px;">
-                            <i><%= list.created_at.to_time.strftime("%m/%d/%Y") %></i>
-                          </span>
-                      <a href="javascript:void(0);" title="Leave the list" style="padding-left: 15px"><img src="/assets/leave_list.png"></img></a>
-                    </div>
-                <% end %>
-
-
-            <% else %>
-
-                <p style="margin-left: 15px;">Sorry, nobody needs your input or help.</p>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
   </div>

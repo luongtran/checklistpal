@@ -590,11 +590,12 @@
 }
 
 .see_more_area {
-    text-align: center;
-    padding-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 15px;
+    /*text-align: center;*/
+    /*padding-top: 10px;*/
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 }
 
 .one_my_list, .one_archived_list, .one_invited_list {
@@ -631,4 +632,10 @@
     font-size: 13px;
     color: #888;
     margin-left: 10px;
+}
+.webpage {
+    padding: 50px;
+}
+#signupfree .mylists {
+    padding: 0px;
 }
