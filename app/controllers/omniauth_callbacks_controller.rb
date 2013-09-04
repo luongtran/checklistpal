@@ -3,7 +3,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def all
     logger = Logger.new('log/facebook.log')
-    logger.info('all function')
+    logger.info('All function')
     omni = request.env["omniauth.auth"]
     user = User.from_omniauth(omni)
     auth = Authentication.from_omniauth(omni)
@@ -11,7 +11,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = "Signed in!"
       sign_in_and_redirect user
     else
-
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
     end
@@ -21,7 +20,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     logger = Logger.new('log/facebook.log')
-    logger.info('facebook function')
+    logger.info('Facebook function')
     user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
     if user.persisted?
       sign_in_and_redirect user, :event => :authentication #this will throw if @user is not activated
@@ -29,6 +28,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       logger = Logger.new('log/facebook.log')
       logger.info("redirect_to new_user_registration_url")
+      @logger.info('new user cant saved')
+      @logger.infor("Can't register with facebook account: email #{omni['extra']['raw_info'].email} has been taken")
+      flash[:alert] = "Can't register with your facebook account: email has already been taken !"
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
     end

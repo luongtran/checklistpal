@@ -311,13 +311,22 @@ class User < ActiveRecord::Base
     logger.info('\n find_for_facebook_oauth function in User Model : \n')
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(provider: auth.provider,
+      user = User.new(provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
                          name: auth,
                          password: Devise.friendly_token[0, 20]
       )
+      user.skip_stripe_update = true
+      user.save(:validate => false)
       user.add_role('free')
+      customer = Stripe::Customer.create(
+          :email => user.email,
+          :description => user.name,
+          :plan => roles.first.name
+      )
+      user.customer_id = customer.id
+      save
     end
     user
   end

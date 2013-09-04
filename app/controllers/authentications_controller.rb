@@ -43,6 +43,7 @@ class AuthenticationsController < ApplicationController
   end
 
   def create
+
     @authentication = Authentication.new(params[:authentication])
     if @authentication.save
       redirect_to authentications_url, :notice => "Successfully created authentication."
