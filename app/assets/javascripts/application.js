@@ -15,7 +15,7 @@ $(function () {
     $(".logo-editbt").on("click", function () {
         $(this).hide();
         var html_form = '<form action="#" class="edit_list_frm" remote="true">' +
-            '<input type="text" class="input-small" name="list[name]" id="list_name" maxlength="50" placeholder="maximum 50 characters"/>' +
+            '<input type="text" class="input-small" name="list[name]" id="list_name" maxlength="30" placeholder="maximum 30 characters"/>' +
             '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
             '<input type="button" value="Cancel" class="btn btn-small canceleditlistbt" /></form>';
         var obj = $(this).parent("#logo").children(".list-name");
@@ -214,7 +214,7 @@ $(function () {
     }));
 
     var html_form_edit = '<form action="#" class="edit_task_frm" remote="true">' +
-        '<input type="text" class="input-small" name="task[description]" id="task_description" style="width: auto;" maxlength="50"/>' +
+        '<input type="text" class="input-small" name="task[description]" id="task_description" style="width: auto;" maxlength="140" placeholder="maximum 140 characters"/>' +
         '<input type="submit" value="Save" class="btn btn-small btn-success" />' +
         '<input type="button" value="Cancel" class="btn btn-small canceledittaskbt" /></form>';
     $('.btn-edit').on("click", function () {

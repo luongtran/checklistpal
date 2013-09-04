@@ -627,3 +627,8 @@
     height: 20px;
     padding: 0 10px
 }
+.character-counter {
+    font-size: 13px;
+    color: #888;
+    margin-left: 10px;
+}

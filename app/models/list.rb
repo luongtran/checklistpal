@@ -22,7 +22,7 @@ class List < ActiveRecord::Base
   has_many :list_team_members, :dependent => :delete_all # ????
   validates_uniqueness_of :slug
   validates_presence_of :name
-  validates_length_of :name, :within => 3..50
+  validates_length_of :name, :within => 3..30
 
 
   def belong_to? user
