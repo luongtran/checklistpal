@@ -6,7 +6,7 @@
 /public/system/*
 /coverage/
 /spec/tmp/*
-.idea
+/.idea/*
 
 
 /nbproject/private/
