@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
     customer = Stripe::Customer.create(
         :email => email,
         :description => name,
-        :plan => roles.first.name
+        :plan => 'free'
     )
     self.customer_id = customer.id
     save
