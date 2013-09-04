@@ -132,10 +132,10 @@
             <div class="panel">
               <h3>Account's profile</h3>
               <% if !current_user.is_facebook_account? %>
-              <p>
-                <%= image_tag current_user.get_avatar_url || "default_avatar.png", class: "avatar", :size => "40x50" %>
-                <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button" style="margin-left: 10px;">Change</a>
-              </p>
+                  <p>
+                    <%= image_tag current_user.get_avatar_url || "default_avatar.png", class: "avatar", :size => "40x50" %>
+                    <a data-toggle="modal" href="#change-avatar-dialog" class="btn  btn-small" type="button" style="margin-left: 10px;">Change</a>
+                  </p>
               <% end %>
 
               <br/>
@@ -266,20 +266,32 @@
 </div>
 
 
-<div id="update-card" class="modal fade" style="display: none;">
+<div id="update-card" class="modal fade" style="display: none;padding: 15px">
   <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form'} do |f| %>
       <div class="modal-header">
-        <a class="close" data-dismiss="modal">&#215;</a>
+           <span id="siteseal" style="float: right">
+         <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=pJyFmKIZwfQn9J5oTWeNPdgeCBmafTCL7fZHJH2zxv0JxkzoBDPA3jdeo9Z">
+         </script>
+        </span>
 
-        <h3>Change Credit Card</h3>
+        <h3 style="color: #0c508a;">Change Credit Card</h3>
+
       </div>
+
       <div class="modal-body">
+          <span class="span1" style="float: right">
+            <a href="https://stripe.com/">
+          <img src="/assets/stripe_logo.png"></img>
+            </a>
+        </span>
         <div id="stripe_error" class="alert alert-error" style="display:none">
         </div>
         <div class="field">
           <%= label_tag :card_number, "Credit Card Number" %>
           <%= text_field_tag :card_number, nil, name: nil, required: true, :style => "height: 20px;" %>
         </div>
+
+
         <div class="field">
           <%= label_tag :card_code, "Card Security Code (CVV)" %>
           <%= text_field_tag :card_code, nil, name: nil, :style => "height: 20px;" %>
